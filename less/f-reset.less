@@ -1,0 +1,104 @@
+﻿html, body, div, span,
+h1, h2, h3, h4, h5, h6,
+p, a, img, strong,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica Neue, Helvetica, Arial, Lantinghei SC, Microsoft Yahei;
+    font-size: 14px;
+}
+
+ol, ul {
+    list-style: none;
+}
+h1 {
+    font-size: 25px;
+}
+h2 {
+    font-size: 20px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    margin: 20px 0 5px;
+    font-size: 15px;
+}
+h5 {
+}
+h6 {
+}
+strong {
+    font-size: 14px;
+}
+pre {
+    font-family: "Helvetica Neue",Helvetica Neue, Helvetica, Arial, Lantinghei SC, Microsoft Yahei !important;
+    font-size: 14px;
+}
+img {
+    border: none;
+    outline: none;
+}
+::selection {
+    color: #fff;
+    background-color: #000;
+}
+::-moz-selection {
+    color: #fff;
+    background-color: #000;
+}
+
+
+// =link 链接
+a {
+    color: @linkColor;
+}
+a:hover {
+    text-decoration: none;
+    color: @linkColorHover;
+}
+a:active, a:visited {
+    outline: none;
+}
+.indent { text-indent: 2em; }
+.noindent { text-indent: 0; }
+
+.db {
+    display: block;
+    *zoom: 1;
+}
+.wrap-dib {
+    font-size:0;// 所有浏览器
+    *word-spacing:-1px;// IE6、7
+}
+.wrap-dib .dib{
+    font-size: 14px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+// firefox 中 letter-spacing 会导致脱离普通流的元素水平位移
+.wrap-dib {
+    letter-spacing:-5px;// Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节
+}
+}
+.dib {
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}
+.nowrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}// 单行显示

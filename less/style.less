@@ -1,0 +1,169 @@
+
+// Core variables and mixins
+@import "f-variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "f-mixins.less";
+
+// CSS Reset
+@import "f-reset.less";
+
+
+
+
+
+/* =left 
+ * --------------------------------------*/
+@logoRadius: 46px;
+@logoWidth: @logoRadius*0.07;
+@logoHeight: @logoRadius*0.85;
+
+.left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    padding-top: 90px;
+    background: @white;
+    border-right: 1px solid #cdcdcd;
+    border-top: 1px solid #cdcdcd;
+    z-index: 100;
+}
+.sidebar {
+    margin-right: 70px;
+    text-align: right;
+}
+.sidebar a{
+    line-height: 2em;
+    color: #000;
+    &:hover {
+        color: @linkColorHover;
+    }
+}
+/*logo样式 */
+.blog-logo {
+    position: relative;
+    .size(@logoRadius, @logoRadius);
+    .circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .size(@logoRadius, @logoRadius);
+        .border-radius(50%);
+        background: @logoColor;
+        z-index: 10;
+    }
+    .circle:after {
+        position: absolute;
+        top: 0;
+        right: @logoRadius*0.02;
+        content: "";
+        display: block;
+        .size(@logoRadius*0.8, @logoRadius*0.8);
+        .border-radius(50%);
+        background: @white;
+        z-index: 10;
+
+    }
+    .line {
+        position: absolute;
+        top: 0;
+        right: @logoRadius*0.12;
+        margin-left: @logoRadius*0.2;
+        .size(@logoHeight*0.7, @logoWidth);
+        margin-top: @logoRadius*0.2;
+        background: @logoColor;
+        z-index: 100;
+    }
+    .line:before {
+        position: absolute;
+        top: 0;
+        content: "";
+        display: block;
+        .size(@logoHeight*0.8, @logoWidth);
+        margin-left: -@logoRadius*0.26;
+        background: @logoColor;
+        z-index: 100;
+
+    }
+    .line:after {
+        position: absolute;
+        top: 0;
+        content: "";
+        display: block;
+        .size(@logoHeight, @logoWidth);
+        margin-left: -@logoRadius*0.13;
+        margin-top: -@logoRadius*0.2;
+        background: @logoColor;
+        z-index: 100;
+
+    }
+}
+
+@font-face {
+    font-family: 'zuiderpostduif';
+    src: url('font/zuiderpostduif.eot');
+    src: url('font/zuiderpostduif.eot?#iefix') format('embedded-opentype'),
+     url('font/zuiderpostduif.woff') format('woff'),
+     url('font/zuiderpostduif.ttf') format('truetype'),
+     url('font/zuiderpostduif.svg#Nzuiderpostduif') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+.blog-name {
+    position: relative;
+    top: -10px;
+    color: #000;
+    font-size: 40px;
+    font-family: 'zuiderpostduif', arial, sans-serif;
+    &:hover {
+    color: #000;
+    }
+}
+
+/* =right 
+ * --------------------------------------*/
+.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    background: @white;
+}
+#content {
+    width: 700px;
+    margin: 95px 0 0 70px;
+}
+/* =post 文章样式
+ * --------------------------------------*/
+.post {
+    margin: 30px 0;
+}
+.post p {
+    margin-top: 20px;
+}
+.inner-post-title {
+    color: @titleColor;
+}
+.post-category a{
+    color: #888;
+}
+.post-category a:hover{
+    color: #fff;
+}
+/* 文章内容 */
+.entry {
+    padding: 6px 0 20px;
+    line-height: 2em;
+    color: #666;
+}
+.entry h2 {
+    font-weight: normal;
+}
+.entry ul {
+    list-style: square inside;
+}
+
+.footer {
+    margin: 0 auto 30px;
+    text-align: center;
+}

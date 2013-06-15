@@ -1,0 +1,432 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+  
+  <title>JavaSctipt | forsigner</title>
+  <meta name="author" content="forisnger">
+  
+  <meta name="description" content="前端&amp;设计">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="forsigner"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/bootstrap-2.3.2.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="/js/modernizr.js"></script>
+
+<link rel="stylesheet/less" type="text/css" href="/less/style.less" />
+
+
+  <script src="/js/less-1.3.3.min.js"></script>
+
+
+
+</head>
+
+
+<body>
+    <section class="left">
+        <div class="sidebar">
+            <header id="header" class="header"><div class="blog-info">
+    <div class="wrap-logo">
+        <a href="/">
+            <div class="blog-logo dib">
+                <div class="circle"></div>
+                <div class="line"></div>
+            </div>
+            <div class="blog-name dib">forsigner</div>
+        </a>
+    </div>
+    <!--
+    <aside class="blog-desc">前端&amp;设计</aside>
+    -->
+</div>
+</header>
+            <aside><nav id="nav" class="nav">
+    <ul>
+        
+    </ul>
+</nav>
+
+  
+<div class="widget tag">
+  <ul>
+  
+    <li><a href="/tags/CSS/">CSS</a></li>
+  
+    <li><a href="/tags/JavaSctipt/">JavaSctipt</a></li>
+  
+    <li><a href="/tags/前端工具/">前端工具</a></li>
+  
+    <li><a href="/tags/设计/">设计</a></li>
+  
+    <li><a href="/tags/读书/">读书</a></li>
+  
+    <li><a href="/tags/随记/">随记</a></li>
+  
+  </ul>
+</div>
+
+
+
+</aside>
+        </div>
+    </section>
+    <section class="right">
+        <div id="content" class="inner">
+            <div class="wrap-post">
+<h2 class="archive-title tag">JavaSctipt</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="post-title"><a class="inner-post-title" href="/2013/02/28/get-javascript-url/">Javascript获取url的参数</a></h1>
+  
+
+
+      
+        <div class="icon"></div>
+        <time datetime="2013-02-28T12:57:29.000Z">2月28 2013</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在Web开发中，经常会用url传递一些参数，用Javascript获取url参数很简单，主要使用split()把url分割成数组，然后就可以使用参数了。方法为了方便快速的获取url中的参数，也为了以后代码的重用，我把它写成一个函数，把获取的参数集合存在一个对象里。</p>
+<p>实现代码如下：</p>
+<pre lang="javascript">var  UrlParameters  =  function()  {
+        var  url  =  window.location.search,// 获取url中"?"和"?"后面的字符串
+                args, arg,
+                back  =  {}; // 定义一个对象用来储存获取参数
+
+        if(url == '') return 0; //如果url没有任何参数，返回0
+
+        if( url.indexOf('?')  !=  -1 ) { // 如果url存在参数 
+                args  =  url.substr(1).split('&amp;'); // 分割各个参数
+                for (var  i  =  0,; i  &lt;  args.length;  i++) {
+                        arg  =  args[i].split('=');
+                        back[ arg[0] ]  =  arg[1]; // 把每对参数都存在对象中
+                };
+        }
+
+return back;
+};</pre>
+使用方法很简短，只要在Javascript中直接调用就行了，如下：
+<pre lang="javascript">// 假设url为 http://www.hello.com?a=123
+var myUrlParameters  =  getUrlParameters();
+alert(myUrlParameters.a); // alert出123</pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="post-title"><a class="inner-post-title" href="/2013/02/25/javascript-mobile/">JavaScript识别移动设备系统和浏览器类型</a></h1>
+  
+
+
+      
+        <div class="icon"></div>
+        <time datetime="2013-02-25T12:57:29.000Z">2月25 2013</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在实习期间，一直在移动设备上做开发，现在实习已经结束了，最近也比较闲，所以，想把实习期间，用到的一些比较细的JavaScript知识点记录总结一下。</p>
+<p>今天要记录的知识点是，如何用JavaScript识别移动设备的系统类型和移动设备中的浏览器类型。要说的是，识别移动设备的系统类型和识别移动设备中的浏览器类型是两个不同的概念。</p>
+<p>识别代码如下，为给更好的模块花，这里我把它放进一个对象里去：</p>
+<p>Check  =  {
+        //以下三句代码识别浏览器类型
+        isWebkit  =  (/webkit/i).test(navigator.appVersion), //识别webkit
+        isFirefox  =  (/firefox/i).test(navigator.userAgent), //识别moz
+        isTrident  =  (/trident/i).test(navigator.userAgent), //识别ms</p>
+<pre><code><figure class="highlight"><pre>    <span class="comment">//以下三句识别操作系统类型</span>
+    isAndroid  =  (/android/gi)<span class="variable">.test</span>(navigator<span class="variable">.appVersion</span>), <span class="comment">//识别Android os</span>
+    isIos  =  (/iphone|ipad/gi)<span class="variable">.test</span>(navigator<span class="variable">.appVersion</span>), <span class="comment">//识别ios</span>
+    isPlaybook  =  (/playbook/gi)<span class="variable">.test</span>(navigator<span class="variable">.appVersion</span>); <span class="comment">//识别Playbook os</span>
+</pre></figure></code></pre>
+<p>}
+识别返回值是boolean类型，用法如下：</p>
+<p>if(Check.isAndroid) {
+        alert(&quot;this is android&quot;);
+}</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="post-title"><a class="inner-post-title" href="/2013/02/13/learning-javascript-closure/">理解JavaScript闭包</a></h1>
+  
+
+
+      
+        <div class="icon"></div>
+        <time datetime="2013-02-13T12:57:29.000Z">2月13 2013</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>从开始学习JavaScript时，就听说闭包是个强大的东西，但也是一个很复杂很难懂的东西。一直以来也对闭包似懂非懂，</p>
+<p>直到最近在读汤姆大叔的深入理解JavaScript系列 才基本弄懂什么是闭包，这里感学大叔无私的分享，这种无私的分享精神非常值得学习。下面关于我对闭包的描述大多数也是从大叔那看来。</p>
+<p>闭包的定义</p>
+<p>从理论角度：所有的函数。因为它们都在创建的时候就将上层上下文的数据保存起来了。哪怕是简单的全局变量也是如此，因为函数中访问全局变量就相当于是在访问自由变量，这个时候使用最外层的作用域。</p>
+<p>从实践角度：以下函数才算是闭包：
+             1.即使创建它的上下文已经销毁，它仍然存在（比如，内部函数从父函数中返回）
+             2.在代码中引用了自由变量
+上面是汤姆大叔对闭包的定义，本来我想用自己的话来定义一下，但发现这是我见过对闭包最完美的定义，自己实在想不出有比这更准确、更通俗易懂的定义了，所以也不去写自己对闭包的定义了。</p>
+<p>闭包的例子</p>
+<p>下面是一些闭包使用的例子，当然这里的闭包是从实践的角度来讲的。</p>
+<p>例子一（最简单的闭包）：</p>
+<p>var a = &quot;hello&quot;; //函数外部的自由变量a
+//这个函数就是一个闭包
+function  simplestClosure()  {
+        alert(a);
+}
+simplestClosure(); //将alert出hello
+函数simplestClosure在自己的[[scope]]寻找不到变量a，(我就把[[scope]]称作函数的作用域吧，虽然不太正确，但好理解)，它就会通过作用域链在它的父级函数的作用域或全局内寻找变量a，通过这种链式查找，函数可以访问到自由变量a，这就形成了最简单的闭包。</p>
+<p>例子二（内部函数从父函数中返回）：</p>
+<p>var  x  =  1;
+function outerClosure()  {
+        var y =  2;
+        return  function  closure(z)  {
+                alert(x+y+z);
+        }
+}
+//调用闭包函数closure，将alert出6
+例子三（使用匿名函数隐藏全局作用域变量）：</p>
+<p>// 创建一个匿名函数作为包装
+(function()  {
+        //变量原本应该是全局的
+        var  msg  =  &quot;hello&quot;;
+        //将一个新函数绑定到全局对象
+        window.onload = function()  {
+       // 这个函数使用“隐藏”变量msg
+               alert(msg);
+        }
+})();
+例子四（创建封装的作用域来隐藏辅助对象）：</p>
+<p>var  foo  =  {};
+// 初始化
+(function (object)  {
+        var  x  =  10;
+        object.getX  =  function  _getX() {
+                return  x;
+        };
+})(foo);
+alert(foo.getX()); // 获得闭包 &quot;x&quot; – 10
+例子五（延时调用）：</p>
+<p>var  a  =  10;
+setTimeout(function () {
+        alert(a); // 10, after one second 
+},  1000);
+例子六(回调函数)：</p>
+<p>var x = 10;
+// only for example
+xmlHttpRequestObject.onreadystatechange  =  function() {
+        // 当数据就绪的时候，才会调用;&lt;
+        // 这里，不论是在哪个上下文中创建
+        // 此时变量“x”的值已经存在了
+       alert(x); // 10
+};
+这里没深入讨论闭包的理论，有兴趣的同学建议去看看大叔的博客和他的的深入理解JavaScript系列。done。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="post-title"><a class="inner-post-title" href="/2013/02/12/javascript-callback/">JavaScript回调函数的实现</a></h1>
+  
+
+
+      
+        <div class="icon"></div>
+        <time datetime="2013-02-12T12:57:29.000Z">2月12 2013</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在JavaScript中，回调函数的使用非常频繁。特别是在各种Javascript库中，经常在一个函数中使用回调函数，例如jQuery中的each()方法。一年以来，在使用各种有回调函数的函数时，都没有去深究其内部的实现原理真，惭愧。在有米实习时，在读js师兄的代码时，偶然看到他写的一个函数是他自己实现回调函数的，当时感觉很神奇，原来这就是回调函数啊，之后google了很多关于Javascript回调函数的资料，终于大概弄明白回调函数是什么了。以下是自己对回调函数的一些理解。</p>
+<p>回调函数定义：... 理论一直是我的弱项，定义暂时没法定，以后弄懂再补上，我暂时只懂它的用法orz。</p>
+<p>回调函数的基本实现：</p>
+<p>// 声明一个函数，它的参数是一个函数fn
+function  example(fn)  {
+        // 回调前，可以do something
+        alert(&#39;我是回调前执行的代码&#39;);
+        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
+        fn  =  fn  ||  function()  {};
+        fn(); //  调用传进来的fn
+}
+// 调用传进来的fn
+function callback() {
+        alert(&#39;I am callback!&#39;)
+}
+example(callback); // 调用函数a
+这个例子展示回调函数基本实现方法，实现回调的关键是把一个函数当成另一个参数。当然实践中很少用上面方式去使用回调函数，一般把一个匿名函数传入当成回调函数，这种方法在Javascript中使用非常广泛，下面是一个基本的例子。</p>
+<p>// 声明一个函数，它的参数是一个函数fn
+function example(fn) {
+// 回调前，可以do something
+        alert(&#39;我是回调前执行的代码&#39;);
+        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
+        fn  =  fn  ||  function()  {};
+        fn(); // 调用传进来的fn
+}
+// 把匿名函数当做参数
+example(function()  {
+        alert(&#39;I am callback!&#39;)
+});
+使用匿名函数作为参数，不仅可以极少代码，也让代码更好管理，更加灵活。</p>
+<p>任何函数都是可以传入参数的，回调函数一样:</p>
+<p>// 声明一个函数，它的参数是一个函数fn
+function example(a, fn)  {
+        // 回调前，可以do something
+        alert(a);
+        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
+        fn  =  fn  ||  function() {};
+        fn(m); // 调用传进来的fn
+}
+// 把匿名函数当做参数
+var  m  =  &#39;I am callback!&#39;;
+example(&#39;我是回调前执行的代码&#39;,  function(m)  {
+        alert(m)
+});
+以上就是Javascript回调函数的实现方法和简单用法，关于回调函数的作用，我的理解是：其实，每个函数的定义都是为了实现某些功能，在一个拥有回调函数的函数中，一般把实现一个功能的通用代码写在回调函数前，其实后也可以，而开发者在回调函数中自定义自己需要的功能。文艺一点，就是回调函数让世界更加多姿多彩。done。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="post-title"><a class="inner-post-title" href="/2013/02/02/javascript-reading/">重读JavaScript经典书籍计划</a></h1>
+  
+
+
+      
+        <div class="icon"></div>
+        <time datetime="2013-02-02T12:57:29.000Z">2月2 2013</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>一年前，我下决心开始学习Javascript，那时门都还没入。为了入门，在豆瓣看了很多书评，之后确定了自己应该看那几本。确定书目后，图书馆有的就去图书馆借，没的话就在新浪爱问下载电子书。我依稀记得看的是这几本书：Javascript权威指南Javascript DOM编程艺术JavaScript高级程序设计ppk谈JavaScript精通JavaScript</p>
+<p>那时恰好课程不多，整天都在看这几本书，一天里有超过8个钟在看这几本书，没课时在电脑前看，有课时在课堂上看。我的专业是工业设计，却整天在看编程书，别人都以为我疯了。那时候好傻，那几本书根本看不懂，但我我还是逼自己读下去，因为心里想看完那几本书肯定会收获很大。过了一多月，我确实把这本书看完了，其实看完后几乎没记下什么，还是有收获的，我基本上是入门的，知道JavaScript是怎么一回事了。</p>
+<p>这段时间闲来无事，想整理一下自己脑子里的JavaScript知识，已形成自己的知识体系。所以决定从今天起，重新去读那几本经典的JavaScript书，大概翻了这几本书的目录，决定从阅读的顺序如下：JavaScript高级程序设计JavaScript语言精粹精通JavaScript高性能JavaScriptJavascript权威指南Javascript DOM编程艺术ppk谈JavaScript</p>
+<p>在知乎看个人牛人的建议，觉得JavaScript语言精粹和高性能JavaScript也有必要一读。done。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+
+  <nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div>
+        </div>
+        <footer id="footer" class="footer">
+    
+    &copy; 2013 forisnger
+    
+</footer>
+
+        
+    </section>
+</body>
+</html>
