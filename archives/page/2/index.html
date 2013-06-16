@@ -26,7 +26,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/bootstrap-2.3.2.css" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
 
@@ -101,13 +100,57 @@
     <header>
       
   
+    <h1 class="post-title"><a class="inner-post-title" href="/2013/02/16/dont-make-me-think/">Don't make me think(读书笔记)</a></h1>
+  
+
+
+      
+        <time class="post-time" datetime="2013-02-16T12:57:29.000Z">2月16 2013</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>krug可用性定律：</p>
+<p>第一定律：don&#39;t make me think</p>
+<p>第二定律：点击多少次都没关系，只要每次点击都无需思考、明确无误的选择。</p>
+<p>第三定律：去掉每个页面上上一半的文字，然后把剩下的文字再去掉一半。（即省略不必要的文字）</p>
+<p>也许一些习惯用法会发生变化，但有一件事情永远不会改变，那就是————人的本性。</p>
+<p>为什么东西总是在你找的最后一个地方找到？因为你找到以后就不会再找。</p>
+<p>我们认为的“精心准备的文字”（或者至少是“产品资料”）在用户看来更像“以每小时100公里的速度驶过的广告牌”。</p>
+<p>第一个事实：我们不是阅读，而是扫描。</p>
+<p>第二个事实：我们不做最佳选择，而是满意即可。
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/02/16/dont-make-me-think/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="post-title"><a class="inner-post-title" href="/2013/02/13/learning-javascript-closure/">理解JavaScript闭包</a></h1>
   
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-13T12:57:29.000Z">2月13 2013</time>
+        <time class="post-time" datetime="2013-02-13T12:57:29.000Z">2月13 2013</time>
       
     </header>
     <div class="entry">
@@ -119,67 +162,16 @@
 <p>从实践角度：以下函数才算是闭包：
              1.即使创建它的上下文已经销毁，它仍然存在（比如，内部函数从父函数中返回）
              2.在代码中引用了自由变量
-上面是汤姆大叔对闭包的定义，本来我想用自己的话来定义一下，但发现这是我见过对闭包最完美的定义，自己实在想不出有比这更准确、更通俗易懂的定义了，所以也不去写自己对闭包的定义了。</p>
-<p>闭包的例子</p>
-<p>下面是一些闭包使用的例子，当然这里的闭包是从实践的角度来讲的。</p>
-<p>例子一（最简单的闭包）：</p>
-<p>var a = &quot;hello&quot;; //函数外部的自由变量a
-//这个函数就是一个闭包
-function  simplestClosure()  {
-        alert(a);
-}
-simplestClosure(); //将alert出hello
-函数simplestClosure在自己的[[scope]]寻找不到变量a，(我就把[[scope]]称作函数的作用域吧，虽然不太正确，但好理解)，它就会通过作用域链在它的父级函数的作用域或全局内寻找变量a，通过这种链式查找，函数可以访问到自由变量a，这就形成了最简单的闭包。</p>
-<p>例子二（内部函数从父函数中返回）：</p>
-<p>var  x  =  1;
-function outerClosure()  {
-        var y =  2;
-        return  function  closure(z)  {
-                alert(x+y+z);
-        }
-}
-//调用闭包函数closure，将alert出6
-例子三（使用匿名函数隐藏全局作用域变量）：</p>
-<p>// 创建一个匿名函数作为包装
-(function()  {
-        //变量原本应该是全局的
-        var  msg  =  &quot;hello&quot;;
-        //将一个新函数绑定到全局对象
-        window.onload = function()  {
-       // 这个函数使用“隐藏”变量msg
-               alert(msg);
-        }
-})();
-例子四（创建封装的作用域来隐藏辅助对象）：</p>
-<p>var  foo  =  {};
-// 初始化
-(function (object)  {
-        var  x  =  10;
-        object.getX  =  function  _getX() {
-                return  x;
-        };
-})(foo);
-alert(foo.getX()); // 获得闭包 &quot;x&quot; – 10
-例子五（延时调用）：</p>
-<p>var  a  =  10;
-setTimeout(function () {
-        alert(a); // 10, after one second 
-},  1000);
-例子六(回调函数)：</p>
-<p>var x = 10;
-// only for example
-xmlHttpRequestObject.onreadystatechange  =  function() {
-        // 当数据就绪的时候，才会调用;&lt;
-        // 这里，不论是在哪个上下文中创建
-        // 此时变量“x”的值已经存在了
-       alert(x); // 10
-};
-这里没深入讨论闭包的理论，有兴趣的同学建议去看看大叔的博客和他的的深入理解JavaScript系列。done。</p>
+上面是汤姆大叔对闭包的定义，本来我想用自己的话来定义一下，但发现这是我见过对闭包最完美的定义，自己实在想不出有比这更准确、更通俗易懂的定义了，所以也不去写自己对闭包的定义了。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/02/13/learning-javascript-closure/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -202,8 +194,7 @@ xmlHttpRequestObject.onreadystatechange  =  function() {
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-12T12:57:29.000Z">2月12 2013</time>
+        <time class="post-time" datetime="2013-02-12T12:57:29.000Z">2月12 2013</time>
       
     </header>
     <div class="entry">
@@ -224,40 +215,15 @@ function callback() {
         alert(&#39;I am callback!&#39;)
 }
 example(callback); // 调用函数a
-这个例子展示回调函数基本实现方法，实现回调的关键是把一个函数当成另一个参数。当然实践中很少用上面方式去使用回调函数，一般把一个匿名函数传入当成回调函数，这种方法在Javascript中使用非常广泛，下面是一个基本的例子。</p>
-<p>// 声明一个函数，它的参数是一个函数fn
-function example(fn) {
-// 回调前，可以do something
-        alert(&#39;我是回调前执行的代码&#39;);
-        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
-        fn  =  fn  ||  function()  {};
-        fn(); // 调用传进来的fn
-}
-// 把匿名函数当做参数
-example(function()  {
-        alert(&#39;I am callback!&#39;)
-});
-使用匿名函数作为参数，不仅可以极少代码，也让代码更好管理，更加灵活。</p>
-<p>任何函数都是可以传入参数的，回调函数一样:</p>
-<p>// 声明一个函数，它的参数是一个函数fn
-function example(a, fn)  {
-        // 回调前，可以do something
-        alert(a);
-        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
-        fn  =  fn  ||  function() {};
-        fn(m); // 调用传进来的fn
-}
-// 把匿名函数当做参数
-var  m  =  &#39;I am callback!&#39;;
-example(&#39;我是回调前执行的代码&#39;,  function(m)  {
-        alert(m)
-});
-以上就是Javascript回调函数的实现方法和简单用法，关于回调函数的作用，我的理解是：其实，每个函数的定义都是为了实现某些功能，在一个拥有回调函数的函数中，一般把实现一个功能的通用代码写在回调函数前，其实后也可以，而开发者在回调函数中自定义自己需要的功能。文艺一点，就是回调函数让世界更加多姿多彩。done。</p>
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/02/12/javascript-callback/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -280,21 +246,22 @@ example(&#39;我是回调前执行的代码&#39;,  function(m)  {
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-02T12:57:29.000Z">2月2 2013</time>
+        <time class="post-time" datetime="2013-02-02T12:57:29.000Z">2月2 2013</time>
       
     </header>
     <div class="entry">
       
         <p>一年前，我下决心开始学习Javascript，那时门都还没入。为了入门，在豆瓣看了很多书评，之后确定了自己应该看那几本。确定书目后，图书馆有的就去图书馆借，没的话就在新浪爱问下载电子书。我依稀记得看的是这几本书：Javascript权威指南Javascript DOM编程艺术JavaScript高级程序设计ppk谈JavaScript精通JavaScript</p>
-<p>那时恰好课程不多，整天都在看这几本书，一天里有超过8个钟在看这几本书，没课时在电脑前看，有课时在课堂上看。我的专业是工业设计，却整天在看编程书，别人都以为我疯了。那时候好傻，那几本书根本看不懂，但我我还是逼自己读下去，因为心里想看完那几本书肯定会收获很大。过了一多月，我确实把这本书看完了，其实看完后几乎没记下什么，还是有收获的，我基本上是入门的，知道JavaScript是怎么一回事了。</p>
-<p>这段时间闲来无事，想整理一下自己脑子里的JavaScript知识，已形成自己的知识体系。所以决定从今天起，重新去读那几本经典的JavaScript书，大概翻了这几本书的目录，决定从阅读的顺序如下：JavaScript高级程序设计JavaScript语言精粹精通JavaScript高性能JavaScriptJavascript权威指南Javascript DOM编程艺术ppk谈JavaScript</p>
-<p>在知乎看个人牛人的建议，觉得JavaScript语言精粹和高性能JavaScript也有必要一读。done。</p>
+<p>那时恰好课程不多，整天都在看这几本书，一天里有超过8个钟在看这几本书，没课时在电脑前看，有课时在课堂上看。我的专业是工业设计，却整天在看编程书，别人都以为我疯了。那时候好傻，那几本书根本看不懂，但我我还是逼自己读下去，因为心里想看完那几本书肯定会收获很大。过了一多月，我确实把这本书看完了，其实看完后几乎没记下什么，还是有收获的，我基本上是入门的，知道JavaScript是怎么一回事了。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/02/02/javascript-reading/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -317,58 +284,23 @@ example(&#39;我是回调前执行的代码&#39;,  function(m)  {
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-01-29T12:57:29.000Z">1月29 2013</time>
+        <time class="post-time" datetime="2013-01-29T12:57:29.000Z">1月29 2013</time>
       
     </header>
     <div class="entry">
       
         <p>用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开一个文件相当麻烦，效率低下。碰巧js师兄看到我的vim那么悲催，就介绍了一个项目管理插件，叫project。对于vim来说，这是一个几乎完美的项目管理+文件管理插件，优点就不多写了，谁用谁知道。</p>
 <p>project使用法很简单，下面记录下自己常用的几个功能：</p>
-<p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。</p>
-<p>下面用project打开一个项目，打开project后输入下面类似的命令：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-...
-}
-假设myproject文件中有四个文件：jqurey.js index.html readme.md info.php 和一个子文件夹 child，文件夹child两个文件：test.html和sea.js。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-    jquery.js
-    index.html
-    readme.md
-    }
-在project在添加一行，添加后代码如下：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-        jquery.js
-        index.html
-        readme.md
-        child=child filter=&quot;.js&quot; {</p>
-<pre><code><figure class="highlight"><pre>    }
-</pre></figure></code></pre>
-<p>}
-再使用/r刷新刚添加的那行，project代码应该如下：</p>
-<p>myproject=var/www/myproject  CD=.  filter=&quot;<em>.js  </em>.html *.md&quot;  {
-        jquery.js
-        index.html
-        readme.md
-        child=child filter=&quot;.js&quot;  {
-                sea.js
-        }
-}
-上面是使用project打开一个项目的简单完整过程，下面是一些自己常用的命令：</p>
-<p>\r---reflash光标所在的文件夹
-\R---reflash光标所在的文件夹及其子文件夹
-\c---create一个项目文件夹
-\C---create一个项目文件夹，并会导入期所有子文件夹，项目较大时慎用
-\s---如果光标在文件前，用水平分割窗口的方式打开文件，如果光标在文件前，open or close it.
-\S---用水平分割窗口的方式打开该文件件的所有文件
-\o---打开一个文件，光标会跳到新打开的文件窗口中
-\v---代开一个文件，光标不会跳
-vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&quot;;&quot;,执行以上命令式使用 ; 代替 \ 。done 。</p>
+<p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/01/29/use-vim-project/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -391,22 +323,23 @@ vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-01-26T07:55:46.000Z">1月26 2013</time>
+        <time class="post-time" datetime="2013-01-26T07:55:46.000Z">1月26 2013</time>
       
     </header>
     <div class="entry">
       
         <p>今天是2013年1月26日，懒懒的我，终于动手写博客的第一篇文章了，太久没写过成篇的字，脑子一片空白，不知道写些什么好，也许以第一次都是比较艰难的吧。</p>
 <p>那就从建这个博客开始写吧。首先，为什么要建这个博客？一方面是因为自己疑似患有健忘症，需要有个地方让我记些事，另一方面也许就是为了装b。其实，一年前就想搭建自己的独立博客，只是那时才刚接触html/css,什么都不会，google了很久，网上说可以用wordprss搭建博客，可惜我技术不够，折腾好几天都没安装成功，最后只好暂时放弃了，之后就安心学习web编程去了...</p>
-<p>真快，又一年过去了。一年前对于编程我一无所知，现在竟在一间公司做前端开发。这两个月一直在有米实习，成为准码农了，恰好这两个星期学校作业也做完了，所以又开始搭建自己的博客了。最重要的是，建一个博客，在技术方面已经没什么可以难倒我了。建博客开始，我纠结要不要购买虚拟主机，最后没购买，而是选择购买新浪云商店的服务，原因是比较方便。由于真的很方便，不用半个钟一个wordpress博客就上线了。</p>
-<p>虽然博客很快就上线了，十多天来我却一直都没有开始写第一篇文章，直到今天。最主要是在纠结两个问题：一个是博客的主题，一个是博客的名字。问题都是今天才解决。这十多天，每天下班回到宿舍，都花至少一个钟去写自己设计的博客主题。期间写了三个主题，前两个虽然已经设计的挺简洁了，但是还是有点大众化，不是很满意。之后花了好长时间，写了第三个主题，这是一个很简洁的主题，几乎只有白色，感觉还不错，今天之前已经确定就用这个主题了。至于博客名，一直想不到适合的名字，想沿用我的网名forsigner，但是感觉英文名还是不太好。今天早上，开门走出宿舍，发现外面下着雨，又暗又冷有闷，让人心跟着压抑，我一直都不是很喜欢雨天，但喜欢雨天过后，那干净的天空，清新的空气，还有那看上去一束一束的阳光，顿时灵光乍现，不如博客名叫“雨天过后”吧。既然叫“雨天过后”，顺便也把博客主题也改了吧，所以就花了一个下午写了现在这个主题。因为用到了rgba色彩，我也懒得去兼容IE9以下的IE系列了，谁叫我的工作是移动端的前端开发。</p>
-<p>好吧，要赶在明天之前发表，就写到这吧。</p>
+<p>真快，又一年过去了。一年前对于编程我一无所知，现在竟在一间公司做前端开发。这两个月一直在有米实习，成为准码农了，恰好这两个星期学校作业也做完了，所以又开始搭建自己的博客了。最重要的是，建一个博客，在技术方面已经没什么可以难倒我了。建博客开始，我纠结要不要购买虚拟主机，最后没购买，而是选择购买新浪云商店的服务，原因是比较方便。由于真的很方便，不用半个钟一个wordpress博客就上线了。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/01/26/first/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       

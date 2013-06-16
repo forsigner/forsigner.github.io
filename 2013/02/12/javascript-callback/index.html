@@ -26,7 +26,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/bootstrap-2.3.2.css" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
 
@@ -101,8 +100,7 @@
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-12T12:57:29.000Z">2月12 2013</time>
+        <time class="post-time" datetime="2013-02-12T12:57:29.000Z">2月12 2013</time>
       
     </header>
     <div class="entry">
@@ -123,6 +121,7 @@ function callback() {
         alert(&#39;I am callback!&#39;)
 }
 example(callback); // 调用函数a
+<a name="more"></a>
 这个例子展示回调函数基本实现方法，实现回调的关键是把一个函数当成另一个参数。当然实践中很少用上面方式去使用回调函数，一般把一个匿名函数传入当成回调函数，这种方法在Javascript中使用非常广泛，下面是一个基本的例子。</p>
 <p>// 声明一个函数，它的参数是一个函数fn
 function example(fn) {
@@ -157,31 +156,6 @@ example(&#39;我是回调前执行的代码&#39;,  function(m)  {
     </div>
     <footer>
       
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/JavaSctipt/">JavaSctipt</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
     </footer>
   </div>

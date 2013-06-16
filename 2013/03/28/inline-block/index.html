@@ -26,7 +26,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/bootstrap-2.3.2.css" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
 
@@ -101,8 +100,7 @@
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-03-28T12:57:29.000Z">3月28 2013</time>
+        <time class="post-time" datetime="2013-03-28T12:57:29.000Z">3月28 2013</time>
       
     </header>
     <div class="entry">
@@ -111,15 +109,18 @@
 这是读过的关于inline-block最好的文章，如下：</p>
 <p>曾几何时，display:inline-block 已经深入「大街小巷」，随处可见 「display:inline-block; <em>display:inline; </em>zoom:1; 」这样的代码。如今现代浏览器已经全面支持这个属性值了，上面的代码只是为了兼容 IE6、7 而已。那么你真的了解 inline-block 了吗？本文将带你深入剖析该属性值的前世今生，让你更好的理解和运用 inline-block。（本文约定 display:inline-block 简写为 inline-block）</p>
 <p>开篇我们来看几个问题：</p>
-<p>IE6、7 真的不支持 display:inline-block 吗？
-display:inline-block 后的元素为什么会产生水平空隙，这真的是 bug 吗？
-如何更好的解决 display:inline-block 元素间产生的水平空隙？
-一、inline-block 前世</p>
-<p>1.认知</p>
+<ul>
+<li>IE6、7 真的不支持 display:inline-block 吗？</li>
+<li>display:inline-block 后的元素为什么会产生水平空隙，这真的是 bug 吗？</li>
+<li>如何更好的解决 display:inline-block 元素间产生的水平空隙？
+<a name="more"></a><h2>一、inline-block 前世</h2>
+</li>
+</ul>
+<h3>1.认知</h3>
 <p>也许有人问你为何要写「 display:inline-block; <em>display:inline; </em>zoom:1; 」 来兼容 IE6、7 时，你会立马答道：因为 IE6、7 不支持 display:inline-block 呗!不知道何时起，惯性思维给开发者带来了这样一个可怕的概念。万物都是辩证的，当你写下这些的时候，可曾怀疑过大众观点真的可靠吗？也许你认为这些无关 紧要，实现效果就好。但是如果不能理解每个属性或属性值的根本，你将永远无法全面的了解它，人云亦云只会让你浅尝辄止，止步不前。那么这里就涉及到所谓的 「CSS 学习瓶颈」的问题了，这个问题张鑫旭《说说CSS 学习中的瓶颈》一文有详细阐述，虽然部分观点我不是很赞同，但是中心思想还是很值得思考的。文中有几个不错的问题这里也列举出来供大家观摩：</p>
 <p>line-height:150% 和 line-height:1.5 的区别是？
-float 为何会让外部容器高度塌陷？这是 bug？（我的答案在《那些年我们一起清除过的浮动》）
-vertical-align 的表现为何在IE7, IE8, IE9 下表现不尽相同？其中的渲染机制是？
+- float 为何会让外部容器高度塌陷？这是 bug？（我的答案在《那些年我们一起清除过的浮动》）
+- vertical-align 的表现为何在IE7, IE8, IE9 下表现不尽相同？其中的渲染机制是？
 好了，回到 inline-block 的认知的问题，我的观点是：</p>
 <p>IE 从 5.5 开始就已经支持 display:inline-block 了，只是支持的并不是那么完善。</p>
 <p>在 msdn 微软开发者社区，找到了 IE 从5.5 开始支持 inline-block 的证据：</p>
@@ -165,18 +166,14 @@ vertical-align 的表现为何在IE7, IE8, IE9 下表现不尽相同？其中的
 </em>zoom:1;
 为了不让支持 CSS2.1 inline-block 的浏览器 重置为 inline，我们针对 IE6、7 做一个 hack。由于现代浏览器也开始支持 zoom 属性，这里只是希望 IE6、7 中生效，所以还是 hack 一下比较合适。至此产生了我们熟悉的兼容各个浏览器的 inline-block 写法。</p>
 <p>小结：IE6、7 并不是不支持 inline-block，只是 block 元素需要做一些处理来达到 inline-block 的效果。</p>
-<ol>
-<li>到底什么是 inline-block</li>
-</ol>
+<h3>2. 到底什么是 inline-block</h3>
 <p>说了很多，或许很多朋友还不是太明白到底什么是 inline-block？W3C 在 CSS2.1 The ‘display’ property 中描述如下：</p>
 <p>This value causes an element to generate an inline-level block container. The inside of an inline-block is formatted as a block box, and the element itself is formatted as an atomic inline-level box.</p>
 <p>大致意思就是：inline-block 后的元素创建了一个行级的块容器，该元素内部（内容）被格式化成一个块元素，同时元素本身则被格式化成一个行内元素。</p>
 <p>直白一点的意思就是：inline-block 的元素既具有 block 元素可以设置宽高的特性，同时又具有 inline 元素默认不换行的特性。当然不仅仅是这些特性，比如 inline-block 元素也可以设置 vertical-align 属性。简而言之：</p>
 <p>inline-block 后的元素就是一个格式化为行内元素的块容器( Block container )</p>
 <p>怎么样？听起来还不错吧！</p>
-<ol>
-<li>inline-block 缘从何起？</li>
-</ol>
+<h3>3. inline-block 缘从何起？</h3>
 <p>前面已经证明了 IE 5.5 开始就支持了 inline-block，那么 IE5.5 是什么时候发布的呢？话说当年网景与 IE 大战，IE5.5 那是何等的风骚……（好吧，此处略去十页）。从维基百科的资料来看，IE5.5 beta1 的发布时间是：1999年12月，最终版本是 2000年7月。那么 W3C 标准中是何时才出现 inline-block 这个值的呢？</p>
 <p>在 CSS1 规范中，「display」的值仅包括： block | inline | list-item | none 。CSS2.1中才添加了 inline-block 属性值。一丝继续舔着手指，用那苦逼的英语水平终于翻到了这份草案：<a href="http://www.w3.org/TR/2002/WD-CSS21-20020802/visuren.html#display-prop，">http://www.w3.org/TR/2002/WD-CSS21-20020802/visuren.html#display-prop，</a> 这份草案的日期是 2002年8月2日，纳尼！！！原来我们纠结了半天的 inline-block ， IE5.5 至少提前两年就提出来了啊！难道是微软给 W3C 提议后，CSS 2.1才加入的？（不过我看到 W3C 官网有一个关于是否增加 inline-block 的投票）好吧这个问题也许有一天 IE 某个开发者写《 IE回忆录》的时候我们才能了解到其中的内幕。如果找到更早关于 inline-block 的 CSS草案，也麻烦告知一丝一声。好吧，如果你还不相信，打微软官方电话问问吧 800-820-3800（不是 DHC 哦！）。</p>
 <p>原来我们一直讨论的 inline-block 在 IE 6、7中和 CSS2.1 中的（现代浏览器所支持的） inline-block 上压根不是一个东东嘛，IE6、7 中的 inline-block 更像是 IE 的私有属性值，他们本身就不具有可比性。简单、绝对的认为 IE6、7 不支持 inline-block 好比一叶障目，看到前面，却看不到后面，太过于片面。诚然，IE6、7 的 hasLayout 给我们带来了很多麻烦，但是不得不承认微软的 IE 在网页多语言文本混排上的先进性，尤其是 CJK 文字和西文的混排，超越其他浏览器至少5年。</p>
@@ -185,10 +182,8 @@ vertical-align 的表现为何在IE7, IE8, IE9 下表现不尽相同？其中的
 IE 5.5、6、7 、8（Q）中 block 元素对 inline-block 支持不完整，如果要达到类似的效果，需要先设置为 display:inline，然后使用 zoom:1 等触发 hasLayout。
 IE 5.5、6、7 、8（Q）中 inline 元素欲达到 inline-block 的效果只需直接设置此属性值或使用 zoom:1 等均可。
 各浏览器对 display 属性的支持情况请参阅：《各浏览器对 ‘display’ 特性值的支持程度不同》</p>
-<p>二、inline-block 今生</p>
-<ol>
-<li>display:inline-block 后的元素为什么会产生水平空隙，这真的是 bug 吗？</li>
-</ol>
+<h2>二、inline-block 今生</h2>
+<h3>1. display:inline-block 后的元素为什么会产生水平空隙，这真的是 bug 吗？</h3>
 <p>这么一个神奇的属性，为何大家一直避而远之呢？这恐怕还得从 inline-block 元素之间产生的水平空隙（间隙）说起吧。</p>
 <p>参照 DEMO</p>
 <p>现代浏览器中 inline 和 block 元素 display:inline-block 后均会产生水平空隙；</p>
@@ -216,7 +211,7 @@ pre-line：保持文本的换行，不保留文字间的空白距离，当文字
 <p>注：IE7及更早浏览器不支持 CSS2.1 新增的 pre-wrap | pre-line。</p>
 <p>所以这并不是 inline-block 后产生的 bug，而是因为 inline-block 具有 inline 元素固有的特性。那么为何 IE6、7 block 元素没有产生空隙呢？其实前面也提到了 IE 的 hasLayout，具有独立性，所以产生 hasLayout 的元素之间表现出来互不影响，这也再次表明 IE6、7 中的 inline-block 不能等同于 CSS2.1 中的 inline-block。如果非要说是有 bug， IE6、7 block 元素 inline-block 后不产生空隙才是 bug。</p>
 <p>测试表明删除换行符后，inline 元素间的空隙就「消失」了：</p>
-<p>2.去掉 inline-block 产生的空隙</p>
+<h3>2.去掉 inline-block 产生的空隙</h3>
 <p>为了让各个浏览器表现一致，更好的还原视觉设计搞，很多时候我们需要去掉 inline-block 产生的空隙。</p>
 <p>上一节中我们已经知道产生空隙的根本性原因是：</p>
 <p>HTML 中的换行符、空格符、制表符等产生了空白符，而这些归根结底都是字符，那么它们的大小都是 受 font-size 来控制的，字体大小直接导致 inline 或者 inline-block 后元素之间空隙的大小，把 inline-block 元素间的空隙认为总是某个固定大小是错误的。</p>
@@ -258,8 +253,8 @@ word-spacing:-1px;/</em> IE6、7 */
 第四步：子元素重置回正常值
 上述所有操作都是在父元素设置的，那么子元素都会继承这些属性，字体大小为0了，子元素就什么都看不到了，这并不是我们想要的。 同时字符和单词间距我们也要把它重置为默认值。「font-size: 12px; letter-spacing: normal; word-spacing: normal;」
 最后：inline-block 更好的复用
-或许你会担心每次我都要去看字体和空隙之间大小的关系吗？其实不然，通常情况下，全局字体都已经在 body 中指定了，根据全局字体设置合适的 letter-spacing 负值即可。如此一来，我们便可以放心大胆的使用 inline-block 了，结合 OOCSS 的思想，可以抽离出两个复用的类，在需要设置 inline-block 元素的父级元素上定义一个「.dib-wrap」，该元素自身定义为「.dib」。这里还有一个问题需要注意的是：由于 inline-block 具有 inline 元素的特性，在垂直方向上很多时候我们并不希望元素以「vertical-align:baseline」方式来呈现，所以在「.dib-wrap」中统一重置为「vertical-align:top」即可。
-3. 去除 inline-block 空隙终极解决方案（2012年8月17日更新）</p>
+或许你会担心每次我都要去看字体和空隙之间大小的关系吗？其实不然，通常情况下，全局字体都已经在 body 中指定了，根据全局字体设置合适的 letter-spacing 负值即可。如此一来，我们便可以放心大胆的使用 inline-block 了，结合 OOCSS 的思想，可以抽离出两个复用的类，在需要设置 inline-block 元素的父级元素上定义一个「.dib-wrap」，该元素自身定义为「.dib」。这里还有一个问题需要注意的是：由于 inline-block 具有 inline 元素的特性，在垂直方向上很多时候我们并不希望元素以「vertical-align:baseline」方式来呈现，所以在「.dib-wrap」中统一重置为「vertical-align:top」即可。</p>
+<h3>3. 去除 inline-block 空隙终极解决方案（2012年8月17日更新）</h3>
 <p>.dib-wrap {
     font-size:0;/<em> 所有浏览器 </em>/
     <em>word-spacing:-1px;/</em> IE6、7 <em>/
@@ -296,13 +291,11 @@ word-spacing:-1px;/</em> IE6、7 */
 }
 显然，这里纯粹使用了 letter-spacing 和 word-spacing 来控制元素间的空隙，局限性极大，-0.31em 和 -0.43em 只是因为 YUI 3 全局 cssfonts.css 里设置是：「body { font:13px/1.231 arial,helvetica,clean,sans-serif; }」。</p>
 <p>当然，如果你坚持使用把 html 写在一行的方式来达到去除 inline-block 空隙的目的，我只能说：一切以牺牲结构来兼容表现的行为都是耍流氓！所以探讨此种方式去除空隙也将是无意义的，不在本文和作者考虑范围之内。</p>
-<ol>
-<li>结局——本文产生的一些观点如下：</li>
-</ol>
+<h3>4. 结局——本文产生的一些观点如下：</h3>
 <p>IE5.5 后开始支持 inline-block， 比 CSS2.1 更早提出 inline-block 的概念并作为所谓的「私有属性值」使用。但是它所支持的 inline-block 不能等同于 CSS2.1 中的 inline-block，IE 5.5、6、7 、8（Q）中 block 元素对 inline-block 支持不完整，因此二者表现出来的效果是不完全一致。
 产生 inline-block 空隙的根本性原因是：HTML 中的换行符、空格符、制表符等合并为空白符，字体大小不为 0 的情况下，空白符自然占据一定的宽度，因此产生了元素间的空隙。
-慎用 -webkit-text-size-adjust:none，它将会导致页面无法通过缩放来改变字体大小。
-三、inline-block 未来</p>
+慎用 -webkit-text-size-adjust:none，它将会导致页面无法通过缩放来改变字体大小。</p>
+<h2>三、inline-block 未来</h2>
 <p>如今，Mac 平台下的 Safari 6 已经支持 font-size:0 了，相信很快 Windows 平台的 Safari 如果发布 5.X 的更新，也会支持字体为 font-size:0 了。等到 IE6、7 灭亡之后，世界就真真儿的美妙了！最后说一点：inline-block 与 float 也是无法直接比较的，请不要再讨论 inline-block 和 float 哪个更好的话题了。inline-block 从 IE5.5 一路走来，存在即是合理，以后有时间在总结一下 inline-block 与 float 的使用场景的区别。</p>
 <p>在不改变 CSS 定位机制的前提下，inline-block 应该是首选，而不是以「奇淫技巧」存在的。有感打油诗一首：</p>
 <p>网事如烟
@@ -331,31 +324,6 @@ Opera 12.50
     </div>
     <footer>
       
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/CSS/">CSS</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
     </footer>
   </div>

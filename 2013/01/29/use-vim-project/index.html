@@ -26,7 +26,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/bootstrap-2.3.2.css" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
 
@@ -101,16 +100,16 @@
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-01-29T12:57:29.000Z">1月29 2013</time>
+        <time class="post-time" datetime="2013-01-29T12:57:29.000Z">1月29 2013</time>
       
     </header>
     <div class="entry">
       
         <p>用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开一个文件相当麻烦，效率低下。碰巧js师兄看到我的vim那么悲催，就介绍了一个项目管理插件，叫project。对于vim来说，这是一个几乎完美的项目管理+文件管理插件，优点就不多写了，谁用谁知道。</p>
 <p>project使用法很简单，下面记录下自己常用的几个功能：</p>
-<p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。</p>
-<p>下面用project打开一个项目，打开project后输入下面类似的命令：</p>
+<p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。
+<a name="more"></a>
+下面用project打开一个项目，打开project后输入下面类似的命令：</p>
 <p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
 ...
 }
@@ -153,31 +152,6 @@ vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&
     </div>
     <footer>
       
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/前端工具/">前端工具</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
     </footer>
   </div>

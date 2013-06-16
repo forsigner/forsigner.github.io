@@ -26,7 +26,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/bootstrap-2.3.2.css" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
 
@@ -106,58 +105,23 @@
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-01-29T12:57:29.000Z">1月29 2013</time>
+        <time class="post-time" datetime="2013-01-29T12:57:29.000Z">1月29 2013</time>
       
     </header>
     <div class="entry">
       
         <p>用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开一个文件相当麻烦，效率低下。碰巧js师兄看到我的vim那么悲催，就介绍了一个项目管理插件，叫project。对于vim来说，这是一个几乎完美的项目管理+文件管理插件，优点就不多写了，谁用谁知道。</p>
 <p>project使用法很简单，下面记录下自己常用的几个功能：</p>
-<p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。</p>
-<p>下面用project打开一个项目，打开project后输入下面类似的命令：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-...
-}
-假设myproject文件中有四个文件：jqurey.js index.html readme.md info.php 和一个子文件夹 child，文件夹child两个文件：test.html和sea.js。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-    jquery.js
-    index.html
-    readme.md
-    }
-在project在添加一行，添加后代码如下：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-        jquery.js
-        index.html
-        readme.md
-        child=child filter=&quot;.js&quot; {</p>
-<pre><code><figure class="highlight"><pre>    }
-</pre></figure></code></pre>
-<p>}
-再使用/r刷新刚添加的那行，project代码应该如下：</p>
-<p>myproject=var/www/myproject  CD=.  filter=&quot;<em>.js  </em>.html *.md&quot;  {
-        jquery.js
-        index.html
-        readme.md
-        child=child filter=&quot;.js&quot;  {
-                sea.js
-        }
-}
-上面是使用project打开一个项目的简单完整过程，下面是一些自己常用的命令：</p>
-<p>\r---reflash光标所在的文件夹
-\R---reflash光标所在的文件夹及其子文件夹
-\c---create一个项目文件夹
-\C---create一个项目文件夹，并会导入期所有子文件夹，项目较大时慎用
-\s---如果光标在文件前，用水平分割窗口的方式打开文件，如果光标在文件前，open or close it.
-\S---用水平分割窗口的方式打开该文件件的所有文件
-\o---打开一个文件，光标会跳到新打开的文件窗口中
-\v---代开一个文件，光标不会跳
-vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&quot;;&quot;,执行以上命令式使用 ; 代替 \ 。done 。</p>
+<p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/01/29/use-vim-project/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -180,22 +144,23 @@ vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-01-26T07:55:46.000Z">1月26 2013</time>
+        <time class="post-time" datetime="2013-01-26T07:55:46.000Z">1月26 2013</time>
       
     </header>
     <div class="entry">
       
         <p>今天是2013年1月26日，懒懒的我，终于动手写博客的第一篇文章了，太久没写过成篇的字，脑子一片空白，不知道写些什么好，也许以第一次都是比较艰难的吧。</p>
 <p>那就从建这个博客开始写吧。首先，为什么要建这个博客？一方面是因为自己疑似患有健忘症，需要有个地方让我记些事，另一方面也许就是为了装b。其实，一年前就想搭建自己的独立博客，只是那时才刚接触html/css,什么都不会，google了很久，网上说可以用wordprss搭建博客，可惜我技术不够，折腾好几天都没安装成功，最后只好暂时放弃了，之后就安心学习web编程去了...</p>
-<p>真快，又一年过去了。一年前对于编程我一无所知，现在竟在一间公司做前端开发。这两个月一直在有米实习，成为准码农了，恰好这两个星期学校作业也做完了，所以又开始搭建自己的博客了。最重要的是，建一个博客，在技术方面已经没什么可以难倒我了。建博客开始，我纠结要不要购买虚拟主机，最后没购买，而是选择购买新浪云商店的服务，原因是比较方便。由于真的很方便，不用半个钟一个wordpress博客就上线了。</p>
-<p>虽然博客很快就上线了，十多天来我却一直都没有开始写第一篇文章，直到今天。最主要是在纠结两个问题：一个是博客的主题，一个是博客的名字。问题都是今天才解决。这十多天，每天下班回到宿舍，都花至少一个钟去写自己设计的博客主题。期间写了三个主题，前两个虽然已经设计的挺简洁了，但是还是有点大众化，不是很满意。之后花了好长时间，写了第三个主题，这是一个很简洁的主题，几乎只有白色，感觉还不错，今天之前已经确定就用这个主题了。至于博客名，一直想不到适合的名字，想沿用我的网名forsigner，但是感觉英文名还是不太好。今天早上，开门走出宿舍，发现外面下着雨，又暗又冷有闷，让人心跟着压抑，我一直都不是很喜欢雨天，但喜欢雨天过后，那干净的天空，清新的空气，还有那看上去一束一束的阳光，顿时灵光乍现，不如博客名叫“雨天过后”吧。既然叫“雨天过后”，顺便也把博客主题也改了吧，所以就花了一个下午写了现在这个主题。因为用到了rgba色彩，我也懒得去兼容IE9以下的IE系列了，谁叫我的工作是移动端的前端开发。</p>
-<p>好吧，要赶在明天之前发表，就写到这吧。</p>
+<p>真快，又一年过去了。一年前对于编程我一无所知，现在竟在一间公司做前端开发。这两个月一直在有米实习，成为准码农了，恰好这两个星期学校作业也做完了，所以又开始搭建自己的博客了。最重要的是，建一个博客，在技术方面已经没什么可以难倒我了。建博客开始，我纠结要不要购买虚拟主机，最后没购买，而是选择购买新浪云商店的服务，原因是比较方便。由于真的很方便，不用半个钟一个wordpress博客就上线了。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/01/26/first/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       

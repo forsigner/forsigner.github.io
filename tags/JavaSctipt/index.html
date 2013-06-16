@@ -26,7 +26,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/bootstrap-2.3.2.css" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
 
@@ -106,8 +105,7 @@
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-28T12:57:29.000Z">2月28 2013</time>
+        <time class="post-time" datetime="2013-02-28T12:57:29.000Z">2月28 2013</time>
       
     </header>
     <div class="entry">
@@ -131,14 +129,15 @@
 
 return back;
 };</pre>
-使用方法很简短，只要在Javascript中直接调用就行了，如下：
-<pre lang="javascript">// 假设url为 http://www.hello.com?a=123
-var myUrlParameters  =  getUrlParameters();
-alert(myUrlParameters.a); // alert出123</pre>
+
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/02/28/get-javascript-url/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -161,8 +160,7 @@ alert(myUrlParameters.a); // alert出123</pre>
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-25T12:57:29.000Z">2月25 2013</time>
+        <time class="post-time" datetime="2013-02-25T12:57:29.000Z">2月25 2013</time>
       
     </header>
     <div class="entry">
@@ -212,8 +210,7 @@ alert(myUrlParameters.a); // alert出123</pre>
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-13T12:57:29.000Z">2月13 2013</time>
+        <time class="post-time" datetime="2013-02-13T12:57:29.000Z">2月13 2013</time>
       
     </header>
     <div class="entry">
@@ -225,67 +222,16 @@ alert(myUrlParameters.a); // alert出123</pre>
 <p>从实践角度：以下函数才算是闭包：
              1.即使创建它的上下文已经销毁，它仍然存在（比如，内部函数从父函数中返回）
              2.在代码中引用了自由变量
-上面是汤姆大叔对闭包的定义，本来我想用自己的话来定义一下，但发现这是我见过对闭包最完美的定义，自己实在想不出有比这更准确、更通俗易懂的定义了，所以也不去写自己对闭包的定义了。</p>
-<p>闭包的例子</p>
-<p>下面是一些闭包使用的例子，当然这里的闭包是从实践的角度来讲的。</p>
-<p>例子一（最简单的闭包）：</p>
-<p>var a = &quot;hello&quot;; //函数外部的自由变量a
-//这个函数就是一个闭包
-function  simplestClosure()  {
-        alert(a);
-}
-simplestClosure(); //将alert出hello
-函数simplestClosure在自己的[[scope]]寻找不到变量a，(我就把[[scope]]称作函数的作用域吧，虽然不太正确，但好理解)，它就会通过作用域链在它的父级函数的作用域或全局内寻找变量a，通过这种链式查找，函数可以访问到自由变量a，这就形成了最简单的闭包。</p>
-<p>例子二（内部函数从父函数中返回）：</p>
-<p>var  x  =  1;
-function outerClosure()  {
-        var y =  2;
-        return  function  closure(z)  {
-                alert(x+y+z);
-        }
-}
-//调用闭包函数closure，将alert出6
-例子三（使用匿名函数隐藏全局作用域变量）：</p>
-<p>// 创建一个匿名函数作为包装
-(function()  {
-        //变量原本应该是全局的
-        var  msg  =  &quot;hello&quot;;
-        //将一个新函数绑定到全局对象
-        window.onload = function()  {
-       // 这个函数使用“隐藏”变量msg
-               alert(msg);
-        }
-})();
-例子四（创建封装的作用域来隐藏辅助对象）：</p>
-<p>var  foo  =  {};
-// 初始化
-(function (object)  {
-        var  x  =  10;
-        object.getX  =  function  _getX() {
-                return  x;
-        };
-})(foo);
-alert(foo.getX()); // 获得闭包 &quot;x&quot; – 10
-例子五（延时调用）：</p>
-<p>var  a  =  10;
-setTimeout(function () {
-        alert(a); // 10, after one second 
-},  1000);
-例子六(回调函数)：</p>
-<p>var x = 10;
-// only for example
-xmlHttpRequestObject.onreadystatechange  =  function() {
-        // 当数据就绪的时候，才会调用;&lt;
-        // 这里，不论是在哪个上下文中创建
-        // 此时变量“x”的值已经存在了
-       alert(x); // 10
-};
-这里没深入讨论闭包的理论，有兴趣的同学建议去看看大叔的博客和他的的深入理解JavaScript系列。done。</p>
+上面是汤姆大叔对闭包的定义，本来我想用自己的话来定义一下，但发现这是我见过对闭包最完美的定义，自己实在想不出有比这更准确、更通俗易懂的定义了，所以也不去写自己对闭包的定义了。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/02/13/learning-javascript-closure/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -308,8 +254,7 @@ xmlHttpRequestObject.onreadystatechange  =  function() {
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-12T12:57:29.000Z">2月12 2013</time>
+        <time class="post-time" datetime="2013-02-12T12:57:29.000Z">2月12 2013</time>
       
     </header>
     <div class="entry">
@@ -330,40 +275,15 @@ function callback() {
         alert(&#39;I am callback!&#39;)
 }
 example(callback); // 调用函数a
-这个例子展示回调函数基本实现方法，实现回调的关键是把一个函数当成另一个参数。当然实践中很少用上面方式去使用回调函数，一般把一个匿名函数传入当成回调函数，这种方法在Javascript中使用非常广泛，下面是一个基本的例子。</p>
-<p>// 声明一个函数，它的参数是一个函数fn
-function example(fn) {
-// 回调前，可以do something
-        alert(&#39;我是回调前执行的代码&#39;);
-        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
-        fn  =  fn  ||  function()  {};
-        fn(); // 调用传进来的fn
-}
-// 把匿名函数当做参数
-example(function()  {
-        alert(&#39;I am callback!&#39;)
-});
-使用匿名函数作为参数，不仅可以极少代码，也让代码更好管理，更加灵活。</p>
-<p>任何函数都是可以传入参数的，回调函数一样:</p>
-<p>// 声明一个函数，它的参数是一个函数fn
-function example(a, fn)  {
-        // 回调前，可以do something
-        alert(a);
-        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
-        fn  =  fn  ||  function() {};
-        fn(m); // 调用传进来的fn
-}
-// 把匿名函数当做参数
-var  m  =  &#39;I am callback!&#39;;
-example(&#39;我是回调前执行的代码&#39;,  function(m)  {
-        alert(m)
-});
-以上就是Javascript回调函数的实现方法和简单用法，关于回调函数的作用，我的理解是：其实，每个函数的定义都是为了实现某些功能，在一个拥有回调函数的函数中，一般把实现一个功能的通用代码写在回调函数前，其实后也可以，而开发者在回调函数中自定义自己需要的功能。文艺一点，就是回调函数让世界更加多姿多彩。done。</p>
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/02/12/javascript-callback/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -386,21 +306,22 @@ example(&#39;我是回调前执行的代码&#39;,  function(m)  {
 
 
       
-        <div class="icon"></div>
-        <time datetime="2013-02-02T12:57:29.000Z">2月2 2013</time>
+        <time class="post-time" datetime="2013-02-02T12:57:29.000Z">2月2 2013</time>
       
     </header>
     <div class="entry">
       
         <p>一年前，我下决心开始学习Javascript，那时门都还没入。为了入门，在豆瓣看了很多书评，之后确定了自己应该看那几本。确定书目后，图书馆有的就去图书馆借，没的话就在新浪爱问下载电子书。我依稀记得看的是这几本书：Javascript权威指南Javascript DOM编程艺术JavaScript高级程序设计ppk谈JavaScript精通JavaScript</p>
-<p>那时恰好课程不多，整天都在看这几本书，一天里有超过8个钟在看这几本书，没课时在电脑前看，有课时在课堂上看。我的专业是工业设计，却整天在看编程书，别人都以为我疯了。那时候好傻，那几本书根本看不懂，但我我还是逼自己读下去，因为心里想看完那几本书肯定会收获很大。过了一多月，我确实把这本书看完了，其实看完后几乎没记下什么，还是有收获的，我基本上是入门的，知道JavaScript是怎么一回事了。</p>
-<p>这段时间闲来无事，想整理一下自己脑子里的JavaScript知识，已形成自己的知识体系。所以决定从今天起，重新去读那几本经典的JavaScript书，大概翻了这几本书的目录，决定从阅读的顺序如下：JavaScript高级程序设计JavaScript语言精粹精通JavaScript高性能JavaScriptJavascript权威指南Javascript DOM编程艺术ppk谈JavaScript</p>
-<p>在知乎看个人牛人的建议，觉得JavaScript语言精粹和高性能JavaScript也有必要一读。done。</p>
+<p>那时恰好课程不多，整天都在看这几本书，一天里有超过8个钟在看这几本书，没课时在电脑前看，有课时在课堂上看。我的专业是工业设计，却整天在看编程书，别人都以为我疯了。那时候好傻，那几本书根本看不懂，但我我还是逼自己读下去，因为心里想看完那几本书肯定会收获很大。过了一多月，我确实把这本书看完了，其实看完后几乎没记下什么，还是有收获的，我基本上是入门的，知道JavaScript是怎么一回事了。
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/02/02/javascript-reading/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       

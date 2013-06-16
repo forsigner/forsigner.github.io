@@ -4,6 +4,7 @@
 @import "f-mixins.less";
 
 // CSS Reset
+@import "reset.less";
 @import "f-reset.less";
 
 
@@ -25,7 +26,6 @@
     padding-top: 90px;
     background: @white;
     border-right: 1px solid #cdcdcd;
-    border-top: 1px solid #cdcdcd;
     z-index: 100;
 }
 .sidebar {
@@ -119,6 +119,9 @@
     color: #000;
     }
 }
+.widget {
+    letter-spacing: 1px;
+}
 
 /* =right 
  * --------------------------------------*/
@@ -131,15 +134,32 @@
 }
 #content {
     width: 700px;
-    margin: 95px 0 0 70px;
+    margin: 100px 0 0 70px;
 }
-/* =post 文章样式
- * --------------------------------------*/
+/* 文章内容 */
+.entry {
+    padding: 6px 0 20px;
+    line-height: 2em;
+    color: #666;
+    letter-spacing: 1px;
+}
+.entry ul {
+    list-style: square inside;
+}
+
 .post {
-    margin: 30px 0;
+    margin: 0 0 50px;
 }
 .post p {
     margin-top: 20px;
+}
+.post-title {
+    margin: 10px 0 20px;
+    letter-spacing: 1px;
+}
+.post-time {
+    letter-spacing: 1px;
+    color: #aaa;
 }
 .inner-post-title {
     color: @titleColor;
@@ -150,19 +170,6 @@
 .post-category a:hover{
     color: #fff;
 }
-/* 文章内容 */
-.entry {
-    padding: 6px 0 20px;
-    line-height: 2em;
-    color: #666;
-}
-.entry h2 {
-    font-weight: normal;
-}
-.entry ul {
-    list-style: square inside;
-}
-
 .footer {
     margin: 0 auto 30px;
     text-align: center;
