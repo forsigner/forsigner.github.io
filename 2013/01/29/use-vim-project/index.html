@@ -34,7 +34,7 @@
 
   <script src="/js/less-1.3.3.min.js"></script>
 
-
+    <link rel="canonical" href="http://octopress.org/docs/plugins/backtick-codeblock">
 
 </head>
 
@@ -88,7 +88,7 @@
         </div>
     </section>
     <section class="right">
-        <div id="content" class="inner">
+        <div id="content" class="content">
             <div class="wrap-post"><article class="post">
   
   <div class="post-content">
@@ -110,43 +110,59 @@
 <p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。
 <a name="more"></a>
 下面用project打开一个项目，打开project后输入下面类似的命令：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-...
-}
-假设myproject文件中有四个文件：jqurey.js index.html readme.md info.php 和一个子文件夹 child，文件夹child两个文件：test.html和sea.js。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-    jquery.js
-    index.html
-    readme.md
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>```
+
+    myproject=var/www/myproject CD=. filter=<span class="string">"*.js  *.html *.md"</span> {
+        ...
     }
-在project在添加一行，添加后代码如下：</p>
-<p>myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
+假设myproject文件中有四个文件：jqurey<span class="variable">.js</span> index<span class="variable">.html</span> readme<span class="variable">.md</span> info<span class="variable">.php</span> 和一个子文件夹 child，文件夹child两个文件：test<span class="variable">.html</span>和sea<span class="variable">.js</span>。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：
+</pre></td></tr></table></figure>
+    myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
+        jquery.js
+        index.html
+        readme.md
+    }</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>在<span class="keyword">project</span>在添加一行，添加后代码如下：
+</pre></td></tr></table></figure>
+    myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
         jquery.js
         index.html
         readme.md
         child=child filter=&quot;.js&quot; {</p>
 <pre><code><figure class="highlight"><pre>    }
+}
 </pre></figure></code></pre>
-<p>}
-再使用/r刷新刚添加的那行，project代码应该如下：</p>
-<p>myproject=var/www/myproject  CD=.  filter=&quot;<em>.js  </em>.html *.md&quot;  {
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>再使用/r刷新刚添加的那行，<span class="keyword">project</span>代码应该如下：
+</pre></td></tr></table></figure>
+    myproject=var/www/myproject  CD=.  filter=&quot;<em>.js  </em>.html *.md&quot;  {
         jquery.js
         index.html
         readme.md
         child=child filter=&quot;.js&quot;  {
-                sea.js
+            sea.js
         }
-}
+    }
+```
 上面是使用project打开一个项目的简单完整过程，下面是一些自己常用的命令：</p>
-<p>\r---reflash光标所在的文件夹
-\R---reflash光标所在的文件夹及其子文件夹
-\c---create一个项目文件夹
-\C---create一个项目文件夹，并会导入期所有子文件夹，项目较大时慎用
-\s---如果光标在文件前，用水平分割窗口的方式打开文件，如果光标在文件前，open or close it.
-\S---用水平分割窗口的方式打开该文件件的所有文件
-\o---打开一个文件，光标会跳到新打开的文件窗口中
-\v---代开一个文件，光标不会跳
-vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&quot;;&quot;,执行以上命令式使用 ; 代替 \ 。done 。</p>
+<ul>
+<li>\r---reflash光标所在的文件夹</li>
+<li>\R---reflash光标所在的文件夹及其子文件夹</li>
+<li>\c---create一个项目文件夹</li>
+<li>\C---create一个项目文件夹，并会导入期所有子文件夹，项目较大时慎用</li>
+<li>\s---如果光标在文件前，用水平分割窗口的方式打开文件，如果光标在文件前，open or close it.</li>
+<li>\S---用水平分割窗口的方式打开该文件件的所有文件</li>
+<li>\o---打开一个文件，光标会跳到新打开的文件窗口中</li>
+<li>\v---代开一个文件，光标不会跳</li>
+<li>vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&quot;;&quot;,执行以上命令式使用 ; 代替 \ 。done 。</li>
+</ul>
 
       
     </div>

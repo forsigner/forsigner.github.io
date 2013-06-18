@@ -34,7 +34,7 @@
 
   <script src="/js/less-1.3.3.min.js"></script>
 
-
+    <link rel="canonical" href="http://octopress.org/docs/plugins/backtick-codeblock">
 
 </head>
 
@@ -88,7 +88,7 @@
         </div>
     </section>
     <section class="right">
-        <div id="content" class="inner">
+        <div id="content" class="content">
             <div class="wrap-post"><article class="post">
   
   <div class="post-content">
@@ -131,39 +131,68 @@
 <p>下面来做一个详细的测试，分别看看 IE6 中 inline 元素和 block 元素的表现：</p>
 <p>1）inline 元素 display:inline-block</p>
 <p>IE6 中截图如下：</p>
-<p>.dib-inline, .dib-block {
-    width:100px;
-    height:30px;
-    line-height:30px;
-    text-align:center;
-}
-.dib-inline {
-    display:inline-block;&lt;
-}
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="class">.dib-inline</span>, <span class="class">.dib-block</span> <span class="rules">{
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100</span>px;</span></span>
+    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">30</span>px;</span></span>
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"><span class="number">30</span>px;</span></span>
+    <span class="rule"><span class="attribute">text-align</span>:<span class="value">center;</span></span>
+<span class="rule">}</span></span>
+<span class="class">.dib-inline</span> <span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value">inline-block;</span></span>
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
 测试表明：IE6 中 inline 元素只要触发了 hasLayout 其表现就类似于 inline-block，这里设置 display:inline-block; 或者 zoom:1; 等其他属性值可以触发 hasLayout ，表现出来是一样的。</p>
 <p>查看 DEMO</p>
 <p>2）block 元素 display:inline-block</p>
 <p>IE6 中截图如下：</p>
-<p>.dib-inline, .dib-block {
-    width:100px;
-    height:30px;
-    line-height:30px;
-    text-align:center;
-}
-.dib-block{
-    display:inline-block;
-}
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="class">.dib-inline</span>, <span class="class">.dib-block</span> <span class="rules">{
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100</span>px;</span></span>
+    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">30</span>px;</span></span>
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"><span class="number">30</span>px;</span></span>
+    <span class="rule"><span class="attribute">text-align</span>:<span class="value">center;</span></span>
+<span class="rule">}</span></span>
+<span class="class">.dib-block</span><span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value">inline-block;</span></span>
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
 测试表明：IE6 中 block 元素即使触发了 hasLayout 也不能具有 inline-block 元素不换行的特性。想要 block 元素支持 inline-block 元素的特性，我们可以这样做：</p>
-<p>.dib-block {
-    display:inline;
-    zoom:1;
-}
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="class">.dib-block</span> <span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value">inline;</span></span>
+    <span class="rule"><span class="attribute">zoom</span>:<span class="value"><span class="number">1</span>;</span></span>
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
 首先让 block 元素转化为 inline 元素，强制其不换行；然后通过 zoom:1 触发 hasLayout，使其可以设置宽高。修复后的 截图如下：</p>
 <p>3）结合现代浏览器</p>
 <p>综上，现代浏览器都支持 display:inline-block ，IE6、7 inline 元素也可以达到同样的效果，IE6、7 block 元素需要设置 display:inline; zoom:1; 它们结合在一起便是：</p>
-<p>display:inline-block; /<em> 现代浏览器 +IE6、7 inline 元素 </em>
-<em>display:inline; /</em> IE6、7 block 元素 <em>
-</em>zoom:1;
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="tag">display</span><span class="pseudo">:inline-block</span>; <span class="comment">/* 现代浏览器 +IE6、7 inline 元素 *
+*display:inline; /* IE6、7 block 元素 *
+*zoom:1;
+</pre></td></tr></table></figure>
 为了不让支持 CSS2.1 inline-block 的浏览器 重置为 inline，我们针对 IE6、7 做一个 hack。由于现代浏览器也开始支持 zoom 属性，这里只是希望 IE6、7 中生效，所以还是 hack 一下比较合适。至此产生了我们熟悉的兼容各个浏览器的 inline-block 写法。</p>
 <p>小结：IE6、7 并不是不支持 inline-block，只是 block 元素需要做一些处理来达到 inline-block 的效果。</p>
 <h3>2. 到底什么是 inline-block</h3>
@@ -255,40 +284,77 @@ word-spacing:-1px;/</em> IE6、7 */
 最后：inline-block 更好的复用
 或许你会担心每次我都要去看字体和空隙之间大小的关系吗？其实不然，通常情况下，全局字体都已经在 body 中指定了，根据全局字体设置合适的 letter-spacing 负值即可。如此一来，我们便可以放心大胆的使用 inline-block 了，结合 OOCSS 的思想，可以抽离出两个复用的类，在需要设置 inline-block 元素的父级元素上定义一个「.dib-wrap」，该元素自身定义为「.dib」。这里还有一个问题需要注意的是：由于 inline-block 具有 inline 元素的特性，在垂直方向上很多时候我们并不希望元素以「vertical-align:baseline」方式来呈现，所以在「.dib-wrap」中统一重置为「vertical-align:top」即可。</p>
 <h3>3. 去除 inline-block 空隙终极解决方案（2012年8月17日更新）</h3>
-<p>.dib-wrap {
-    font-size:0;/<em> 所有浏览器 </em>/
-    <em>word-spacing:-1px;/</em> IE6、7 <em>/
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="class">.dib-wrap</span> <span class="rules">{
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">0</span>;</span></span><span class="comment">/* 所有浏览器 */</span>
+    <span class="rule">*<span class="attribute">word-spacing</span>:<span class="value">-<span class="number">1</span>px;</span></span><span class="comment">/* IE6、7 */</span>
+<span class="rule">}</span></span>
+<span class="class">.dib-wrap</span> <span class="class">.dib</span><span class="rules">{
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">12</span>px;</span></span>
+    <span class="rule"><span class="attribute">letter-spacing</span>:<span class="value"> normal;</span></span>
+    <span class="rule"><span class="attribute">word-spacing</span>:<span class="value"> normal;</span></span>
+    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value">top;</span></span>
+<span class="rule">}</span></span>
+<span class="at_rule">@<span class="keyword">media</span> screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>)</span>{
+<span class="comment">/* firefox 中 letter-spacing 会导致脱离普通流的元素水平位移 */</span>
+<span class="class">.dib-wrap</span><span class="rules">{
+    <span class="rule"><span class="attribute">letter-spacing</span>:<span class="value">-<span class="number">5</span>px;</span></span><span class="comment">/* Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节*/</span>
+<span class="rule">}</span></span>
 }
-.dib-wrap .dib{
-    font-size: 12px;
-    letter-spacing: normal;
-    word-spacing: normal;
-    vertical-align:top;
-}
-@media screen and (-webkit-min-device-pixel-ratio:0){
-/</em> firefox 中 letter-spacing 会导致脱离普通流的元素水平位移 <em>/
-.dib-wrap{
-    letter-spacing:-5px;/</em> Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节<em>/
-}
-}
-.dib {
-    display: inline-block;
-    </em>display:inline;
-    *zoom:1;
-}
+<span class="class">.dib</span> <span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span>
+    <span class="rule">*<span class="attribute">display</span>:<span class="value">inline;</span></span>
+    <span class="rule">*<span class="attribute">zoom</span>:<span class="value"><span class="number">1</span>;</span></span>
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
 其实在 YUI 3 中也全面运用了 inline-block 作为基础布局，YUI 3 是这样解决的：</p>
-<p>.yui3-g {
-    letter-spacing: -0.31em; /<em> webkit: collapse white-space between units </em>/
-    <em>letter-spacing: normal; /</em> reset IE &lt; 8 <em>/
-    word-spacing: -0.43em; /</em> IE &lt; 8 &amp;&amp; gecko: collapse white-space between units */
-}</p>
-<p>.yui3-u {
-    display: inline-block;
-    zoom: 1; <em>display: inline; /</em> IE &lt; 8: fake inline-block */
-    letter-spacing: normal;
-        word-spacing: normal;
-    vertical-align: top;
-}
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="class">.yui3-g</span> <span class="rules">{
+    <span class="rule"><span class="attribute">letter-spacing</span>:<span class="value"> -<span class="number">0.31</span>em;</span></span> <span class="comment">/* webkit: collapse white-space between units */</span>
+    <span class="rule">*<span class="attribute">letter-spacing</span>:<span class="value"> normal;</span></span> <span class="comment">/* reset IE &lt; 8 */</span>
+    <span class="rule"><span class="attribute">word-spacing</span>:<span class="value"> -<span class="number">0.43</span>em;</span></span> <span class="comment">/* IE &lt; 8 && gecko: collapse white-space between units */</span>
+<span class="rule">}</span></span>
+
+<span class="class">.yui3-u</span> <span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span>
+    <span class="rule"><span class="attribute">zoom</span>:<span class="value"> <span class="number">1</span>;</span></span> <span class="rule">*<span class="attribute">display</span>:<span class="value"> inline;</span></span> <span class="comment">/* IE &lt; 8: fake inline-block */</span>
+    <span class="rule"><span class="attribute">letter-spacing</span>:<span class="value"> normal;</span></span>
+    <span class="rule"><span class="attribute">word-spacing</span>:<span class="value"> normal;</span></span>
+    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> top;</span></span>
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
 显然，这里纯粹使用了 letter-spacing 和 word-spacing 来控制元素间的空隙，局限性极大，-0.31em 和 -0.43em 只是因为 YUI 3 全局 cssfonts.css 里设置是：「body { font:13px/1.231 arial,helvetica,clean,sans-serif; }」。</p>
 <p>当然，如果你坚持使用把 html 写在一行的方式来达到去除 inline-block 空隙的目的，我只能说：一切以牺牲结构来兼容表现的行为都是耍流氓！所以探讨此种方式去除空隙也将是无意义的，不在本文和作者考虑范围之内。</p>
 <h3>4. 结局——本文产生的一些观点如下：</h3>

@@ -34,7 +34,7 @@
 
   <script src="/js/less-1.3.3.min.js"></script>
 
-
+    <link rel="canonical" href="http://octopress.org/docs/plugins/backtick-codeblock">
 
 </head>
 
@@ -88,7 +88,7 @@
         </div>
     </section>
     <section class="right">
-        <div id="content" class="inner">
+        <div id="content" class="content">
             <div class="wrap-post">
 <h2 class="archive-title">归档</h2>
 
@@ -408,23 +408,35 @@ marquee
       
         <p>在Web开发中，经常会用url传递一些参数，用Javascript获取url参数很简单，主要使用split()把url分割成数组，然后就可以使用参数了。方法为了方便快速的获取url中的参数，也为了以后代码的重用，我把它写成一个函数，把获取的参数集合存在一个对象里。</p>
 <p>实现代码如下：</p>
-<pre lang="javascript">var  UrlParameters  =  function()  {
-        var  url  =  window.location.search,// 获取url中"?"和"?"后面的字符串
-                args, arg,
-                back  =  {}; // 定义一个对象用来储存获取参数
-
-        if(url == '') return 0; //如果url没有任何参数，返回0
-
-        if( url.indexOf('?')  !=  -1 ) { // 如果url存在参数 
-                args  =  url.substr(1).split('&amp;'); // 分割各个参数
-                for (var  i  =  0,; i  &lt;  args.length;  i++) {
-                        arg  =  args[i].split('=');
-                        back[ arg[0] ]  =  arg[1]; // 把每对参数都存在对象中
-                };
-        }
-
-return back;
-};</pre>
+<figure class="highlight lang-javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="keyword">var</span> UrlParameters = <span class="keyword">function</span>() {
+    <span class="keyword">var</span> url = window.location.search,<span class="comment">// 获取url中"?"和"?"后面的字符串</span>
+        args, arg,
+        back = {}; <span class="comment">// 定义一个对象用来储存获取参数</span>
+    <span class="keyword">if</span>(url == <span class="string">''</span>) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//如果url没有任何参数，返回0</span>
+    <span class="keyword">if</span>(url.indexOf(<span class="string">'?'</span>) != -<span class="number">1</span>) { <span class="comment">// 如果url存在参数 </span>
+        args = url.substr(<span class="number">1</span>).split(<span class="string">'&amp;'</span>); <span class="comment">// 分割各个参数</span>
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>,; i &lt; args.length; i++) {
+            arg = args[i].split(<span class="string">'='</span>);
+            back[arg[<span class="number">0</span>]] = arg[<span class="number">1</span>];<span class="comment">// 把每对参数都存在对象中</span>
+        };
+    }
+<span class="keyword">return</span> back;
+};
+</pre></td></tr></table></figure>
 
       
     </div>
@@ -464,21 +476,38 @@ return back;
         <p>在实习期间，一直在移动设备上做开发，现在实习已经结束了，最近也比较闲，所以，想把实习期间，用到的一些比较细的JavaScript知识点记录总结一下。</p>
 <p>今天要记录的知识点是，如何用JavaScript识别移动设备的系统类型和移动设备中的浏览器类型。要说的是，识别移动设备的系统类型和识别移动设备中的浏览器类型是两个不同的概念。</p>
 <p>识别代码如下，为给更好的模块花，这里我把它放进一个对象里去：</p>
-<p>Check  =  {
-        //以下三句代码识别浏览器类型
-        isWebkit  =  (/webkit/i).test(navigator.appVersion), //识别webkit
-        isFirefox  =  (/firefox/i).test(navigator.userAgent), //识别moz
-        isTrident  =  (/trident/i).test(navigator.userAgent), //识别ms</p>
-<pre><code><figure class="highlight"><pre>    <span class="comment">//以下三句识别操作系统类型</span>
-    isAndroid  =  (/android/gi)<span class="variable">.test</span>(navigator<span class="variable">.appVersion</span>), <span class="comment">//识别Android os</span>
-    isIos  =  (/iphone|ipad/gi)<span class="variable">.test</span>(navigator<span class="variable">.appVersion</span>), <span class="comment">//识别ios</span>
-    isPlaybook  =  (/playbook/gi)<span class="variable">.test</span>(navigator<span class="variable">.appVersion</span>); <span class="comment">//识别Playbook os</span>
-</pre></figure></code></pre>
-<p>}
-识别返回值是boolean类型，用法如下：</p>
-<p>if(Check.isAndroid) {
-        alert(&quot;this is android&quot;);
-}</p>
+<figure class="highlight lang-javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre>Check = {
+    <span class="comment">//以下三句代码识别浏览器类型</span>
+    isWebkit = (<span class="regexp">/webkit/i</span>).test(navigator.appVersion), <span class="comment">//识别webkit</span>
+    isFirefox = (<span class="regexp">/firefox/i</span>).test(navigator.userAgent), <span class="comment">//识别moz</span>
+    isTrident = (<span class="regexp">/trident/i</span>).test(navigator.userAgent), <span class="comment">//识别ms</span>
+
+    <span class="comment">//以下三句识别操作系统类型</span>
+    isAndroid = (<span class="regexp">/android/gi</span>).test(navigator.appVersion), <span class="comment">//识别Android os</span>
+    isIos = (<span class="regexp">/iphone|ipad/gi</span>).test(navigator.appVersion), <span class="comment">//识别ios</span>
+    isPlaybook = (<span class="regexp">/playbook/gi</span>).test(navigator.appVersion); <span class="comment">//识别Playbook os</span>
+}
+</pre></td></tr></table></figure>
+识别返回值是boolean类型，用法如下：
+
+<figure class="highlight lang-javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="keyword">if</span>(Check.isAndroid) {
+    alert(<span class="string">"this is android"</span>);
+}
+</pre></td></tr></table></figure>
 
       
     </div>
@@ -542,6 +571,7 @@ return back;
   
   <div class="clearfix"></div>
 </nav>
+
 </div>
         </div>
         <footer id="footer" class="footer">
