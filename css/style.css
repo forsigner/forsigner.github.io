@@ -46,9 +46,9 @@ article .entry pre code {
 }
 figure.highlight {
     color: #111;
-  margin-top: 15px;
+  margin-bottom: 20px;
   padding: 7px 15px;
-  line-height: 1.6;
+  line-height: 2em;
   overflow: auto;
   position: relative;
   font-size: 0.9em;
@@ -80,6 +80,8 @@ figure.highlight .code {
   padding-left: 15px;
     color: #111;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
+    letter-spacing: 0;
+    line-height: 2em;
 }
 pre .comment,
 pre .template_comment,

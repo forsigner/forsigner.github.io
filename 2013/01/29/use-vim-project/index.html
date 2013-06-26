@@ -28,13 +28,14 @@
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
+  <script src="/js/jquery-1.9.0.min.js"></script>
+  <script src="/js/forsigner.js"></script>
 
 <link rel="stylesheet/less" type="text/css" href="/less/style.less" />
 
 
   <script src="/js/less-1.3.3.min.js"></script>
 
-    <link rel="canonical" href="http://octopress.org/docs/plugins/backtick-codeblock">
 
 </head>
 
@@ -85,6 +86,7 @@
 
 
 </aside>
+            <a class="about" href="/about/">i</a>
         </div>
     </section>
     <section class="right">
@@ -108,49 +110,63 @@
         <p>用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开一个文件相当麻烦，效率低下。碰巧js师兄看到我的vim那么悲催，就介绍了一个项目管理插件，叫project。对于vim来说，这是一个几乎完美的项目管理+文件管理插件，优点就不多写了，谁用谁知道。</p>
 <p>project使用法很简单，下面记录下自己常用的几个功能：</p>
 <p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。
-<a name="more"></a>
-下面用project打开一个项目，打开project后输入下面类似的命令：</p>
+<a name="more"></a></p>
+<p>下面用project打开一个项目，打开project后输入下面类似的命令：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>    myproject=var/www/myproject CD=. filter=<span class="string">"*.js  *.html *.md"</span> {
+        <span class="keyword">...</span>
+    }
+</pre></td></tr></table></figure>
+假设myproject文件中有四个文件：jqurey.js index.html readme.md info.php 和一个子文件夹 child，文件夹child两个文件：test.html和sea.js。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>    myproject=var/www/myproject CD=. filter=<span class="string">"<span class="variable">*.</span>js  <span class="variable">*.</span>html <span class="variable">*.</span>md"</span> {
+        jquery.js
+        <span class="keyword">index</span>.html
+        readme.md
+    }
+</pre></td></tr></table></figure>
+在project在添加一行，添加后代码如下：</p>
 <p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
 5
 6
-</pre></td><td class="code"><pre>```
-
-    myproject=var/www/myproject CD=. filter=<span class="string">"*.js  *.html *.md"</span> {
-        ...
+7
+8
+</pre></td><td class="code"><pre>    myproject=var/www/myproject CD=. filter=<span class="string">"<span class="variable">*.</span>js  <span class="variable">*.</span>html <span class="variable">*.</span>md"</span> {
+        jquery.js
+        <span class="keyword">index</span>.html
+        readme.md
+        child=child filter=<span class="string">".js"</span> {
+       
+        }
     }
-假设myproject文件中有四个文件：jqurey<span class="variable">.js</span> index<span class="variable">.html</span> readme<span class="variable">.md</span> info<span class="variable">.php</span> 和一个子文件夹 child，文件夹child两个文件：test<span class="variable">.html</span>和sea<span class="variable">.js</span>。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：
 </pre></td></tr></table></figure>
-    myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
-        jquery.js
-        index.html
-        readme.md
-    }</p>
+再使用/r刷新刚添加的那行，project代码应该如下：</p>
 <p><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>在<span class="keyword">project</span>在添加一行，添加后代码如下：
-</pre></td></tr></table></figure>
-    myproject=var/www/myproject CD=. filter=&quot;<em>.js  </em>.html *.md&quot; {
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>    myproject=var/www/myproject  CD=.  filter=<span class="string">"<span class="variable">*.</span>js  <span class="variable">*.</span>html <span class="variable">*.</span>md"</span>  {
         jquery.js
-        index.html
+        <span class="keyword">index</span>.html
         readme.md
-        child=child filter=&quot;.js&quot; {</p>
-<pre><code><figure class="highlight"><pre>    }
-}
-</pre></figure></code></pre>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>再使用/r刷新刚添加的那行，<span class="keyword">project</span>代码应该如下：
-</pre></td></tr></table></figure>
-    myproject=var/www/myproject  CD=.  filter=&quot;<em>.js  </em>.html *.md&quot;  {
-        jquery.js
-        index.html
-        readme.md
-        child=child filter=&quot;.js&quot;  {
+        child=child filter=<span class="string">".js"</span>  {
             sea.js
         }
     }
-```
+</pre></td></tr></table></figure>
 上面是使用project打开一个项目的简单完整过程，下面是一些自己常用的命令：</p>
 <ul>
 <li>\r---reflash光标所在的文件夹</li>
@@ -161,8 +177,9 @@
 <li>\S---用水平分割窗口的方式打开该文件件的所有文件</li>
 <li>\o---打开一个文件，光标会跳到新打开的文件窗口中</li>
 <li>\v---代开一个文件，光标不会跳</li>
-<li>vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&quot;;&quot;,执行以上命令式使用 ; 代替 \ 。done 。</li>
+<li>vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&quot;;&quot;,执行以上命令式使用 ; 代替 \ 。</li>
 </ul>
+<p>done 。</p>
 
       
     </div>
@@ -194,6 +211,7 @@
 
 </div>
         </div>
+        <div id="back-to-top" class="back-to-top"></div>
         <footer id="footer" class="footer">
     
     &copy; 2013 forisnger

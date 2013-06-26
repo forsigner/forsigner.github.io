@@ -28,13 +28,14 @@
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
+  <script src="/js/jquery-1.9.0.min.js"></script>
+  <script src="/js/forsigner.js"></script>
 
 <link rel="stylesheet/less" type="text/css" href="/less/style.less" />
 
 
   <script src="/js/less-1.3.3.min.js"></script>
 
-    <link rel="canonical" href="http://octopress.org/docs/plugins/backtick-codeblock">
 
 </head>
 
@@ -85,6 +86,7 @@
 
 
 </aside>
+            <a class="about" href="/about/">i</a>
         </div>
     </section>
     <section class="right">
@@ -314,15 +316,25 @@ position的值不为relative和static。
 <p>Windows 上的IE 使用布局概念来控制元素的尺寸和定位。那些称为拥有布局(have layout)的元素负责本身及其子元素的尺寸和定位。如果一个元旦在没有拥有布局，那么它的尺寸和位置由最近的拥有布局的祖先元素控制。</p>
 <p>IE 显示引擎利用布局概念减少它的处理开销。在理想悄况下，所有元素都控制自己的尺寸和定位。但是，这会在IE中导致很大的性能问题。因此，IE/Win开发团队决定只将布局应用于实际需要它的那些元素，这样就可以充分地减少性能开销。</p>
 <p>在默认情况下拥有布局的元素包括:</p>
-<p>body
-标准模式中的 html
-table
-tr, td
-img
-hr
-input, select, textarea, button
-iframe, embed, object, applet
-marquee
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="tag">body</span>
+标准模式中的 <span class="tag">html</span>
+<span class="tag">table</span>
+<span class="tag">tr</span>, <span class="tag">td</span>
+<span class="tag">img</span>
+<span class="tag">hr</span>
+<span class="tag">input</span>, <span class="tag">select</span>, <span class="tag">textarea</span>, <span class="tag">button</span>
+<span class="tag">iframe</span>, <span class="tag">embed</span>, <span class="tag">object</span>, <span class="tag">applet</span>
+<span class="tag">marquee</span>
+</pre></td></tr></table></figure>
 布局概念是Windows 上的I E 特有的，而且它不是CS S 属性.尽管某些CSS 属性会使元ffi拥有布局，但是在CSS 巾无法显式地设宣布局.可以使用JavaScript函数hasLayout 查看一个元亲是否拥有布局.如果元素拥有布局，这个函数就返回true ; 否则返回falseo hasLayout 是一个只读属性，所以无法使用JavaScript选行设置.
 
       
@@ -361,11 +373,13 @@ marquee
     <div class="entry">
       
         <p>最近读到一篇关于CSS学习的文章，叫做“说说CSS学习中的瓶颈”。作者张鑫旭谈到了在学习CSS过程中会遇到怎样的瓶颈，并给出了打破瓶颈的一些方法。</p>
-<p>根据作者的描述，处于瓶颈的人可有以下特点：
-        1.能根据设计图迅速成型页面，能熟练使用些CSS hack
-        2.花时间学习了，纯粹经验积累，没有学到多少实质性的东西
-        3.知道大部分CSS属性的用法，但不知道其中的原理
-对比自己，感觉自己现在就是处于瓶颈期。接触CSS快两年了，当初对编程一窍不通，是CSS把我引上了路，这里要感谢CSS。一直都认为：熟悉大多CSS的属性和用法，不懂时能快速的查找相关文档；能搞快速实现自己想要的布局，能够快速实现想要的效果和样式；能写出兼容大多数浏览器的代码，遇到不兼容是能够通过各种尝试解决之。一直都认为对CSS的使用这样就够了。现在仔细想想，自己是大错特错了，曾经有多少次，自己被各种莫名其妙的浏览器搞得焦头烂额，有时解决一个所为的bug可能就要耗去一个上午，因为我根本就没去探究各种不兼容性的本质，而是去尝试各种方法，最后就算找到了解决方法，也花去大多数时间。效率低下不说，最可怕的是，这样的做法是导致我一直在给代码打补丁，发现问题就解决问题，永远没有明白其中的机制。
+<p>根据作者的描述，处于瓶颈的人可有以下特点：</p>
+<ul>
+<li>能根据设计图迅速成型页面，能熟练使用些CSS hack</li>
+<li>花时间学习了，纯粹经验积累，没有学到多少实质性的东西</li>
+<li>知道大部分CSS属性的用法，但不知道其中的原理</li>
+</ul>
+<p>对比自己，感觉自己现在就是处于瓶颈期。接触CSS快两年了，当初对编程一窍不通，是CSS把我引上了路，这里要感谢CSS。一直都认为：熟悉大多CSS的属性和用法，不懂时能快速的查找相关文档；能搞快速实现自己想要的布局，能够快速实现想要的效果和样式；能写出兼容大多数浏览器的代码，遇到不兼容是能够通过各种尝试解决之。一直都认为对CSS的使用这样就够了。现在仔细想想，自己是大错特错了，曾经有多少次，自己被各种莫名其妙的浏览器搞得焦头烂额，有时解决一个所为的bug可能就要耗去一个上午，因为我根本就没去探究各种不兼容性的本质，而是去尝试各种方法，最后就算找到了解决方法，也花去大多数时间。效率低下不说，最可怕的是，这样的做法是导致我一直在给代码打补丁，发现问题就解决问题，永远没有明白其中的机制。
 
       
     </div>
@@ -430,7 +444,7 @@ marquee
             back[arg[<span class="number">0</span>]] = arg[<span class="number">1</span>];<span class="comment">// 把每对参数都存在对象中</span>
         };
     }
-<span class="keyword">return</span> back;
+    <span class="keyword">return</span> back;
 };
 </pre></td></tr></table></figure>
 
@@ -568,6 +582,7 @@ marquee
   <div class="clearfix"></div>
 </nav></div>
         </div>
+        <div id="back-to-top" class="back-to-top"></div>
         <footer id="footer" class="footer">
     
     &copy; 2013 forisnger

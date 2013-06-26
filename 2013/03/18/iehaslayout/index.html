@@ -28,13 +28,14 @@
   <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/js/modernizr.js"></script>
+  <script src="/js/jquery-1.9.0.min.js"></script>
+  <script src="/js/forsigner.js"></script>
 
 <link rel="stylesheet/less" type="text/css" href="/less/style.less" />
 
 
   <script src="/js/less-1.3.3.min.js"></script>
 
-    <link rel="canonical" href="http://octopress.org/docs/plugins/backtick-codeblock">
 
 </head>
 
@@ -85,6 +86,7 @@
 
 
 </aside>
+            <a class="about" href="/about/">i</a>
         </div>
     </section>
     <section class="right">
@@ -110,25 +112,43 @@
 <p>Windows 上的IE 使用布局概念来控制元素的尺寸和定位。那些称为拥有布局(have layout)的元素负责本身及其子元素的尺寸和定位。如果一个元旦在没有拥有布局，那么它的尺寸和位置由最近的拥有布局的祖先元素控制。</p>
 <p>IE 显示引擎利用布局概念减少它的处理开销。在理想悄况下，所有元素都控制自己的尺寸和定位。但是，这会在IE中导致很大的性能问题。因此，IE/Win开发团队决定只将布局应用于实际需要它的那些元素，这样就可以充分地减少性能开销。</p>
 <p>在默认情况下拥有布局的元素包括:</p>
-<p>body
-标准模式中的 html
-table
-tr, td
-img
-hr
-input, select, textarea, button
-iframe, embed, object, applet
-marquee
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="tag">body</span>
+标准模式中的 <span class="tag">html</span>
+<span class="tag">table</span>
+<span class="tag">tr</span>, <span class="tag">td</span>
+<span class="tag">img</span>
+<span class="tag">hr</span>
+<span class="tag">input</span>, <span class="tag">select</span>, <span class="tag">textarea</span>, <span class="tag">button</span>
+<span class="tag">iframe</span>, <span class="tag">embed</span>, <span class="tag">object</span>, <span class="tag">applet</span>
+<span class="tag">marquee</span>
+</pre></td></tr></table></figure>
 布局概念是Windows 上的I E 特有的，而且它不是CS S 属性.尽管某些CSS 属性会使元ffi拥有布局，但是在CSS 巾无法显式地设宣布局.可以使用JavaScript函数hasLayout 查看一个元亲是否拥有布局.如果元素拥有布局，这个函数就返回true ; 否则返回falseo hasLayout 是一个只读属性，所以无法使用JavaScript选行设置.
-<a name="more"></a>
-设宜以下CSS 属性会自动地使元亲拥有布局·</p>
-<p>position: absolute
-float: left or right
-display: inline-block
-width: any value
-height: any value
-zoom: any value (Microsoft property—doesn’t validate)
-writing-mode: tb-rl (Microsoft property—doesn’t validate)
+<a name="more"></a></p>
+<p>设宜以下CSS 属性会自动地使元亲拥有布局·</p>
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="tag">position</span>: <span class="tag">absolute</span>
+<span class="tag">float</span>: <span class="tag">left</span> <span class="tag">or</span> <span class="tag">right</span>
+<span class="tag">display</span>: <span class="tag">inline</span>-<span class="tag">block</span>
+<span class="tag">width</span>: <span class="tag">any</span> <span class="tag">value</span>
+<span class="tag">height</span>: <span class="tag">any</span> <span class="tag">value</span>
+<span class="tag">zoom</span>: <span class="tag">any</span> <span class="tag">value</span> (<span class="tag">Microsoft</span> <span class="tag">property</span>—<span class="tag">doesn</span>’<span class="tag">t</span> <span class="tag">validate</span>)
+<span class="tag">writing</span>-<span class="tag">mode</span>: <span class="tag">tb</span>-<span class="tag">rl</span> (<span class="tag">Microsoft</span> <span class="tag">property</span>—<span class="tag">doesn</span>’<span class="tag">t</span> <span class="tag">validate</span>)
+</pre></td></tr></table></figure>
 布局有什么效果?</p>
 <p>布局是许多IElWin 显示bug 的根源。例如， 如果一个文本段落靠谷一个浮动元索，那么期望文本围绕这个元索。但是，在Windows 上的1E
 6 和更低版本巾，如果段落拥有布局(例如，由于设置了高度).那么它就被限制为矩形，因此阻止文本国绕浮动元素〈见图9-5).</p>
@@ -141,12 +161,14 @@ writing-mode: tb-rl (Microsoft property—doesn’t validate)
 <p>拥有布局的错误的扩展以便适应内容</p>
 <p>这意味IE/Win中的width 实际上更像min-width. 这种行为也是在IE/Win中许多浮动布局被破坏的原因。当浮动框的内容错误地迫使框的宽度增加时，框对于可用空间来说太大了，因此下降到其他浮动元素在下面.</p>
 <p>其他问题包括:</p>
-<p>拥有布局的元素不进行收缩。
-布局元亲对浮动进行自动消理。
-相对定位的元素不获得布局。
-在拥有布局的元素之间空白地不叠加。
-在不拥有布局的块级链接上，单击区域只覆盖文本。
-常见bug及其修复方法</p>
+<ul>
+<li>拥有布局的元素不进行收缩。</li>
+<li>布局元亲对浮动进行自动消理。</li>
+<li>相对定位的元素不获得布局。</li>
+<li>在拥有布局的元素之间空白地不叠加。</li>
+<li>在不拥有布局的块级链接上，单击区域只覆盖文本。</li>
+<li>常见bug及其修复方法</li>
+</ul>
 <p>CSS 开发人员最重要的技能之一是发现常见浏览器bug的能力。通过了解导致这些bug 的各种元索，可以在它们造成问题之前发现并且修复它们。</p>
 <p>双空白边浮动bug</p>
 <p>最常见且最容易发现的bug 之一是IE6和更低版本中的双空白边浮动bug。顾名思义，这个Windows bug使任何浮动元素上的空白边加倍(见图9-7)。</p>
@@ -155,23 +177,31 @@ writing-mode: tb-rl (Microsoft property—doesn’t validate)
 <p>这个bug 很容易修复，将元素的display 属性设置为inline 就行了.因为元素是浮动的，将display 属性设置为inline，实际上不会影响显示方式。但是，这似乎会阻止Windows 上的IE6和更低版本将所有空白地加倍。这是一个非常容易发现和修复的bug : 每当对具有水平空白边的元素进行浮动时，都应该很自然地将display属性设置为inline。</p>
 <p>3像素文本偏移bug</p>
 <p>另一个非常常见的I E 5-61Win bug 是3像素文本偏移bug。当文本与二个浮动元示相邻时，这个bug 就会表现出来。例如，假设将-个元素向左浮动，并且不希望相邻段落中的文本围绕浮动元素。你可能会在段落上应用一个左空白边，其宽度等于浮动元素的宽度:</p>
-<pre><code><figure class="highlight"><pre>    <span class="class">.myFloat</span> <span class="rules">{ <span class="rule"><span class="attribute">float</span>:<span class="value"> left;</span></span> <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200</span>px;</span></span> <span class="rule">}</span></span>
-    <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> <span class="number">200</span>px;</span></span> <span class="rule">}</span></span>
-</pre></figure></code></pre>
-<p>如果这么做，在文本和浮动元素之间就会出现一个莫名其妙的3像素间隙。(见图9-8) 。</p>
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="class">.myFloat</span> <span class="rules">{ <span class="rule"><span class="attribute">float</span>:<span class="value"> left;</span></span> <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200</span>px;</span></span> <span class="rule">}</span></span>
+<span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> <span class="number">200</span>px;</span></span> <span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+如果这么做，在文本和浮动元素之间就会出现一个莫名其妙的3像素间隙。(见图9-8) 。</p>
 <p>Figure Above:</p>
 <p>IE 5-6/Win 的3像素文本偏移bug示意图</p>
 <p>修复这个bug 需要双管齐下。首先，给包含文本的元素设置任意的高度。这会迫使元素拥有布局，这在表面上会消除文本偏移。因为Windows 上的IE6和更低版本将height作为min-height那样对待，所以设置一个小的高度并不会影响元素在这些浏览器巾的实际尺寸。但是，这会影响其他浏览器，所以要使用Holly招数对除了Windows上的IE6 和更低版本之外的所有其他浏览器隐藏这个规则，</p>
-<pre><code><figure class="highlight"><pre>    <span class="comment">/* Hide from IE5-Mac. Only IE-Win sees this. \*/</span>
-    * <span class="tag">html</span> <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">1</span>%;</span></span> <span class="rule">}</span></span>
-    <span class="comment">/* End hide from IE5/Mac */</span>
-</pre></figure></code></pre>
-<p>不幸的是，这么做会导致另一个问题。正如在前面学到的，拥有布局的元素被限制为矩形的，并且出现在浮动元索的旁边而不是它们的下面。添加200像素的空白边实际上会在IE5-6/Win 中在浮动元素和段落之间产生200像素的间隙。为了边免这个问隙，需要将IE 5-6/Win 上的空白边重新设置为零:</p>
-<pre><code><figure class="highlight"><pre>    <span class="comment">/* Hide from IE5-Mac. Only IE-Win sees this. \*/</span>
-    * <span class="tag">html</span> <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">1</span>%;</span></span> <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule">}</span></span>
-    <span class="comment">/* End hide from IE5/Mac */</span>
-</pre></figure></code></pre>
-<p>文本偏移被修复了，但是现在另一个3像亲间隙出现了，这一次是在浮动元素上。为了去掉这个问隙，需要在浮动元素上设置一个负值的3像素右空白边：</p>
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="comment">/* Hide from IE5-Mac. Only IE-Win sees this. \*/</span>
+* <span class="tag">html</span> <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">1</span>%;</span></span> <span class="rule">}</span></span>
+<span class="comment">/* End hide from IE5/Mac */</span>
+</pre></td></tr></table></figure>
+不幸的是，这么做会导致另一个问题。正如在前面学到的，拥有布局的元素被限制为矩形的，并且出现在浮动元索的旁边而不是它们的下面。添加200像素的空白边实际上会在IE5-6/Win 中在浮动元素和段落之间产生200像素的间隙。为了边免这个问隙，需要将IE 5-6/Win 上的空白边重新设置为零:</p>
+<p><figure class="highlight lang-css"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="comment">/* Hide from IE5-Mac. Only IE-Win sees this. \*/</span>
+* <span class="tag">html</span> <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">1</span>%;</span></span> <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule">}</span></span>
+<span class="comment">/* End hide from IE5/Mac */</span>
+</pre></td></tr></table></figure>
+文本偏移被修复了，但是现在另一个3像亲间隙出现了，这一次是在浮动元素上。为了去掉这个问隙，需要在浮动元素上设置一个负值的3像素右空白边：</p>
 <pre><code><figure class="highlight"><pre>    <span class="comment">/* Hide from IE5-Mac. Only IE-Win sees this. \*/</span>
     * <span class="tag">html</span> <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">1</span>%;</span></span> <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule">}</span></span>
     * <span class="tag">html</span> <span class="class">.myFloat</span> <span class="rules">{ <span class="rule"><span class="attribute">margin-right</span>:<span class="value"> -<span class="number">3</span>px;</span></span> <span class="rule">}</span></span>
@@ -216,10 +246,12 @@ bug时，许多开发人员会尝试寻找修复方法或解决方案。由于IE
 <p>在这个过渡时期，可以考虑使用Dean Edwards 的IE 7 补丁。这是一系列JavaScript 文件，它们使IE 5-6/Win 能够接近IE7的水平.这包括改进的选择器实现和许多bug 修复。关与这个补丁的更多信息，请访问 <a href="http://dean.edwards.name/IE7/">http://dean.edwards.name/IE7/</a></p>
 <p>摘自：<a href="http://adamghost.com/2009/03/ie-has-layout-and-bugs-zh/">http://adamghost.com/2009/03/ie-has-layout-and-bugs-zh/</a></p>
 <p>下面是我收集到的关于IE Haslayout的文章,通过阅读这些文章，可以更加深入理解Haslayout：</p>
-<p>HasLayout Overview
-IE Haslayout 详解
-IE hasLayout的问题总结
-On having layout</p>
+<ul>
+<li>HasLayout Overview</li>
+<li>IE Haslayout 详解</li>
+<li>IE hasLayout的问题总结</li>
+<li>On having layout</li>
+</ul>
 
       
     </div>
@@ -251,6 +283,7 @@ On having layout</p>
 
 </div>
         </div>
+        <div id="back-to-top" class="back-to-top"></div>
         <footer id="footer" class="footer">
     
     &copy; 2013 forisnger
