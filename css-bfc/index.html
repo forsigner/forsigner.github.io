@@ -1,0 +1,173 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+  
+  <title>CSS BFC(Block Formatting Context) | forsigner</title>
+  <meta name="author" content="forisnger">
+  
+  <meta name="description" content="前端&amp;设计">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="CSS BFC(Block Formatting Context)"/>
+  <meta property="og:site_name" content="forsigner"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="alternate" href="/atom.xml" title="forsigner" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="/js/modernizr.js"></script>
+  <script src="/js/jquery-1.9.0.min.js"></script>
+  <script src="/js/forsigner.js"></script>
+
+<link rel="stylesheet/less" type="text/css" href="/less/style.less" />
+
+
+  <script src="/js/less-1.3.3.min.js"></script>
+
+
+</head>
+
+
+<body>
+    <section class="left">
+        <div class="sidebar">
+            <header id="header" class="header"><div class="blog-info">
+    <div class="wrap-logo">
+        <a href="/">
+            <div class="blog-logo dib">
+                <div class="circle"></div>
+                <div class="line"></div>
+            </div>
+            <div class="blog-name dib">forsigner</div>
+        </a>
+    </div>
+    <!--
+    <aside class="blog-desc">前端&amp;设计</aside>
+    -->
+</div>
+</header>
+            <aside><nav id="nav" class="nav">
+    <ul>
+        
+    </ul>
+</nav>
+
+  
+<div class="widget tag">
+  <ul>
+  
+    <li><a href="/tags/CSS/">CSS</a></li>
+  
+    <li><a href="/tags/JavaSctipt/">JavaSctipt</a></li>
+  
+    <li><a href="/tags/前端工具/">前端工具</a></li>
+  
+    <li><a href="/tags/设计/">设计</a></li>
+  
+    <li><a href="/tags/读书/">读书</a></li>
+  
+    <li><a href="/tags/随记/">随记</a></li>
+  
+  </ul>
+</div>
+
+
+
+</aside>
+            <a class="to-about" href="/about/">&nbsp;i</a>
+        </div>
+    </section>
+    <section class="right">
+        <div id="content" class="content">
+            <div class="wrap-post"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="post-title">CSS BFC(Block Formatting Context)</h1>
+  
+
+
+      
+        <time class="post-time" datetime="2013-03-20T12:57:29.000Z">3月20 2013</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>BFC的定义</p>
+<p>BFC是 W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。BFC在创建了 Block Formatting Context 的元素中，其子元素会一个接一个地放置。垂直方向上他们的起点是一个包含块的顶部，两个相邻的元素之间的垂直距离取决于‘margin’ 特性。在 Block Formatting Context 中相邻的块级元素的垂直边距会折叠（collapse）。</p>
+<p>在 Block Formatting Context 中，每一个元素左外边与包含块的左边相接触（对于从右到左的格式化，右外边接触右边）， 即使存在浮动也是如此（尽管一个元素的内容区域会由于浮动而压缩），除非这个元素也创建了一个新的Block Formatting Context 。</p>
+<p>BFC到底是什么？</p>
+<p>当涉及到可视化布局的时候，Block Formatting Context提供了一个环境，HTML元素在这个环境中按照一定规则进行布局。一个环境中的元素不会影响到其它环境中的布局。比如浮动元素会形成BFC，浮动元素内部子元素的主要受该浮动元素影响，两个浮动元素之间是互不影响的。这里有点类似一个BFC就是一个独立的行政单位的意思。</p>
+<p>怎样才能形成BFC</p>
+<p>float的值不为none。
+overflow的值不为visible。
+display的值为table-cell, table-caption, inline-block中的任何一个。
+position的值不为relative和static。
+<a name="more"></a>
+BFC的作用</p>
+<p>1.不和浮动元素重叠</p>
+<p>如果一个浮动元素后面跟着一个非浮动的元素，那么就会产生一个覆盖的现象，很多自适应的两栏布局就是这么做的。比如下图的效果，参考例子</p>
+<p>123
+The quick brown fox jumped over the lazy dog&#39;s back. The quick brown fox jumped over the lazy dog&#39;s back. The quick brown fox jumped over the lazy dog&#39;s back. The quick brown fox jumped over the lazy dog&#39;s back. The quick brown fox jumped over the lazy dog&#39;s back.</p>
+<p>2.清除元素内部浮动</p>
+<p>只要把父元素设为BFC就可以清理子元素的浮动了，最常见的用法就是在父元素上设置overflow: hidden样式，对于IE6加上zoom:1就可以了(IE Haslayout)。</p>
+<p>3.嵌套元素Margin边距折叠问题的解决</p>
+<p>按照BFC的定义，只有同属于一个BFC时，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。</p>
+<p>因此要解决margin重叠问题，只要让它们不在同一个BFC就行了，但是对于两个相邻元素来说，意义不大，没有必要给它们加个外壳，但是对于嵌套元素来说就很有必要了，只要把父元素设为BFC就可以了。这样子元素的margin就不会和父元素的margin发生重叠了。</p>
+<p>摘自：<a href="http://www.w3cmm.com/other/css-bfcblock-formatting-context.html">http://www.w3cmm.com/other/css-bfcblock-formatting-context.html</a></p>
+
+      
+    </div>
+    <footer>
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"yieelinn"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+<!-- Duoshuo Comment END -->
+</section>
+
+
+</div>
+        </div>
+        <div id="back-to-top" class="back-to-top"></div>
+        <footer id="footer" class="footer">
+    
+    &copy; 2013 forisnger
+    
+</footer>
+
+        
+    </section>
+</body>
+</html>

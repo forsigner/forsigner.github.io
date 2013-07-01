@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta charset="utf-8">
   
-  <title>前端工具 | forsigner</title>
+  <title>vim插件project的用法 | forsigner</title>
   <meta name="author" content="forisnger">
   
   <meta name="description" content="前端&amp;设计">
@@ -16,7 +16,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="vim插件project的用法"/>
   <meta property="og:site_name" content="forsigner"/>
 
   
@@ -91,57 +91,13 @@
     </section>
     <section class="right">
         <div id="content" class="content">
-            <div class="wrap-post">
-<h2 class="archive-title tag">前端工具</h2>
-
-
-  
-    <article class="post">
+            <div class="wrap-post"><article class="post">
   
   <div class="post-content">
     <header>
       
   
-    <h1 class="post-title"><a class="inner-post-title" href="/gruntjs/">很好前端构建工具:Grunt</a></h1>
-  
-
-
-      
-        <time class="post-time" datetime="2013-04-19T12:57:29.000Z">4月19 2013</time>
-      
-    </header>
-    <div class="entry">
-      
-        <p>Grunt 是一个基于任务的命令行构建工具，非常适用于JavaScript项目中。简单的说，grunt像是前端人员的工具箱，里面提供各种各样的工具来实现不同的功能，如合并文件、压缩文件、单元测试等，而且这些操作可以完全实现自动化，给项目的管理和部署提供了极大的方便。好吧，不去吹捧它有多优秀了，看看它是怎样用的。</p>
-<h2>安装</h2>
-<p>Grunt和它的插件通过 Node.js 的包管理器 npm 安装和管理。所以安装前先要配置Node.js环境，安装Node.js后npm会自动安装。
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/gruntjs/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="post-title"><a class="inner-post-title" href="/use-vim-project/">vim插件project的用法</a></h1>
+    <h1 class="post-title">vim插件project的用法</h1>
   
 
 
@@ -154,32 +110,104 @@
         <p>用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开一个文件相当麻烦，效率低下。碰巧js师兄看到我的vim那么悲催，就介绍了一个项目管理插件，叫project。对于vim来说，这是一个几乎完美的项目管理+文件管理插件，优点就不多写了，谁用谁知道。</p>
 <p>project使用法很简单，下面记录下自己常用的几个功能：</p>
 <p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。
+<a name="more"></a></p>
+<p>下面用project打开一个项目，打开project后输入下面类似的命令：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>    myproject=var/www/myproject CD=. filter=<span class="string">"*.js  *.html *.md"</span> {
+        <span class="keyword">...</span>
+    }
+</pre></td></tr></table></figure>
+假设myproject文件中有四个文件：jqurey.js index.html readme.md info.php 和一个子文件夹 child，文件夹child两个文件：test.html和sea.js。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>    myproject=var/www/myproject CD=. filter=<span class="string">"<span class="variable">*.</span>js  <span class="variable">*.</span>html <span class="variable">*.</span>md"</span> {
+        jquery.js
+        <span class="keyword">index</span>.html
+        readme.md
+    }
+</pre></td></tr></table></figure>
+在project在添加一行，添加后代码如下：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>    myproject=var/www/myproject CD=. filter=<span class="string">"<span class="variable">*.</span>js  <span class="variable">*.</span>html <span class="variable">*.</span>md"</span> {
+        jquery.js
+        <span class="keyword">index</span>.html
+        readme.md
+        child=child filter=<span class="string">".js"</span> {
+       
+        }
+    }
+</pre></td></tr></table></figure>
+再使用/r刷新刚添加的那行，project代码应该如下：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>    myproject=var/www/myproject  CD=.  filter=<span class="string">"<span class="variable">*.</span>js  <span class="variable">*.</span>html <span class="variable">*.</span>md"</span>  {
+        jquery.js
+        <span class="keyword">index</span>.html
+        readme.md
+        child=child filter=<span class="string">".js"</span>  {
+            sea.js
+        }
+    }
+</pre></td></tr></table></figure>
+上面是使用project打开一个项目的简单完整过程，下面是一些自己常用的命令：</p>
+<ul>
+<li>\r---reflash光标所在的文件夹</li>
+<li>\R---reflash光标所在的文件夹及其子文件夹</li>
+<li>\c---create一个项目文件夹</li>
+<li>\C---create一个项目文件夹，并会导入期所有子文件夹，项目较大时慎用</li>
+<li>\s---如果光标在文件前，用水平分割窗口的方式打开文件，如果光标在文件前，open or close it.</li>
+<li>\S---用水平分割窗口的方式打开该文件件的所有文件</li>
+<li>\o---打开一个文件，光标会跳到新打开的文件窗口中</li>
+<li>\v---代开一个文件，光标不会跳</li>
+<li>vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=&quot;;&quot;,执行以上命令式使用 ; 代替 \ 。</li>
+</ul>
+<p>done 。</p>
 
       
     </div>
     <footer>
       
-        
-          <div class="alignleft">
-            <a href="/use-vim-project/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
       
     </footer>
   </div>
 </article>
 
 
+<section id="comment">
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"yieelinn"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+<!-- Duoshuo Comment END -->
+</section>
 
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
 
 </div>
         </div>

@@ -122,34 +122,23 @@
 .widget {
     letter-spacing: 1px;
 }
-.back-to-top {
-    display: none;
-    .square(44px);
-    .border-radius(50%);
+
+a.to-about {
     position: fixed;
-    bottom: 30px;
-    right: 40px;
-    text-align: center;
-    background: #aaa;
+    top: 50%;
+    left: 0;
+    .square(44px);
+    .border-radius(0 100% 100% 0);
+    font-family: 'zuiderpostduif', arial, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: left;
+    line-height: 42px;
+    color: #fff;
+    background: #ccc;
     cursor: pointer;
-    &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: -2px;
-        left: 10px;
-        .square(0);
-        border: 12px solid @colorReturnTop;
-        border-color: transparent transparent @colorReturnTop;
-    }
-    &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 16px;
-        left: 18px;
-        .size(16px, 8px);
-        background: @colorReturnTop;
+    &:hover {
+        color: #fff;
     }
 }
 /* =right 
@@ -214,6 +203,36 @@
     text-align: center;
 }
 
+.back-to-top {
+    display: none;
+    .square(44px);
+    .border-radius(50%);
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    text-align: center;
+    background: #aaa;
+    cursor: pointer;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -2px;
+        left: 10px;
+        .square(0);
+        border: 12px solid @colorReturnTop;
+        border-color: transparent transparent @colorReturnTop;
+    }
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 16px;
+        left: 18px;
+        .size(16px, 8px);
+        background: @colorReturnTop;
+    }
+}
 
 /*=duoshuo
  * ------------------*/
