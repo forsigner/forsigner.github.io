@@ -32,7 +32,7 @@
     margin-right: 70px;
     text-align: right;
 }
-.sidebar a{
+.tag-item {
     line-height: 2em;
     color: #000;
     &:hover {
@@ -122,21 +122,23 @@
 .widget {
     letter-spacing: 1px;
 }
-
-a.to-about {
-    position: fixed;
-    top: 50%;
+.menu-hide {
+    position: absolute;
+    top: 30%;
     left: 0;
-    .square(44px);
-    .border-radius(0 100% 100% 0);
+    .menu-item {
+        .size(40px, 40px);
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 40px;
+        background: #ccc;
+        cursor: pointer;
+    }
+}
+.to-about {
     font-family: 'zuiderpostduif', arial, sans-serif;
-    font-size: 32px;
     font-weight: bold;
-    text-align: left;
-    line-height: 42px;
     color: #fff;
-    background: #ccc;
-    cursor: pointer;
     &:hover {
         color: #fff;
     }

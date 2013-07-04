@@ -36,6 +36,24 @@ var Forsigner = (function (fs) {
                 $("html, body").animate({ scrollTop: 0 }, 100);
             });
 
+            $('.menu-item').each(function (){
+                $(this).hover(
+                    function () {
+                    $(this).offset().left;
+                    
+                        $(this).animate({
+                            width: '140px'
+                        }, 300);
+                    },
+                    function () {
+                        $(this).animate({
+                           width: '40px'
+                        }, 300);
+                    }
+                );
+            });
+
+
         });
 
         };
