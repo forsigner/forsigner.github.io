@@ -1,9 +1,2 @@
-markdown: rdiscount
-permalink: /:year/:month/:day/:title/
-url: http://webfrogs.github.com
-author: webfrogs
+name: Your New Jekyll Site
 pygments: true
-safe: true
-paginate: 16
-auto: true
-
