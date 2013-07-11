@@ -20,7 +20,6 @@ project使用法很简单，下面记录下自己常用的几个功能：
         ...
     }
 
-
 假设myproject文件中有四个文件：jqurey.js index.html readme.md info.php 和一个子文件夹 child，文件夹child两个文件：test.html和sea.js。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：
 
  

@@ -18,27 +18,29 @@ IE 显示引擎利用布局概念减少它的处理开销。在理想悄况下�
 
 在默认情况下拥有布局的元素包括:
 
-body
-标准模式中的 html
-table
-tr, td
-img
-hr
-input, select, textarea, button
-iframe, embed, object, applet
-marquee
+- body
+- 标准模式中的 html
+- table
+- tr, td
+- img
+- hr
+- input, select, textarea, button
+- iframe, embed, object, applet
+- marquee
 
 布局概念是Windows 上的I E 特有的，而且它不是CS S 属性.尽管某些CSS 属性会使元ffi拥有布局，但是在CSS 巾无法显式地设宣布局.可以使用JavaScript函数hasLayout 查看一个元亲是否拥有布局.如果元素拥有布局，这个函数就返回true ; 否则返回falseo hasLayout 是一个只读属性，所以无法使用JavaScript选行设置.
 
 设宜以下CSS 属性会自动地使元亲拥有布局·
 
-    position: absolute
-    float: left or right
-    display: inline-block
-    width: any value
-    height: any value
-    zoom: any value (Microsoft property—doesn’t validate)
-    writing-mode: tb-rl (Microsoft property—doesn’t validate)
+``` css
+position: absolute
+float: left or right
+display: inline-block
+width: any value
+height: any value
+zoom: any value (Microsoft property—doesn’t validate)
+writing-mode: tb-rl (Microsoft property—doesn’t validate)
+```
 
 布局有什么效果?
 
@@ -91,8 +93,10 @@ IE/Win 的双空白浮动bug示意阁
 
 另一个非常常见的I E 5-61Win bug 是3像素文本偏移bug。当文本与二个浮动元示相邻时，这个bug 就会表现出来。例如，假设将-个元素向左浮动，并且不希望相邻段落中的文本围绕浮动元素。你可能会在段落上应用一个左空白边，其宽度等于浮动元素的宽度:
 
-    .myFloat { float: left; width: 200px; }
-    p { margin-left: 200px; }
+``` css
+.myFloat { float: left; width: 200px; }
+p { margin-left: 200px; }
+```
 
 如果这么做，在文本和浮动元素之间就会出现一个莫名其妙的3像素间隙。(见图9-8) 。
 
@@ -102,39 +106,50 @@ IE 5-6/Win 的3像素文本偏移bug示意图
 
 修复这个bug 需要双管齐下。首先，给包含文本的元素设置任意的高度。这会迫使元素拥有布局，这在表面上会消除文本偏移。因为Windows 上的IE6和更低版本将height作为min-height那样对待，所以设置一个小的高度并不会影响元素在这些浏览器巾的实际尺寸。但是，这会影响其他浏览器，所以要使用Holly招数对除了Windows上的IE6 和更低版本之外的所有其他浏览器隐藏这个规则，
 
-    /* Hide from IE5-Mac. Only IE-Win sees this. \*/
-    * html p { height: 1%; }
-    /* End hide from IE5/Mac */
+``` css
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; }
+/* End hide from IE5/Mac */
+```
 
 不幸的是，这么做会导致另一个问题。正如在前面学到的，拥有布局的元素被限制为矩形的，并且出现在浮动元索的旁边而不是它们的下面。添加200像素的空白边实际上会在IE5-6/Win 中在浮动元素和段落之间产生200像素的间隙。为了边免这个问隙，需要将IE 5-6/Win 上的空白边重新设置为零:
 
-    /* Hide from IE5-Mac. Only IE-Win sees this. \*/
-    * html p { height: 1%; margin-left: 0; }
-    /* End hide from IE5/Mac */
+``` css
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; margin-left: 0; }
+/* End hide from IE5/Mac */
+```
 
 文本偏移被修复了，但是现在另一个3像亲间隙出现了，这一次是在浮动元素上。为了去掉这个问隙，需要在浮动元素上设置一个负值的3像素右空白边：
 
-        /* Hide from IE5-Mac. Only IE-Win sees this. \*/
-        * html p { height: 1%; margin-left: 0; }
-        * html .myFloat { margin-right: -3px; }
-        /* End hide from IE5/Mac */
+``` css
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; margin-left: 0; }
+* html .myFloat { margin-right: -3px; }
+/* End hide from IE5/Mac */
+```
 
 如果浮动元素是除了图像之外的任何其他东西，那么这个问题己经修复了。但是，如果浮动元旦在是图像，那么还有放后一个问题需要解决。 IE 5.x/Win在图像的左右都添加3像亲的间隙。而IE6不改变图像的空白边。因此，需要用另一个招术在IE5.x/Win 上去掉3 像素的问隙:
 
-        /* Hide from IE5-Mac. Only IE-Win sees this. \*/
-        * html p { height: 1%; margin-left: 0; }
-        * html img.myFloat { margin: 0 -3px; ma\rgin: 0; }
-        /* End hide from IE5/Mac */
+``` css
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; margin-left: 0; }
+* html img.myFloat { margin: 0 -3px; ma\rgin: 0; }
+/* End hide from IE5/Mac */
+```
     
 这会解决问题，但是采用的方式很难看而且太复杂。因此，如果可能的话，最好将这些规则分别放进单独的浏览器特定的样式表中。如果这样做，用于Windows上的lE 5.x的样式表如下：
 
-        p { height: 1%; margin-left: 0; }
-        img.myFloat { margin: 0 -3px; }
-    
-用于IE 6的样式表如下:
+``` css
+p { height: 1%; margin-left: 0; }
+img.myFloat { margin: 0 -3px; }
+```
+IE 6的样式表如下:
 
-        p { height: 1%; margin-left: 0; }
-        img.myFloat { margin: 0; }
+``` css
+p { height: 1%; margin-left: 0; }
+img.myFloat { margin: 0; }
+```
     
 IE 6躲躲猫bug
 
@@ -164,9 +179,11 @@ IE5.x对相对容器中的绝对定位元素的定位方式不正确
 
 可以使用Holly 招数为容器提供一个的高度。这会让容器拥有布局。但是因为IE 6和更低版本中的元素会不正确地扩展以适应它们的内容，所以设置小的高度不会影响实际高度。
 
-        /* Hides from IE-Mac \*/
-        * html .container { height: 1%; }
-        /* End hide from IE-Mac */
+``` css
+/* Hides from IE-Mac \*/
+* html .container { height: 1%; }
+/* End hide from IE-Mac */
+```
     
 停止对IE 的批评
 

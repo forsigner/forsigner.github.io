@@ -13,21 +13,24 @@ tags: [JavaScript]
 
 识别代码如下，为给更好的模块花，这里我把它放进一个对象里去：
 
-    Check = {
-        //以下三句代码识别浏览器类型
-        isWebkit = (/webkit/i).test(navigator.appVersion), //识别webkit
-        isFirefox = (/firefox/i).test(navigator.userAgent), //识别moz
-        isTrident = (/trident/i).test(navigator.userAgent), //识别ms
+``` js
+Check = {
+    //以下三句代码识别浏览器类型
+    isWebkit = (/webkit/i).test(navigator.appVersion), //识别webkit
+    isFirefox = (/firefox/i).test(navigator.userAgent), //识别moz
+    isTrident = (/trident/i).test(navigator.userAgent), //识别ms
 
-        //以下三句识别操作系统类型
-        isAndroid = (/android/gi).test(navigator.appVersion), //识别Android os
-        isIos = (/iphone|ipad/gi).test(navigator.appVersion), //识别ios
-        isPlaybook = (/playbook/gi).test(navigator.appVersion); //识别Playbook os
-    }
+    //以下三句识别操作系统类型
+    isAndroid = (/android/gi).test(navigator.appVersion), //识别Android os
+    isIos = (/iphone|ipad/gi).test(navigator.appVersion), //识别ios
+    isPlaybook = (/playbook/gi).test(navigator.appVersion); //识别Playbook os
+}
+```
 
 识别返回值是boolean类型，用法如下：
 
-    if(Check.isAndroid) {
-        alert("this is android");
-    }
-
+``` js
+if(Check.isAndroid) {
+    alert("this is android");
+}
+```

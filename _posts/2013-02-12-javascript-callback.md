@@ -14,53 +14,58 @@ tags: [JavaScript]
 
 回调函数的基本实现：
 
-
-    // 声明一个函数，它的参数是一个函数fn
-    function example(fn)  {
-        // 回调前，可以do something
-        alert('我是回调前执行的代码');
-        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
-        fn = fn || function() {};
-        fn(); //  调用传进来的fn
-    }
-    // 调用传进来的fn
-    function callback() {
-        alert('I am callback!')
-    }
-    example(callback); // 调用函数a
+``` js
+// 声明一个函数，它的参数是一个函数fn
+function example(fn)  {
+    // 回调前，可以do something
+    alert('我是回调前执行的代码');
+    // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
+    fn = fn || function() {};
+    fn(); //  调用传进来的fn
+}
+// 调用传进来的fn
+function callback() {
+    alert('I am callback!')
+}
+example(callback); // 调用函数a
+```
 
 这个例子展示回调函数基本实现方法，实现回调的关键是把一个函数当成另一个参数。当然实践中很少用上面方式去使用回调函数，一般把一个匿名函数传入当成回调函数，这种方法在Javascript中使用非常广泛，下面是一个基本的例子。
 
-    // 声明一个函数，它的参数是一个函数fn
-    function example(fn) {
-    // 回调前，可以do something
-        alert('我是回调前执行的代码');
-        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
-        fn = fn || function() {};
-        fn(); // 调用传进来的fn
-    }
-    // 把匿名函数当做参数
-    example(function()  {
-        alert('I am callback!')
-    });
+``` js
+// 声明一个函数，它的参数是一个函数fn
+function example(fn) {
+// 回调前，可以do something
+    alert('我是回调前执行的代码');
+    // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
+    fn = fn || function() {};
+    fn(); // 调用传进来的fn
+}
+// 把匿名函数当做参数
+example(function()  {
+    alert('I am callback!')
+});
+```
 
 使用匿名函数作为参数，不仅可以极少代码，也让代码更好管理，更加灵活。
 
 任何函数都是可以传入参数的，回调函数一样:
 
-    // 声明一个函数，它的参数是一个函数fn
-    function example(a, fn)  {
-        // 回调前，可以do something
-        alert(a);
-        // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
-        fn = fn || function() {};
-        fn(m); // 调用传进来的fn
-    }
-    // 把匿名函数当做参数
-    var m = 'I am callback!';
-    example('我是回调前执行的代码',  function(m)  {
-        alert(m)
-    });
+``` js
+// 声明一个函数，它的参数是一个函数fn
+function example(a, fn)  {
+    // 回调前，可以do something
+    alert(a);
+    // 存在fn则直接用，不存fn在则用函数表达式的方式声明一个
+    fn = fn || function() {};
+    fn(m); // 调用传进来的fn
+}
+// 把匿名函数当做参数
+var m = 'I am callback!';
+example('我是回调前执行的代码',  function(m)  {
+    alert(m)
+});
+```
 
 以上就是Javascript回调函数的实现方法和简单用法，关于回调函数的作用，我的理解是：其实，每个函数的定义都是为了实现某些功能，在一个拥有回调函数的函数中，一般把实现一个功能的通用代码写在回调函数前，其实后也可以，而开发者在回调函数中自定义自己需要的功能。文艺一点，就是回调函数让世界更加多姿多彩。
 
