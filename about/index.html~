@@ -1,10 +1,12 @@
 ---
 layout: page
-title : forsigner-about
+title : about | forsigner
 header : Post Archive
 group: navigation
 ---
 {% include JB/setup %}
 
-{% assign posts_collate = site.posts %}
-{% include JB/posts_collate %}
+<h1>about</h1>
+<p>
+
+</p>
