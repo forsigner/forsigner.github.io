@@ -74,34 +74,53 @@
 @import "f-reset.less";
 
 
+/* =commond
+ * --------------------------------------*/
+//兼容所有浏览器的inline-block 
+.wrap-dib {
+    font-size:0;// 所有浏览器
+    *word-spacing:-1px;// IE6、7 
+}
+.wrap-dib .dib{
+    font-size: 14px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+// firefox 中 letter-spacing 会导致脱离普通流的元素水平位移
+.wrap-dib {
+    letter-spacing:-5px;// Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节
+}
+}
+.dib {
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}
 
+//=align
+.align-top {
+    vertical-align: top;
+}
+.align-middle {
+    vertical-align: middle;
+}
+.align-bottom {
+    vertical-align: bottom;
+}
 
-
-/* =left 
+/* =header 
  * --------------------------------------*/
 @logoRadius: 46px;
 @logoWidth: @logoRadius*0.07;
 @logoHeight: @logoRadius*0.85;
 
-.left {
-    width: 30%;
-    padding-top: 90px;
-    background: @white;
-    /*
-    border-right: 1px solid #cdcdcd;
-    */
-    z-index: 100;
+.navbar {
+    margin-top: 4%;
 }
-.sidebar {
-    margin-right: 70px;
-    text-align: right;
-}
-.tag-item {
-    line-height: 2em;
-    color: #000;
-    &:hover {
-        color: @linkColorHover;
-    }
+.navbar a.dib {
+    margin-top: -10px;
 }
 /*logo样式 */
 .blog-logo {
@@ -236,6 +255,9 @@
     .border-radius(50%);
 }
 /* =entry文章内容 */
+#footer {
+    display: none !important;
+}
 .footer {
     margin: 0 auto 30px;
     text-align: center;
@@ -375,6 +397,9 @@
   border: 1px solid #4c964d;
   color: #FFF; }
 
+.highlight {
+    letter-spacing: 0;
+}
 
 
 .highlight  { background: #ffffff; }

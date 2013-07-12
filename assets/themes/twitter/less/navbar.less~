@@ -22,7 +22,6 @@
   min-height: @navbarHeight;
   padding-left:  20px;
   padding-right: 20px;
-  border: 1px solid @navbarBorder;
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -240,7 +239,7 @@
   float: none;
   // Vertically center the text given @navbarHeight
   padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
-  color: @navbarLinkColor;
+  color: #fff;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 }

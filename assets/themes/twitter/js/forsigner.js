@@ -20,6 +20,7 @@ var Forsigner = (function (fs) {
 
     fs.init = function() {
         $(function($){
+            alert(34);
             var $ctrl = $('#ctrl'),
                 $contactme = $('#contactme'),
                 $backToTop = $('#back-to-top');
