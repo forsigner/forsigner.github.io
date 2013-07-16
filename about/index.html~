@@ -6,7 +6,14 @@ group: navigation
 ---
 {% include JB/setup %}
 
-<h1>about</h1>
-<p>
+<h1 class="about-title">about</h1>
+<div class="about-content">
+    <p>Chenzhiyi,Scut,1991.Spring</br>On the way of frontend,love design.</p>
+    <dl>
+        <dt>get in touch with me:</dt>
+        <dd>Github:<a href="https://github.com/forsigner">@forsigner</a></dd>
+        <dd>Weibo:<a href="http://weibo.com/u/1847075964">@forsigner</a></dd>
+        <dd>Gmail:forsigner@gmail.com</dd>
+    </dl>
+</div>
 
-</p>
