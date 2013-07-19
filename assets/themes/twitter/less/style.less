@@ -89,7 +89,7 @@
 @sidebarWidth: 30%;
 @gapToLine: 50px;
 @gapToTop: 70px;
-@logoRadius: 46px;
+@logoRadius: 100px;
 @logoWidth: @logoRadius*0.07;
 @logoHeight: @logoRadius*0.85;
 .sidebar {
@@ -97,16 +97,12 @@
     top: 0;
     left: 0;
     .size(100%, @sidebarWidth);
-    text-align: right;
     border-right: 1px solid #e2e2e2;
     .inner-sidebar {
         margin: @gapToTop @gapToLine 0 0;
     }
 }
-.blog-nav a {
-    color: #000;
-    line-height: 2em;
-}
+
 /*logo样式 */
 .blog-logo {
     position: relative;
@@ -179,13 +175,21 @@
  }
 .blog-name {
     position: relative;
-    top: -10px;
+    margin-top: 10px;
     color: #000;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'zuiderpostduif', arial, sans-serif;
     &:hover {
     color: #000;
     }
+}
+.blog-desctiption {
+    margin: 10px 0 10px;
+    color: #000;
+}
+.blog-nav a {
+    color: #000;
+    line-height: 2em;
 }
 .widget {
     letter-spacing: 1px;

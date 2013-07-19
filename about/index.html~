@@ -10,7 +10,7 @@ group: navigation
 <div class="about-content">
     <p>Chenzhiyi,Scut,1991.Spring</br>On the way of frontend,love design.</p>
     <dl>
-        <dt>get in touch with me:</dt>
+        <dt>Contact me:</dt>
         <dd>Github:<a href="https://github.com/forsigner">@forsigner</a></dd>
         <dd>Weibo:<a href="http://weibo.com/u/1847075964">@forsigner</a></dd>
         <dd>Gmail:forsigner@gmail.com</dd>
