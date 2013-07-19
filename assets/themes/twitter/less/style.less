@@ -26,38 +26,12 @@
 @import "forms.less";
 @import "tables.less";
 
-// Components: common
-@import "sprites.less";
-@import "dropdowns.less";
-@import "wells.less";
-@import "component-animations.less";
-@import "close.less";
-
-// Components: Buttons & Alerts
-@import "buttons.less";
-@import "button-groups.less";
-@import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
-
 // Components: Nav
 @import "navs.less";
 @import "navbar.less";
 @import "breadcrumbs.less";
 @import "pagination.less";
 @import "pager.less";
-
-// Components: Popovers
-@import "modals.less";
-@import "tooltip.less";
-@import "popovers.less";
-
-// Components: Misc
-@import "thumbnails.less";
-@import "media.less";
-@import "labels-badges.less";
-@import "progress-bars.less";
-@import "accordion.less";
-@import "carousel.less";
-@import "hero-unit.less";
 
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
@@ -110,20 +84,28 @@
     vertical-align: bottom;
 }
 
-/* =header 
- * --------------------------------------*/
+/* =sidebar 
+ * ---------------@sidebarWidth-----------------------*/
+@sidebarWidth: 30%;
+@gapToLine: 50px;
+@gapToTop: 70px;
 @logoRadius: 46px;
 @logoWidth: @logoRadius*0.07;
 @logoHeight: @logoRadius*0.85;
-
-.navbar {
-    margin-top: 4%;
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    .size(100%, @sidebarWidth);
+    text-align: right;
+    border-right: 1px solid #e2e2e2;
+    .inner-sidebar {
+        margin: @gapToTop @gapToLine 0 0;
+    }
 }
-.navbar a.dib {
-    margin-top: -10px;
-}
-.navbar .nav > li > a {
-    font-size: 16px;
+.blog-nav a {
+    color: #000;
+    line-height: 2em;
 }
 /*logo样式 */
 .blog-logo {
@@ -234,18 +216,15 @@
         color: #fff;
     }
 }
-/* =right 
+/* =content
  * --------------------------------------*/
-.right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 70%;
-    background: @white;
-}
-#content {
-    width: 700px;
-    margin: 100px 0 0 70px;
+.content {
+    margin-left: @sidebarWidth;
+    .inner-content{
+        margin-top: @gapToTop+6px;
+        max-width: 650px;
+        margin-left: @gapToLine;
+    }
 }
 .archive-title {
     .square(40px);
@@ -256,6 +235,8 @@
     color: #fff;
     background: #000;
     .border-radius(50%);
+}
+.page-title {
 }
 /* =entry文章内容 */
 #footer {
@@ -301,16 +282,6 @@
 
 
 /* Custom container */
-.container-narrow {
-  margin: 0 auto;
-  max-width: 700px; }
-
-.container-narrow > hr {
-  margin: 30px 0; }
-
-.navbar .nav {
-  float: right; }
-
 /* posts index */
 .post {
     padding: 6px 0 20px;

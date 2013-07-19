@@ -42,35 +42,34 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container-narrow">
-                <a class="dib" href="{{ HOME_PATH }}">
+    <section class="sidebar">
+        <div class="inner-sidebar">
+            <div>
+                <a class="dib" href="/">
                     <div class="blog-logo dib">
                         <div class="circle"></div>
                         <div class="line"></div>
                     </div>
                     <div class="blog-name dib">{{ site.title }}</div>
                 </a>
-                <ul class="nav dib">
-                    <li><a href="/">home</a></li>
-                    <li><a href="/blog">blog</a></li>
-                    <li><a href="/about">about</a></li>
-                    <!--
-                    <li><a href="/categories">categories</a></li>
-                    <li><a href="/page">page</a></li>
-                    <li><a href="/tags">tags</a></li>
-                    -->
-                </ul>
             </div>
+            <ul class="blog-nav ">
+                <li><a href="/blog">blog</a></li>
+                <li><a href="/about">about</a></li>
+                <li><a href="/tags">tags</a></li>
+                <!--
+                <li><a href="/categories">categories</a></li>
+                <li><a href="/page">page</a></li>
+                -->
+            </ul>
         </div>
-    </div>
+    </section>
 
-    <div class="container-narrow">
-        <div class="content">
+    <section class="content">
+        <div class="inner-content">
         {{ content }}
         </div>
-    </div>
+    </section>
     {% include JB/analytics %}
 </body>
 </html>
