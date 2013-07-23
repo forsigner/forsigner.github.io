@@ -13,8 +13,8 @@ group: navigation
 
 
 {% for tag in site.tags %} 
-  <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
-  <ul>
+  <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
+  <ul class="list-post">
     {% assign pages_list = tag[1] %}  
     {% include JB/pages_list %}
   </ul>

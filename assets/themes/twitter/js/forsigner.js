@@ -20,9 +20,8 @@ var Forsigner = (function (fs) {
 
     fs.init = function() {
         $(function($){
-            alert(34);
             var $ctrl = $('#ctrl'),
-                $contactme = $('#contactme'),
+                $nav = $('#blog-nav .dib'),
                 $backToTop = $('#back-to-top');
 
             $(window).bind("scroll", function(){
@@ -37,22 +36,29 @@ var Forsigner = (function (fs) {
                 $("html, body").animate({ scrollTop: 0 }, 100);
             });
 
-            $('.menu-item').each(function (){
-                $(this).hover(
-                    function () {
-                    $(this).offset().left;
-                    
-                        $(this).animate({
-                            left: '0'
-                        }, 100);
-                    },
-                    function () {
-                        $(this).animate({
-                           left: '-90px'
-                        }, 100);
-                    }
-                );
-            });
+            var pathname = window.location.pathname;
+
+            switch (pathname) {
+                case '/':
+                    $nav.removeClass('active');
+                    $nav.eq(0).addClass('active');
+                    break;
+                case '/blog/':
+                    $nav.removeClass('active');
+                    $nav.eq(1).addClass('active');
+                    break;
+                case '/tags/':
+                    $nav.removeClass('active');
+                    $nav.eq(2).addClass('active');
+                    break;
+                case '/about/':
+                    $nav.removeClass('active');
+                    $nav.eq(3).addClass('active');
+                    break;
+                default:
+                    break;
+            }
+
 
 
         });

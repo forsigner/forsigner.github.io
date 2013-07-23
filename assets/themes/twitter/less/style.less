@@ -36,6 +36,8 @@
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
 
+@import "sprites.less"; // Has to be last to override when necessary
+
 
 
 
@@ -86,6 +88,7 @@
 
 /* =sidebar 
  * ---------------@sidebarWidth-----------------------*/
+@lineColor: #aaa;
 @sidebarWidth: 30%;
 @gapToLine: 50px;
 @gapToTop: 70px;
@@ -97,10 +100,14 @@
     top: 0;
     left: 0;
     .size(100%, @sidebarWidth);
-    border-right: 1px solid #e2e2e2;
+    border-right: 1px solid @lineColor;
     .inner-sidebar {
-        margin: @gapToTop @gapToLine 0 0;
+        margin-top: @gapToTop;
     }
+}
+.blog-brand,
+.blog-description {
+    margin-right: @gapToLine;
 }
 
 /*logo样式 */
@@ -185,47 +192,33 @@
     color: #000;
     }
 }
-.blog-desctiption {
-    margin: 10px 0 10px;
+.blog-description {
+    margin-top: 10px;
+    margin-bottom: 10px;
     color: #000;
 }
-.blog-nav a {
-    color: #000;
-    line-height: 2em;
+.blog-nav {
+    a {
+        color: #000;
+        line-height: 2em;
+    }
+    .dib {
+        width: @gapToLine;
+        height: 1px;
+        vertical-align: middle;
+    }
+    .active {
+        background: @lineColor;
+    }
 }
 .widget {
     letter-spacing: 1px;
-}
-.menu-hide {
-    position: absolute;
-    top: 40%;
-    left: 0;
-    .menu-item {
-        .size(40px, 100px);
-        margin-bottom: 10px;
-        text-align: center;
-        line-height: 40px;
-        background: #ccc;
-        cursor: pointer;
-    }
-    .menu-item-1 {
-        position: absolute;
-        left: -90px;
-        top: 0;
-    }
-}
-.to-about {
-    font-family: 'zuiderpostduif', arial, sans-serif;
-    font-weight: bold;
-    color: #fff;
-    &:hover {
-        color: #fff;
-    }
 }
 /* =content
  * --------------------------------------*/
 .content {
     margin-left: @sidebarWidth;
+    margin-bottom: 100px;
     .inner-content{
         margin-top: @gapToTop+6px;
         max-width: 650px;
@@ -360,9 +353,7 @@
   padding: 3px 6px;
   margin: 2px;
   color: #555;
-  border-radius: 3px;
   text-decoration: none;
-  border: 1px solid #cccccc; 
 }
 
 .tag_box a span {

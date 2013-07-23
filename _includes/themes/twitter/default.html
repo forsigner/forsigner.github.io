@@ -34,9 +34,9 @@
     <!--
     <link rel="stylesheet/less" type="text/css" href="{{ ASSET_PATH }}/less/style.less" />
     <script src="{{ ASSET_PATH }}/js/modernizr.js"></script>
+    -->
     <script src="{{ ASSET_PATH }}/js/jquery-1.9.0.min.js"></script>
     <script src="{{ ASSET_PATH }}/js/forsigner.js"></script>
-    -->
     <script src="{{ ASSET_PATH }}/js/less-1.3.3.min.js"></script>
 
 </head>
@@ -44,7 +44,7 @@
 <body>
     <section class="sidebar">
         <div class="inner-sidebar text-right">
-            <div>
+            <div class="blog-brand">
                 <a class="show" href="/">
                     <div class="blog-logo dib">
                         <div class="circle"></div>
@@ -53,15 +53,15 @@
                     <div class="blog-name">{{ site.title }}</div>
                 </a>
             </div>
-            <aside class="blog-desctiption">On the way of frontend,love design</aside>
-            <ul class="blog-nav ">
-                <li><a href="/">home</a></li>
-                <li><a href="/blog">blog</a></li>
-                <li><a href="/about">about</a></li>
-                <li><a href="/tags">tags</a></li>
+            <aside class="blog-description">On the way of frontend,love design</aside>
+            <ul id="blog-nav" class="blog-nav ">
+                <li><a href="/">home</a><i class="dib active"></i></li>
+                <li><a href="/blog">blog</a><i class="dib"></i></li>
+                <li><a href="/tags">tags</a><i class="dib"></i></li>
+                <li><a href="/about">about</a><i class="dib"></i></li>
                 <!--
-                <li><a href="/categories">categories</a></li>
-                <li><a href="/page">page</a></li>
+                <li><a href="/categories">categories</a><i class="dib"></i></li>
+                <li><a href="/page">page</a><i class="dib"></i></li>
                 -->
             </ul>
         </div>
