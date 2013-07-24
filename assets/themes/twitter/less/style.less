@@ -182,12 +182,32 @@
     font-weight: normal;
     font-style: normal;
  }
+@font-face {
+    font-family: 'caudex';
+    src: url('font/caudex.eot');
+    src: url('font/caudex.eot?#iefix') format('embedded-opentype'),
+     url('font/caudex.woff') format('woff'),
+     url('font/caudex.ttf') format('truetype'),
+     url('font/caudex.svg#caudex') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+@font-face {
+    font-family: 'marcellus';
+    src: url('font/marcellus.eot');
+    src: url('font/marcellus.eot?#iefix') format('embedded-opentype'),
+     url('font/marcellus.woff') format('woff'),
+     url('font/marcellus.ttf') format('truetype'),
+     url('font/marcellus.svg#marcellus') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
 .blog-name {
     position: relative;
     margin-top: 10px;
     color: #000;
     font-size: 30px;
-    font-family: 'zuiderpostduif', arial, sans-serif;
+    font-family: 'marcellus', arial, sans-serif;
     &:hover {
     color: #000;
     }
@@ -254,7 +274,7 @@
     bottom: 30px;
     right: 40px;
     text-align: center;
-    background: #aaa;
+    background-color: rgba(0,0,0,.6);
     cursor: pointer;
     &:before {
         content: "";
@@ -335,39 +355,39 @@
 
 /* tag_box */
 .tag_box {
-  list-style: none;
-  margin: 0;
-  overflow: hidden; }
-
-.tag_box li {
-  line-height: 28px; }
-
-.tag_box li i {
-  opacity: 0.9; 
+    position: fixed;
+    top:180px;
+    left: 30%;
+    margin-left: 500px;
+    list-style: none;
+    overflow: hidden;
 }
 
-.tag_box.inline li {
-  float: left; }
+.tag_box li {
+    line-height: 2em;
+}
+
+.tag_box li i {
+    opacity: 0.9; 
+}
+
 
 .tag_box a {
-  padding: 3px 6px;
-  margin: 2px;
-  color: #555;
-  text-decoration: none;
+    color: #000;
+    text-decoration: none;
 }
 
 .tag_box a span {
-  vertical-align: super;
-  font-size: 0.8em; }
-
-.tag_box a:hover {
-  background-color: #e5e5e5; 
+    vertical-align: super;
+    font-size: 0.8em; 
 }
 
+
 .tag_box a.active {
-  background: #57A957;
-  border: 1px solid #4c964d;
-  color: #FFF; }
+    background: #57A957;
+    border: 1px solid #4c964d;
+    color: #FFF; 
+}
 
 .highlight {
     letter-spacing: 0;
