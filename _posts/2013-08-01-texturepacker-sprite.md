@@ -7,7 +7,21 @@ tags: [CSS]
 ---
 {% include JB/setup %}
 
+##CSS sprite的苦恼
+
+最近在做web前端优化，其中之一就是把图片合并，也就是使用CSS
+sprite技术,开始尝试使用PS手动合并，结果效率极低，而起很难维护。之后尝试各种各样的的CSS
+sprite相关工具，最后选择了TextuerPacker，一个可以让我远离CSS sprite苦恼的工具。
+
 ## 关于TexturePacker
+
+这是作者自己说的一段话：
+
+> 20 seconds to your optimized sprite sheet
+
+> 1. 1.Drop your sprites to TexturePacker
+> 2. 2.Choose exporter and image formate
+> 3. 3.Press publish
 
 * 下载地址：[download TexturePacker](http://www.codeandweb.com/texturepacker/download)
 
