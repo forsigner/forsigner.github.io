@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: home
 title: forsigner
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
 
-<div class="text-center" style="margin-top: 300px;font-size:30px;" >Welcome...</div>
+<img class="colorful" src="https://dl-web.dropbox.com/get/static/img/colorful.jpg?w=AACf4WyZSvQzBPw3xbqhP9pVAWgfGqfSjtNxNBKRUaks_Q"
+alt="colorful" width="100%" height="100%" />
