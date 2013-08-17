@@ -7,7 +7,7 @@ tags: [CSS]
 ---
 {% include JB/setup %}
 
-##CSS sprite的苦恼
+## CSS sprite的苦恼
 
 最近在做web前端优化，其中之一就是把图片合并，也就是使用CSS
 sprite技术,开始尝试使用PS手动合并，结果效率极低，而起很难维护。之后尝试各种各样的的CSS
