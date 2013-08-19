@@ -71,6 +71,12 @@ $logoHeight: $logoRadius*0.80;
 @-webkit-keyframes loader{
     50% { height:0; }
 }
+@-moz-keyframes loader{
+    50% { height:0; }
+}
+@keyframes loader{
+    50% { height:0; }
+}
 
 
 
@@ -108,7 +114,11 @@ $logoHeight: $logoRadius*0.80;
         background: $logoColor;
         z-index: 100;
         -webkit-animation:loader 5.3s infinite;
+           -moz-animation:loader 5.3s infinite;
+                animation:loader 5.3s infinite;
         -webkit-animation-delay: 3s;
+           -moz-animation-delay: 3s;
+                animation-delay: 3s;
     }
     .line:before {
         position: absolute;
@@ -120,7 +130,11 @@ $logoHeight: $logoRadius*0.80;
         background: $logoColor;
         z-index: 100;
         -webkit-animation:loader 5.3s infinite;
+           -moz-animation:loader 5.3s infinite;
+                animation:loader 5.3s infinite;
         -webkit-animation-delay: 1s;
+           -moz-animation-delay: 1s;
+                animation-delay: 1s;
 
     }
     .line:after {
@@ -134,8 +148,11 @@ $logoHeight: $logoRadius*0.80;
         background: $logoColor;
         z-index: 100;
         -webkit-animation:loader 5.3s infinite;
-        -webkit-animation-delay: 5s;
-
+           -moz-animation:loader 5.3s infinite;
+                animation:loader 5.3s infinite;
+        -webkit-animation-delay: 1s;
+           -moz-animation-delay: 1s;
+                animation-delay: 1s;
     }
 }
 
