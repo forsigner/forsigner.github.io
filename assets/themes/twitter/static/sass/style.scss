@@ -1,0 +1,499 @@
+$iconSpritePath: "../img/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../img/glyphicons-halflings-white.png";
+
+@import 'sass-bootstrap/lib/bootstrap';
+@import '_animation';
+@import 'f-variables';
+@import 'f-reset';
+
+/* =commond
+ * --------------------------------------*/
+//兼容所有浏览器的inline-block 
+.wrap-dib {
+    font-size:0;// 所有浏览器
+    *word-spacing:-1px;// IE6、7 
+}
+.wrap-dib .dib{
+    font-size: 14px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+// firefox 中 letter-spacing 会导致脱离普通流的元素水平位移
+.wrap-dib {
+    letter-spacing:-5px;// Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节
+}
+}
+.dib {
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}
+
+//=align
+.align-top {
+    vertical-align: top;
+}
+.align-middle {
+    vertical-align: middle;
+}
+.align-bottom {
+    vertical-align: bottom;
+}
+
+/* =sidebar 
+ * ---------------$sidebarWidth-----------------------*/
+$lineColor: #aaa;
+$sidebarWidth: 30%;
+$gapToLine: 50px;
+$gapToTop: 70px;
+$logoRadius: 100px;
+$logoWidth: $logoRadius*0.07;
+$logoHeight: $logoRadius*0.80;
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include size(100%, $sidebarWidth);
+    border-right: 1px solid $lineColor;
+    .inner-sidebar {
+        margin-top: $gapToTop;
+    }
+}
+.blog-brand,
+.blog-description {
+    margin-right: $gapToLine;
+}
+
+/*logo样式 */
+
+@-webkit-keyframes loader{
+    50% { height:0; }
+}
+
+
+
+.blog-logo {
+    position: relative;
+    @include size($logoRadius, $logoRadius);
+    .circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include size($logoRadius, $logoRadius);
+        @include border-radius(50%);
+        background: $logoColor;
+        z-index: 10;
+    }
+    .circle:after {
+        position: absolute;
+        top: 0;
+        right: $logoRadius*0.02;
+        content: "";
+        display: block;
+        @include size($logoRadius*0.8, $logoRadius*0.8);
+        @include border-radius(50%);
+        background: $white;
+        z-index: 10;
+
+    }
+    .line {
+        position: absolute;
+        bottom: 20px;
+        right: $logoRadius*0.12;
+        margin-left: $logoRadius*0.2;
+        @include size($logoHeight*0.7, $logoWidth);
+        margin-top: $logoRadius*0.2;
+        background: $logoColor;
+        z-index: 100;
+        -webkit-animation:loader 5.3s infinite;
+        -webkit-animation-delay: 3s;
+    }
+    .line:before {
+        position: absolute;
+        bottom: -2px;
+        content: "";
+        display: block;
+        @include size($logoHeight*0.8, $logoWidth);
+        margin-left: -$logoRadius*0.26;
+        background: $logoColor;
+        z-index: 100;
+        -webkit-animation:loader 5.3s infinite;
+        -webkit-animation-delay: 1s;
+
+    }
+    .line:after {
+        position: absolute;
+        bottom: -2px;
+        content: "";
+        display: block;
+        @include size($logoHeight, $logoWidth);
+        margin-left: -$logoRadius*0.13;
+        margin-top: -$logoRadius*0.2;
+        background: $logoColor;
+        z-index: 100;
+        -webkit-animation:loader 5.3s infinite;
+        -webkit-animation-delay: 5s;
+
+    }
+}
+
+@font-face {
+    font-family: 'zuiderpostduif';
+    src: url('../font/zuiderpostduif.eot');
+    src: url('../font/zuiderpostduif.eot?#iefix') format('embedded-opentype'),
+     url('../font/zuiderpostduif.woff') format('woff'),
+     url('../font/zuiderpostduif.ttf') format('truetype'),
+     url('../font/zuiderpostduif.svg#Nzuiderpostduif') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+@font-face {
+    font-family: 'caudex';
+    src: url('../font/caudex.eot');
+    src: url('../font/caudex.eot?#iefix') format('embedded-opentype'),
+     url('../font/caudex.woff') format('woff'),
+     url('../font/caudex.ttf') format('truetype'),
+     url('../font/caudex.svg#caudex') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+@font-face {
+    font-family: 'marcellus';
+    src: url('../font/marcellus.eot');
+    src: url('../font/marcellus.eot?#iefix') format('embedded-opentype'),
+     url('../font/marcellus.woff') format('woff'),
+     url('../font/marcellus.ttf') format('truetype'),
+     url('../font/marcellus.svg#marcellus') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+@font-face {
+    font-family: 'marcellus';
+    src: url('../font/marcellus.eot');
+    src: url('../font/marcellus.eot?#iefix') format('embedded-opentype'),
+     url('../font/marcellus.woff') format('woff'),
+     url('../font/marcellus.ttf') format('truetype'),
+     url('../font/marcellus.svg#marcellus') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+@font-face {
+    font-family: 'Gondola';
+    src: url('../font/Gondola.eot');
+    src: url('../font/Gondola.eot?#iefix') format('embedded-opentype'),
+     url('../font/Gondola.woff') format('woff'),
+     url('../font/Gondola.ttf') format('truetype'),
+     url('../font/Gondola.svg#Gondola') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+@font-face {
+    font-family: 'Tusj';
+    src: url('../font/Tusj.eot');
+    src: url('../font/Tusj.eot?#iefix') format('embedded-opentype'),
+     url('../font/Tusj.woff') format('woff'),
+     url('../font/Tusj.ttf') format('truetype'),
+     url('../font/Tusj.svg#Tusj') format('svg');
+    font-weight: bold;
+    font-style: normal;
+ }
+.blog-name {
+    position: relative;
+    margin-top: 10px;
+    color: #000;
+    font-size: 30px;
+    font-family: 'Gondola', 'marcellus', arial, sans-serif;
+    font-weight: bold;
+    &:hover {
+    color: #000;
+    }
+}
+.blog-description {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #000;
+}
+.blog-nav {
+    a {
+        color: #000;
+        line-height: 2em;
+    }
+    .dib {
+        width: $gapToLine;
+        height: 1px;
+        vertical-align: middle;
+    }
+    .active {
+        background: $lineColor;
+    }
+}
+.widget {
+    letter-spacing: 1px;
+}
+/* =content
+ * --------------------------------------*/
+.content {
+    margin-left: $sidebarWidth;
+    margin-bottom: 100px;
+    .inner-content{
+        margin-top: $gapToTop+6px;
+        max-width: 650px;
+        margin-left: $gapToLine;
+    }
+}
+.archive-title {
+    @include square(40px);
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    color: #fff;
+    background: #000;
+    @include border-radius(50%);
+}
+.page-title {
+}
+/* =entry文章内容 */
+#footer {
+    display: none !important;
+}
+.footer {
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.back-to-top {
+    display: none;
+    @include square(44px);
+    @include border-radius(50%);
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    text-align: center;
+    background-color: rgba(0,0,0,.6);
+    cursor: pointer;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -2px;
+        left: 10px;
+        @include square(0);
+        border: 12px solid $colorReturnTop;
+        border-color: transparent transparent $colorReturnTop;
+    }
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 16px;
+        left: 18px;
+        @include size(16px, 8px);
+        background: $colorReturnTop;
+    }
+}
+
+
+
+.colorful {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Custom container */
+/* posts index */
+.post {
+    padding: 6px 0 20px;
+    margin: 0 0 50px;
+    line-height: 2em;
+    color: #000;
+    letter-spacing: 1px;
+}
+.post ul {
+    list-style: square inside;
+}
+.post li {
+    line-height: 2em;
+}
+
+.post p {
+    margin-top: 20px;
+}
+.post-title {
+    margin: 10px 0 20px;
+    letter-spacing: 1px;
+}
+.post-time {
+    letter-spacing: 1px;
+    color: #aaa;
+}
+.inner-post-title {
+    color: $titleColor;
+}
+.post-category a{
+    color: #888;
+}
+.post-category a:hover{
+    color: #fff;
+}
+.post > h3.title {
+  position: relative;
+  padding-top: 10px; }
+
+.post > h3.title span.date {
+  position: absolute;
+  right: 0;
+  font-size: 0.9em; }
+
+.post > .more {
+  margin: 10px 0;
+  text-align: left; }
+
+.post .date {
+  margin-bottom: 20px;
+  font-weight: bold; 
+}
+.post blockquote {
+    background: #fff;
+    border-left: 5px solid #eeeeee;
+}
+.post blockquote p {
+    display: block;
+    font-size: 14px;
+}
+
+/* tag_box */
+.tag_box {
+    position: fixed;
+    top:180px;
+    left: 30%;
+    margin-left: 500px;
+    list-style: none;
+    overflow: hidden;
+}
+
+.tag_box li {
+    line-height: 2em;
+}
+
+.tag_box li i {
+    opacity: 0.9; 
+}
+
+
+.tag_box a {
+    color: #000;
+    text-decoration: none;
+}
+
+.tag_box a span {
+    vertical-align: super;
+    font-size: 0.8em; 
+}
+
+
+.tag_box a.active {
+    background: #57A957;
+    border: 1px solid #4c964d;
+    color: #FFF; 
+}
+
+.highlight {
+    letter-spacing: 0;
+}
+//=blog page
+.list-post-year {
+    font-size: 35px;
+}
+.post-item {
+    color: #000;
+    line-height: 2em;
+}
+//=about
+.about-title {
+    margin: 20px 0;
+    font-size: 50px;
+    font-weight: normal;
+}
+.about-content {
+    font-size: 16px;
+}
+.about-content p {
+    line-height: 1.6em;
+}
+
+.about-content dl {
+    margin-top: 20px;
+}
+.about-content dt {
+    margin-bottom: 10px;
+}
+
+.about-content dd {
+    line-height: 1.6em;
+}
+
+
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */

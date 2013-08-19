@@ -1,32 +1,43 @@
 module.exports = function(grunt) {
+    var LIVERELOAD_PORT = 35729;
+    // configurable paths
+    var pathConfig = {
+        st: 'static',
+        dist: 'dist',
+        site: '../../../_site'
+    };
+
     // 配置
     grunt.initConfig({
+        //path
         pkg : grunt.file.readJSON('package.json'),
+        fs: pathConfig,
 
-        concat : {
-            index : {
-                src: [
-                    'static/js/modernizr.js',
-                    'static/js/forsigner.js'
-                ],
-                dest: 'dest/fs.js'
-            },
-            preview : {
-                src: [
-                    'static/css/bootstrap-2.3.2.css',
-                    'static/css/style.css'
-                ],
-                dest: 'dest/fs.css'
+        compass: {
+            dist: {                   // Target
+                options: {              // Target options
+                    sassDir: '<%= fs.st %>/sass',
+                    cssDir: '<%= fs.st %>/css',
+                    generatedImagesDir: '<%= fs.st %>/imggd',
+                    imagesDir: '<%= fs.st %>/img',
+                    javascriptsDir: '<%= fs.st %>/js',
+                    fontsDir: '<%= fs.st %>/font',
+                    importPath: '<%= fs.st %>/bower_components',
+                    httpImagesPath: '/img',
+                    httpGeneratedImagesPath: '/img/generated',
+                    httpFontsPath: '/font',
+                    relativeAssets: false,
+                    debugInfo: true
+                }
             }
         },
-
         uglify : {
             options : {
                 banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             foo: {
-                src: 'dest/fs.js',
-                dest: 'dest/fs.min.js'
+                src: 'static/js/forsigner.js',
+                dest: 'static/js/forsigner.min.js'
             }
         },
         cssmin: {
@@ -34,29 +45,33 @@ module.exports = function(grunt) {
                 banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             preview : {
-                src: 'dest/fs.css',
-                dest: 'dest/fs.min.css'
+                src: 'static/css/style.css',
+                dest: 'static/css/style.min.css'
             }
         },
-        imagemin: {                          // Task
-            dist: {                            // Target
-              options: {                       // Target options
-                optimizationLevel: 0
-              },
-              files: {                         // Dictionary of files
-                'static/imgdest/bg-2.jpg': 'static/img/bg-2.jpg', // 'destination': 'source'
-                'static/imgdest/me.jpg': 'static/img/me.jpg', // 'destination': 'source'
-              }
+        watch: {
+            compass: {
+              files: ['<%= fs.st %>/sass/*.scss'],
+              tasks: ['compass']
+            },
+            livereload: {
+                options: {
+                    livereload: true,
+                    livereload: LIVERELOAD_PORT
+                },
+                files: [
+                    '<%= fs.st %>/css/*.css',
+                    '<%= fs.st %>/js/*.js'
+                ]
             }
-          }
+        }
 
     });
     // 载入concat、uglify和watch插件
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-	//grunt.loadNpmTasks('grunt-css');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     // 注册任务
-    grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'imagemin']);
+    grunt.registerTask('default', ['compass', 'uglify', 'cssmin', 'watch']);
 }; 
