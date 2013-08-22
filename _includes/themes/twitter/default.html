@@ -29,17 +29,11 @@
     <!-- atom & rss feed -->
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-
-    <link rel="stylesheet" type="text/css" href="{{ASSET_PATH}}/static/css/style.css" />
-
     <!--
-    <link rel="stylesheet/less" type="text/css" href="{{ ASSET_PATH }}/static/less/style.less" />
-    <script src="{{ ASSET_PATH }}/static/js/modernizr.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ASSET_PATH}}/static/css/style.css" />
     -->
-    <script src="{{ ASSET_PATH }}/static/js/jquery-1.9.0.min.js"></script>
-    <script src="{{ ASSET_PATH }}/static/js/forsigner.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ASSET_PATH}}/static/css/style.min.css" />
 
-    <script src="http://localhost:35729/livereload.js"></script>
 </head>
 
 <body>
@@ -75,6 +69,31 @@
         </div>
     </section>
     <div id="back-to-top" class="back-to-top"></div>
-    {% include JB/analytics %}
+
+    <!--
+    <script src="{{ ASSET_PATH }}/static/js/modernizr.js"></script>
+    -->
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38189205-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script src="{{ ASSET_PATH }}/static/js/LAB.min.js"></script>
+    <script>
+       $LAB
+       .script("{{ ASSET_PATH }}/static/js/fs.min.js")
+       .wait(function(){
+            Forsigner.init();
+       });
+    </script>
+
 </body>
 </html>

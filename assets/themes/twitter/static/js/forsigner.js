@@ -72,4 +72,3 @@ var Forsigner = (function (fs) {
 /*
  * 调用方法
 */
-Forsigner.init();

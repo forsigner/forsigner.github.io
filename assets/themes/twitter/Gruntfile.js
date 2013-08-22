@@ -31,13 +31,22 @@ module.exports = function(grunt) {
                 }
             }
         },
+        concat : {
+            index : {
+                src: [
+                    'static/js/jquery-2.0.3.js',
+                    'static/js/forsigner.js'
+                ],
+                dest: 'static/js/fs.js'
+            }
+        },
         uglify : {
             options : {
                 banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             foo: {
-                src: 'static/js/forsigner.js',
-                dest: 'static/js/forsigner.min.js'
+                src: 'static/js/fs.js',
+                dest: 'static/js/fs.min.js'
             }
         },
         cssmin: {
@@ -69,9 +78,10 @@ module.exports = function(grunt) {
     });
     // 载入concat、uglify和watch插件
     grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     // 注册任务
-    grunt.registerTask('default', ['compass', 'uglify', 'cssmin', 'watch']);
+    grunt.registerTask('default', ['compass', 'concat', 'uglify', 'cssmin', 'watch']);
 }; 
