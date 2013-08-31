@@ -62,25 +62,47 @@
     </section>
     <div id="back-to-top" class="back-to-top"></div>
 
+
+
     <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-38189205-1']);
-      _gaq.push(['_trackPageview']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <script src="{{ ASSET_PATH }}/static/js/LAB.min.js"></script>
-    <script>
-       $LAB
-       .script("{{ ASSET_PATH }}/static/js/fs.min.js")
-       .wait(function(){
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38189205-1']);
+    _gaq.push(['_trackPageview']);
+
+    //无阻塞脚本加载
+    function loadScript(url, callback){
+        var script = document.createElement("script");
+            script.type = "text/javascript";
+            if (script.readyState){  //IE
+                script.onreadystatechange = function(){
+                    if (script.readyState == "loaded" || script.readyState == "complete"){
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                };
+            } else {  //Others
+                script.onload = function(){
+                    callback();
+                };
+            }
+            script.src = url;
+            document.getElementsByTagName("head")[0].appendChild(script);
+    }   
+
+    /*
+     *  onload之后再加载js
+     */
+    window.onload = function() {
+        loadScript('{{ ASSET_PATH }}/static/js/fs.min.js', function() {
             Forsigner.init();
-       });
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        });
+    };
     </script>
-
 </body>
 </html>
