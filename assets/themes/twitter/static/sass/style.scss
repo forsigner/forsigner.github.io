@@ -454,7 +454,12 @@ $logoHeight: $logoRadius*0.80;
 }
 
 
-.highlight  { background: #ffffff; }
+.highlight  {
+    padding-left: 20px;
+    border-left: 4px solid #ddd;
+    line-height: 1.6em;
+    background: #ffffff; 
+}
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .highlight .k { font-weight: bold } /* Keyword */
