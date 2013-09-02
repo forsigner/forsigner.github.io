@@ -61,7 +61,18 @@ git reset --hard <hash>  #回滚到指定的版本
 checkout命令用于从历史提交（或者暂存区域）中拷贝文件到工作目录，也可用于切换分支。
 
 ``` python
-git checkout HEAD -- <filename>
+git checkout <filename> (git checkout HEAD  <filename>)  #从暂存区域中拷贝内容
+git checkout HEAD~2 foo.c  #将会提交节点HEAD~2中的foo.c复制到工作目录并且加到暂存区域中。
+
+git checkout -b <branchname>  #新建分支
+git checkout <branchname>  #切换到某个分支
+git checkout <tagname>  #切换到某个版本
+```
+## rebase的使用
+
+
+``` python
+git rebase <branchname> #衍合是合并命令的另一种选择
 ```
 
 ## 小贴士
