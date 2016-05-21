@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>在浏览器端获取文件的MD5值 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript," />
+  
+
+  <meta name="description" content="前几天接到一个奇怪的需求，要在web页面中计算文件的md5值，还好这个项目是只需兼容现代浏览器的，不然要坑死了。
+其实对文件进行md5，对于后端来说是及其简单的。比如使用Node.js，只要下面几行代码就可以了：
+var fs= require(&apos;fs&apos;);var crypto = require(&apos;crypto&apos;);function md5File(path, callback) &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在浏览器端获取文件的MD5值">
+<meta property="og:url" content="http://www.forsigner.com/2016/03/04/browser-md5-file/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="前几天接到一个奇怪的需求，要在web页面中计算文件的md5值，还好这个项目是只需兼容现代浏览器的，不然要坑死了。
+其实对文件进行md5，对于后端来说是及其简单的。比如使用Node.js，只要下面几行代码就可以了：
+var fs= require(&apos;fs&apos;);var crypto = require(&apos;crypto&apos;);function md5File(path, callback) &amp;#123;">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在浏览器端获取文件的MD5值">
+<meta name="twitter:description" content="前几天接到一个奇怪的需求，要在web页面中计算文件的md5值，还好这个项目是只需兼容现代浏览器的，不然要坑死了。
+其实对文件进行md5，对于后端来说是及其简单的。比如使用Node.js，只要下面几行代码就可以了：
+var fs= require(&apos;fs&apos;);var crypto = require(&apos;crypto&apos;);function md5File(path, callback) &amp;#123;">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-browser-md5-file" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">在浏览器端获取文件的MD5值</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.04</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/03/04/browser-md5-file/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>前几天接到一个奇怪的需求，要在web页面中计算文件的md5值，还好这个项目是只需兼容现代浏览器的，不然要坑死了。</p>
+<p>其实对文件进行md5，对于后端来说是及其简单的。比如使用Node.js，只要下面几行代码就可以了：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fs= <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5File</span>(<span class="params">path, callback</span>) </span>&#123;</span><br><span class="line">  fs.readFile(path, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">var</span> md5Value= crypto.createHash(<span class="string">'md5'</span>).update(data, <span class="string">'utf8'</span>).digest(<span class="string">'hex'</span>);</span><br><span class="line">    callback(md5Value)；</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是对于浏览器，如果不能使用HTML5的file api，对文件md5是几乎不可能的事。如果可以不使用file api，还请哪位大牛給分享一下。</p>
+<p>要在浏览器中对文件进行md5，基本思路就是使用HTML5的FileReader接口把文件读取到内存，然后获取文件的二进制内容，最后再进行md5。</p>
+<p>Github中已经有人最这个问题进行研究，其中比较优秀的一个项目就是：<a href="https://github.com/satazor/js-spark-md5" target="_blank" rel="external">js-spark-md5</a>，该项目使用了世界上最快的md5算法。</p>
+<p>为了更好的重用代码，我在js-spark-md5的基础上封装了<a href="https://github.com/forsigner/browser-md5-file" target="_blank" rel="external">browser-md5-file</a>，可以更方便的使用md5 file。</p>
+<ul>
+<li><p>项目地址：<strong><a href="https://github.com/forsigner/browser-md5-file" target="_blank" rel="external">browser-md5-file</a></strong></p>
+</li>
+<li><p>Demo： <a href="http://forsigner.com/browser-md5-file" target="_blank" rel="external">查看</a></p>
+</li>
+</ul>
+<p>使用方法非常简单：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/browser-md5-file/dist/browser-md5-file.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'upload'</span>);</span><br><span class="line">el.addEventListener(<span class="string">'change'</span>, handle, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> file = e.target.files[<span class="number">0</span>];</span><br><span class="line">  browserMD5File(file, <span class="function"><span class="keyword">function</span> (<span class="params">err, md5</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(md5); <span class="comment">// 97027eb624f85892c69c4bcec8ab0f11</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详细的使用方法可以查看Github中的文档。</p>
+<p>关于浏览器兼容性，由于使用的HTML5 api，所以只能兼容到一下浏览器：</p>
+<ul>
+<li>IE10+</li>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Safari</li>
+<li>Opera</li>
+</ul>
+<p>还有一点，由于需要把文件读取到内存，md5大文件会性能较差。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2016/03/04/browser-md5-file/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

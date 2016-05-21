@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Mac中配置ionic框架 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="ionic," />
+  
+
+  <meta name="description" content="最近想做一个App，却苦于自己没有那么多精力去学习Java和Object-C，自己只对JavaScript最熟悉，所以决定用Web来实现，也就是做一Hybrid App。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac中配置ionic框架">
+<meta property="og:url" content="http://www.forsigner.com/2015/02/27/setting-ionic/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="最近想做一个App，却苦于自己没有那么多精力去学习Java和Object-C，自己只对JavaScript最熟悉，所以决定用Web来实现，也就是做一Hybrid App。">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac中配置ionic框架">
+<meta name="twitter:description" content="最近想做一个App，却苦于自己没有那么多精力去学习Java和Object-C，自己只对JavaScript最熟悉，所以决定用Web来实现，也就是做一Hybrid App。">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装ionic"><span class="toc-text">安装ionic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加ios平台"><span class="toc-text">添加ios平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加Android平台"><span class="toc-text">添加Android平台</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-setting-ionic" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Mac中配置ionic框架</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.02.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2015/02/27/setting-ionic/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近想做一个App，却苦于自己没有那么多精力去学习Java和Object-C，自己只对JavaScript最熟悉，所以决定用Web来实现，也就是做一Hybrid App。<br><a id="more"></a></p>
+<p>参考了很多Hybrid App的解决方案，觉得ionic最适合我。一是它性能比较出众，而是他基于Agular，我对Agular非常熟悉。</p>
+<p>下面是ionic开发环境的配置方法，没有非常复杂：</p>
+<h2 id="安装ionic"><a href="#安装ionic" class="headerlink" title="安装ionic"></a>安装ionic</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$  npm install -g cordova ionic  <span class="comment"># 安装cordova和ionic</span></span><br></pre></td></tr></table></figure>
+<p>可以有三种方式开始一个ionic项目：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$  ionic start myApp tabs   <span class="comment"># 创建带有top栏和bottom栏的示例项目</span></span><br><span class="line">$  ionic start myApp sidemenu　 <span class="comment"># 创建带有左侧带有menu栏的示例项目</span></span><br><span class="line">$  ionic start myApp blank   <span class="comment">#创建空白项目</span></span><br></pre></td></tr></table></figure>
+<p>再执行下面命令就可以再浏览器查看效果了：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$  ionic sserve</span><br></pre></td></tr></table></figure>
+<h2 id="添加ios平台"><a href="#添加ios平台" class="headerlink" title="添加ios平台"></a>添加ios平台</h2><p>确保你已经安装了xcode，执行以下命令就可以再模拟器看到效果了：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ sudo npm install -g ios-sim</span><br><span class="line">$ cd myApp</span><br><span class="line">$ ionic platform add ios</span><br><span class="line">$ ionic build ios</span><br><span class="line">$ ionic emulate ios</span><br></pre></td></tr></table></figure>
+<h2 id="添加Android平台"><a href="#添加Android平台" class="headerlink" title="添加Android平台"></a>添加Android平台</h2><p>确保你已经配置好android的开发环境，执行以下命令就可以再模拟器看到效果了：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ cd myApp</span><br><span class="line">$ ionic platform add android //这行可能会报错</span><br><span class="line">$ ionic build android</span><br><span class="line">$ ionic emulate android</span><br></pre></td></tr></table></figure>
+<p>整个过程很简单，可能在配置android开发环境比较麻烦。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2015/02/27/setting-ionic/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

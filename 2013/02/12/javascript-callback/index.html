@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>JavaScript回调函数的实现 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript," />
+  
+
+  <meta name="description" content="在JavaScript中，回调函数的使用非常频繁。特别是在各种Javascript库中，经常在一个函数中使用回调函数，例如jQuery中的each()方法。一年以来，在使用各种有回调函数的函数时，都没有去深究其内部的实现原理真，惭愧。在有米实习时，在读js师兄的代码时，偶然看到他写的一个函数是他自己实现回调函数的，当时感觉很神奇，原来这就是回调函数啊，之后google了很多关于Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript回调函数的实现">
+<meta property="og:url" content="http://www.forsigner.com/2013/02/12/javascript-callback/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="在JavaScript中，回调函数的使用非常频繁。特别是在各种Javascript库中，经常在一个函数中使用回调函数，例如jQuery中的each()方法。一年以来，在使用各种有回调函数的函数时，都没有去深究其内部的实现原理真，惭愧。在有米实习时，在读js师兄的代码时，偶然看到他写的一个函数是他自己实现回调函数的，当时感觉很神奇，原来这就是回调函数啊，之后google了很多关于Javascript">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript回调函数的实现">
+<meta name="twitter:description" content="在JavaScript中，回调函数的使用非常频繁。特别是在各种Javascript库中，经常在一个函数中使用回调函数，例如jQuery中的each()方法。一年以来，在使用各种有回调函数的函数时，都没有去深究其内部的实现原理真，惭愧。在有米实习时，在读js师兄的代码时，偶然看到他写的一个函数是他自己实现回调函数的，当时感觉很神奇，原来这就是回调函数啊，之后google了很多关于Javascript">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-javascript-callback" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JavaScript回调函数的实现</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2013.02.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2013/02/12/javascript-callback/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>在JavaScript中，回调函数的使用非常频繁。特别是在各种Javascript库中，经常在一个函数中使用回调函数，例如jQuery中的each()方法。一年以来，在使用各种有回调函数的函数时，都没有去深究其内部的实现原理真，惭愧。在有米实习时，在读js师兄的代码时，偶然看到他写的一个函数是他自己实现回调函数的，当时感觉很神奇，原来这就是回调函数啊，之后google了很多关于Javascript回调函数的资料，终于大概弄明白回调函数是什么了。以下是自己对回调函数的一些理解。<br><a id="more"></a></p>
+<p>回调函数定义：… 理论一直是我的弱项，定义暂时没法定，以后弄懂再补上，我暂时只懂它的用法orz。</p>
+<p>回调函数的基本实现：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 声明一个函数，它的参数是一个函数fn</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">fn</span>)  </span>&#123;</span><br><span class="line">    <span class="comment">// 回调前，可以do something</span></span><br><span class="line">    alert(<span class="string">'我是回调前执行的代码'</span>);</span><br><span class="line">    <span class="comment">// 存在fn则直接用，不存fn在则用函数表达式的方式声明一个</span></span><br><span class="line">    fn = fn || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    fn(); <span class="comment">//  调用传进来的fn</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用传进来的fn</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'I am callback!'</span>)</span><br><span class="line">&#125;</span><br><span class="line">example(callback); <span class="comment">// 调用函数a</span></span><br></pre></td></tr></table></figure>
+<p>这个例子展示回调函数基本实现方法，实现回调的关键是把一个函数当成另一个参数。当然实践中很少用上面方式去使用回调函数，一般把一个匿名函数传入当成回调函数，这种方法在Javascript中使用非常广泛，下面是一个基本的例子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 声明一个函数，它的参数是一个函数fn</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 回调前，可以do something</span></span><br><span class="line">    alert(<span class="string">'我是回调前执行的代码'</span>);</span><br><span class="line">    <span class="comment">// 存在fn则直接用，不存fn在则用函数表达式的方式声明一个</span></span><br><span class="line">    fn = fn || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    fn(); <span class="comment">// 调用传进来的fn</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把匿名函数当做参数</span></span><br><span class="line">example(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line">    alert(<span class="string">'I am callback!'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>使用匿名函数作为参数，不仅可以极少代码，也让代码更好管理，更加灵活。</p>
+<p>任何函数都是可以传入参数的，回调函数一样:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 声明一个函数，它的参数是一个函数fn</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">a, fn</span>)  </span>&#123;</span><br><span class="line">    <span class="comment">// 回调前，可以do something</span></span><br><span class="line">    alert(a);</span><br><span class="line">    <span class="comment">// 存在fn则直接用，不存fn在则用函数表达式的方式声明一个</span></span><br><span class="line">    fn = fn || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    fn(m); <span class="comment">// 调用传进来的fn</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把匿名函数当做参数</span></span><br><span class="line"><span class="keyword">var</span> m = <span class="string">'I am callback!'</span>;</span><br><span class="line">example(<span class="string">'我是回调前执行的代码'</span>,  <span class="function"><span class="keyword">function</span>(<span class="params">m</span>)  </span>&#123;</span><br><span class="line">    alert(m)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>以上就是Javascript回调函数的实现方法和简单用法，关于回调函数的作用，我的理解是：其实，每个函数的定义都是为了实现某些功能，在一个拥有回调函数的函数中，一般把实现一个功能的通用代码写在回调函数前，其实后也可以，而开发者在回调函数中自定义自己需要的功能。文艺一点，就是回调函数让世界更加多姿多彩。</p>
+<p>done。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2013/02/12/javascript-callback/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

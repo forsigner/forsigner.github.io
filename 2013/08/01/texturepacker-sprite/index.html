@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>好用的CSS sprite工具-TexturePacker | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSS," />
+  
+
+  <meta name="description" content="CSS sprite的苦恼最近在做web前端优化，其中之一就是把图片合并，也就是使用CSSsprite技术,开始尝试使用PS手动合并，结果效率极低，而起很难维护。之后尝试各种各样的的CSSsprite相关工具，最后选择了TextuerPacker，一个可以让我远离CSS sprite苦恼的工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="好用的CSS sprite工具-TexturePacker">
+<meta property="og:url" content="http://www.forsigner.com/2013/08/01/texturepacker-sprite/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="CSS sprite的苦恼最近在做web前端优化，其中之一就是把图片合并，也就是使用CSSsprite技术,开始尝试使用PS手动合并，结果效率极低，而起很难维护。之后尝试各种各样的的CSSsprite相关工具，最后选择了TextuerPacker，一个可以让我远离CSS sprite苦恼的工具。">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="好用的CSS sprite工具-TexturePacker">
+<meta name="twitter:description" content="CSS sprite的苦恼最近在做web前端优化，其中之一就是把图片合并，也就是使用CSSsprite技术,开始尝试使用PS手动合并，结果效率极低，而起很难维护。之后尝试各种各样的的CSSsprite相关工具，最后选择了TextuerPacker，一个可以让我远离CSS sprite苦恼的工具。">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-sprite的苦恼"><span class="toc-text">CSS sprite的苦恼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于TexturePacker"><span class="toc-text">关于TexturePacker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TexturePacker优点"><span class="toc-text">TexturePacker优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TexturePacker使用方法"><span class="toc-text">TexturePacker使用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取免费license"><span class="toc-text">获取免费license</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-texturepacker-sprite" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">好用的CSS sprite工具-TexturePacker</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2013.08.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2013/08/01/texturepacker-sprite/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="CSS-sprite的苦恼"><a href="#CSS-sprite的苦恼" class="headerlink" title="CSS sprite的苦恼"></a>CSS sprite的苦恼</h2><p>最近在做web前端优化，其中之一就是把图片合并，也就是使用CSS<br>sprite技术,开始尝试使用PS手动合并，结果效率极低，而起很难维护。之后尝试各种各样的的CSS<br>sprite相关工具，最后选择了TextuerPacker，一个可以让我远离CSS sprite苦恼的工具。<br><a id="more"></a></p>
+<h2 id="关于TexturePacker"><a href="#关于TexturePacker" class="headerlink" title="关于TexturePacker"></a>关于TexturePacker</h2><p>这是作者自己说的一段话：</p>
+<blockquote>
+<p>20 seconds to your optimized sprite sheet</p>
+<ol>
+<li>1.Drop your sprites to TexturePacker</li>
+<li>2.Choose exporter and image formate</li>
+<li>3.Press publish</li>
+</ol>
+</blockquote>
+<ul>
+<li>下载地址：<a href="http://www.codeandweb.com/texturepacker/download" target="_blank" rel="external">download TexturePacker</a></li>
+</ul>
+<h2 id="TexturePacker优点"><a href="#TexturePacker优点" class="headerlink" title="TexturePacker优点"></a>TexturePacker优点</h2><ul>
+<li>跨平台，Linux、MacOS、Windows都能安装</li>
+<li>效率高，可以通过文件夹导入、自动生成CSS、没有定位问题困扰</li>
+<li>易维护，可以随意增加和减少图标而不影响定位</li>
+</ul>
+<h2 id="TexturePacker使用方法"><a href="#TexturePacker使用方法" class="headerlink" title="TexturePacker使用方法"></a>TexturePacker使用方法</h2><ul>
+<li>把图标导入TexturePacker后会生成一个png和css文件，如sprite.png和sprite.css</li>
+<li>对应的icon会根据名字生成class，如icon-ios.png会在css文件中生成.icon-ios {xxx: xxx; }，icon-ios-hover.pngs=&gt;.icon-ios:hover {xxx: xxx;}</li>
+</ul>
+<p>代码中使用：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 这些代码是自动生成的*/</span></span><br><span class="line"><span class="selector-class">.sprite</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">overflow</span>:hidden;</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">background-image</span>:<span class="built_in">url</span>(css.png);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon-ios</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">background-position</span>: -<span class="number">80px</span> -<span class="number">160px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon-ios</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">31px</span>;</span><br><span class="line">  <span class="attribute">background-position</span>: -<span class="number">160px</span> -<span class="number">160px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 要使用背景图像的元素 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sprite icon-ios"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="获取免费license"><a href="#获取免费license" class="headerlink" title="获取免费license"></a>获取免费license</h2><p>TexturePacker虽然非常优秀，但不是免费的。但作者对于开发人员是非常人道的，你可以去<a href="http://www.codeandweb.com/request-free-license申请一个free" target="_blank" rel="external">http://www.codeandweb.com/request-free-license申请一个free</a> licenses。要求如下：</p>
+<blockquote>
+<p>Bloggers and framework developers can get free full licenses to my tools.</p>
+<p>My requirements to you are:</p>
+<ul>
+<li>You write your own blog</li>
+<li>Your blog has at least 5 recent entries which are at least a page long and not older than 6 months</li>
+<li>Your blog is about game/software/web development or about applications</li>
+<li>FaceBook or Twitter is not a blog – except you have 100000 friends ;-)</li>
+</ul>
+</blockquote>
+<p>申请成功后，作者会发送类似于一个这样的邮件给你：</p>
+<blockquote>
+<p>Hi chen,</p>
+<p>Here’s your license key for TexturePacker - have fun with it!</p>
+<p>XX-XXXX-XXXX-XXXX-XXXX</p>
+<p>Nice blog! I would be happy to get a (short) blog post in return.</p>
+<p>In case you do a tutorial post about my tools I can link back to your blog from the tutorials section on my page. That might give you some more visitors on your page!</p>
+<p>Kind regards</p>
+<p>Kerstin on behalf of Andreas</p>
+<hr>
+<p><a href="http://www.codeandweb.com" target="_blank" rel="external">http://www.codeandweb.com</a></p>
+<p><a href="http://twitter.com/CodeAndWeb" target="_blank" rel="external">http://twitter.com/CodeAndWeb</a> - Follow me on Twitter</p>
+<p>CodeAndWeb / Andreas Loew</p>
+<p>Saalbaustrasse 61</p>
+<p>89233 Neu-Ulm</p>
+<p>Germany</p>
+<p>> Free license request</p>
+<p>></p>
+<p>> Name: chen forsigner</p>
+<p>> Blog: forsigner.com</p>
+<p>> Description:</p>
+<p>></p>
+<p>>        I am a frontend engineer</p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2013/08/01/texturepacker-sprite/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

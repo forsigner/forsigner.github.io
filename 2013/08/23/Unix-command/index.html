@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Unix 系统下常用命令 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Unix," />
+  
+
+  <meta name="description" content="文件操作ls -l  # 列出文件夹内容(详情模式)ls -al  # 列出文件夹内容(包括隐藏文件)touch &amp;lt;file&amp;gt;  # 新建文件mkdir &amp;lt;dir&amp;gt;  # 新建文件夹rm [-rf] &amp;lt;file/dir&amp;gt;  # 删除文件mv &amp;lt;source&amp;gt; &amp;lt;target&amp;gt;  # 修改文件名字cp [-R] &amp;lt;source&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unix 系统下常用命令">
+<meta property="og:url" content="http://www.forsigner.com/2013/08/23/Unix-command/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="文件操作ls -l  # 列出文件夹内容(详情模式)ls -al  # 列出文件夹内容(包括隐藏文件)touch &amp;lt;file&amp;gt;  # 新建文件mkdir &amp;lt;dir&amp;gt;  # 新建文件夹rm [-rf] &amp;lt;file/dir&amp;gt;  # 删除文件mv &amp;lt;source&amp;gt; &amp;lt;target&amp;gt;  # 修改文件名字cp [-R] &amp;lt;source&amp;gt;">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unix 系统下常用命令">
+<meta name="twitter:description" content="文件操作ls -l  # 列出文件夹内容(详情模式)ls -al  # 列出文件夹内容(包括隐藏文件)touch &amp;lt;file&amp;gt;  # 新建文件mkdir &amp;lt;dir&amp;gt;  # 新建文件夹rm [-rf] &amp;lt;file/dir&amp;gt;  # 删除文件mv &amp;lt;source&amp;gt; &amp;lt;target&amp;gt;  # 修改文件名字cp [-R] &amp;lt;source&amp;gt;">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件操作"><span class="toc-text">文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找"><span class="toc-text">查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限管理"><span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-OS-x"><span class="toc-text">Mac OS x</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu"><span class="toc-text">Ubuntu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Unix-command" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Unix 系统下常用命令</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2013.08.23</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2013/08/23/Unix-command/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l  <span class="comment"># 列出文件夹内容(详情模式)</span></span><br><span class="line">ls -al  <span class="comment"># 列出文件夹内容(包括隐藏文件)</span></span><br><span class="line">touch &lt;file&gt;  <span class="comment"># 新建文件</span></span><br><span class="line">mkdir &lt;dir&gt;  <span class="comment"># 新建文件夹</span></span><br><span class="line">rm [-rf] &lt;file/dir&gt;  <span class="comment"># 删除文件</span></span><br><span class="line">mv &lt;source&gt; &lt;target&gt;  <span class="comment"># 修改文件名字</span></span><br><span class="line">cp [-R] &lt;source&gt; &lt;target&gt;  <span class="comment"># 复制文件</span></span><br><span class="line">ln -s  &lt;source&gt; &lt;target&gt;  <span class="comment"># 建立符号链接</span></span><br><span class="line"></span><br><span class="line">rar x &lt;file&gt; <span class="comment">#解压</span></span><br><span class="line">tar -zxvf &lt;file&gt;</span><br><span class="line">unzip  &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">which &lt;something&gt;  <span class="comment"># 搜索可执行文件</span></span><br><span class="line">whereis &lt;something&gt;  <span class="comment"># 搜索文件</span></span><br><span class="line">locate &lt;something&gt;  <span class="comment"># 搜索文件</span></span><br><span class="line"></span><br><span class="line">find &lt;dir&gt; &lt;condiction&gt; &lt;action&gt;</span><br><span class="line">find &lt;dir&gt; -name <span class="string">"*.jpg"</span> <span class="comment"># 查找文件</span></span><br><span class="line">find . -name <span class="string">"*~"</span>  | xargs rm -rf  <span class="comment"># 删除当前文件夹及子文件夹下的某些文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">grep -nr <span class="string">'xxx'</span> &lt;dir&gt;  <span class="comment"># 查找包含字符串"xxx"的文件</span></span><br></pre></td></tr></table></figure>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">sudo chown -R &lt;owner&gt;:&lt;group&gt;  &lt;file&gt;  <span class="comment"># 修改表文件ownership/group</span></span><br><span class="line"></span><br><span class="line">sudo chmod <span class="number">600</span> &lt;file&gt;  <span class="comment"># 只有所有者有读和写的权限</span></span><br><span class="line">sudo chmod <span class="number">644</span> &lt;file&gt;  <span class="comment"># 所有者有读和写的权限</span></span><br><span class="line">sudo chmod <span class="number">700</span> &lt;file&gt;  <span class="comment"># 只有所有者有读和写以及执行的权限</span></span><br><span class="line">sudo chmod <span class="number">666</span> &lt;file&gt;  <span class="comment"># 每个人都有读和写的权限</span></span><br><span class="line">sudo chmod <span class="number">777</span> &lt;file&gt;  <span class="comment"># 开放全部权限</span></span><br></pre></td></tr></table></figure>
+<h2 id="Mac-OS-x"><a href="#Mac-OS-x" class="headerlink" title="Mac OS x"></a>Mac OS x</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew info &lt;package&gt;</span><br><span class="line">brew doctor &lt;package&gt;</span><br><span class="line">brew install &lt;package&gt;  <span class="comment"># 安装</span></span><br><span class="line">brew uninstall &lt;package&gt;</span><br><span class="line">brew list</span><br><span class="line">brew update</span><br><span class="line">brew upgrade</span><br><span class="line">brew cleanup</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">aptitude search <span class="string">'~i ^vim'</span> <span class="comment">#搜索文件</span></span><br><span class="line">sudo apt-get install &lt;package&gt;  <span class="comment"># 安装软件</span></span><br><span class="line">sudo aptitude purge &lt;package&gt;  <span class="comment"># ubuntu卸载软件</span></span><br><span class="line">sudo apt-get remove &lt;package&gt;  <span class="comment"># ubuntu卸载软件</span></span><br><span class="line">apt-get remove --purge &lt;package&gt;  <span class="comment"># 卸载并清除配置</span></span><br><span class="line">sudo  dpkg  -i  &lt;package.deb&gt;  <span class="comment"># 安装软件</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">cat  <span class="comment"># 由第一行开始显示档案内容</span></span><br><span class="line">tac  <span class="comment"># 从最后一行开始显示，可以看出 tac 是 cat 的反向显示！</span></span><br><span class="line">nl  <span class="comment"># 显示的时候，随便输出行号！</span></span><br><span class="line">more  <span class="comment"># 一页一页的显示档案内容</span></span><br><span class="line">less  <span class="comment"># 与 more 类似，但是比 more 更好的是，他可以[pg dn][pg up]翻页！</span></span><br><span class="line">head  <span class="comment"># 查看头几行</span></span><br><span class="line">tail  <span class="comment"># 查看尾几行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -i <span class="string">"s/oldstring/newstring/g"</span> `grep oldstring -rl yourdir` <span class="comment">#替换多文件的字符串</span></span><br><span class="line"></span><br><span class="line">ctrl-a  <span class="comment"># 在终端中跳到命令最前面</span></span><br><span class="line">ctrl-e  <span class="comment"># 在终端中跳到命令最后面</span></span><br><span class="line"></span><br><span class="line">ctrl-x e <span class="comment"># 打开默认编辑器</span></span><br><span class="line">man &lt;something&gt; <span class="comment">#帮助</span></span><br><span class="line">!!  <span class="comment"># 上一条命令</span></span><br><span class="line">cd -  <span class="comment"># 回到上一次目录</span></span><br><span class="line">pwd  <span class="comment"># 查看路径</span></span><br><span class="line"></span><br><span class="line">ps -A | grep -i apache2  <span class="comment"># 查找相关进程</span></span><br><span class="line">kill <span class="number">1285</span> (to kill the process apache2)  <span class="comment"># 杀死进程</span></span><br><span class="line"></span><br><span class="line">cal  <span class="comment"># 日历</span></span><br><span class="line">date  <span class="comment"># 日期</span></span><br><span class="line">bc  <span class="comment"># 计算器</span></span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2013/08/23/Unix-command/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

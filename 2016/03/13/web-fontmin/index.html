@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Web-Fontmin -- 在线提取你需要的字体 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,Fontmin," />
+  
+
+  <meta name="description" content="关于@font-face @font-face 是CSS3中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。
+@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    src: url(&quot;/fonts/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web-Fontmin -- 在线提取你需要的字体">
+<meta property="og:url" content="http://www.forsigner.com/2016/03/13/web-fontmin/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="关于@font-face @font-face 是CSS3中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。
+@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    src: url(&quot;/fonts/">
+<meta property="og:image" content="http://forsigner.com/images/web-fontmin/page-1.png">
+<meta property="og:image" content="http://forsigner.com/images/web-fontmin/page-2.png">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web-Fontmin -- 在线提取你需要的字体">
+<meta name="twitter:description" content="关于@font-face @font-face 是CSS3中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。
+@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    src: url(&quot;/fonts/">
+<meta name="twitter:image" content="http://forsigner.com/images/web-fontmin/page-1.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于-font-face"><span class="toc-text">关于@font-face</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Webfont-Generator-Font-Squirrel"><span class="toc-text">Webfont Generator - Font Squirrel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fontmin"><span class="toc-text">Fontmin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Fontmin-应用场景"><span class="toc-text">Fontmin 应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fontmin-用法"><span class="toc-text">Fontmin 用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于-Fontmin-的工具"><span class="toc-text">基于 Fontmin 的工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web-fontmin"><span class="toc-text">Web-fontmin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用免费字体网站"><span class="toc-text">常用免费字体网站</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-web-fontmin" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Web-Fontmin -- 在线提取你需要的字体</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/03/13/web-fontmin/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="关于-font-face"><a href="#关于-font-face" class="headerlink" title="关于@font-face"></a>关于@font-face</h1><p><strong> <a href="http://www.w3.org/TR/css3-fonts/" target="_blank" rel="external">@font-face</a></strong> 是<a href="http://www.w3.org/TR/CSS/#css3" target="_blank" rel="external">CSS3</a>中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">"SentyZHAO"</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot"</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot?#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>), <span class="comment">/* chrome, firefox */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.ttf"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.svg#SentyZHAO"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Webfont-Generator-Font-Squirrel"><a href="#Webfont-Generator-Font-Squirrel" class="headerlink" title="Webfont Generator - Font Squirrel"></a>Webfont Generator - Font Squirrel</h1><p>在上面的代码片段可以看出，要兼容性好的使用 @font-face，我们同时需要 eot 、woff、ttf、svg 格式的字体。常用的工具是 <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank" rel="external">fontsquirrel</a>，一个字体生成器，可以在线生成  eot 、woff、ttf、svg 格式的字体，相信很多前端用过，具体用法可以官网试试。</p>
+<h1 id="Fontmin"><a href="#Fontmin" class="headerlink" title="Fontmin"></a>Fontmin</h1><p>第一个纯 JavaScript 字体子集化方案，一个百度出品的优秀工具。<br>Fontmin 有什么用呢？</p>
+<blockquote>
+<p>提供了 ttf子集化，eot/woff/svg格式转换，css生成 等功能，助推 webfont 发展，提升网页文字体验。</p>
+</blockquote>
+<p>上面是官方的说法，通俗地理解有3个作用：</p>
+<ol>
+<li>提取部分字体</li>
+<li>转换字体格式</li>
+<li>生成 webfont 和对应 CSS 样式</li>
+</ol>
+<h2 id="Fontmin-应用场景"><a href="#Fontmin-应用场景" class="headerlink" title="Fontmin 应用场景"></a>Fontmin 应用场景</h2><p>有时候，我们想给网站的 Logo 、 Slogan 、标题、活动页等的中文自定义字体，我们可以使用 @font-face 引入 Web 字体，但是完整的中文字体库都是 8M 10M ，加载性能非常差，所以我们提取部分我们使用到的字体，这样可以把字体文件变成几KB。</p>
+<h2 id="Fontmin-用法"><a href="#Fontmin-用法" class="headerlink" title="Fontmin 用法"></a>Fontmin 用法</h2><p>Fontmin 的用法很简单：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Fontmin = <span class="built_in">require</span>(<span class="string">'fontmin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fontmin = <span class="keyword">new</span> Fontmin()</span><br><span class="line">    .src(<span class="string">'fonts/*.ttf'</span>)</span><br><span class="line">    .dest(<span class="string">'build/fonts'</span>);</span><br><span class="line"></span><br><span class="line">fontmin.run(<span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(files[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// =&gt; &#123; contents: &lt;Buffer 00 01 00 ...&gt; &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>详细介绍和用法可以看这篇文章： <a href="http://efe.baidu.com/blog/fontmin-getting-started/" target="_blank" rel="external">http://efe.baidu.com/blog/fontmin-getting-started/</a></p>
+<h2 id="基于-Fontmin-的工具"><a href="#基于-Fontmin-的工具" class="headerlink" title="基于 Fontmin 的工具"></a>基于 Fontmin 的工具</h2><ul>
+<li><strong><a href="https://github.com/ecomfe/fontmin-app" target="_blank" rel="external">fontmin-app</a></strong> - Fontmin 桌面版 App，需下载安装使用</li>
+<li><strong><a href="https://github.com/ecomfe/gulp-fontmin" target="_blank" rel="external">gulp-fontmin</a></strong> - Fontmin 的 Gulp 插件</li>
+<li><strong><a href="https://github.com/aui/font-spider" target="_blank" rel="external">font-spider</a></strong> - 自动分析页面使用的 WebFont 并进行按需压缩</li>
+</ul>
+<h1 id="Web-fontmin"><a href="#Web-fontmin" class="headerlink" title="Web-fontmin"></a>Web-fontmin</h1><p>好吧，扯了这么多，终于到文章的主题。</p>
+<p>Web-fontmin 不是什么高大上的东西，一个基于 Fontmin 构建的字体工具，它的用处只有两个：</p>
+<ol>
+<li>提取字体</li>
+<li>字体格式转换</li>
+</ol>
+<p>通俗的理解，Web-fontmin 是一个这样的工具：Squirrel + fontmin-app，他是两者的结合体。</p>
+<p>Squirrel 只有单纯的生成不同格式的webfont，且不支持中文。Web-fontmin不单止可以转换格式同时支持中文，还可以提取字体，并且有更快的上传和转换速度。</p>
+<p>Fontmin-app 主要作用是提取字体，需要下载安装，且不支持Linux。Web-Fontmin 拥有Fontmin-app的所有功能，并且在线即可用。</p>
+<p>使用Web-fontmin：<a href="http://fontmin.forsigner.com/" target="_blank" rel="external">http://fontmin.forsigner.com/</a></p>
+<p>Github 地址：<strong><a href="https://github.com/forsigner/web-fontmin" target="_blank" rel="external">web-fontmin</a></strong></p>
+<p>网页效果：</p>
+<p><img src="http://forsigner.com/images/web-fontmin/page-1.png" alt="page-1"><br><img src="http://forsigner.com/images/web-fontmin/page-2.png" alt="page-2"></p>
+<h1 id="常用免费字体网站"><a href="#常用免费字体网站" class="headerlink" title="常用免费字体网站"></a>常用免费字体网站</h1><p>推荐几个常用的字体下载王章：</p>
+<ul>
+<li><a href="https://www.google.com/fonts/" target="_blank" rel="external">Google fonts</a></li>
+<li><a href="http://www.dafont.com/" target="_blank" rel="external">Dafont</a></li>
+<li><a href="https://typekit.com/" target="_blank" rel="external">Typekit</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2016/03/13/web-fontmin/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

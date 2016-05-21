@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>不可错过的Angular scrollbar library | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript," />
+  
+
+  <meta name="description" content="最近，工作中忙于开发一个desktop apps，主要技术基于 electron 和 angular.js 。开发过程中，发现在 Windows 中滚动条巨丑无敌，作为一个设计出身的程序猿，我当然不能忍，于是我用下班时间造了一个 scrollbar 轮子，叫 angular-nice-bar （查看 Demo）。
+我希望这个滚动条长得好看，可自定义，轻量级，不要依赖于jQuery，能和Ajax一起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不可错过的Angular scrollbar library">
+<meta property="og:url" content="http://www.forsigner.com/2016/02/17/angular-nice-bar/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="最近，工作中忙于开发一个desktop apps，主要技术基于 electron 和 angular.js 。开发过程中，发现在 Windows 中滚动条巨丑无敌，作为一个设计出身的程序猿，我当然不能忍，于是我用下班时间造了一个 scrollbar 轮子，叫 angular-nice-bar （查看 Demo）。
+我希望这个滚动条长得好看，可自定义，轻量级，不要依赖于jQuery，能和Ajax一起">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不可错过的Angular scrollbar library">
+<meta name="twitter:description" content="最近，工作中忙于开发一个desktop apps，主要技术基于 electron 和 angular.js 。开发过程中，发现在 Windows 中滚动条巨丑无敌，作为一个设计出身的程序猿，我当然不能忍，于是我用下班时间造了一个 scrollbar 轮子，叫 angular-nice-bar （查看 Demo）。
+我希望这个滚动条长得好看，可自定义，轻量级，不要依赖于jQuery，能和Ajax一起">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-angular-nice-bar" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">不可错过的Angular scrollbar library</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.02.17</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/02/17/angular-nice-bar/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近，工作中忙于开发一个desktop apps，主要技术基于 <a href="https://github.com/atom/electron" target="_blank" rel="external">electron</a> 和 <a href="https://github.com/angular/angular.js" target="_blank" rel="external">angular.js</a> 。开发过程中，发现在 Windows 中滚动条巨丑无敌，作为一个设计出身的程序猿，我当然不能忍，于是我用下班时间造了一个 scrollbar 轮子，叫 <strong><a href="https://github.com/forsigner/angular-nice-bar" target="_blank" rel="external">angular-nice-bar</a></strong> （<a href="http://forsigner.com/nice-bar/" target="_blank" rel="external">查看 Demo</a>）。</p>
+<p>我希望这个滚动条长得好看，可自定义，轻量级，不要依赖于jQuery，能和Ajax一起用，且支持黑色主题，因为我们的app是深色背景的。所以这个滚动条有以下高大上的Features ^ ^:</p>
+<ul>
+<li>Nice looking</li>
+<li>Customize</li>
+<li>Lightweight</li>
+<li>No jQuery dependency</li>
+<li>Can use with Ajax</li>
+<li>Support dark theme</li>
+</ul>
+<p>开始，我并不想造轮子，尝试找一些现有的好用的angular scrollbar libraries，比如下面的类库：</p>
+<ul>
+<li><a href="https://github.com/itsdrewmiller/angular-perfect-scrollbar" target="_blank" rel="external">Angular-perfect-scrollbar</a></li>
+<li><a href="https://github.com/yads/ngTinyScrollbar" target="_blank" rel="external">ngTinyScrollbar</a></li>
+<li><a href="https://github.com/asafdav/ng-scrollbar" target="_blank" rel="external">ng-scrollbar</a></li>
+<li><a href="https://github.com/iominh/ng-scrollbars" target="_blank" rel="external">ng-scrollbars</a></li>
+</ul>
+<p>可惜，这些libraries并不能很好满足我的需求，有些长得不好看，有些用起来别扭，有些和Ajax一起用就挂了，有些太重量级。因此我决定自己去实现一个。</p>
+<p>希望<strong><a href="https://github.com/forsigner/angular-nice-bar" target="_blank" rel="external">angular-nice-bar</a></strong> 能帮到有需要的人。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2016/02/17/angular-nice-bar/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

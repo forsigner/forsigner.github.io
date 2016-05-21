@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>用JavaScript修复ipa处理过的的png图片 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,Node.js," />
+  
+
+  <meta name="description" content="最近做项目遇到一个需求：解析apk和ipa包，然后把里面的icon上传到服务器。
+问题解析上传过程比较简单，我使用JSZip对apk和ipa进行解压，然后把找到里面的icon上传到服务器。但是，当我在网页中使用图片时，问题出现了。对于apk中的icon，没有任何问题，但是对于ipa中解析出来的图片，在safari中可以正常显示，在其他任何浏览器去无法显示。
+原因Google后发现，是苹果对png图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用JavaScript修复ipa处理过的的png图片">
+<meta property="og:url" content="http://www.forsigner.com/2016/02/16/node-pngdefry/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="最近做项目遇到一个需求：解析apk和ipa包，然后把里面的icon上传到服务器。
+问题解析上传过程比较简单，我使用JSZip对apk和ipa进行解压，然后把找到里面的icon上传到服务器。但是，当我在网页中使用图片时，问题出现了。对于apk中的icon，没有任何问题，但是对于ipa中解析出来的图片，在safari中可以正常显示，在其他任何浏览器去无法显示。
+原因Google后发现，是苹果对png图">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用JavaScript修复ipa处理过的的png图片">
+<meta name="twitter:description" content="最近做项目遇到一个需求：解析apk和ipa包，然后把里面的icon上传到服务器。
+问题解析上传过程比较简单，我使用JSZip对apk和ipa进行解压，然后把找到里面的icon上传到服务器。但是，当我在网页中使用图片时，问题出现了。对于apk中的icon，没有任何问题，但是对于ipa中解析出来的图片，在safari中可以正常显示，在其他任何浏览器去无法显示。
+原因Google后发现，是苹果对png图">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命令行用法"><span class="toc-text">命令行用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Node-js中使用"><span class="toc-text">在Node.js中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Test"><span class="toc-text">Test</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目地址"><span class="toc-text">项目地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#感谢"><span class="toc-text">感谢</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-node-pngdefry" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">用JavaScript修复ipa处理过的的png图片</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.02.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/02/16/node-pngdefry/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近做项目遇到一个需求：<strong>解析apk和ipa包，然后把里面的icon上传到服务器。</strong></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>解析上传过程比较简单，我使用<a href="https://stuk.github.io/jszip/" target="_blank" rel="external">JSZip</a>对apk和ipa进行解压，然后把找到里面的icon上传到服务器。但是，当我在网页中使用图片时，问题出现了。对于apk中的icon，没有任何问题，但是对于ipa中解析出来的图片，在safari中可以正常显示，在其他任何浏览器去无法显示。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Google后发现，是苹果对png图片进行了优化处理，具体看这篇文章（<a href="http://www.jongware.com/pngdefry.html" target="_blank" rel="external">查看</a>），在文章中我们可以了解到一些有用信息：</p>
+<blockquote>
+<p>Apple uses <a href="http://pmt.sourceforge.net/pngcrush/" target="_blank" rel="external">PNGCursh</a> open source library to crush png images inside iPA files。</p>
+</blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>作为一个前端工程师，我希望用javascript解决这个问题。其实之前国外已经有人去解决了，<a href="https://github.com/Startappz/NodeJS-PNGDefry" target="_blank" rel="external">NodeJS-PNGDefry</a>就是可以，可惜这个太久没维护，已经跑不起来。</p>
+<p>找不到可用的，我只能自己动手丰衣足食，自己写一个。因此有了<a href="https://github.com/forsigner/node-pngdefry" target="_blank" rel="external">node-pngdefry</a>。<a href="https://github.com/forsigner/node-pngdefry" target="_blank" rel="external">node-pngdefry</a>的功能很明确，就是用Javascript来还原被苹果处理过的png图片。</p>
+<p><a href="https://github.com/forsigner/node-pngdefry" target="_blank" rel="external">node-pngdefry</a>用法很简单，支持命令行和常规的Node.js:</p>
+<h4 id="命令行用法"><a href="#命令行用法" class="headerlink" title="命令行用法"></a>命令行用法</h4><p><strong>install：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g pngdefry</span><br></pre></td></tr></table></figure>
+<p><strong> then run:</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pngdefry -i icon.png -o icon.new.png</span><br></pre></td></tr></table></figure>
+<h4 id="在Node-js中使用"><a href="#在Node-js中使用" class="headerlink" title="在Node.js中使用"></a>在Node.js中使用</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install pngdefry --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> pngdefry = <span class="built_in">require</span>(<span class="string">'pngdefry'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> input = path.join(__dirname, <span class="string">'icon.png'</span>);</span><br><span class="line"><span class="keyword">var</span> output = path.join(__dirname, <span class="string">'icon.new.png'</span>);</span><br><span class="line"></span><br><span class="line">pngdefry(input, output, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'success'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h4 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h4><p><a href="https://github.com/forsigner/node-pngdefry" target="_blank" rel="external">node-pngdefry</a></p>
+<h4 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h4><p>最后感谢上面提到的文章的作者Jongware。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2016/02/16/node-pngdefry/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
