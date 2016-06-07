@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.forsigner.com/2013/02/13/learning-javascript-closure/</loc>
+    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -23,14 +23,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/02/17/angular-nice-bar/</loc>
+    <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/03/25/css-clearfix/</loc>
+    <loc>http://www.forsigner.com/2016/02/17/angular-nice-bar/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -44,7 +44,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
+    <loc>http://www.forsigner.com/2013/03/25/css-clearfix/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -65,14 +65,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-tw/</loc>
+    <loc>http://www.forsigner.com/2016/02/23/fexo/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/02/23/fexo/</loc>
+    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-cn/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -93,7 +93,21 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-cn/</loc>
+    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2013/03/18/iehaslayout/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-tw/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -101,13 +115,6 @@
   
   <url>
     <loc>http://www.forsigner.com/2013/08/22/git-command/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2015/03/12/ionic-android-package/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -128,21 +135,14 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/2015/03/12/ionic-android-package/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/2013/02/02/javascript-reading/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2013/03/18/iehaslayout/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -163,14 +163,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2016/02/16/node-pngdefry/</loc>
+    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -184,14 +177,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/09/01/javascript-style-guide/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
+    <loc>http://www.forsigner.com/2013/02/13/learning-javascript-closure/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -199,6 +185,20 @@
   
   <url>
     <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2016/02/16/node-pngdefry/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2013/09/01/javascript-style-guide/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
