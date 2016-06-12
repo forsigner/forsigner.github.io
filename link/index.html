@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-link">
+  <html class="light">
 
 
 <head>
@@ -31,8 +31,8 @@
   
     <link rel="icon" href="/favicon.ico">
   
-
-  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+  
+  <link href="/css/styles.css?v=5f7f1d39" rel="stylesheet">
 
 
   
@@ -57,9 +57,8 @@
 
 <body>
 
-
   
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><a href="#modal-one" class="toolbox-mobile">盒子</a>
   
 
   <div class="content content-link">
@@ -179,7 +178,7 @@
     
       <li class="link-item link-item-0">
         <a target="_blank" class="link-url" href="http://zheng-ji.info/">
-          <img class="avatar" src="https://avatars3.githubusercontent.com/u/1414745?v=3&amp;s=100" alt="织网">
+          <img class="avatar" src="https://avatars3.githubusercontent.com/u/1414745?v=3&amp;s=460" alt="织网">
           <div class="wrap-info">
             <div class="name">织网</div>
             <div class="info">身体和灵魂，总有一个在路上</div>
@@ -189,7 +188,7 @@
     
       <li class="link-item link-item-1">
         <a target="_blank" class="link-url" href="http://dongyado.com/">
-          <img class="avatar" src="https://avatars0.githubusercontent.com/u/6274940?v=3&amp;s=100" alt="Dongyado">
+          <img class="avatar" src="https://avatars0.githubusercontent.com/u/6274940?v=3&amp;s=460" alt="Dongyado">
           <div class="wrap-info">
             <div class="name">Dongyado</div>
             <div class="info">生命不止，折腾不息</div>
@@ -199,7 +198,7 @@
     
       <li class="link-item link-item-2">
         <a target="_blank" class="link-url" href="http://orangecoder.com/">
-          <img class="avatar" src="https://avatars0.githubusercontent.com/u/2263785?v=3&amp;s=100" alt="OrangeCoder">
+          <img class="avatar" src="https://avatars0.githubusercontent.com/u/2263785?v=3&amp;s=460" alt="OrangeCoder">
           <div class="wrap-info">
             <div class="name">OrangeCoder</div>
             <div class="info">android ffmpeg nodejs gradle</div>
@@ -209,7 +208,7 @@
     
       <li class="link-item link-item-3">
         <a target="_blank" class="link-url" href="http://everet.org/about-me/">
-          <img class="avatar" src="https://avatars1.githubusercontent.com/u/1559563?v=3&amp;s=100" alt="EverET">
+          <img class="avatar" src="https://avatars1.githubusercontent.com/u/1559563?v=3&amp;s=460" alt="EverET">
           <div class="wrap-info">
             <div class="name">EverET</div>
             <div class="info">好记性不如烂笔头</div>
@@ -219,20 +218,10 @@
     
       <li class="link-item link-item-4">
         <a target="_blank" class="link-url" href="http://tiye.me/">
-          <img class="avatar" src="https://avatars2.githubusercontent.com/u/449224?v=3&amp;s=100" alt="题叶">
+          <img class="avatar" src="https://avatars2.githubusercontent.com/u/449224?v=3&amp;s=460" alt="题叶">
           <div class="wrap-info">
             <div class="name">题叶</div>
             <div class="info">FP, GUI, Writing</div>
-          </div>
-        </a>
-      </li>
-    
-      <li class="link-item link-item-0">
-        <a target="_blank" class="link-url" href="http://idisfkj.github.io">
-          <img class="avatar" src="https://avatars1.githubusercontent.com/u/8677862?v=3&amp;s=100" alt="idisfkj">
-          <div class="wrap-info">
-            <div class="name">idisfkj</div>
-            <div class="info">Android成长分享</div>
           </div>
         </a>
       </li>
@@ -252,13 +241,12 @@
 
 
 
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
+  <div class="modal" id="modal-one" aria-hidden="true">
+  <a href="#close" class="cover" aria-hidden="true"></a>
+  <div class="modal-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
+      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
     </div>
-    <hr>
     <div class="modal-body">
       <ul class="list-toolbox">
         
@@ -366,7 +354,7 @@
   }
 
   window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
+    loadScript('/js/bundle.js?398', function() {
       // load success
     });
   }
