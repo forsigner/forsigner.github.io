@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-  <html class="light">
+  <html class="light page-post">
 
 
 <head>
@@ -31,8 +31,8 @@
   
     <link rel="icon" href="/favicon.ico">
   
-  
-  <link href="/css/styles.css?v=5f7f1d39" rel="stylesheet">
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
 
 
   
@@ -57,8 +57,9 @@
 
 <body>
 
+
   
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><a href="#modal-one" class="toolbox-mobile">盒子</a>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
   
 
   <div class="post-header CENTER">
@@ -205,12 +206,13 @@
 
 
 
-  <div class="modal" id="modal-one" aria-hidden="true">
-  <a href="#close" class="cover" aria-hidden="true"></a>
-  <div class="modal-dialog">
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
+      <span id="close" class="btn-close">关闭</span>
     </div>
+    <hr>
     <div class="modal-body">
       <ul class="list-toolbox">
         
@@ -352,7 +354,7 @@
   }
 
   window.onload = function() {
-    loadScript('/js/bundle.js?398', function() {
+    loadScript('/js/bundle.js?235683', function() {
       // load success
     });
   }
