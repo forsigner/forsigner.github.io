@@ -58,7 +58,7 @@
 
 	__webpack_require__(6);
 
-	angular.module('app', ['ui.router', 'foTooltip', 'controllers', 'directives', 'services', 'filters']).config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
+	angular.module('app', ['ui.router', 'foModal', 'controllers', 'directives', 'services', 'filters']).config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
 
 	  $urlRouterProvider.otherwise('/');
 	  $stateProvider.state('home', {
@@ -93,60 +93,39 @@
 	module.exports = window.angular.module('controllers', [])
 
 	// @ngInject
-	.controller('AppCtrl', function ($scope) {})
+	.controller('AppCtrl', function () {})
 
 	// @ngInject
-	.controller('HomeCtrl', function ($scope, $timeout) {
+	.controller('HomeCtrl', function ($scope, $rootScope, foModal, $injector) {
 
-	  $scope.types = [
-	  // {
-	  //   name: 'Top Left',
-	  //   position: 'top left'
-	  // },
-	  {
-	    name: 'Top Center',
-	    position: 'top center'
-	  }, {
-	    name: 'Top Right',
-	    position: 'top right'
-	  }, {
-	    name: 'Right Top',
-	    position: 'right top'
-	  }, {
-	    name: 'Right Center',
-	    position: 'right center'
-	  }, {
-	    name: 'Right Bottom',
-	    position: 'right bottom'
-	  }, {
-	    name: 'Bottom Left',
-	    position: 'bottom left'
-	  }, {
-	    name: 'Bottom Center',
-	    position: 'bottom center'
-	  }, {
-	    name: 'Bottom Right',
-	    position: 'bottom right'
-	  }, {
-	    name: 'Left Top',
-	    position: 'left top'
-	  }, {
-	    name: 'Left Center',
-	    position: 'left center'
-	  }, {
-	    name: 'Left Bottom',
-	    position: 'left bottom'
-	  }];
-
-	  setTimeout(function () {
-	    new Select({
-	      el: document.querySelector('.drop-select'),
-	      className: 'select-theme-default'
+	  $scope.open = function () {
+	    foModal.open({
+	      templateUrl: 'modal.html',
+	      // templateUrl: 'views/modal2.html',
+	      controller: 'myModalCtrl as vm'
 	    });
-	  }, 2);
+	  };
 
-	  $scope.select = function () {
-	    console.log($scope.type);
+	  // controllerAs: 'vm',
+	  // scope: $scope,
+	  // id: 'hello',
+	  // class: 'hello'
+	  // animation: true,
+	  // overlay: true,
+	  // showClose: false,
+	  // closeByOverlay: true,
+	  // fixBody: false,
+	  $rootScope.close = function () {
+	    foModal.close('hello');
+	    console.log('close');
+	  };
+	})
+
+	// @ngInject
+	.controller('myModalCtrl', function ($scope) {
+	  var vm = this;
+	  $scope.yes = function () {
+	    console.log('yes!');
 	  };
 	});
 
