@@ -85,6 +85,7 @@
           <a
             class="CIRCLE"
             href="/archives/"
+            rel="noopener noreferrer"
             target="_self"
             >
             博客
@@ -95,6 +96,7 @@
           <a
             class="CIRCLE"
             href="/category/"
+            rel="noopener noreferrer"
             target="_self"
             >
             分类
@@ -105,6 +107,7 @@
           <a
             class="CIRCLE"
             href="/tag/"
+            rel="noopener noreferrer"
             target="_self"
             >
             标签
@@ -115,6 +118,7 @@
           <a
             class="CIRCLE"
             href="/link/"
+            rel="noopener noreferrer"
             target="_self"
             >
             友链
@@ -125,6 +129,7 @@
           <a
             class="CIRCLE"
             href="/about/"
+            rel="noopener noreferrer"
             target="_self"
             >
             关于
@@ -135,6 +140,7 @@
           <a
             class="CIRCLE"
             href="/atom.xml"
+            rel="noopener noreferrer"
             target="_blank"
             >
             RSS
@@ -145,6 +151,7 @@
           <a
             class="CIRCLE"
             href="/search/"
+            rel="noopener noreferrer"
             target="_self"
             >
             搜索
@@ -212,14 +219,14 @@
 <p>所以，如果的项目不需兼容古董浏览器的话，用CSS美化radio和checkbox是最好的选择，这样什么都不用依赖，只需CSS，无JS，无图片，无字体图标。</p>
 <p>为了更好的在项目中重用，我把美化的代码写成一个项目，叫<a href="https://github.com/forsigner/magic-check" target="_blank" rel="external">magic-check</a>，寓意像魔法一样去美化radio和checkbox。</p>
 <p>用法非常简单，最好用Bower和npm进行管理，先Install：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># bower:</span></span><br><span class="line">$ bower install --save magic-check</span><br><span class="line"></span><br><span class="line"><span class="comment"># npm:</span></span><br><span class="line">$ npm install --save magic-check</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bower:</span></span><br><span class="line">$ bower install --save magic-check</span><br><span class="line"></span><br><span class="line"><span class="comment"># npm:</span></span><br><span class="line">$ npm install --save magic-check</span><br></pre></td></tr></table></figure>
 <p>然后加载CSS文件：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bower_components/magic-check/css/magic-check.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bower_components/magic-check/css/magic-check.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后，只要给input元素加上一个CSS类magic-checkbox或magic-radio就可以：</p>
 <p><strong> Radio</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"magic-radio"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"11"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"11"</span>&gt;</span>Normal<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"magic-radio"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"11"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"11"</span>&gt;</span>Normal<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong> Checkbox</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"magic-checkbox"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"layout"</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"1"</span>&gt;</span>Normal<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"magic-checkbox"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"layout"</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"1"</span>&gt;</span>Normal<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
     
   </div>
@@ -272,6 +279,7 @@
             <a
               class="CIRCLE"
               href="/archives/"
+              rel="noopener noreferrer"
               target="_self"
               >
               博客
@@ -282,6 +290,7 @@
             <a
               class="CIRCLE"
               href="/category/"
+              rel="noopener noreferrer"
               target="_self"
               >
               分类
@@ -292,6 +301,7 @@
             <a
               class="CIRCLE"
               href="/tag/"
+              rel="noopener noreferrer"
               target="_self"
               >
               标签
@@ -302,6 +312,7 @@
             <a
               class="CIRCLE"
               href="/link/"
+              rel="noopener noreferrer"
               target="_self"
               >
               友链
@@ -312,6 +323,7 @@
             <a
               class="CIRCLE"
               href="/about/"
+              rel="noopener noreferrer"
               target="_self"
               >
               关于
@@ -322,6 +334,7 @@
             <a
               class="CIRCLE"
               href="/atom.xml"
+              rel="noopener noreferrer"
               target="_blank"
               >
               RSS
@@ -332,6 +345,7 @@
             <a
               class="CIRCLE"
               href="/search/"
+              rel="noopener noreferrer"
               target="_self"
               >
               搜索

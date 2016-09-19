@@ -82,6 +82,7 @@
           <a
             class="CIRCLE"
             href="/archives/"
+            rel="noopener noreferrer"
             target="_self"
             >
             博客
@@ -92,6 +93,7 @@
           <a
             class="CIRCLE"
             href="/category/"
+            rel="noopener noreferrer"
             target="_self"
             >
             分类
@@ -102,6 +104,7 @@
           <a
             class="CIRCLE"
             href="/tag/"
+            rel="noopener noreferrer"
             target="_self"
             >
             标签
@@ -112,6 +115,7 @@
           <a
             class="CIRCLE"
             href="/link/"
+            rel="noopener noreferrer"
             target="_self"
             >
             友链
@@ -122,6 +126,7 @@
           <a
             class="CIRCLE"
             href="/about/"
+            rel="noopener noreferrer"
             target="_self"
             >
             关于
@@ -132,6 +137,7 @@
           <a
             class="CIRCLE"
             href="/atom.xml"
+            rel="noopener noreferrer"
             target="_blank"
             >
             RSS
@@ -142,6 +148,7 @@
           <a
             class="CIRCLE"
             href="/search/"
+            rel="noopener noreferrer"
             target="_self"
             >
             搜索
@@ -212,8 +219,8 @@
 <p>效果图：</p>
 <p><img src="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/beside.png" alt="beside"></p>
 <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>使用 Beside 可以更方便的实现一些前端组件, 典型的包括： Tooltip、Popover、 Dropdown Menu、垂直居中的 Modal 等。</p>
-<h2 id="Beside-的用法"><a href="#Beside-的用法" class="headerlink" title="Beside 的用法"></a>Beside 的用法</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/beside/dist/beside.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"me"</span>&gt;</span>ME<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"you"</span>&gt;</span>YOU<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">beside.init(&#123;</span><br><span class="line">  me: <span class="built_in">document</span>.getElementById(<span class="string">'me'</span>),</span><br><span class="line">  you: <span class="built_in">document</span>.getElementById(<span class="string">'you'</span>),</span><br><span class="line">  where: <span class="string">'top center'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Beside-的用法"><a href="#Beside-的用法" class="headerlink" title="Beside 的用法"></a>Beside 的用法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/beside/dist/beside.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"me"</span>&gt;</span>ME<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"you"</span>&gt;</span>YOU<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">beside.init(&#123;</span><br><span class="line">  me: <span class="built_in">document</span>.getElementById(<span class="string">'me'</span>),</span><br><span class="line">  you: <span class="built_in">document</span>.getElementById(<span class="string">'you'</span>),</span><br><span class="line">  where: <span class="string">'top center'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3 id="基于-Beside-的-UI-component"><a href="#基于-Beside-的-UI-component" class="headerlink" title="基于 Beside 的 UI component"></a>基于 Beside 的 UI component</h3><ul>
 <li><a href="https://github.com/forsigner/fo-popover" target="_blank" rel="external">fo-popover</a> A nice popover for Angular.</li>
 <li><a href="https://github.com/forsigner/fo-tooltip" target="_blank" rel="external">fo-tooltop</a> A nice tooltip for Angular.</li>
@@ -277,6 +284,7 @@
             <a
               class="CIRCLE"
               href="/archives/"
+              rel="noopener noreferrer"
               target="_self"
               >
               博客
@@ -287,6 +295,7 @@
             <a
               class="CIRCLE"
               href="/category/"
+              rel="noopener noreferrer"
               target="_self"
               >
               分类
@@ -297,6 +306,7 @@
             <a
               class="CIRCLE"
               href="/tag/"
+              rel="noopener noreferrer"
               target="_self"
               >
               标签
@@ -307,6 +317,7 @@
             <a
               class="CIRCLE"
               href="/link/"
+              rel="noopener noreferrer"
               target="_self"
               >
               友链
@@ -317,6 +328,7 @@
             <a
               class="CIRCLE"
               href="/about/"
+              rel="noopener noreferrer"
               target="_self"
               >
               关于
@@ -327,6 +339,7 @@
             <a
               class="CIRCLE"
               href="/atom.xml"
+              rel="noopener noreferrer"
               target="_blank"
               >
               RSS
@@ -337,6 +350,7 @@
             <a
               class="CIRCLE"
               href="/search/"
+              rel="noopener noreferrer"
               target="_self"
               >
               搜索

@@ -76,6 +76,7 @@
           <a
             class="CIRCLE"
             href="/archives/"
+            rel="noopener noreferrer"
             target="_self"
             >
             博客
@@ -86,6 +87,7 @@
           <a
             class="CIRCLE"
             href="/category/"
+            rel="noopener noreferrer"
             target="_self"
             >
             分类
@@ -96,6 +98,7 @@
           <a
             class="CIRCLE"
             href="/tag/"
+            rel="noopener noreferrer"
             target="_self"
             >
             标签
@@ -106,6 +109,7 @@
           <a
             class="CIRCLE"
             href="/link/"
+            rel="noopener noreferrer"
             target="_self"
             >
             友链
@@ -116,6 +120,7 @@
           <a
             class="CIRCLE"
             href="/about/"
+            rel="noopener noreferrer"
             target="_self"
             >
             关于
@@ -126,6 +131,7 @@
           <a
             class="CIRCLE"
             href="/atom.xml"
+            rel="noopener noreferrer"
             target="_blank"
             >
             RSS
@@ -136,6 +142,7 @@
           <a
             class="CIRCLE"
             href="/search/"
+            rel="noopener noreferrer"
             target="_self"
             >
             搜索
@@ -218,18 +225,18 @@
 <p>下面来做一个详细的测试，分别看看 IE6 中 inline 元素和 block 元素的表现：</p>
 <p>1）inline 元素 display:inline-block</p>
 <p>IE6 中截图如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.dib-inline</span>, <span class="selector-class">.dib-block</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.dib-inline</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dib-inline</span>, <span class="selector-class">.dib-block</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.dib-inline</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>测试表明：IE6 中 inline 元素只要触发了 hasLayout 其表现就类似于 inline-block，这里设置 display:inline-block; 或者 zoom:1; 等其他属性值可以触发 hasLayout ，表现出来是一样的。</p>
 <p>查看 DEMO</p>
 <p>2）block 元素 display:inline-block</p>
 <p>IE6 中截图如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.dib-inline</span>, <span class="selector-class">.dib-block</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.dib-block</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dib-inline</span>, <span class="selector-class">.dib-block</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.dib-block</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>测试表明：IE6 中 block 元素即使触发了 hasLayout 也不能具有 inline-block 元素不换行的特性。想要 block 元素支持 inline-block 元素的特性，我们可以这样做：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.dib-block</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>:inline;</span><br><span class="line">    <span class="attribute">zoom</span>:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dib-block</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>:inline;</span><br><span class="line">    <span class="attribute">zoom</span>:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>首先让 block 元素转化为 inline 元素，强制其不换行；然后通过 zoom:1 触发 hasLayout，使其可以设置宽高。修复后的 截图如下：</p>
 <p>3）结合现代浏览器</p>
 <p>综上，现代浏览器都支持 display:inline-block ，IE6、7 inline 元素也可以达到同样的效果，IE6、7 block 元素需要设置 display:inline; zoom:1; 它们结合在一起便是：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>; <span class="comment">/* 现代浏览器 +IE6、7 inline 元素 *</span><br><span class="line">*display:inline; /* IE6、7 block 元素 *</span><br><span class="line">*zoom:1;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>; <span class="comment">/* 现代浏览器 +IE6、7 inline 元素 *</span><br><span class="line">*display:inline; /* IE6、7 block 元素 *</span><br><span class="line">*zoom:1;</span></span><br></pre></td></tr></table></figure>
 <p>为了不让支持 CSS2.1 inline-block 的浏览器 重置为 inline，我们针对 IE6、7 做一个 hack。由于现代浏览器也开始支持 zoom 属性，这里只是希望 IE6、7 中生效，所以还是 hack 一下比较合适。至此产生了我们熟悉的兼容各个浏览器的 inline-block 写法。</p>
 <p>小结：IE6、7 并不是不支持 inline-block，只是 block 元素需要做一些处理来达到 inline-block 的效果。</p>
 <h3 id="2-到底什么是-inline-block"><a href="#2-到底什么是-inline-block" class="headerlink" title="2. 到底什么是 inline-block"></a>2. 到底什么是 inline-block</h3><p>说了很多，或许很多朋友还不是太明白到底什么是 inline-block？W3C 在 CSS2.1 The ‘display’ property 中描述如下：</p>
@@ -307,11 +314,11 @@
 <p>Firefox 中 letter-spacing 负值的绝对值大于空隙大小后，会导致元素整体位置向右偏移；</p>
 <p>Safari 中 letter-spacing 负值的绝对值大于空隙大小后，内部会发生重叠。</p>
 <p>第三步：修复 IE6、7 中始终存在的 1px 空隙<br>既然 letter-spacing 已经无能为力了，那就试试 word-spacing 吧，直接设置 word-spacing:-1px。这里需要注意的是，letter-spacing 和 word-spacing 同时使用可能导致冲突，所以我们需要在 IE6、7 中 hack 掉 letter-spacing。最终代码如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:0</span>;<span class="comment">/* 所有浏览器 */</span></span><br><span class="line"><span class="selector-tag">letter-spacing</span><span class="selector-pseudo">:-5px</span>;<span class="comment">/* Safari 等不支持字体大小为 0 的浏览器 */</span></span><br><span class="line">*<span class="selector-tag">letter-spacing</span><span class="selector-pseudo">:normal</span>;</span><br><span class="line"><span class="selector-tag">word-spacing</span><span class="selector-pseudo">:-1px</span>;<span class="comment">/* IE6、7 */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:0</span>;<span class="comment">/* 所有浏览器 */</span></span><br><span class="line"><span class="selector-tag">letter-spacing</span><span class="selector-pseudo">:-5px</span>;<span class="comment">/* Safari 等不支持字体大小为 0 的浏览器 */</span></span><br><span class="line">*<span class="selector-tag">letter-spacing</span><span class="selector-pseudo">:normal</span>;</span><br><span class="line"><span class="selector-tag">word-spacing</span><span class="selector-pseudo">:-1px</span>;<span class="comment">/* IE6、7 */</span></span><br></pre></td></tr></table></figure>
 <p>第四步：子元素重置回正常值<br>上述所有操作都是在父元素设置的，那么子元素都会继承这些属性，字体大小为0了，子元素就什么都看不到了，这并不是我们想要的。 同时字符和单词间距我们也要把它重置为默认值。「font-size: 12px; letter-spacing: normal; word-spacing: normal;」<br>最后：inline-block 更好的复用<br>或许你会担心每次我都要去看字体和空隙之间大小的关系吗？其实不然，通常情况下，全局字体都已经在 body 中指定了，根据全局字体设置合适的 letter-spacing 负值即可。如此一来，我们便可以放心大胆的使用 inline-block 了，结合 OOCSS 的思想，可以抽离出两个复用的类，在需要设置 inline-block 元素的父级元素上定义一个「.dib-wrap」，该元素自身定义为「.dib」。这里还有一个问题需要注意的是：由于 inline-block 具有 inline 元素的特性，在垂直方向上很多时候我们并不希望元素以「vertical-align:baseline」方式来呈现，所以在「.dib-wrap」中统一重置为「vertical-align:top」即可。</p>
-<h3 id="3-去除-inline-block-空隙终极解决方案（2012年8月17日更新）"><a href="#3-去除-inline-block-空隙终极解决方案（2012年8月17日更新）" class="headerlink" title="3. 去除 inline-block 空隙终极解决方案（2012年8月17日更新）"></a>3. 去除 inline-block 空隙终极解决方案（2012年8月17日更新）</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">.dib-wrap &#123;</span><br><span class="line">    font-size:0;/* 所有浏览器 */</span><br><span class="line">    *word-spacing:-1px;/* IE6、7 */</span><br><span class="line">&#125;</span><br><span class="line">.dib-wrap .dib&#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    letter-spacing: normal;</span><br><span class="line">    word-spacing: normal;</span><br><span class="line">    vertical-align:top;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (-webkit-min-device-pixel-ratio:0)&#123;</span><br><span class="line">/* firefox 中 letter-spacing 会导致脱离普通流的元素水平位移 */</span><br><span class="line">.dib-wrap&#123;</span><br><span class="line">    letter-spacing:-5px;/* Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节*/</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">.dib &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    *display:inline;</span><br><span class="line">    *zoom:1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-去除-inline-block-空隙终极解决方案（2012年8月17日更新）"><a href="#3-去除-inline-block-空隙终极解决方案（2012年8月17日更新）" class="headerlink" title="3. 去除 inline-block 空隙终极解决方案（2012年8月17日更新）"></a>3. 去除 inline-block 空隙终极解决方案（2012年8月17日更新）</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.dib-wrap &#123;</span><br><span class="line">    font-size:0;/* 所有浏览器 */</span><br><span class="line">    *word-spacing:-1px;/* IE6、7 */</span><br><span class="line">&#125;</span><br><span class="line">.dib-wrap .dib&#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    letter-spacing: normal;</span><br><span class="line">    word-spacing: normal;</span><br><span class="line">    vertical-align:top;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (-webkit-min-device-pixel-ratio:0)&#123;</span><br><span class="line">/* firefox 中 letter-spacing 会导致脱离普通流的元素水平位移 */</span><br><span class="line">.dib-wrap&#123;</span><br><span class="line">    letter-spacing:-5px;/* Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节*/</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">.dib &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    *display:inline;</span><br><span class="line">    *zoom:1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其实在 YUI 3 中也全面运用了 inline-block 作为基础布局，YUI 3 是这样解决的：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">.yui3-g &#123;</span><br><span class="line">    letter-spacing: -0.31em; /* webkit: collapse white-space between units */</span><br><span class="line">    *letter-spacing: normal; /* reset IE &lt; 8 */</span><br><span class="line">    word-spacing: -0.43em; /* IE &lt; 8 &amp;&amp; gecko: collapse white-space between units */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.yui3-u &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    zoom: 1; *display: inline; /* IE &lt; 8: fake inline-block */</span><br><span class="line">    letter-spacing: normal;</span><br><span class="line">    word-spacing: normal;</span><br><span class="line">    vertical-align: top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.yui3-g &#123;</span><br><span class="line">    letter-spacing: -0.31em; /* webkit: collapse white-space between units */</span><br><span class="line">    *letter-spacing: normal; /* reset IE &lt; 8 */</span><br><span class="line">    word-spacing: -0.43em; /* IE &lt; 8 &amp;&amp; gecko: collapse white-space between units */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.yui3-u &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    zoom: 1; *display: inline; /* IE &lt; 8: fake inline-block */</span><br><span class="line">    letter-spacing: normal;</span><br><span class="line">    word-spacing: normal;</span><br><span class="line">    vertical-align: top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>显然，这里纯粹使用了 letter-spacing 和 word-spacing 来控制元素间的空隙，局限性极大，-0.31em 和 -0.43em 只是因为 YUI 3 全局 cssfonts.css 里设置是：「body { font:13px/1.231 arial,helvetica,clean,sans-serif; }」。</p>
 <p>当然，如果你坚持使用把 html 写在一行的方式来达到去除 inline-block 空隙的目的，我只能说：一切以牺牲结构来兼容表现的行为都是耍流氓！所以探讨此种方式去除空隙也将是无意义的，不在本文和作者考虑范围之内。</p>
 <h3 id="4-结局——本文产生的一些观点如下："><a href="#4-结局——本文产生的一些观点如下：" class="headerlink" title="4. 结局——本文产生的一些观点如下："></a>4. 结局——本文产生的一些观点如下：</h3><p>IE5.5 后开始支持 inline-block， 比 CSS2.1 更早提出 inline-block 的概念并作为所谓的「私有属性值」使用。但是它所支持的 inline-block 不能等同于 CSS2.1 中的 inline-block，IE 5.5、6、7 、8（Q）中 block 元素对 inline-block 支持不完整，因此二者表现出来的效果是不完全一致。<br>产生 inline-block 空隙的根本性原因是：HTML 中的换行符、空格符、制表符等合并为空白符，字体大小不为 0 的情况下，空白符自然占据一定的宽度，因此产生了元素间的空隙。<br>慎用 -webkit-text-size-adjust:none，它将会导致页面无法通过缩放来改变字体大小。</p>
@@ -395,6 +402,7 @@
             <a
               class="CIRCLE"
               href="/archives/"
+              rel="noopener noreferrer"
               target="_self"
               >
               博客
@@ -405,6 +413,7 @@
             <a
               class="CIRCLE"
               href="/category/"
+              rel="noopener noreferrer"
               target="_self"
               >
               分类
@@ -415,6 +424,7 @@
             <a
               class="CIRCLE"
               href="/tag/"
+              rel="noopener noreferrer"
               target="_self"
               >
               标签
@@ -425,6 +435,7 @@
             <a
               class="CIRCLE"
               href="/link/"
+              rel="noopener noreferrer"
               target="_self"
               >
               友链
@@ -435,6 +446,7 @@
             <a
               class="CIRCLE"
               href="/about/"
+              rel="noopener noreferrer"
               target="_self"
               >
               关于
@@ -445,6 +457,7 @@
             <a
               class="CIRCLE"
               href="/atom.xml"
+              rel="noopener noreferrer"
               target="_blank"
               >
               RSS
@@ -455,6 +468,7 @@
             <a
               class="CIRCLE"
               href="/search/"
+              rel="noopener noreferrer"
               target="_self"
               >
               搜索

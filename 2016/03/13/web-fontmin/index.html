@@ -16,20 +16,20 @@
   
 
   <meta name="description" content="关于@font-face @font-face 是CSS3中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。
-@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    src: url(&quot;/fonts/">
+123456789101112@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    sr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web-Fontmin -- 在线提取你需要的字体">
 <meta property="og:url" content="http://www.forsigner.com/2016/03/13/web-fontmin/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="关于@font-face @font-face 是CSS3中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。
-@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    src: url(&quot;/fonts/">
+123456789101112@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    sr">
 <meta property="og:image" content="http://forsigner.com/images/web-fontmin/page-1.png">
 <meta property="og:image" content="http://forsigner.com/images/web-fontmin/page-2.png">
 <meta property="og:updated_time" content="2016-07-12T02:05:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web-Fontmin -- 在线提取你需要的字体">
 <meta name="twitter:description" content="关于@font-face @font-face 是CSS3中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。
-@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    src: url(&quot;/fonts/">
+123456789101112@font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    sr">
 <meta name="twitter:image" content="http://forsigner.com/images/web-fontmin/page-1.png">
 
   
@@ -82,6 +82,7 @@
           <a
             class="CIRCLE"
             href="/archives/"
+            rel="noopener noreferrer"
             target="_self"
             >
             博客
@@ -92,6 +93,7 @@
           <a
             class="CIRCLE"
             href="/category/"
+            rel="noopener noreferrer"
             target="_self"
             >
             分类
@@ -102,6 +104,7 @@
           <a
             class="CIRCLE"
             href="/tag/"
+            rel="noopener noreferrer"
             target="_self"
             >
             标签
@@ -112,6 +115,7 @@
           <a
             class="CIRCLE"
             href="/link/"
+            rel="noopener noreferrer"
             target="_self"
             >
             友链
@@ -122,6 +126,7 @@
           <a
             class="CIRCLE"
             href="/about/"
+            rel="noopener noreferrer"
             target="_self"
             >
             关于
@@ -132,6 +137,7 @@
           <a
             class="CIRCLE"
             href="/atom.xml"
+            rel="noopener noreferrer"
             target="_blank"
             >
             RSS
@@ -142,6 +148,7 @@
           <a
             class="CIRCLE"
             href="/search/"
+            rel="noopener noreferrer"
             target="_self"
             >
             搜索
@@ -201,7 +208,7 @@
   <div class="article-content">
     
       <h1 id="关于-font-face"><a href="#关于-font-face" class="headerlink" title="关于@font-face"></a>关于@font-face</h1><p><strong> <a href="http://www.w3.org/TR/css3-fonts/" target="_blank" rel="external">@font-face</a></strong> 是<a href="http://www.w3.org/TR/CSS/#css3" target="_blank" rel="external">CSS3</a>中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">"SentyZHAO"</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot"</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot?#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>), <span class="comment">/* chrome, firefox */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.ttf"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.svg#SentyZHAO"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">"SentyZHAO"</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot"</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot?#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>), <span class="comment">/* chrome, firefox */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.ttf"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.svg#SentyZHAO"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="Webfont-Generator-Font-Squirrel"><a href="#Webfont-Generator-Font-Squirrel" class="headerlink" title="Webfont Generator - Font Squirrel"></a>Webfont Generator - Font Squirrel</h1><p>在上面的代码片段可以看出，要兼容性好的使用 @font-face，我们同时需要 eot 、woff、ttf、svg 格式的字体。常用的工具是 <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank" rel="external">fontsquirrel</a>，一个字体生成器，可以在线生成  eot 、woff、ttf、svg 格式的字体，相信很多前端用过，具体用法可以官网试试。</p>
 <h1 id="Fontmin"><a href="#Fontmin" class="headerlink" title="Fontmin"></a>Fontmin</h1><p>第一个纯 JavaScript 字体子集化方案，一个百度出品的优秀工具。<br>Fontmin 有什么用呢？</p>
 <blockquote>
@@ -215,7 +222,7 @@
 </ol>
 <h2 id="Fontmin-应用场景"><a href="#Fontmin-应用场景" class="headerlink" title="Fontmin 应用场景"></a>Fontmin 应用场景</h2><p>有时候，我们想给网站的 Logo 、 Slogan 、标题、活动页等的中文自定义字体，我们可以使用 @font-face 引入 Web 字体，但是完整的中文字体库都是 8M 10M ，加载性能非常差，所以我们提取部分我们使用到的字体，这样可以把字体文件变成几KB。</p>
 <h2 id="Fontmin-用法"><a href="#Fontmin-用法" class="headerlink" title="Fontmin 用法"></a>Fontmin 用法</h2><p>Fontmin 的用法很简单：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Fontmin = <span class="built_in">require</span>(<span class="string">'fontmin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fontmin = <span class="keyword">new</span> Fontmin()</span><br><span class="line">    .src(<span class="string">'fonts/*.ttf'</span>)</span><br><span class="line">    .dest(<span class="string">'build/fonts'</span>);</span><br><span class="line"></span><br><span class="line">fontmin.run(<span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(files[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// =&gt; &#123; contents: &lt;Buffer 00 01 00 ...&gt; &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Fontmin = <span class="built_in">require</span>(<span class="string">'fontmin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fontmin = <span class="keyword">new</span> Fontmin()</span><br><span class="line">    .src(<span class="string">'fonts/*.ttf'</span>)</span><br><span class="line">    .dest(<span class="string">'build/fonts'</span>);</span><br><span class="line"></span><br><span class="line">fontmin.run(<span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(files[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// =&gt; &#123; contents: &lt;Buffer 00 01 00 ...&gt; &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>详细介绍和用法可以看这篇文章： <a href="http://efe.baidu.com/blog/fontmin-getting-started/" target="_blank" rel="external">http://efe.baidu.com/blog/fontmin-getting-started/</a></p>
 <h2 id="基于-Fontmin-的工具"><a href="#基于-Fontmin-的工具" class="headerlink" title="基于 Fontmin 的工具"></a>基于 Fontmin 的工具</h2><ul>
 <li><strong><a href="https://github.com/ecomfe/fontmin-app" target="_blank" rel="external">fontmin-app</a></strong> - Fontmin 桌面版 App，需下载安装使用</li>
@@ -293,6 +300,7 @@
             <a
               class="CIRCLE"
               href="/archives/"
+              rel="noopener noreferrer"
               target="_self"
               >
               博客
@@ -303,6 +311,7 @@
             <a
               class="CIRCLE"
               href="/category/"
+              rel="noopener noreferrer"
               target="_self"
               >
               分类
@@ -313,6 +322,7 @@
             <a
               class="CIRCLE"
               href="/tag/"
+              rel="noopener noreferrer"
               target="_self"
               >
               标签
@@ -323,6 +333,7 @@
             <a
               class="CIRCLE"
               href="/link/"
+              rel="noopener noreferrer"
               target="_self"
               >
               友链
@@ -333,6 +344,7 @@
             <a
               class="CIRCLE"
               href="/about/"
+              rel="noopener noreferrer"
               target="_self"
               >
               关于
@@ -343,6 +355,7 @@
             <a
               class="CIRCLE"
               href="/atom.xml"
+              rel="noopener noreferrer"
               target="_blank"
               >
               RSS
@@ -353,6 +366,7 @@
             <a
               class="CIRCLE"
               href="/search/"
+              rel="noopener noreferrer"
               target="_self"
               >
               搜索
