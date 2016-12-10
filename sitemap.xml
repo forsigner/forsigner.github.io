@@ -37,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/03/25/css-clearfix/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -52,6 +45,13 @@
   
   <url>
     <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2013/03/25/css-clearfix/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -72,13 +72,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/02/23/fexo/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-tw/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -86,14 +79,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/08/22/git-command/</loc>
+    <loc>http://www.forsigner.com/tag/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/project/index.html</loc>
+    <loc>http://www.forsigner.com/2016/02/23/fexo/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -107,6 +100,13 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/2013/08/22/git-command/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/2013/03/18/iehaslayout/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -114,7 +114,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2015/03/12/ionic-android-package/</loc>
+    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -156,13 +156,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -177,6 +170,13 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/2015/01/03/my-tech/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -184,7 +184,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
+    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2015/03/12/ionic-android-package/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -198,13 +205,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/02/16/node-pngdefry/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -212,7 +212,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
+    <loc>http://www.forsigner.com/2016/02/16/node-pngdefry/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -275,7 +275,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/tag/index.html</loc>
+    <loc>http://www.forsigner.com/project/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
