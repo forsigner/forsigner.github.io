@@ -264,14 +264,6 @@
 
 </li>
 <li class="item-post item">
-  <span class="post-date">03-25</span>
-
-  
-  <a class="post-title" href="/2013/03/25/css-clearfix/">清除浮动的方法</a>
-
-
-</li>
-<li class="item-post item">
   <span class="post-date">03-20</span>
 
   
@@ -280,10 +272,10 @@
 
 </li>
 <li class="item-post item">
-  <span class="post-date">03-10</span>
+  <span class="post-date">03-25</span>
 
   
-  <a class="post-title" href="/2016/03/10/fexo-doc-en/">Fexo Doc</a>
+  <a class="post-title" href="/2013/03/25/css-clearfix/">清除浮动的方法</a>
 
 
 </li>
@@ -291,7 +283,7 @@
   <span class="post-date">03-10</span>
 
   
-  <a class="post-title" href="/2016/03/10/fexo-doc-zh-cn/">Fexo 文档</a>
+  <a class="post-title" href="/2016/03/10/fexo-doc-en/">Fexo Doc</a>
 
 
 </li>
@@ -312,18 +304,18 @@
 
 </li>
 <li class="item-post item">
-  <span class="post-date">03-18</span>
+  <span class="post-date">03-10</span>
 
   
-  <a class="post-title" href="/2013/03/18/iehaslayout/">IE Haslayout</a>
+  <a class="post-title" href="/2016/03/10/fexo-doc-zh-cn/">Fexo 文档</a>
 
 
 </li>
 <li class="item-post item">
-  <span class="post-date">03-28</span>
+  <span class="post-date">03-18</span>
 
   
-  <a class="post-title" href="/2013/03/28/inline-block/">关于inline-block最好的一篇文章</a>
+  <a class="post-title" href="/2013/03/18/iehaslayout/">IE Haslayout</a>
 
 
 </li>
@@ -344,10 +336,10 @@
 
 </li>
 <li class="item-post item">
-  <span class="post-date">09-01</span>
+  <span class="post-date">03-28</span>
 
   
-  <a class="post-title" href="/2013/09/01/javascript-style-guide/">JavaScript 编码风格指南</a>
+  <a class="post-title" href="/2013/03/28/inline-block/">关于inline-block最好的一篇文章</a>
 
 
 </li>
@@ -360,14 +352,6 @@
 
 </li>
 <li class="item-post item">
-  <span class="post-date">03-07</span>
-
-  
-  <a class="post-title" href="/2015/03/07/mac-android-debug/">ionic Mac下连接android手机调试</a>
-
-
-</li>
-<li class="item-post item">
   <span class="post-date">02-18</span>
 
   
@@ -376,18 +360,26 @@
 
 </li>
 <li class="item-post item">
-  <span class="post-date">12-06</span>
+  <span class="post-date">03-07</span>
 
   
-  <a class="post-title" href="/2013/12/06/sass-sourcemap/">在Chrome下调试Sass</a>
+  <a class="post-title" href="/2015/03/07/mac-android-debug/">ionic Mac下连接android手机调试</a>
 
 
 </li>
 <li class="item-post item">
-  <span class="post-date">02-27</span>
+  <span class="post-date">09-01</span>
 
   
-  <a class="post-title" href="/2015/02/27/setting-ionic/">Mac中配置ionic框架</a>
+  <a class="post-title" href="/2013/09/01/javascript-style-guide/">JavaScript 编码风格指南</a>
+
+
+</li>
+<li class="item-post item">
+  <span class="post-date">12-06</span>
+
+  
+  <a class="post-title" href="/2013/12/06/sass-sourcemap/">在Chrome下调试Sass</a>
 
 
 </li>
@@ -404,6 +396,14 @@
 
   
   <a class="post-title" href="/2016/03/13/web-fontmin/">Web-Fontmin -- 在线提取你需要的字体</a>
+
+
+</li>
+<li class="item-post item">
+  <span class="post-date">02-27</span>
+
+  
+  <a class="post-title" href="/2015/02/27/setting-ionic/">Mac中配置ionic框架</a>
 
 
 </li>
@@ -452,18 +452,18 @@
 
 </li>
 <li class="item-post item">
-  <span class="post-date">08-22</span>
-
-  
-  <a class="post-title" href="/2013/08/22/git-command/">常用git命令</a>
-
-
-</li>
-<li class="item-post item">
   <span class="post-date">11-12</span>
 
   
   <a class="post-title" href="/2012/11/12/github-pages-custom-doman/">Github Pages绑定域名</a>
+
+
+</li>
+<li class="item-post item">
+  <span class="post-date">08-22</span>
+
+  
+  <a class="post-title" href="/2013/08/22/git-command/">常用git命令</a>
 
 
 </li>
@@ -717,7 +717,22 @@
       // load success
     });
   }
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
