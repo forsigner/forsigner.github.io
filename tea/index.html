@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Prez</title>
+
+    <meta name="description" content="-- DESCRIPTION HERE --">
+    <meta name="author" content="forsigner">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="css/highlight/styles/zenburn.css" id="highlight-theme">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <link rel="stylesheet" href="css/custom.css">
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+      <div class="slides"><section id="cover" class="slide" data-has-notes="false">
+<h2>API 管理工具</h2>
+</section>
+
+<section id="chapter-pr" class="chapter">
+<section id="pr-01" class="slide" data-has-notes="false">
+<h3>当前的 API管理方式</h3>
+</section>
+
+<section id="pr-02" class="slide" data-has-notes="false">
+<p><img src="images/api-4.png" alt=""></p>
+</section>
+
+<section id="pr-03" class="slide" data-has-notes="false">
+<h4>前端如何Mock这些接口 ?</h4><h2>复制、复制、复制...</h2>
+</section>
+
+<section id="pr-04" class="slide" data-has-notes="false">
+<h3>什么问题?</h3>
+</section>
+
+<section id="pr-05" class="slide" data-has-notes="false">
+<h4>数量多，重复工作多</h4><p><img src="images/dir.png" alt=""></p>
+</section>
+
+<section id="pr-06" class="slide" data-has-notes="false">
+<h4>API文档格式不统一</h4>
+</section>
+
+<section id="pr-07" class="slide" data-has-notes="false">
+<p><img src="images/api-1.png" alt=""></p>
+</section>
+
+<section id="pr-08" class="slide" data-has-notes="false">
+<p><img src="images/api-2.png" alt=""></p>
+</section>
+
+<section id="pr-09" class="slide" data-has-notes="false">
+<p><img src="images/api-3.png" alt=""></p>
+</section>
+
+<section id="pr-10" class="slide" data-has-notes="false">
+<h3>不同项目使用的API Mock方法不同</h3>
+</section>
+
+<section id="pr-11" class="slide" data-has-notes="false">
+<p><img src="images/api-app-js.png" alt=""></p>
+</section>
+
+<section id="pr-12" class="slide" data-has-notes="false">
+<p><img src="images/api-mock.png" alt=""></p>
+</section>
+
+<section id="pr-13" class="slide" data-has-notes="false">
+<h3>接口变动问题，变动后信息不同步，影响后续联调</h3>
+</section>
+
+<section id="pr-14" class="slide" data-has-notes="false">
+<h3>我们希望</h3><ul>
+<li>自动化</li>
+<li>Mock 统一</li>
+<li>智能提醒</li>
+</ul>
+</section>
+</section>
+
+<section id="name" class="slide" data-has-notes="false">
+<h1>Moc</h1><p>Koa + Angular + Mongo</p>
+<p><a href="http://git.ucweb.local/forsigner/moc">http://git.ucweb.local/forsigner/moc</a></p>
+</section>
+
+<section id="future" class="slide" data-has-notes="false">
+<h3>目前进度</h3><ul>
+<li><p>已完成:</p>
+<ul>
+<li>完成了Web端70%</li>
+</ul>
+</li>
+<li><p>未完成：</p>
+<ul>
+<li>命令行支持<ul>
+<li>f moc pull</li>
+<li>f moc push</li>
+</ul>
+</li>
+<li>智能提醒</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section id="preview" class="slide" data-has-notes="false">
+<h2>Workflow</h2><pre><code class="lang-bash">$ f init
+$ f sync
+$ f moc pull &amp;&amp; f moc push
+$ f w
+$ f s
+</code></pre>
+<p><a href="http://moc.dev.uae.uc.cn/">http://moc.dev.uae.uc.cn/</a></p>
+<p><a href="http://git.ucweb.local/pf/moc">http://git.ucweb.local/pf/moc</a></p>
+</section>
+
+<section id="thanks" class="slide" data-has-notes="false">
+<h1>Thanks</h1>
+</section></div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: Reveal.getQueryHash().transition || 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        //{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true }
+      ]
+    });
+    </script>
+
+    <script src="js/dynamic-theme.js"></script><script src="js/custom.js"></script>
+
+  </body>
+</html>
