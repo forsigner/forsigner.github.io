@@ -244,7 +244,7 @@
     
       <p>前端开发时，调试比较方便，一个Chrome，不用编译不用等待，非常方便。ionic开发就不一样了，界面调试虽然可以用Chrome，但是Chrome代替不了真实的手机环境，ionic程序经常可以在Chrome的emulator可以运行，但到着呢是的手机环境就撒娇了。有两种方法可以对ionic程序进行调试，一种是虚拟机，另一种是真实的android手机。虚拟机的优点是就是你不需要一部android手机，只要配置好android开发环境就好了，但虚拟机慢得实在让人无法忍受；另一种就是真机调试咯，真机调试优点就是快。在Mac下，可能会遇到adb无法连接android手机的情况，下面是我的解决办法。<br><a id="more"></a></p>
 <h2 id="获取Android设备的Vendor-ID"><a href="#获取Android设备的Vendor-ID" class="headerlink" title="获取Android设备的Vendor ID"></a>获取Android设备的Vendor ID</h2><p>执行以下命令查看连接的USB设备信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ system_profiler SPUSBDataType</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$ system_profiler SPUSBDataType</div></pre></td></tr></table></figure>
 <p>执行完这条命令后，找到你手机的连接信息，例如我的手机手魅蓝，连接信息如下:</p>
 <p><img src="http://d.pcs.baidu.com/thumbnail/422fa50e99b8336a79525ee68eaa94ea?fid=1749149254-250528-231176613827012&amp;time=1428202800&amp;rt=pr&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-cHKfxQvHxOWs41vd%2bypZWLOkVv0%3d&amp;expires=8h&amp;prisign=unknow&amp;chkbd=0&amp;chkv=0&amp;size=c1920_u1080&amp;quality=90" alt="usb连接信息"></p>
 <p>上图中的”0x2a45”，就是所需要的Vender ID。</p>
@@ -253,11 +253,11 @@
 <p>记得格式要争取，不然会出现一下错误：</p>
 <p><img src="http://d.pcs.baidu.com/thumbnail/9bc09a4ebfb0c0d1f2a226893c43f9b7?fid=1749149254-250528-983441257023133&amp;time=1428202800&amp;rt=pr&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-VHC7XVRfdvTMYkEQfscxn%2b8pA5k%3d&amp;expires=8h&amp;prisign=unknow&amp;chkbd=0&amp;chkv=0&amp;size=c1920_u1080&amp;quality=90" alt="更新"></p>
 <h3 id="重启adb"><a href="#重启adb" class="headerlink" title="重启adb"></a>重启adb</h3><p>执行以下命令重启adb</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ adb kill-server</span><br><span class="line">$ adb start-server</span><br><span class="line">$ adb devices</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$ adb kill-server</div><div class="line">$ adb start-server</div><div class="line">$ adb devices</div></pre></td></tr></table></figure>
 <p>执行完<code>adb devices</code>后看到以下反馈就说明你成功了：</p>
 <p><img src="http://d.pcs.baidu.com/thumbnail/7fa250bf3278858e28a9da70583a3d94?fid=1749149254-250528-658210706645655&amp;time=1428202800&amp;rt=pr&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-fJOG4y3Ix5Ob%2foS%2f%2b5iJxTXHYlg%3d&amp;expires=8h&amp;prisign=unknow&amp;chkbd=0&amp;chkv=0&amp;size=c1920_u1080&amp;quality=90" alt="检查"></p>
 <h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>现在你就可以使用真机调试ionic程序了，执行一下命令就可以了：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ ionic run android</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$ ionic run android</div></pre></td></tr></table></figure>
 <p>当然,你使用Eclipse或Android Studio开发Android App时，同样可以使用这种方法连接你的Android设备。</p>
 
     
@@ -473,22 +473,7 @@
       // load success
     });
   }
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
