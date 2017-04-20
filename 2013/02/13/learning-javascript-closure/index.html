@@ -15,19 +15,17 @@
     <meta name="keywords" content="JavaScript," />
   
 
-  <meta name="description" content="从开始学习JavaScript时，就听说闭包是个强大的东西，但也是一个很复杂很难懂的东西。一直以来也对闭包似懂非懂，
-直到最近在读汤姆大叔的深入理解JavaScript系列 才基本弄懂什么是闭包，这里感学大叔无私的分享，这种无私的分享精神非常值得学习。下面关于我对闭包的描述大多数也是从大叔那看来。">
+  <meta name="description" content="从开始学习JavaScript时，就听说闭包是个强大的东西，但也是一个很复杂很难懂的东西。一直以来也对闭包似懂非懂， 直到最近在读汤姆大叔的深入理解JavaScript系列 才基本弄懂什么是闭包，这里感学大叔无私的分享，这种无私的分享精神非常值得学习。下面关于我对闭包的描述大多数也是从大叔那看来。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript闭包">
 <meta property="og:url" content="http://www.forsigner.com/2013/02/13/learning-javascript-closure/index.html">
 <meta property="og:site_name" content="forsigner的博客">
-<meta property="og:description" content="从开始学习JavaScript时，就听说闭包是个强大的东西，但也是一个很复杂很难懂的东西。一直以来也对闭包似懂非懂，
-直到最近在读汤姆大叔的深入理解JavaScript系列 才基本弄懂什么是闭包，这里感学大叔无私的分享，这种无私的分享精神非常值得学习。下面关于我对闭包的描述大多数也是从大叔那看来。">
+<meta property="og:description" content="从开始学习JavaScript时，就听说闭包是个强大的东西，但也是一个很复杂很难懂的东西。一直以来也对闭包似懂非懂， 直到最近在读汤姆大叔的深入理解JavaScript系列 才基本弄懂什么是闭包，这里感学大叔无私的分享，这种无私的分享精神非常值得学习。下面关于我对闭包的描述大多数也是从大叔那看来。">
 <meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript闭包">
-<meta name="twitter:description" content="从开始学习JavaScript时，就听说闭包是个强大的东西，但也是一个很复杂很难懂的东西。一直以来也对闭包似懂非懂，
-直到最近在读汤姆大叔的深入理解JavaScript系列 才基本弄懂什么是闭包，这里感学大叔无私的分享，这种无私的分享精神非常值得学习。下面关于我对闭包的描述大多数也是从大叔那看来。">
+<meta name="twitter:description" content="从开始学习JavaScript时，就听说闭包是个强大的东西，但也是一个很复杂很难懂的东西。一直以来也对闭包似懂非懂， 直到最近在读汤姆大叔的深入理解JavaScript系列 才基本弄懂什么是闭包，这里感学大叔无私的分享，这种无私的分享精神非常值得学习。下面关于我对闭包的描述大多数也是从大叔那看来。">
 
   
 
@@ -53,6 +51,23 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
   </script>
 
 
@@ -270,10 +285,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2013/02/12/javascript-callback/">
+    <a class="show pull-left" href="/2013/02/16/dont-make-me-think/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2013/02/16/dont-make-me-think/">
+    <a class="show pull-right" href="/2013/02/12/javascript-callback/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -418,6 +433,10 @@
 
 
 
+    
+
+    
+	
   </div>
 
   

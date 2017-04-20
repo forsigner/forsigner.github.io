@@ -15,21 +15,19 @@
     <meta name="keywords" content="JavaScript," />
   
 
-  <meta name="description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。
-这个DOM元素位置引擎">
+  <meta name="description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。 这个DOM元素位置引擎">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="怎样打造一个DOM元素位置引擎 (一)">
 <meta property="og:url" content="http://www.forsigner.com/2016/03/06/beside-1/index.html">
 <meta property="og:site_name" content="forsigner的博客">
-<meta property="og:description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。
-这个DOM元素位置引擎">
+<meta property="og:description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。 这个DOM元素位置引擎">
 <meta property="og:image" content="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/fo-popover.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/beside.png">
 <meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎样打造一个DOM元素位置引擎 (一)">
-<meta name="twitter:description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。
-这个DOM元素位置引擎">
+<meta name="twitter:description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。 这个DOM元素位置引擎">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/fo-popover.png">
 
   
@@ -56,6 +54,23 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
   </script>
 
 
@@ -280,10 +295,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2016/03/04/browser-md5-file/">
+    <a class="show pull-left" href="/2016/03/10/fexo-doc-zh-cn/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2016/03/10/fexo-doc-zh-cn/">
+    <a class="show pull-right" href="/2016/03/04/browser-md5-file/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -428,6 +443,10 @@
 
 
 
+    
+
+    
+	
   </div>
 
   
