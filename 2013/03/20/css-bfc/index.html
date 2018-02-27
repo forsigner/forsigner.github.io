@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://www.forsigner.com/2013/03/20/css-bfc/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="BFC的定义BFC是 W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。BFC在创建了 Block Formatting Context 的元素中，其子元素会一个接一个地放置。垂直方向上他们的起点是一个包含块的顶部，两个相邻的元素之间的垂直距离取决于‘margin’ 特性。在 Block Formatting Context 中相邻的块级元">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS BFC(Block Formatting Context)">
@@ -255,7 +256,7 @@
 <p>3.嵌套元素Margin边距折叠问题的解决</p>
 <p>按照BFC的定义，只有同属于一个BFC时，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。</p>
 <p>因此要解决margin重叠问题，只要让它们不在同一个BFC就行了，但是对于两个相邻元素来说，意义不大，没有必要给它们加个外壳，但是对于嵌套元素来说就很有必要了，只要把父元素设为BFC就可以了。这样子元素的margin就不会和父元素的margin发生重叠了。</p>
-<p>摘自：<a href="http://www.w3cmm.com/other/css-bfcblock-formatting-context.html" target="_blank" rel="external">http://www.w3cmm.com/other/css-bfcblock-formatting-context.html</a></p>
+<p>摘自：<a href="http://www.w3cmm.com/other/css-bfcblock-formatting-context.html" target="_blank" rel="noopener">http://www.w3cmm.com/other/css-bfcblock-formatting-context.html</a></p>
 
     
   </div>
@@ -286,10 +287,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2013/03/25/css-clearfix/">
+    <a class="show pull-left" href="/2013/03/18/iehaslayout/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2013/03/18/iehaslayout/">
+    <a class="show pull-right" href="/2013/03/25/css-clearfix/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -436,6 +437,8 @@
 
     
 
+    
+	
     
 	
   </div>

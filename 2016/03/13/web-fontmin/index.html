@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://www.forsigner.com/2016/03/13/web-fontmin/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="关于@font-face @font-face 是CSS3中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。 @font-face &amp;#123;    font-family: &quot;SentyZHAO&quot;;    src: url(&quot;/fonts/">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://forsigner.com/images/web-fontmin/page-1.png">
 <meta property="og:image" content="http://forsigner.com/images/web-fontmin/page-2.png">
 <meta property="og:updated_time" content="2017-02-04T06:12:54.000Z">
@@ -240,9 +241,9 @@
 
   <div class="article-content">
     
-      <h1 id="关于-font-face"><a href="#关于-font-face" class="headerlink" title="关于@font-face"></a>关于@font-face</h1><p><strong> <a href="http://www.w3.org/TR/css3-fonts/" target="_blank" rel="external">@font-face</a></strong> 是<a href="http://www.w3.org/TR/CSS/#css3" target="_blank" rel="external">CSS3</a>中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">"SentyZHAO"</span>;</div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot"</span>); <span class="comment">/* IE9 */</span></div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot?#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="comment">/* IE6-IE8 */</span></div><div class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>), <span class="comment">/* chrome, firefox */</span></div><div class="line"></div><div class="line">    <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */</span></div><div class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.ttf"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.svg#SentyZHAO"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); <span class="comment">/* iOS 4.1- */</span></div><div class="line">    <span class="attribute">font-style</span>: normal;</div><div class="line">    <span class="attribute">font-weight</span>: normal;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Webfont-Generator-Font-Squirrel"><a href="#Webfont-Generator-Font-Squirrel" class="headerlink" title="Webfont Generator - Font Squirrel"></a>Webfont Generator - Font Squirrel</h1><p>在上面的代码片段可以看出，要兼容性好的使用 @font-face，我们同时需要 eot 、woff、ttf、svg 格式的字体。常用的工具是 <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank" rel="external">fontsquirrel</a>，一个字体生成器，可以在线生成  eot 、woff、ttf、svg 格式的字体，相信很多前端用过，具体用法可以官网试试。</p>
+      <h1 id="关于-font-face"><a href="#关于-font-face" class="headerlink" title="关于@font-face"></a>关于@font-face</h1><p><strong> <a href="http://www.w3.org/TR/css3-fonts/" target="_blank" rel="noopener">@font-face</a></strong> 是<a href="http://www.w3.org/TR/CSS/#css3" target="_blank" rel="noopener">CSS3</a>中的一个模块，使用 @font-face 可以自定义网页字体，即使用户的电脑没有安装某种字体。怎么用 @font-face 呢？你可能见过类似下面的代码片段，它可以让 @font-face 兼容所有浏览器。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">"SentyZHAO"</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot"</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.eot?#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>), <span class="comment">/* chrome, firefox */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.ttf"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"/fonts/SentyZHAO.svg#SentyZHAO"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Webfont-Generator-Font-Squirrel"><a href="#Webfont-Generator-Font-Squirrel" class="headerlink" title="Webfont Generator - Font Squirrel"></a>Webfont Generator - Font Squirrel</h1><p>在上面的代码片段可以看出，要兼容性好的使用 @font-face，我们同时需要 eot 、woff、ttf、svg 格式的字体。常用的工具是 <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank" rel="noopener">fontsquirrel</a>，一个字体生成器，可以在线生成  eot 、woff、ttf、svg 格式的字体，相信很多前端用过，具体用法可以官网试试。</p>
 <h1 id="Fontmin"><a href="#Fontmin" class="headerlink" title="Fontmin"></a>Fontmin</h1><p>第一个纯 JavaScript 字体子集化方案，一个百度出品的优秀工具。<br>Fontmin 有什么用呢？</p>
 <blockquote>
 <p>提供了 ttf子集化，eot/woff/svg格式转换，css生成 等功能，助推 webfont 发展，提升网页文字体验。</p>
@@ -255,12 +256,12 @@
 </ol>
 <h2 id="Fontmin-应用场景"><a href="#Fontmin-应用场景" class="headerlink" title="Fontmin 应用场景"></a>Fontmin 应用场景</h2><p>有时候，我们想给网站的 Logo 、 Slogan 、标题、活动页等的中文自定义字体，我们可以使用 @font-face 引入 Web 字体，但是完整的中文字体库都是 8M 10M ，加载性能非常差，所以我们提取部分我们使用到的字体，这样可以把字体文件变成几KB。</p>
 <h2 id="Fontmin-用法"><a href="#Fontmin-用法" class="headerlink" title="Fontmin 用法"></a>Fontmin 用法</h2><p>Fontmin 的用法很简单：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> Fontmin = <span class="built_in">require</span>(<span class="string">'fontmin'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> fontmin = <span class="keyword">new</span> Fontmin()</div><div class="line">    .src(<span class="string">'fonts/*.ttf'</span>)</div><div class="line">    .dest(<span class="string">'build/fonts'</span>);</div><div class="line"></div><div class="line">fontmin.run(<span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">        <span class="keyword">throw</span> err;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(files[<span class="number">0</span>]);</div><div class="line">    <span class="comment">// =&gt; &#123; contents: &lt;Buffer 00 01 00 ...&gt; &#125;</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>详细介绍和用法可以看这篇文章： <a href="http://efe.baidu.com/blog/fontmin-getting-started/" target="_blank" rel="external">http://efe.baidu.com/blog/fontmin-getting-started/</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Fontmin = <span class="built_in">require</span>(<span class="string">'fontmin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fontmin = <span class="keyword">new</span> Fontmin()</span><br><span class="line">    .src(<span class="string">'fonts/*.ttf'</span>)</span><br><span class="line">    .dest(<span class="string">'build/fonts'</span>);</span><br><span class="line"></span><br><span class="line">fontmin.run(<span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(files[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// =&gt; &#123; contents: &lt;Buffer 00 01 00 ...&gt; &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>详细介绍和用法可以看这篇文章： <a href="http://efe.baidu.com/blog/fontmin-getting-started/" target="_blank" rel="noopener">http://efe.baidu.com/blog/fontmin-getting-started/</a></p>
 <h2 id="基于-Fontmin-的工具"><a href="#基于-Fontmin-的工具" class="headerlink" title="基于 Fontmin 的工具"></a>基于 Fontmin 的工具</h2><ul>
-<li><strong><a href="https://github.com/ecomfe/fontmin-app" target="_blank" rel="external">fontmin-app</a></strong> - Fontmin 桌面版 App，需下载安装使用</li>
-<li><strong><a href="https://github.com/ecomfe/gulp-fontmin" target="_blank" rel="external">gulp-fontmin</a></strong> - Fontmin 的 Gulp 插件</li>
-<li><strong><a href="https://github.com/aui/font-spider" target="_blank" rel="external">font-spider</a></strong> - 自动分析页面使用的 WebFont 并进行按需压缩</li>
+<li><strong><a href="https://github.com/ecomfe/fontmin-app" target="_blank" rel="noopener">fontmin-app</a></strong> - Fontmin 桌面版 App，需下载安装使用</li>
+<li><strong><a href="https://github.com/ecomfe/gulp-fontmin" target="_blank" rel="noopener">gulp-fontmin</a></strong> - Fontmin 的 Gulp 插件</li>
+<li><strong><a href="https://github.com/aui/font-spider" target="_blank" rel="noopener">font-spider</a></strong> - 自动分析页面使用的 WebFont 并进行按需压缩</li>
 </ul>
 <h1 id="Web-fontmin"><a href="#Web-fontmin" class="headerlink" title="Web-fontmin"></a>Web-fontmin</h1><p>好吧，扯了这么多，终于到文章的主题。</p>
 <p>Web-fontmin 不是什么高大上的东西，一个基于 Fontmin 构建的字体工具，它的用处只有两个：</p>
@@ -271,15 +272,15 @@
 <p>通俗的理解，Web-fontmin 是一个这样的工具：Squirrel + fontmin-app，他是两者的结合体。</p>
 <p>Squirrel 只有单纯的生成不同格式的webfont，且不支持中文。Web-fontmin不单止可以转换格式同时支持中文，还可以提取字体，并且有更快的上传和转换速度。</p>
 <p>Fontmin-app 主要作用是提取字体，需要下载安装，且不支持Linux。Web-Fontmin 拥有Fontmin-app的所有功能，并且在线即可用。</p>
-<p>使用Web-fontmin：<a href="http://fontmin.forsigner.com/" target="_blank" rel="external">http://fontmin.forsigner.com/</a></p>
-<p>Github 地址：<strong><a href="https://github.com/forsigner/web-fontmin" target="_blank" rel="external">web-fontmin</a></strong></p>
+<p>使用Web-fontmin：<a href="http://fontmin.forsigner.com/" target="_blank" rel="noopener">http://fontmin.forsigner.com/</a></p>
+<p>Github 地址：<strong><a href="https://github.com/forsigner/web-fontmin" target="_blank" rel="noopener">web-fontmin</a></strong></p>
 <p>网页效果：</p>
 <p><img src="http://forsigner.com/images/web-fontmin/page-1.png" alt="page-1"><br><img src="http://forsigner.com/images/web-fontmin/page-2.png" alt="page-2"></p>
 <h1 id="常用免费字体网站"><a href="#常用免费字体网站" class="headerlink" title="常用免费字体网站"></a>常用免费字体网站</h1><p>推荐几个常用的字体下载网站：</p>
 <ul>
-<li><a href="https://www.google.com/fonts/" target="_blank" rel="external">Google fonts</a></li>
-<li><a href="http://www.dafont.com/" target="_blank" rel="external">Dafont</a></li>
-<li><a href="https://typekit.com/" target="_blank" rel="external">Typekit</a></li>
+<li><a href="https://www.google.com/fonts/" target="_blank" rel="noopener">Google fonts</a></li>
+<li><a href="http://www.dafont.com/" target="_blank" rel="noopener">Dafont</a></li>
+<li><a href="https://typekit.com/" target="_blank" rel="noopener">Typekit</a></li>
 </ul>
 
     
@@ -311,10 +312,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="hide pull-left" href="/">
+    <a class="show pull-left" href="/2016/03/10/fexo-doc-zh-tw/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2016/03/10/fexo-doc-en/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -461,6 +462,8 @@
 
     
 
+    
+	
     
 	
   </div>

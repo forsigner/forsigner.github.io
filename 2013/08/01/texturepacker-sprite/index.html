@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://www.forsigner.com/2013/08/01/texturepacker-sprite/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="CSS sprite的苦恼最近在做web前端优化，其中之一就是把图片合并，也就是使用CSSsprite技术,开始尝试使用PS手动合并，结果效率极低，而起很难维护。之后尝试各种各样的的CSSsprite相关工具，最后选择了TextuerPacker，一个可以让我远离CSS sprite苦恼的工具。">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好用的CSS sprite工具-TexturePacker">
@@ -241,6 +242,8 @@
 <h2 id="关于TexturePacker"><a href="#关于TexturePacker" class="headerlink" title="关于TexturePacker"></a>关于TexturePacker</h2><p>这是作者自己说的一段话：</p>
 <blockquote>
 <p>20 seconds to your optimized sprite sheet</p>
+</blockquote>
+<blockquote>
 <ol>
 <li>1.Drop your sprites to TexturePacker</li>
 <li>2.Choose exporter and image formate</li>
@@ -248,7 +251,7 @@
 </ol>
 </blockquote>
 <ul>
-<li>下载地址：<a href="http://www.codeandweb.com/texturepacker/download" target="_blank" rel="external">download TexturePacker</a></li>
+<li>下载地址：<a href="http://www.codeandweb.com/texturepacker/download" target="_blank" rel="noopener">download TexturePacker</a></li>
 </ul>
 <h2 id="TexturePacker优点"><a href="#TexturePacker优点" class="headerlink" title="TexturePacker优点"></a>TexturePacker优点</h2><ul>
 <li>跨平台，Linux、MacOS、Windows都能安装</li>
@@ -260,12 +263,16 @@
 <li>对应的icon会根据名字生成class，如icon-ios.png会在css文件中生成.icon-ios {xxx: xxx; }，icon-ios-hover.pngs=&gt;.icon-ios:hover {xxx: xxx;}</li>
 </ul>
 <p>代码中使用：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/* 这些代码是自动生成的*/</span></div><div class="line"><span class="selector-class">.sprite</span> &#123;</div><div class="line">  <span class="attribute">display</span>:inline-block;</div><div class="line">  <span class="attribute">overflow</span>:hidden;</div><div class="line">  <span class="attribute">background-repeat</span>: no-repeat;</div><div class="line">  <span class="attribute">background-image</span>:<span class="built_in">url</span>(css.png);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.icon-ios</span> &#123;</div><div class="line">  <span class="attribute">width</span>:<span class="number">80px</span>;</div><div class="line">  <span class="attribute">height</span>:<span class="number">32px</span>;</div><div class="line">  <span class="attribute">background-position</span>: -<span class="number">80px</span> -<span class="number">160px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.icon-ios</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">width</span>:<span class="number">80px</span>;</div><div class="line">  <span class="attribute">height</span>:<span class="number">31px</span>;</div><div class="line">  <span class="attribute">background-position</span>: -<span class="number">160px</span> -<span class="number">160px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 要使用背景图像的元素 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sprite icon-ios"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="获取免费license"><a href="#获取免费license" class="headerlink" title="获取免费license"></a>获取免费license</h2><p>TexturePacker虽然非常优秀，但不是免费的。但作者对于开发人员是非常人道的，你可以去<a href="http://www.codeandweb.com/request-free-license申请一个free" target="_blank" rel="external">http://www.codeandweb.com/request-free-license申请一个free</a> licenses。要求如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 这些代码是自动生成的*/</span></span><br><span class="line"><span class="selector-class">.sprite</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">overflow</span>:hidden;</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">background-image</span>:<span class="built_in">url</span>(css.png);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon-ios</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">background-position</span>: -<span class="number">80px</span> -<span class="number">160px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon-ios</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">31px</span>;</span><br><span class="line">  <span class="attribute">background-position</span>: -<span class="number">160px</span> -<span class="number">160px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 要使用背景图像的元素 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sprite icon-ios"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="获取免费license"><a href="#获取免费license" class="headerlink" title="获取免费license"></a>获取免费license</h2><p>TexturePacker虽然非常优秀，但不是免费的。但作者对于开发人员是非常人道的，你可以去<a href="http://www.codeandweb.com/request-free-license申请一个free" target="_blank" rel="noopener">http://www.codeandweb.com/request-free-license申请一个free</a> licenses。要求如下：</p>
 <blockquote>
 <p>Bloggers and framework developers can get free full licenses to my tools.</p>
+</blockquote>
+<blockquote>
 <p>My requirements to you are:</p>
+</blockquote>
+<blockquote>
 <ul>
 <li>You write your own blog</li>
 <li>Your blog has at least 5 recent entries which are at least a page long and not older than 6 months</li>
@@ -276,25 +283,65 @@
 <p>申请成功后，作者会发送类似于一个这样的邮件给你：</p>
 <blockquote>
 <p>Hi chen,</p>
+</blockquote>
+<blockquote>
 <p>Here’s your license key for TexturePacker - have fun with it!</p>
+</blockquote>
+<blockquote>
 <p>XX-XXXX-XXXX-XXXX-XXXX</p>
+</blockquote>
+<blockquote>
 <p>Nice blog! I would be happy to get a (short) blog post in return.</p>
+</blockquote>
+<blockquote>
 <p>In case you do a tutorial post about my tools I can link back to your blog from the tutorials section on my page. That might give you some more visitors on your page!</p>
+</blockquote>
+<blockquote>
 <p>Kind regards</p>
+</blockquote>
+<blockquote>
 <p>Kerstin on behalf of Andreas</p>
+</blockquote>
+<blockquote>
 <hr>
-<p><a href="http://www.codeandweb.com" target="_blank" rel="external">http://www.codeandweb.com</a></p>
-<p><a href="http://twitter.com/CodeAndWeb" target="_blank" rel="external">http://twitter.com/CodeAndWeb</a> - Follow me on Twitter</p>
+</blockquote>
+<blockquote>
+<p><a href="http://www.codeandweb.com" target="_blank" rel="noopener">http://www.codeandweb.com</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://twitter.com/CodeAndWeb" target="_blank" rel="noopener">http://twitter.com/CodeAndWeb</a> - Follow me on Twitter</p>
+</blockquote>
+<blockquote>
 <p>CodeAndWeb / Andreas Loew</p>
+</blockquote>
+<blockquote>
 <p>Saalbaustrasse 61</p>
+</blockquote>
+<blockquote>
 <p>89233 Neu-Ulm</p>
+</blockquote>
+<blockquote>
 <p>Germany</p>
+</blockquote>
+<blockquote>
 <p>> Free license request</p>
+</blockquote>
+<blockquote>
 <p>></p>
+</blockquote>
+<blockquote>
 <p>> Name: chen forsigner</p>
+</blockquote>
+<blockquote>
 <p>> Blog: forsigner.com</p>
+</blockquote>
+<blockquote>
 <p>> Description:</p>
+</blockquote>
+<blockquote>
 <p>></p>
+</blockquote>
+<blockquote>
 <p>>        I am a frontend engineer</p>
 </blockquote>
 
@@ -327,10 +374,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2013/08/22/git-command/">
+    <a class="show pull-left" href="/2013/07/28/about-blog/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2013/07/28/about-blog/">
+    <a class="show pull-right" href="/2013/08/22/git-command/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -477,6 +524,8 @@
 
     
 
+    
+	
     
 	
   </div>

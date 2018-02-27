@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://www.forsigner.com/2013/12/06/sass-sourcemap/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="用Sass写CSS很爽，但是调试起来却让人头痛，因为CSS文件是编译生成的，所以在Chrome调试时得出的CSS位置信息并没有多大帮助。为了解决Sass的调试难题，也有开发这开发了一些Chrome插件，如SASS Inspector, 我体验了一整子，用起来并不是很舒服。">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Chrome下调试Sass">
@@ -237,22 +238,22 @@
 
   <div class="article-content">
     
-      <p>用Sass写CSS很爽，但是调试起来却让人头痛，因为CSS文件是编译生成的，所以在Chrome调试时得出的CSS位置信息并没有多大帮助。为了解决Sass的调试难题，也有开发这开发了一些Chrome插件，如<a href="https://chrome.google.com/webstore/detail/sass-inspector/lkofmbmllpgfbnonmnenkiakimpgoamn" target="_blank" rel="external">SASS Inspector</a>, 我体验了一整子，用起来并不是很舒服。<br><a id="more"></a></p>
+      <p>用Sass写CSS很爽，但是调试起来却让人头痛，因为CSS文件是编译生成的，所以在Chrome调试时得出的CSS位置信息并没有多大帮助。为了解决Sass的调试难题，也有开发这开发了一些Chrome插件，如<a href="https://chrome.google.com/webstore/detail/sass-inspector/lkofmbmllpgfbnonmnenkiakimpgoamn" target="_blank" rel="noopener">SASS Inspector</a>, 我体验了一整子，用起来并不是很舒服。<br><a id="more"></a></p>
 <p>Google是个好人，为了让开发这更好的使用CSS预处理器，为Chrome增加了一个叫source map功能，利用source map，我们可以在Chrome像调试CSS一样调试Sass,但前提是所用的CSS预处理器需要支持source map</p>
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><strong>首先，要让Chrome启用CSS source maps</strong></p>
 <p>CSS source maps默认是启用的，不过你还要启用Auto-reload generated CSS,方法是：打开开发者工具的设置，然后点击General,然后启用Enable CSS source maps 和 Auto-reload generated CSS。</p>
 <p><strong>然后，使用Sass或Compass编译CSS</strong></p>
 <p><strong>如果直接使用Sass</strong>，因为要支持source map，所以要安装pre版</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ gem install sass -v <span class="string">'&gt;=3.3.0alpha'</span> --pre</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gem install sass -v <span class="string">'&gt;=3.3.0alpha'</span> --pre</span><br></pre></td></tr></table></figure>
 <p>安装好后,就可以编译支持source map的CSS了，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 编译一个style.scss文件</span></div><div class="line">$ sass --watch --sourcemap sass/styles.scss:css/styles.css</div><div class="line"></div><div class="line"><span class="comment"># 编译一个style.scss文件（如果有用到compass）</span></div><div class="line">$ sass --watch --compass --sourcemap sass/styles.scss:css/styles.css </div><div class="line"></div><div class="line"><span class="comment"># 编译整个文件夹里的所有scss文件</span></div><div class="line">$ sass --watch --sourcemap sass/:css/</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编译一个style.scss文件</span></span><br><span class="line">$ sass --watch --sourcemap sass/styles.scss:css/styles.css</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译一个style.scss文件（如果有用到compass）</span></span><br><span class="line">$ sass --watch --compass --sourcemap sass/styles.scss:css/styles.css </span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译整个文件夹里的所有scss文件</span></span><br><span class="line">$ sass --watch --sourcemap sass/:css/</span><br></pre></td></tr></table></figure>
 <p><strong>如果使用Compass</strong>，为了支持source map，也要要安装pre版</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ gem install compass --pre</div><div class="line"><span class="comment"># 或者</span></div><div class="line">$ gem install compass-sourcemaps --pre</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gem install compass --pre</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ gem install compass-sourcemaps --pre</span><br></pre></td></tr></table></figure>
 <p>安装好后,在config.rb中添加<code>sass_options = {:sourcemap =&gt; true}</code>,就可以编译支持source map的CSS了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ compass watch</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ compass watch</span><br></pre></td></tr></table></figure>
 <p>最好，把编译好的css引入到的项目中，然后审查元素，奇迹就出现了。</p>
 <h4 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h4><ul>
-<li><a href="https://developers.google.com/chrome-developer-tools/docs/css-preprocessors?hl=zh-CN" target="_blank" rel="external">Working with CSS Preprocessors</a></li>
+<li><a href="https://developers.google.com/chrome-developer-tools/docs/css-preprocessors?hl=zh-CN" target="_blank" rel="noopener">Working with CSS Preprocessors</a></li>
 </ul>
 
     
@@ -284,10 +285,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2014/03/24/traval/">
+    <a class="show pull-left" href="/2013/09/01/javascript-style-guide/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2013/09/01/javascript-style-guide/">
+    <a class="show pull-right" href="/2014/03/24/traval/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -434,6 +435,8 @@
 
     
 
+    
+	
     
 	
   </div>

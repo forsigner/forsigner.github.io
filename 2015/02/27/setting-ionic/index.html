@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://www.forsigner.com/2015/02/27/setting-ionic/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="最近想做一个App，却苦于自己没有那么多精力去学习Java和Object-C，自己只对JavaScript最熟悉，所以决定用Web来实现，也就是做一Hybrid App。">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac中配置ionic框架">
@@ -240,15 +241,15 @@
       <p>最近想做一个App，却苦于自己没有那么多精力去学习Java和Object-C，自己只对JavaScript最熟悉，所以决定用Web来实现，也就是做一Hybrid App。<br><a id="more"></a></p>
 <p>参考了很多Hybrid App的解决方案，觉得ionic最适合我。一是它性能比较出众，而是他基于Agular，我对Agular非常熟悉。</p>
 <p>下面是ionic开发环境的配置方法，没有非常复杂：</p>
-<h2 id="安装ionic"><a href="#安装ionic" class="headerlink" title="安装ionic"></a>安装ionic</h2><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$  npm install -g cordova ionic  <span class="comment"># 安装cordova和ionic</span></div></pre></td></tr></table></figure>
+<h2 id="安装ionic"><a href="#安装ionic" class="headerlink" title="安装ionic"></a>安装ionic</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$  npm install -g cordova ionic  <span class="comment"># 安装cordova和ionic</span></span><br></pre></td></tr></table></figure>
 <p>可以有三种方式开始一个ionic项目：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$  ionic start myApp tabs   <span class="comment"># 创建带有top栏和bottom栏的示例项目</span></div><div class="line">$  ionic start myApp sidemenu　 <span class="comment"># 创建带有左侧带有menu栏的示例项目</span></div><div class="line">$  ionic start myApp blank   <span class="comment">#创建空白项目</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$  ionic start myApp tabs   <span class="comment"># 创建带有top栏和bottom栏的示例项目</span></span><br><span class="line">$  ionic start myApp sidemenu　 <span class="comment"># 创建带有左侧带有menu栏的示例项目</span></span><br><span class="line">$  ionic start myApp blank   <span class="comment">#创建空白项目</span></span><br></pre></td></tr></table></figure>
 <p>再执行下面命令就可以再浏览器查看效果了：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$  ionic sserve</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$  ionic sserve</span><br></pre></td></tr></table></figure>
 <h2 id="添加ios平台"><a href="#添加ios平台" class="headerlink" title="添加ios平台"></a>添加ios平台</h2><p>确保你已经安装了xcode，执行以下命令就可以再模拟器看到效果了：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$ sudo npm install -g ios-sim</div><div class="line">$ cd myApp</div><div class="line">$ ionic platform add ios</div><div class="line">$ ionic build ios</div><div class="line">$ ionic emulate ios</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ sudo npm install -g ios-sim</span><br><span class="line">$ cd myApp</span><br><span class="line">$ ionic platform add ios</span><br><span class="line">$ ionic build ios</span><br><span class="line">$ ionic emulate ios</span><br></pre></td></tr></table></figure>
 <h2 id="添加Android平台"><a href="#添加Android平台" class="headerlink" title="添加Android平台"></a>添加Android平台</h2><p>确保你已经配置好android的开发环境，执行以下命令就可以再模拟器看到效果了：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$ cd myApp</div><div class="line">$ ionic platform add android //这行可能会报错</div><div class="line">$ ionic build android</div><div class="line">$ ionic emulate android</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ cd myApp</span><br><span class="line">$ ionic platform add android //这行可能会报错</span><br><span class="line">$ ionic build android</span><br><span class="line">$ ionic emulate android</span><br></pre></td></tr></table></figure>
 <p>整个过程很简单，可能在配置android开发环境比较麻烦。</p>
 
     
@@ -280,10 +281,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2015/03/01/ionic-command/">
+    <a class="show pull-left" href="/2015/01/03/my-tech/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2015/01/03/my-tech/">
+    <a class="show pull-right" href="/2015/03/01/ionic-command/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -430,6 +431,8 @@
 
     
 
+    
+	
     
 	
   </div>

@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://www.forsigner.com/2012/11/12/github-pages-custom-doman/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="Github Pages的默认域名是github的二级域名username.github.com或者username.github.io，需要绑定自己的独立域名的话也非常简单，只要以下两步：">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github Pages绑定域名">
@@ -241,7 +242,7 @@
 <a id="more"></a>
 <h2 id="一、增加CNAME"><a href="#一、增加CNAME" class="headerlink" title="一、增加CNAME"></a>一、增加CNAME</h2><p>在你的git仓库创建一个CNAME文件，内容写你的域名。比如我的域名是forsigner.com，在CNAME文件写入“forsigner.com”就好了。</p>
 <h2 id="二、域名解析"><a href="#二、域名解析" class="headerlink" title="二、域名解析"></a>二、域名解析</h2><p>首先获取你Github Pages域名的ip，比如你的Github pages域名为forsigner.github.io，执行一下命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">$ ping forsigner.github.io</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ ping forsigner.github.io</span><br></pre></td></tr></table></figure>
 <p>你应该可以得到一个IP，比如IP是207.97.227.245。</p>
 <p>最后去你的域名注册商后台，增加一条A记录到该IP就好了。</p>
 
@@ -274,10 +275,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2012/12/29/use-vim-project/">
+    <a class="hide pull-left" href="/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2012/12/29/use-vim-project/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -424,6 +425,8 @@
 
     
 
+    
+	
     
 	
   </div>
