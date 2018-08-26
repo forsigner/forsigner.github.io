@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.forsigner.com/2018/08/26/vscoded-debugging/</loc>
-    <lastmod>2018-08-26T15:23:44.764Z</lastmod>
+    <lastmod>2018-08-26T15:51:33.276Z</lastmod>
     <data>
         <display>
         <title>使用 VSCode 调试</title>
@@ -339,26 +339,6 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/02/02/javascript-reading/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>重读JavaScript经典书籍计划</title>
-        <pubTime>2013-02-01T16:00:00.000Z</pubTime>
-        
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书" url="http://www.forsigner.com/categories/%E8%AF%BB%E4%B9%A6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.forsigner.com/2013/02/12/javascript-callback/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
@@ -372,6 +352,26 @@
            
              
               <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2013/02/02/javascript-reading/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>重读JavaScript经典书籍计划</title>
+        <pubTime>2013-02-01T16:00:00.000Z</pubTime>
+        
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书" url="http://www.forsigner.com/categories/%E8%AF%BB%E4%B9%A6/"/>
           
         </display>
     </data>
