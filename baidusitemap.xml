@@ -92,19 +92,19 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
+    <loc>http://www.forsigner.com/2013/02/16/dont-make-me-think/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>CSS BFC(Block Formatting Context)</title>
-        <pubTime>2013-03-19T16:00:00.000Z</pubTime>
+        <title>Don't make me think(读书笔记)</title>
+        <pubTime>2013-02-15T16:00:00.000Z</pubTime>
         
-        <tag>CSS</tag>
+        <tag>设计</tag>
          
          
            
              
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+              <breadCrumb title="设计" url="http://www.forsigner.com/categories/%E8%AE%BE%E8%AE%A1/"/>
           
         </display>
     </data>
@@ -132,59 +132,14 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/02/16/dont-make-me-think/</loc>
+    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>Don't make me think(读书笔记)</title>
-        <pubTime>2013-02-15T16:00:00.000Z</pubTime>
-        
-        <tag>设计</tag>
-         
-         
-           
-             
-              <breadCrumb title="设计" url="http://www.forsigner.com/categories/%E8%AE%BE%E8%AE%A1/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-en/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>Fexo Doc</title>
-        <pubTime>2016-03-09T16:00:00.000Z</pubTime>
+        <title>在浏览器端获取文件的MD5值</title>
+        <pubTime>2016-03-03T16:00:00.000Z</pubTime>
         
         <tag>JavaScript</tag>
-         
-        <tag>Hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-tw/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>Fexo 文檔</title>
-        <pubTime>2016-03-09T16:00:00.000Z</pubTime>
-        
-        <tag>JavaScript</tag>
-         
-        <tag>Hexo</tag>
          
          
            
@@ -219,19 +174,43 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/08/22/git-command/</loc>
+    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-en/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>常用git命令</title>
-        <pubTime>2013-08-21T16:00:00.000Z</pubTime>
+        <title>Fexo Doc</title>
+        <pubTime>2016-03-09T16:00:00.000Z</pubTime>
         
-        <tag>git</tag>
+        <tag>JavaScript</tag>
+         
+        <tag>Hexo</tag>
          
          
            
              
-              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-tw/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>Fexo 文檔</title>
+        <pubTime>2016-03-09T16:00:00.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
@@ -259,32 +238,33 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/03/18/iehaslayout/</loc>
+    <loc>http://www.forsigner.com/2013/08/22/git-command/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>IE Haslayout</title>
-        <pubTime>2013-03-17T16:00:00.000Z</pubTime>
+        <title>常用git命令</title>
+        <pubTime>2013-08-21T16:00:00.000Z</pubTime>
         
-        <tag>CSS</tag>
+        <tag>git</tag>
          
          
            
              
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
     </url>
 
     
+    
   <url>
-    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
+    <loc>http://www.forsigner.com/2013/03/18/iehaslayout/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>关于inline-block最好的一篇文章</title>
-        <pubTime>2013-03-27T16:00:00.000Z</pubTime>
+        <title>IE Haslayout</title>
+        <pubTime>2013-03-17T16:00:00.000Z</pubTime>
         
         <tag>CSS</tag>
          
@@ -319,14 +299,14 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2015/03/01/ionic-command/</loc>
+    <loc>http://www.forsigner.com/2013/02/12/javascript-callback/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>ionic常用命令</title>
-        <pubTime>2015-02-28T16:00:00.000Z</pubTime>
+        <title>JavaScript回调函数的实现</title>
+        <pubTime>2013-02-11T16:00:00.000Z</pubTime>
         
-        <tag>ionic</tag>
+        <tag>JavaScript</tag>
          
          
            
@@ -339,14 +319,34 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/02/12/javascript-callback/</loc>
+    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>JavaScript回调函数的实现</title>
-        <pubTime>2013-02-11T16:00:00.000Z</pubTime>
+        <title>关于inline-block最好的一篇文章</title>
+        <pubTime>2013-03-27T16:00:00.000Z</pubTime>
         
-        <tag>JavaScript</tag>
+        <tag>CSS</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2015/03/01/ionic-command/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>ionic常用命令</title>
+        <pubTime>2015-02-28T16:00:00.000Z</pubTime>
+        
+        <tag>ionic</tag>
          
          
            
@@ -399,14 +399,16 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/02/13/learning-javascript-closure/</loc>
+    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>Javascript闭包</title>
-        <pubTime>2013-02-12T16:00:00.000Z</pubTime>
+        <title>ionic Mac下连接android手机调试</title>
+        <pubTime>2015-03-06T16:00:00.000Z</pubTime>
         
-        <tag>JavaScript</tag>
+        <tag>ionic</tag>
+         
+        <tag>android</tag>
          
          
            
@@ -419,16 +421,14 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
+    <loc>http://www.forsigner.com/2013/09/01/javascript-style-guide/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>ionic Mac下连接android手机调试</title>
-        <pubTime>2015-03-06T16:00:00.000Z</pubTime>
+        <title>JavaScript 编码风格指南</title>
+        <pubTime>2013-08-31T16:00:00.000Z</pubTime>
         
-        <tag>ionic</tag>
-         
-        <tag>android</tag>
+        <tag>JavaScript</tag>
          
          
            
@@ -483,26 +483,6 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2015/01/03/my-tech/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>我的技术栈</title>
-        <pubTime>2015-01-02T16:00:00.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.forsigner.com/2016/02/16/node-pngdefry/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
@@ -525,19 +505,19 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
+    <loc>http://www.forsigner.com/2015/01/03/my-tech/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>《平凡的世界》：不平凡的人生</title>
-        <pubTime>2013-02-22T16:00:00.000Z</pubTime>
+        <title>我的技术栈</title>
+        <pubTime>2015-01-02T16:00:00.000Z</pubTime>
         
-        <tag>读书</tag>
+        <tag>工具</tag>
          
          
            
              
-              <breadCrumb title="读书" url="http://www.forsigner.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -567,6 +547,26 @@
 
     
   <url>
+    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>《平凡的世界》：不平凡的人生</title>
+        <pubTime>2013-02-22T16:00:00.000Z</pubTime>
+        
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书" url="http://www.forsigner.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
@@ -575,26 +575,6 @@
         <pubTime>2015-02-26T16:00:00.000Z</pubTime>
         
         <tag>ionic</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.forsigner.com/2013/08/01/texturepacker-sprite/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>好用的CSS sprite工具-TexturePacker</title>
-        <pubTime>2013-07-31T16:00:00.000Z</pubTime>
-        
-        <tag>CSS</tag>
          
          
            
@@ -620,6 +600,26 @@
            
              
               <breadCrumb title="生活" url="http://www.forsigner.com/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2013/08/01/texturepacker-sprite/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>好用的CSS sprite工具-TexturePacker</title>
+        <pubTime>2013-07-31T16:00:00.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
@@ -710,14 +710,14 @@
     
     
   <url>
-    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
+    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>在浏览器端获取文件的MD5值</title>
-        <pubTime>2016-03-03T16:00:00.000Z</pubTime>
+        <title>CSS BFC(Block Formatting Context)</title>
+        <pubTime>2013-03-19T16:00:00.000Z</pubTime>
         
-        <tag>JavaScript</tag>
+        <tag>CSS</tag>
          
          
            
@@ -731,12 +731,12 @@
     
     
   <url>
-    <loc>http://www.forsigner.com/2013/09/01/javascript-style-guide/</loc>
+    <loc>http://www.forsigner.com/2013/02/13/learning-javascript-closure/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>JavaScript 编码风格指南</title>
-        <pubTime>2013-08-31T16:00:00.000Z</pubTime>
+        <title>Javascript闭包</title>
+        <pubTime>2013-02-12T16:00:00.000Z</pubTime>
         
         <tag>JavaScript</tag>
          
