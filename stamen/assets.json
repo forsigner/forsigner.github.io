@@ -1,11 +1,11 @@
 {
-  "app.js": "/stamen/static/js/app.c958abd5.js",
-  "docs-about.js": "/stamen/static/js/docs-about.4d803561.js",
-  "docs-api.js": "/stamen/static/js/docs-api.988e82f9.js",
-  "docs-faq.js": "/stamen/static/js/docs-faq.e1af152d.js",
-  "docs-getting-started.js": "/stamen/static/js/docs-getting-started.2fc0a5cd.js",
-  "docs-guide.js": "/stamen/static/js/docs-guide.a466562e.js",
-  "vendors.js": "/stamen/static/js/vendors.319a059b.js",
-  "runtime~app.js": "/stamen/static/js/runtime~app.912916a8aa29ef1431e9.js",
-  "index.html": "/stamen/index.html"
+  "app.js": "/stamen-zh-cn/static/js/app.ff7c21f5.js",
+  "docs-about.js": "/stamen-zh-cn/static/js/docs-about.ece7d937.js",
+  "docs-api.js": "/stamen-zh-cn/static/js/docs-api.988e82f9.js",
+  "docs-faq.js": "/stamen-zh-cn/static/js/docs-faq.fa41fdc7.js",
+  "docs-guide.js": "/stamen-zh-cn/static/js/docs-guide.bc7b9990.js",
+  "docs-getting-started.js": "/stamen-zh-cn/static/js/docs-getting-started.a779f046.js",
+  "vendors.js": "/stamen-zh-cn/static/js/vendors.44397bee.js",
+  "runtime~app.js": "/stamen-zh-cn/static/js/runtime~app.3f1e3b150ba207ada171.js",
+  "index.html": "/stamen-zh-cn/index.html"
 }
