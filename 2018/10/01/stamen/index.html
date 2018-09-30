@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>简洁的 React 状态管理 - Stamen | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,TypeScript," />
+  
+
+  <meta name="description" content="说到 React 状态管理，必提的肯定是 Redux 与 MobX，2018 年，它们依然是最火热的状态管理工具，也有一些基于 Redux 的，如 dva、rematch 等，也有新的，如 mobx-state-tree，这里不对各个方案作评价。 不评价但还是想吐槽: 如果… 什么 provider, connections, actions, reducers, effects, dispatc">
+<meta name="keywords" content="JavaScript,TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简洁的 React 状态管理 - Stamen">
+<meta property="og:url" content="http://www.forsigner.com/2018/10/01/stamen/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="说到 React 状态管理，必提的肯定是 Redux 与 MobX，2018 年，它们依然是最火热的状态管理工具，也有一些基于 Redux 的，如 dva、rematch 等，也有新的，如 mobx-state-tree，这里不对各个方案作评价。 不评价但还是想吐槽: 如果… 什么 provider, connections, actions, reducers, effects, dispatc">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-30T18:53:22.808Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简洁的 React 状态管理 - Stamen">
+<meta name="twitter:description" content="说到 React 状态管理，必提的肯定是 Redux 与 MobX，2018 年，它们依然是最火热的状态管理工具，也有一些基于 Redux 的，如 dva、rematch 等，也有新的，如 mobx-state-tree，这里不对各个方案作评价。 不评价但还是想吐槽: 如果… 什么 provider, connections, actions, reducers, effects, dispatc">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cben" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-stamen" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简洁的 React 状态管理 - Stamen</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.10.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2018/10/01/stamen/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>说到 React 状态管理，必提的肯定是 Redux 与 MobX，2018 年，它们依然是最火热的状态管理工具，也有一些基于 Redux 的，如 dva、rematch 等，也有新的，如 mobx-state-tree，这里不对各个方案作评价。</p>
+<p>不评价但还是想吐槽:</p>
+<p><strong>如果</strong>…</p>
+<p>什么 provider, connections, actions, reducers, effects, dispatch, put, call, payload, @observable, @computed, @observer, @inject…</p>
+<p>一堆模板代码、各种概念、什么大哲学… 还有各种多余牛毛的 Api。</p>
+<p>我只是想早点码完页面下班，早点下班健身、陪妹子…</p>
+<p>所以，我想要这样的一个状态管理库：</p>
+<ul>
+<li><strong> 轻量</strong> 个人做移动端开发比较多</li>
+<li><strong>简洁</strong> 没模板代码, 尽量少 api</li>
+<li><strong>符合直觉</strong> 没复杂的概念， 给个 action 改 state 就好</li>
+<li><strong>清晰</strong> 更易写出可维护和可读性好的代码</li>
+<li><strong>高效</strong> 更高的开发效率，这很重要</li>
+<li><strong>Typescript</strong> 高度支持 state 和 action 的智能提示</li>
+</ul>
+<p>我是个<strong>实用主义者</strong>，开发效率、代码可维护性和可读性、开发体验大于各种什么范式、各种理论，也不需要装纯，重要的是可以快速处理业务，产生价值，早点下班打王者。</p>
+<p>有一天，我看到了 mobx 作者的 immer, 我感觉使用 immer, 可以实现一个我理想中的状态管理方工具，所以造了一个轮子，叫 <a href="https://github.com/forsigner/stamen" target="_blank" rel="noopener">stamen</a>, 他有什么特点呢，我说过想要的就是。</p>
+<p>如果有什么核心特点的话，那应该是 “简洁”，这里指的是使用者写代码时简洁，可以专注于业务，而不是自身源代码简洁，把问题留给使用者。</p>
+<p><strong>用法比较点单:</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'stamen'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;consume(<span class="function"><span class="params">state</span> =&gt;</span> state.count)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;() =&gt; mutate(state =&gt; state.count--)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">    &lt;button onClick=&#123;() =&gt; mutate(<span class="function"><span class="params">state</span> =&gt;</span> state.count++)&#125;&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">render(&lt;App /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<p>只有 state 和 action 没有其他概念， 只有一个 api:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123;</span><br><span class="line">  <span class="comment">/** state object**/</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>更用法可以看：</strong></p>
+<p>Github: <a href="https://github.com/forsigner/stamen" target="_blank" rel="noopener">https://github.com/forsigner/stamen</a><br>文档: <a href="http://forsigner.com/stamen-zh-cn" target="_blank" rel="noopener">http://forsigner.com/stamen-zh-cn</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/08/26/vscoded-debugging/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+
+   
+      <div class="git"></div>
+   
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.forsigner.com/2018/10/01/stamen/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
