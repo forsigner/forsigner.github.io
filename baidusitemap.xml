@@ -92,12 +92,32 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
+    <loc>http://www.forsigner.com/2013/02/13/learning-javascript-closure/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>CSS BFC(Block Formatting Context)</title>
-        <pubTime>2013-03-19T16:00:00.000Z</pubTime>
+        <title>Javascript闭包</title>
+        <pubTime>2013-02-12T16:00:00.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2013/03/25/css-clearfix/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>清除浮动的方法</title>
+        <pubTime>2013-03-24T16:00:00.000Z</pubTime>
         
         <tag>CSS</tag>
          
@@ -132,19 +152,19 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/03/25/css-clearfix/</loc>
+    <loc>http://www.forsigner.com/2013/08/23/Unix-command/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>清除浮动的方法</title>
-        <pubTime>2013-03-24T16:00:00.000Z</pubTime>
+        <title>Unix 系统下常用命令</title>
+        <pubTime>2013-08-22T16:00:00.000Z</pubTime>
         
-        <tag>CSS</tag>
+        <tag>Unix</tag>
          
          
            
              
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -157,28 +177,6 @@
     <data>
         <display>
         <title>Fexo Doc</title>
-        <pubTime>2016-03-09T16:00:00.000Z</pubTime>
-        
-        <tag>JavaScript</tag>
-         
-        <tag>Hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-tw/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>Fexo 文檔</title>
         <pubTime>2016-03-09T16:00:00.000Z</pubTime>
         
         <tag>JavaScript</tag>
@@ -218,19 +216,21 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/08/23/Unix-command/</loc>
+    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-zh-tw/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>Unix 系统下常用命令</title>
-        <pubTime>2013-08-22T16:00:00.000Z</pubTime>
+        <title>Fexo 文檔</title>
+        <pubTime>2016-03-09T16:00:00.000Z</pubTime>
         
-        <tag>Unix</tag>
+        <tag>JavaScript</tag>
+         
+        <tag>Hexo</tag>
          
          
            
              
-              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
@@ -318,14 +318,14 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2015/03/01/ionic-command/</loc>
+    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>ionic常用命令</title>
-        <pubTime>2015-02-28T16:00:00.000Z</pubTime>
+        <title>关于inline-block最好的一篇文章</title>
+        <pubTime>2013-03-27T16:00:00.000Z</pubTime>
         
-        <tag>ionic</tag>
+        <tag>CSS</tag>
          
          
            
@@ -338,14 +338,14 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/03/28/inline-block/</loc>
+    <loc>http://www.forsigner.com/2015/03/01/ionic-command/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>关于inline-block最好的一篇文章</title>
-        <pubTime>2013-03-27T16:00:00.000Z</pubTime>
+        <title>ionic常用命令</title>
+        <pubTime>2015-02-28T16:00:00.000Z</pubTime>
         
-        <tag>CSS</tag>
+        <tag>ionic</tag>
          
          
            
@@ -440,6 +440,48 @@
 
     
   <url>
+    <loc>http://www.forsigner.com/2013/09/01/javascript-style-guide/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript 编码风格指南</title>
+        <pubTime>2013-08-31T16:00:00.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2013/08/29/mac-skills/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>一些Mac小技巧</title>
+        <pubTime>2013-08-28T16:00:00.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>tick</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
@@ -453,6 +495,26 @@
            
              
               <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2015/01/03/my-tech/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的技术栈</title>
+        <pubTime>2015-01-02T16:00:00.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -482,39 +544,19 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/09/01/javascript-style-guide/</loc>
+    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>JavaScript 编码风格指南</title>
-        <pubTime>2013-08-31T16:00:00.000Z</pubTime>
+        <title>《平凡的世界》：不平凡的人生</title>
+        <pubTime>2013-02-22T16:00:00.000Z</pubTime>
         
-        <tag>JavaScript</tag>
+        <tag>读书</tag>
          
          
            
              
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.forsigner.com/2013/02/13/learning-javascript-closure/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript闭包</title>
-        <pubTime>2013-02-12T16:00:00.000Z</pubTime>
-        
-        <tag>JavaScript</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+              <breadCrumb title="读书" url="http://www.forsigner.com/categories/%E8%AF%BB%E4%B9%A6/"/>
           
         </display>
     </data>
@@ -532,6 +574,26 @@
         <tag>CSS</tag>
          
         <tag>Sass</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac中配置ionic框架</title>
+        <pubTime>2015-02-26T16:00:00.000Z</pubTime>
+        
+        <tag>ionic</tag>
          
          
            
@@ -564,66 +626,6 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>《平凡的世界》：不平凡的人生</title>
-        <pubTime>2013-02-22T16:00:00.000Z</pubTime>
-        
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书" url="http://www.forsigner.com/categories/%E8%AF%BB%E4%B9%A6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>Mac中配置ionic框架</title>
-        <pubTime>2015-02-26T16:00:00.000Z</pubTime>
-        
-        <tag>ionic</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.forsigner.com/2012/12/29/use-vim-project/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>vim插件project的用法</title>
-        <pubTime>2012-12-28T16:00:00.000Z</pubTime>
-        
-        <tag>前端工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.forsigner.com/2014/03/24/traval/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
@@ -644,14 +646,14 @@
 
     
   <url>
-    <loc>http://www.forsigner.com/2015/01/03/my-tech/</loc>
+    <loc>http://www.forsigner.com/2012/12/29/use-vim-project/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>我的技术栈</title>
-        <pubTime>2015-01-02T16:00:00.000Z</pubTime>
+        <title>vim插件project的用法</title>
+        <pubTime>2012-12-28T16:00:00.000Z</pubTime>
         
-        <tag>工具</tag>
+        <tag>前端工具</tag>
          
          
            
@@ -684,6 +686,28 @@
 
     
   <url>
+    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>在浏览器端获取文件的MD5值</title>
+        <pubTime>2016-03-03T16:00:00.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.forsigner.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
     <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
@@ -706,14 +730,14 @@
     
     
   <url>
-    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
+    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     <data>
         <display>
-        <title>在浏览器端获取文件的MD5值</title>
-        <pubTime>2016-03-03T16:00:00.000Z</pubTime>
+        <title>CSS BFC(Block Formatting Context)</title>
+        <pubTime>2013-03-19T16:00:00.000Z</pubTime>
         
-        <tag>JavaScript</tag>
+        <tag>CSS</tag>
          
          
            
@@ -725,28 +749,4 @@
     </url>
 
     
-    
-    
-    
-  <url>
-    <loc>http://www.forsigner.com/2013/08/29/mac-skills/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>一些Mac小技巧</title>
-        <pubTime>2013-08-28T16:00:00.000Z</pubTime>
-        
-        <tag>Mac</tag>
-         
-        <tag>tick</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://www.forsigner.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
 </urlset>
