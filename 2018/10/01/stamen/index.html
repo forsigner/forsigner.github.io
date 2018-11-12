@@ -234,7 +234,7 @@
 <p>如果有什么<strong>核心特点</strong>的话，那应该是 “<strong>简洁</strong>“，这里指的是使用者写代码时简洁，可以专注于业务，而不是自身源代码简洁，把问题留给使用者。</p>
 <p>CodeSandbox上的例子: <a href="https://codesandbox.io/s/0vrrlkjx5w" target="_blank" rel="noopener">Basic</a> | <a href="https://codesandbox.io/s/kmq65p3l97" target="_blank" rel="noopener">Async</a></p>
 <p><strong>用法比较简单:</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'stamen'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;consume(<span class="function"><span class="params">state</span> =&gt;</span> state.count)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;() =&gt; mutate(state =&gt; state.count--)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">    &lt;button onClick=&#123;() =&gt; mutate(<span class="function"><span class="params">state</span> =&gt;</span> state.count++)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">render(&lt;App /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'stamen'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;consume(<span class="function"><span class="params">state</span> =&gt;</span> state.count)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;() =&gt; mutate(state =&gt; state.count--)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">    &lt;button onClick=&#123;() =&gt; mutate(<span class="function"><span class="params">state</span> =&gt;</span> state.count++)&#125;&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">render(&lt;App /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
 <p>只有 state 和 action ，没有其它概念，只有一个 api:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
 <p><code>Stamen</code> 代码实现只有40行，对于大部分项目来说，这40行代码所包含的功能已然足够。</p>
@@ -466,7 +466,22 @@ gitalk.render('git')
       // load success
     });
   }
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
