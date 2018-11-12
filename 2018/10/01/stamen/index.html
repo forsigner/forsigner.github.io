@@ -12,18 +12,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="JavaScript,TypeScript," />
+    <meta name="keywords" content="JavaScript,TypeScript,React," />
   
 
   <meta name="description" content="说到 React 状态管理，必提的肯定是 Redux 与 MobX，2018 年快过去了，它们依然是最火热的状态管理工具，也有一些基于 Redux 的，如 dva、rematch 等，也有新的，如 mobx-state-tree，这里不对各个解决方案作评价。 但还是想吐槽: 什么 provider, connections, actions, reducers, effects, dispatch">
-<meta name="keywords" content="JavaScript,TypeScript">
+<meta name="keywords" content="JavaScript,TypeScript,React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简洁的 React 状态管理库 - Stamen">
 <meta property="og:url" content="http://www.forsigner.com/2018/10/01/stamen/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="说到 React 状态管理，必提的肯定是 Redux 与 MobX，2018 年快过去了，它们依然是最火热的状态管理工具，也有一些基于 Redux 的，如 dva、rematch 等，也有新的，如 mobx-state-tree，这里不对各个解决方案作评价。 但还是想吐槽: 什么 provider, connections, actions, reducers, effects, dispatch">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-01T02:20:57.944Z">
+<meta property="og:updated_time" content="2018-11-12T12:36:51.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简洁的 React 状态管理库 - Stamen">
 <meta name="twitter:description" content="说到 React 状态管理，必提的肯定是 Redux 与 MobX，2018 年快过去了，它们依然是最火热的状态管理工具，也有一些基于 Redux 的，如 dva、rematch 等，也有新的，如 mobx-state-tree，这里不对各个解决方案作评价。 但还是想吐槽: 什么 provider, connections, actions, reducers, effects, dispatch">
@@ -69,13 +69,10 @@
 	    var s = document.getElementsByTagName("script")[0];
 	    s.parentNode.insertBefore(bp, s);
 	})();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
-  
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 </head>
@@ -210,18 +207,7 @@
 
 
       
-        <span>
-          <i class="icon-comment"></i>
-          <a href="http://www.forsigner.com/2018/10/01/stamen/#disqus_thread"></a>
-        </span>
-      
 
-      
-      <i class="fa fa-eye"></i> 
-        <span id="busuanzi_container_page_pv">
-           &nbsp热度 <span id="busuanzi_value_page_pv">
-           <i class="fa fa-spinner fa-spin"></i></span>℃
-        </span>
       
       
     </div>
@@ -248,7 +234,7 @@
 <p>如果有什么<strong>核心特点</strong>的话，那应该是 “<strong>简洁</strong>“，这里指的是使用者写代码时简洁，可以专注于业务，而不是自身源代码简洁，把问题留给使用者。</p>
 <p>CodeSandbox上的例子: <a href="https://codesandbox.io/s/0vrrlkjx5w" target="_blank" rel="noopener">Basic</a> | <a href="https://codesandbox.io/s/kmq65p3l97" target="_blank" rel="noopener">Async</a></p>
 <p><strong>用法比较简单:</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'stamen'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;consume(<span class="function"><span class="params">state</span> =&gt;</span> state.count)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;() =&gt; mutate(state =&gt; state.count--)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">    &lt;button onClick=&#123;() =&gt; mutate(<span class="function"><span class="params">state</span> =&gt;</span> state.count++)&#125;&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">render(&lt;App /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'stamen'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;consume(<span class="function"><span class="params">state</span> =&gt;</span> state.count)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;() =&gt; mutate(state =&gt; state.count--)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">    &lt;button onClick=&#123;() =&gt; mutate(<span class="function"><span class="params">state</span> =&gt;</span> state.count++)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">render(&lt;App /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
 <p>只有 state 和 action ，没有其它概念，只有一个 api:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; consume, mutate &#125; = createStore(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
 <p><code>Stamen</code> 代码实现只有40行，对于大部分项目来说，这40行代码所包含的功能已然足够。</p>
@@ -297,7 +283,7 @@
     <a class="show pull-left" href="/2018/08/26/vscoded-debugging/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2018/11/12/stamen-based-on-hooks/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -307,7 +293,27 @@
 
 
    
-      <div class="git"></div>
+      
+<!-- Gitalk评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('git')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
    
 </div>
 
@@ -417,29 +423,6 @@
   
       <div class="fexo-comments comments-post">
     
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'forsigner';
-    
-    var disqus_url = 'http://www.forsigner.com/2018/10/01/stamen/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
-
-
 
     
 
@@ -483,22 +466,7 @@
       // load success
     });
   }
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.forsigner.com/2018/11/12/stamen-based-on-hooks/</loc>
+    
+    <lastmod>2018-11-12T12:55:07.092Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/2018/10/01/stamen/</loc>
     
-    <lastmod>2018-10-01T02:20:57.944Z</lastmod>
+    <lastmod>2018-11-12T12:36:51.150Z</lastmod>
     
   </url>
   
@@ -40,13 +47,6 @@
     <loc>http://www.forsigner.com/2015/07/01/MongoDB-Command/</loc>
     
     <lastmod>2016-08-25T03:49:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
@@ -114,21 +114,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/2013/02/13/learning-javascript-closure/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -142,7 +135,21 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/2016/02/16/node-pngdefry/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -163,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/12/06/sass-sourcemap/</loc>
+    <loc>http://www.forsigner.com/2013/08/01/texturepacker-sprite/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/tag/index.html</loc>
+    <loc>http://www.forsigner.com/search/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -178,13 +185,6 @@
   
   <url>
     <loc>http://www.forsigner.com/2014/03/24/traval/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2013/08/01/texturepacker-sprite/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -212,14 +212,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
+    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-en/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/10/fexo-doc-en/</loc>
+    <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -261,6 +261,13 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/about/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -282,21 +289,21 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
+    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/search/index.html</loc>
+    <loc>http://www.forsigner.com/tag/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
+    <loc>http://www.forsigner.com/2013/12/06/sass-sourcemap/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
