@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>可能是基于 Hooks 和 Typescript 最好的状态管理工具 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,TypeScript,React," />
+  
+
+  <meta name="description" content="现已存在许多成熟的状态管理解决方案：Redux、Mobx、Mobx-state-tree，还有基于 Redux 的 Dva.js、Rematch… 但对于我个人来说，理想的状态管理工具值需同时满足两个特点：  简单易用，并且适合中大型项目 完美的支持 Typescript  要做到这两点其实并不简单。 首先说说 “简单易用，并且适合中大型项目”，这里包含层含义：  Api 足够简单，尽量引入少的概">
+<meta name="keywords" content="JavaScript,TypeScript,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可能是基于 Hooks 和 Typescript 最好的状态管理工具">
+<meta property="og:url" content="http://www.forsigner.com/2018/11/13/stamen-based-on-hooks/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="现已存在许多成熟的状态管理解决方案：Redux、Mobx、Mobx-state-tree，还有基于 Redux 的 Dva.js、Rematch… 但对于我个人来说，理想的状态管理工具值需同时满足两个特点：  简单易用，并且适合中大型项目 完美的支持 Typescript  要做到这两点其实并不简单。 首先说说 “简单易用，并且适合中大型项目”，这里包含层含义：  Api 足够简单，尽量引入少的概">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-13T03:52:26.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="可能是基于 Hooks 和 Typescript 最好的状态管理工具">
+<meta name="twitter:description" content="现已存在许多成熟的状态管理解决方案：Redux、Mobx、Mobx-state-tree，还有基于 Redux 的 Dva.js、Rematch… 但对于我个人来说，理想的状态管理工具值需同时满足两个特点：  简单易用，并且适合中大型项目 完美的支持 Typescript  要做到这两点其实并不简单。 首先说说 “简单易用，并且适合中大型项目”，这里包含层含义：  Api 足够简单，尽量引入少的概">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cben" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-stamen-based-on-hooks" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">可能是基于 Hooks 和 Typescript 最好的状态管理工具</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.11.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>现已存在许多成熟的状态管理解决方案：Redux、Mobx、Mobx-state-tree，还有基于 Redux 的 Dva.js、Rematch… 但对于我个人来说，理想的状态管理工具值需同时满足两个特点：</p>
+<ul>
+<li>简单易用，并且适合中大型项目</li>
+<li>完美的支持 Typescript</li>
+</ul>
+<p>要做到这两点其实并不简单。</p>
+<p>首先说说 <strong>“简单易用，并且适合中大型项目”</strong>，这里包含层含义：</p>
+<ul>
+<li>Api 足够简单，尽量引入少的概念</li>
+<li>易用性高，使用者易用上手，较少的冗余代码</li>
+<li>能让使用者更容易的写出可维护性高的代码</li>
+<li>能让业务代码有良好地组织方式</li>
+</ul>
+<p>怎么才能  算是简单易用呢？用一个叫 <a href="https://github.com/pedronauck/reworm" target="_blank" rel="noopener">reworm</a> 的状态管理库来举例，它的使用方式是这样的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Provider, create &#125; <span class="keyword">from</span> <span class="string">'reworm'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; set, get &#125; = create(&#123; <span class="attr">name</span>: <span class="string">'John'</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    set(<span class="function"><span class="params">prev</span> =&gt;</span> (&#123; <span class="attr">name</span>: <span class="string">'Peter'</span> + prev.name &#125;));</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Provider&gt;</span><br><span class="line">        &lt;div&gt;&#123;get(<span class="function"><span class="params">s</span> =&gt;</span> s.name)&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>Provider&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我碰巧写写过一个类似状态管理库，叫 <a href="https://github.com/forsigner/mistate" target="_blank" rel="noopener">mistate</a>，甚至更简单，连 <code>Provider</code> 都不用，实现代码也只有 40 行。用法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; create &#125; <span class="keyword">from</span> <span class="string">'mistate'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; get, set &#125; = create(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;get(<span class="function"><span class="params">s</span> =&gt;</span> s.text)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;() =&gt; set(prev =&gt; (&#123; count: prev.count++ &#125;))&#125;&gt;+&lt;/</span>button&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<p>它们足够简单，非常容易上手，但是它们致命是缺点是并不适合中大型项目，它们自由度太高，缺乏对业务代码的约束，在多人合作的中大型项目，代码的可维护性会大大降低，因为每个人写的代码风格可能都不一样。举个例子，有些人可能会直接在 Component 中使用 <code>set</code>，有些人可能会基于 <code>set</code>  封装成一个个 <code>acton</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; create &#125; <span class="keyword">from</span> <span class="string">'mistate'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; get, set &#125; = create(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">  increment() &#123;</span><br><span class="line">    set(<span class="function"><span class="params">prev</span> =&gt;</span> (&#123; <span class="attr">count</span>: prev.count++ &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  decrement() &#123;</span><br><span class="line">    set(<span class="function"><span class="params">prev</span> =&gt;</span> (&#123; <span class="attr">count</span>: prev.count-- &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;get(<span class="function"><span class="params">s</span> =&gt;</span> s.text)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;() =&gt; actions.increment)&#125;&gt;+&lt;/</span>button&gt;</span><br><span class="line">    &lt;button onClick=&#123;() =&gt; actions.decrement)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<p>这种自由度  虽然灵活度高，但是降低了代码的可维护性。</p>
+<p>另外，用 Render props 获取 state 看似比 Redux 的 Connect 简单，但其实并不优雅，比如一个很常见的获取  多个 state，使用 Render props 可能要这样：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Counter = create(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> User = create(&#123; <span class="attr">name</span>: <span class="string">'foo'</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> Todo = create(&#123; <span class="attr">todos</span>: [] &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &#123;User.get(<span class="function"><span class="params">user</span> =&gt;</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;span&gt;&#123;user.name&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">          &#123;Todo.get(todo =&gt; (</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;</span></span><br><span class="line"><span class="regexp">              &#123;todo.todos.map(item =&gt; &#123;</span></span><br><span class="line"><span class="regexp">                &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                  &lt;span&gt;&#123;item.name&#125;&lt;/</span>span&gt;;</span><br><span class="line">                  &lt;span&gt;&#123;Counter.get(<span class="function"><span class="params">s</span> =&gt;</span> s.count)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;;</span><br><span class="line">              &#125;)&#125;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">          ))&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    ))&#125;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>多个 Render props 的嵌套会导致 callback hell 类似结果，直接让你的代码反人类。</p>
+<p>上面说完了 “<strong>简单易用</strong>”，下面聊聊 “<strong>适合中大型项目</strong>”。当然，我心目中的 “<strong>适合中大型项目</strong>” 的前提是 “<strong>简单易用</strong>”，否者我并不会选择它。</p>
+<p>首先上面面说的 reworm 和 mistate 并不适合在中大型项目中使用，他们适合用在小型项目，比如一个简单的营销活动，还以非常适合的场景就是在工具类库中使用，因为它们足够简单、轻量。</p>
+<p>再说说大家熟悉 Redux 和 Mobx，首先是 Redux ，我个人认为 Redux 确实满足 “<strong>适合中大型项目</strong>”，因为使用者几乎都会按照它推荐的方式来组织代码，但它不满足 “<strong>简单易用</strong>”，太过于繁琐，使用起来有种吃*的感觉(本人没吃过~)。然后是 Mobx，个人挺喜欢，挺 “<strong>简单易用</strong>”，对使用者写出的代码有一定的限制，但感觉又太过于自由，并且非 Immutable，给人感觉是一个很中庸的解决方案。</p>
+<p>在满足 <strong>“简单易用，并且适合中大型项目”</strong> 的前提下，个人比较喜欢的状态管理解决方案是: <a href="https://github.com/dvajs/dva" target="_blank" rel="noopener">dva</a>、<a href="https://github.com/rematch/rematch" target="_blank" rel="noopener">rematch</a>、<a href="https://github.com/mirrorjs/mirror" target="_blank" rel="noopener">mirror</a>，三者都是基于 Redux 开发，他们的 Api 相似度极高，简化了 Redux 的使用，使得代码组织方更加合理，通俗的说就是为 Redux 用户提供了最舒服的套路去写代码，可以说是当前 Redux 社区中的最佳实践。</p>
+<p>看看他们是如何组织代码，以 mirror 来举例:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> mirror, &#123;actions, connect, render&#125; <span class="keyword">from</span> <span class="string">'mirrorx'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// declare Redux state, reducers and actions,</span></span><br><span class="line"><span class="comment">// all actions will be added to `actions`.</span></span><br><span class="line">mirror.model(&#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  initialState: <span class="number">0</span>,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    increment(state) &#123; <span class="keyword">return</span> state + <span class="number">1</span> &#125;,</span><br><span class="line">    decrement(state) &#123; <span class="keyword">return</span> state - <span class="number">1</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    <span class="keyword">async</span> incrementAsync() &#123;</span><br><span class="line">      <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve()</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      actions.app.increment()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// connect state with component</span></span><br><span class="line"><span class="keyword">const</span> App = connect(<span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.app&#125;</span><br><span class="line">&#125;)(<span class="function"><span class="params">props</span> =&gt;</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;&#123;props.count&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &#123;/</span>* dispatch the actions *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; actions.app.decrement()&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; actions.app.increment()&#125;&gt;+&lt;/button&gt;</span><br><span class="line">      &#123;<span class="comment">/* dispatch the async action */</span>&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; actions.app.incrementAsync()&#125;&gt;+ Async&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// start the app，`render` is an enhanced `ReactDOM.render`</span></span><br><span class="line">render(&lt;App /&gt;, document.getElementById('root'))</span><br></pre></td></tr></table></figure>
+<p>可以看出它们核心是把 Redux 分散的 actions 和 reducers 合并在一个地方，并减少了样板代码，而且自带异步 action 解决方案，抽象为 effects。</p>
+<p>说完第一个特点，接下来是第二个特点：<strong>“完美的支持 Typescript”</strong>。</p>
+<p>为什么我这么这么执着于 Typescript，使用过 Typescript 的都应该知道，不过什么规模的项目，开发体验比使用 Javascript 好太多，没入坑的同学可以去试试。</p>
+<p>基于第一特点的筛选，原生 Redux 和 Mobx 已被忽略，对于<a href="https://github.com/dvajs/dva" target="_blank" rel="noopener">dva</a>、<a href="https://github.com/rematch/rematch" target="_blank" rel="noopener">rematch</a>、<a href="https://github.com/mirrorjs/mirror" target="_blank" rel="noopener">mirror</a>，对 Typescript 支持最好的是 Rematch，它本身也是用 Typescript 写的，遂继续忽略 Dva 和 mirror。</p>
+<p>在聊 Rematch 和 Typescript 一起使用之前，先了解一下原生 Redux 和 Typescript 怎么一起使用， 用使用频率最高的 connect 举个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface StateProps &#123;</span><br><span class="line">  count: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface DispatchProps &#123;</span><br><span class="line">  increment: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface OwnProps &#123;</span><br><span class="line">  name: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect&lt;StateProps, DispatchProps, OwnProps&gt;(</span><br><span class="line">    mapStateToProps,</span><br><span class="line">    mapDispatchToProps</span><br><span class="line">)(MyComponent);</span><br></pre></td></tr></table></figure>
+<p>为了 MyComponent 的 props 能有正确的类型断言，你必须手写 StateProps 和 DispatchProps，这是一件很蛋疼的事情，也没有体现出使用 Typescript 的优势所在。理想的应该是 connect 之后 MyComponent 的 props 能被自动推倒出来，这才是完美的开发体验。但是基于 hoc 的使用方式，这方面貌似暂时无解，除非使用 render props，但是 render props 的书写方式真是有点辣眼睛。</p>
+<p>再来看看 Rematch 和 Typescript 怎么一起使用：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; iRootState, Dispatch &#125; <span class="keyword">from</span> <span class="string">'./store'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapState = <span class="function">(<span class="params">state: iRootState</span>) =&gt;</span> (&#123;</span><br><span class="line">	dolphins: state.dolphins,</span><br><span class="line">	sharks: state.sharks,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapDispatch = <span class="function">(<span class="params">dispatch: Dispatch</span>) =&gt;</span> (&#123;</span><br><span class="line">	incrementDolphins: dispatch.dolphins.increment,</span><br><span class="line">	incrementDolphinsAsync: dispatch.dolphins.incrementAsync,</span><br><span class="line">	incrementSharks: <span class="function"><span class="params">()</span> =&gt;</span> dispatch.sharks.increment(<span class="number">1</span>),</span><br><span class="line">	incrementSharksAsync: <span class="function"><span class="params">()</span> =&gt;</span> dispatch.sharks.incrementAsync(<span class="number">1</span>),</span><br><span class="line">	incrementSharksAsync2: <span class="function"><span class="params">()</span> =&gt;</span> dispatch(&#123; <span class="attr">type</span>: <span class="string">'sharks/incrementAsync'</span>, <span class="attr">payload</span>: <span class="number">2</span> &#125;),</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">type connectedProps = ReturnType&lt;<span class="keyword">typeof</span> mapState&gt; &amp; ReturnType&lt;<span class="keyword">typeof</span> mapDispatch&gt;</span><br><span class="line">type Props = connectedProps</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>&lt;<span class="title">Props</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// ....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapState, mapDispatch)(Count)</span><br></pre></td></tr></table></figure>
+<p>跟原生的 Redux 基本大同小异，没体现 Typescript 的优势，有点强行上 Typescript 的感觉。</p>
+<p>对我个人而言 Rematch 也无法满足这两个特点。</p>
+<p>所以, 我只能自己造一个:</p>
+<blockquote>
+<p>stamen: <strong>可能是基于 Hooks 和 Typescript 最好的状态管理工具</strong></p>
+</blockquote>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/11/12/my-dream-state-management/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+
+   
+      
+<!-- Gitalk评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('git')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+   
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

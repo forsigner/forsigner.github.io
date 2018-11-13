@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.forsigner.com/2018/11/12/stamen-based-on-hooks/</loc>
-    <lastmod>2018-11-12T12:55:07.092Z</lastmod>
+    <loc>http://www.forsigner.com/2018/11/13/stamen-based-on-hooks/</loc>
+    <lastmod>2018-11-13T03:52:26.707Z</lastmod>
+  </url>  <url>
+    <loc>http://www.forsigner.com/2018/11/12/my-dream-state-management/</loc>
+    <lastmod>2018-11-13T03:51:51.795Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/2018/10/01/stamen/</loc>
     <lastmod>2018-11-12T12:36:51.150Z</lastmod>
@@ -18,9 +21,6 @@
   </url>  <url>
     <loc>http://www.forsigner.com/2015/07/01/MongoDB-Command/</loc>
     <lastmod>2016-08-25T03:49:38.000Z</lastmod>
-  </url>  <url>
-    <loc>http://www.forsigner.com/2013/02/16/dont-make-me-think/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/2016/02/23/fexo/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -61,10 +61,10 @@
     <loc>http://www.forsigner.com/2013/12/06/sass-sourcemap/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/2013/08/23/Unix-command/</loc>
+    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
+    <loc>http://www.forsigner.com/2013/08/23/Unix-command/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/2013/07/28/about-blog/</loc>
@@ -112,7 +112,10 @@
     <loc>http://www.forsigner.com/2013/03/25/css-clearfix/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/2013/02/23/ordinary-world/</loc>
+    <loc>http://www.forsigner.com/2013/02/16/dont-make-me-think/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+  </url>  <url>
+    <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>
 </urlset>
