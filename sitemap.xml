@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.forsigner.com/2018/11/13/stamen-based-on-hooks/</loc>
+    <loc>http://www.forsigner.com/2018/11/12/my-dream-state-management/</loc>
     
-    <lastmod>2018-11-13T16:54:22.496Z</lastmod>
+    <lastmod>2018-11-13T17:03:11.090Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2018/11/12/my-dream-state-management/</loc>
+    <loc>http://www.forsigner.com/2018/11/13/stamen-based-on-hooks/</loc>
     
-    <lastmod>2018-11-13T06:25:33.850Z</lastmod>
+    <lastmod>2018-11-13T16:54:22.496Z</lastmod>
     
   </url>
   
@@ -86,21 +86,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2015/03/12/ionic-android-package/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/2015/03/01/ionic-command/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/2013/02/02/javascript-reading/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -114,7 +100,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
+    <loc>http://www.forsigner.com/2013/02/02/javascript-reading/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -128,7 +114,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
+    <loc>http://www.forsigner.com/2015/03/07/mac-android-debug/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -142,7 +128,21 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/2016/02/18/magic-check/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/2016/02/16/node-pngdefry/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2013/12/06/sass-sourcemap/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -163,13 +163,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/tag/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -177,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/07/28/about-blog/</loc>
+    <loc>http://www.forsigner.com/2013/08/01/texturepacker-sprite/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/08/01/texturepacker-sprite/</loc>
+    <loc>http://www.forsigner.com/2013/07/28/about-blog/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -212,7 +205,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
+    <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2015/03/12/ionic-android-package/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -233,13 +233,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2016/03/06/beside-1/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/2013/03/18/iehaslayout/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -247,14 +240,21 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
+    <loc>http://www.forsigner.com/2015/01/03/my-tech/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2015/01/03/my-tech/</loc>
+    <loc>http://www.forsigner.com/2016/03/04/browser-md5-file/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/2013/03/20/css-bfc/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -310,7 +310,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/2013/12/06/sass-sourcemap/</loc>
+    <loc>http://www.forsigner.com/2015/02/27/setting-ionic/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
