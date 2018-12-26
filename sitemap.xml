@@ -114,6 +114,13 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/mac-android-debug/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/learning-javascript-closure/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -129,13 +136,6 @@
   
   <url>
     <loc>http://www.forsigner.com/magic-check/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/mac-android-debug/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/texturepacker-sprite/</loc>
+    <loc>http://www.forsigner.com/tag/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/tag/index.html</loc>
+    <loc>http://www.forsigner.com/texturepacker-sprite/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -219,6 +219,13 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/browser-md5-file/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/fexo-doc-en/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -227,13 +234,6 @@
   
   <url>
     <loc>http://www.forsigner.com/fexo-doc-zh-tw/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/browser-md5-file/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -254,7 +254,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/css-clearfix/</loc>
+    <loc>http://www.forsigner.com/css-bfc/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -296,7 +296,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/css-bfc/</loc>
+    <loc>http://www.forsigner.com/css-clearfix/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
