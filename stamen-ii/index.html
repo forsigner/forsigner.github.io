@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>可能是基于 Hooks 和 Typescript 最好的状态管理工具 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,TypeScript,React," />
+  
+
+  <meta name="description" content="接上一篇：我理想中的状态管理工具 之前说，对于我个人来而言，理想的状态管理工具只需同时满足两个特点：  简单易用，并且适合中大型项目 完美地支持 Typescript  未能找到一个完美满足这两点的，所以我决定自己造了一个：叫 Stamen。 首先是 简单易用，并且适合中大型项目，Stamen 的 Api 设计借鉴了 dva、mirror、rematch，但却更简单，主要借鉴了它们的 model">
+<meta name="keywords" content="JavaScript,TypeScript,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可能是基于 Hooks 和 Typescript 最好的状态管理工具">
+<meta property="og:url" content="http://www.forsigner.com/stamen-ii/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="接上一篇：我理想中的状态管理工具 之前说，对于我个人来而言，理想的状态管理工具只需同时满足两个特点：  简单易用，并且适合中大型项目 完美地支持 Typescript  未能找到一个完美满足这两点的，所以我决定自己造了一个：叫 Stamen。 首先是 简单易用，并且适合中大型项目，Stamen 的 Api 设计借鉴了 dva、mirror、rematch，但却更简单，主要借鉴了它们的 model">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://forsigner.com/images/stamen/hover.gif">
+<meta property="og:image" content="http://forsigner.com/images/stamen/state.gif">
+<meta property="og:image" content="http://forsigner.com/images/stamen/action.gif">
+<meta property="og:image" content="http://forsigner.com/images/stamen/go.gif">
+<meta property="og:updated_time" content="2018-12-05T03:17:29.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="可能是基于 Hooks 和 Typescript 最好的状态管理工具">
+<meta name="twitter:description" content="接上一篇：我理想中的状态管理工具 之前说，对于我个人来而言，理想的状态管理工具只需同时满足两个特点：  简单易用，并且适合中大型项目 完美地支持 Typescript  未能找到一个完美满足这两点的，所以我决定自己造了一个：叫 Stamen。 首先是 简单易用，并且适合中大型项目，Stamen 的 Api 设计借鉴了 dva、mirror、rematch，但却更简单，主要借鉴了它们的 model">
+<meta name="twitter:image" content="http://forsigner.com/images/stamen/hover.gif">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-stamen-ii" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">可能是基于 Hooks 和 Typescript 最好的状态管理工具</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.11.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>接上一篇：<a href="http://forsigner.com/2018/11/12/stamen-i/" target="_blank" rel="noopener">我理想中的状态管理工具</a></p>
+<p>之前说，对于我个人来而言，理想的状态管理工具只需同时满足两个特点：</p>
+<ul>
+<li><strong>简单易用，并且适合中大型项目</strong></li>
+<li><strong>完美地支持 Typescript</strong></li>
+</ul>
+<p>未能找到一个完美满足这两点的，所以我决定自己造了一个：叫 <a href="https://github.com/forsigner/stamen" target="_blank" rel="noopener">Stamen</a>。</p>
+<p>首先是 <strong>简单易用，并且适合中大型项目</strong>，Stamen 的 Api 设计借鉴了 dva、mirror、rematch，但却更简单，主要借鉴了它们的 model 的组织方式：state、reducers、effects。把 action 分为 reducer 和 effect 两类是很好的实践。</p>
+<p>先看看 Stamen 是怎么使用的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'stamen'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CounterStore = createStore(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">10</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    increment(state) &#123;</span><br><span class="line">      state.count++;</span><br><span class="line">    &#125;,</span><br><span class="line">    decrement(state) &#123;</span><br><span class="line">      state.count--;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    <span class="keyword">async</span> asyncIncrement(dispatch) &#123;</span><br><span class="line">      <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve();</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">      dispatch(<span class="string">'increment'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; get, dispatch &#125; = CounterStore.useStore();</span><br><span class="line">  <span class="keyword">const</span> count = get(<span class="function"><span class="params">state</span> =&gt;</span> state.count);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;span&gt;&#123;count&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; dispatch('decrement')&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; dispatch(<span class="function"><span class="params">actions</span> =&gt;</span> actions.increment)&#125;&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">      &lt;button onClick=&#123;() =&gt; dispatch(<span class="string">'asyncIncrement'</span>)&#125;&gt;<span class="keyword">async</span>+<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<p>线上 demo 可以看 (Check on CodeSandbox): <a href="https://codesandbox.io/s/0vrrlkjx5w" target="_blank" rel="noopener">Basic</a> | <a href="https://codesandbox.io/s/kmq65p3l97" target="_blank" rel="noopener">Async</a></p>
+<p>这段代码涵盖了 Stamen 的全部 Api，核心的理念包括：</p>
+<ul>
+<li>尽量简洁的 Api，没有 connect、Provider</li>
+<li>使用 React Hooks，抛弃 hoc 和 render props</li>
+<li>推荐使用多 store，store 是分形的，更加灵活</li>
+</ul>
+<p>为什么不需要 Provider ？</p>
+<p>Stamen 默认是多 store，这更灵活简单 ，所以并不需要使用 Provider 包裹。</p>
+<p>为什么使用 Reack Hooks?</p>
+<p>用 React Hooks 写出代码可读性更强，可维护性更高，对 Typescript 支持更好，hoc 最大问题是对 Typescript 支持不好，使用 render props 最大问题写出的代码有点反人类，当然 hoc 和 render props 和 React Hooks 对比还有其他缺点，具体可以 Hooks 文档。</p>
+<p>之前有一段代码，用 render props 会产生太多嵌套：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Counter = create(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> User = create(&#123; <span class="attr">name</span>: <span class="string">'foo'</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> Todo = create(&#123; <span class="attr">todos</span>: [] &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &#123;User.get(<span class="function"><span class="params">user</span> =&gt;</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;span&gt;&#123;user.name&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">          &#123;Todo.get(todo =&gt; (</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;</span></span><br><span class="line"><span class="regexp">              &#123;todo.todos.map(item =&gt; &#123;</span></span><br><span class="line"><span class="regexp">                &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                  &lt;span&gt;&#123;item.name&#125;&lt;/</span>span&gt;;</span><br><span class="line">                  &lt;span&gt;&#123;Counter.get(<span class="function"><span class="params">s</span> =&gt;</span> s.count)&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;;</span><br><span class="line">              &#125;)&#125;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">          ))&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    ))&#125;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>如果使用 React Hooks 改写，可读性会大大提高，下面用 Stamen 改写：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> counterStore = CounterStore.useStore();</span><br><span class="line"><span class="keyword">const</span> userStore = UserStore.useStore();</span><br><span class="line"><span class="keyword">const</span> todoStore = TodoStore.useStore();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> count = counterStore.get(<span class="function"><span class="params">s</span> =&gt;</span> s.count);</span><br><span class="line"><span class="keyword">const</span> name = userStore.get(<span class="function"><span class="params">s</span> =&gt;</span> s.name);</span><br><span class="line"><span class="keyword">const</span> todos = TodoStore.get(<span class="function"><span class="params">s</span> =&gt;</span> s.todos);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;name&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &#123;todos.map(item =&gt; &#123;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">          &lt;span&gt;&#123;item.name&#125;&lt;/</span>span&gt;</span><br><span class="line">          &lt;span&gt;&#123;count&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;;</span><br><span class="line">      &#125;)&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>接下来是 <strong>完美地支持 Typescript</strong>，前面是过 hoc 对 Typescript 支持，render props 书写可读性差，React Hooks 能很好的平衡这两点。</p>
+<p>下面用几张 gif 来展示 Stamen 对 Typescript 完美地支持。</p>
+<p><strong>图一</strong>: 用鼠标悬停到变量 state 和 action，可以查看它们完整的类型定义。不同于使用 connect 等 hoc，你不要写任何类型定义，一切都是自动地类型推倒。</p>
+<p><img src="http://forsigner.com/images/stamen/hover.gif" alt="hover"></p>
+<p><strong>图二</strong>: state 的自动补全。</p>
+<p><img src="http://forsigner.com/images/stamen/state.gif" alt="state"></p>
+<p><strong>图三</strong>: actions 的自动补全，dispatch 支持两种类型参数，一种是字符串(action 的函数名)，另外一种 actionSelector 函数(类似 redux 的 stateSlector)，推荐使用后面一种，开发体验会更好。</p>
+<p><img src="http://forsigner.com/images/stamen/action.gif" alt="action"></p>
+<p><strong>图四</strong>: 使用 actionSelector，方便地跳转到 action 函数定义处，方便安全地进行重构重命名等操作。</p>
+<p><img src="http://forsigner.com/images/stamen/go.gif" alt="action"></p>
+<p>Stamen 的 Api 非常简单，可以直接看类型定义：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Opt&lt;S, R, E&gt; &#123;</span><br><span class="line">  state: S;</span><br><span class="line">  reducers?: R;</span><br><span class="line">  effects?: E;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">declare <span class="function"><span class="keyword">function</span> <span class="title">createStore</span>&lt;<span class="title">S</span>, <span class="title">R</span> <span class="title">extends</span> <span class="title">Reducers</span>&lt;<span class="title">S</span>&gt;, <span class="title">E</span> <span class="title">extends</span> <span class="title">Effects</span>&gt;(<span class="params">opt: Opt&lt;S, R, E&gt;</span>): </span>&#123;</span><br><span class="line">  useStore: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    get: &lt;P&gt;(selector: Selector&lt;S, P&gt;) =&gt; P;</span><br><span class="line">    dispatch: (action: ActionSelector&lt;R, E&gt; | keyof R | keyof E, payload?: any) =&gt; void;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>更多关于 Stamen 的使用方法，可以看 github: <a href="https://github.com/forsigner/stamen" target="_blank" rel="noopener">stamen</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/stamen-i/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

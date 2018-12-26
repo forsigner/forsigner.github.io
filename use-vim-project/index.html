@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>vim插件project的用法 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端工具," />
+  
+
+  <meta name="description" content="用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开">
+<meta name="keywords" content="前端工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim插件project的用法">
+<meta property="og:url" content="http://www.forsigner.com/use-vim-project/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim插件project的用法">
+<meta name="twitter:description" content="用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-use-vim-project" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">vim插件project的用法</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2012.12.29</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>用任何编辑器写代码，文件管理的方便与否对编码效率影响很大。一般的IDE都有文件管理功能，并且用来的不错。在vim中，要实现较好的文件管理功能一般都靠插件。在有米实习的第一个月，自己一直用NERDTree来管理文件。开始用起来很爽，因为我的vim终于可以和IDE一样管理我的文件了，但是NERDtree有个明显的缺点，当一个项目的文件系统很复杂时，NERDtree展现出的是节点多到让你蛋疼，这时要打开一个文件相当麻烦，效率低下。碰巧js师兄看到我的vim那么悲催，就介绍了一个项目管理插件，叫project。对于vim来说，这是一个几乎完美的项目管理+文件管理插件，优点就不多写了，谁用谁知道。<br><a id="more"></a></p>
+<p>project使用法很简单，下面记录下自己常用的几个功能：</p>
+<p>首先，用:Project 打开project，不过我喜欢在 .vimrc 中绑定快捷键 nmaprToggleProject ，这个快捷键的功能是按 pr 切换project的打开和关闭状态。</p>
+<p>下面用project打开一个项目，打开project后输入下面类似的命令：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="attribute">myproject</span>=var/www/myproject <span class="attribute">CD</span>=. <span class="attribute">filter</span>=<span class="string">"*.js  *.html *.md"</span> &#123;</span><br><span class="line">    <span class="built_in">..</span>.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>假设myproject文件中有四个文件：jqurey.js index.html readme.md info.php 和一个子文件夹 child，文件夹child两个文件：test.html和sea.js。把光标停在上两行代码中并按下\r刷新，project中应该出现以代码：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">myproject=var/www/myproject CD=. <span class="attribute">filter</span>=<span class="string">"*.js  *.html *.md"</span> &#123;</span><br><span class="line">    jquery.js</span><br><span class="line">    index.html</span><br><span class="line">    readme.md</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在project在添加一行，添加后代码如下：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="attribute">myproject</span>=var/www/myproject <span class="attribute">CD</span>=. <span class="attribute">filter</span>=<span class="string">"*.js  *.html *.md"</span> &#123;</span><br><span class="line">    jquery.js</span><br><span class="line">    index.html</span><br><span class="line">    readme.md</span><br><span class="line">    <span class="attribute">child</span>=child <span class="attribute">filter</span>=<span class="string">".js"</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再使用/r刷新刚添加的那行，project代码应该如下：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">myproject=var/www/myproject  CD=.  <span class="attribute">filter</span>=<span class="string">"*.js  *.html *.md"</span>  &#123;</span><br><span class="line">    jquery.js</span><br><span class="line">    index.html</span><br><span class="line">    readme.md</span><br><span class="line">    child=child <span class="attribute">filter</span>=<span class="string">".js"</span>  &#123;</span><br><span class="line">        sea.js</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是使用project打开一个项目的简单完整过程，下面是一些自己常用的命令：</p>
+<ul>
+<li>\r—reflash光标所在的文件夹</li>
+<li>\R—reflash光标所在的文件夹及其子文件夹</li>
+<li>\c—create一个项目文件夹</li>
+<li>\C—create一个项目文件夹，并会导入期所有子文件夹，项目较大时慎用</li>
+<li>\s—如果光标在文件前，用水平分割窗口的方式打开文件，如果光标在文件前，open or close it.</li>
+<li>\S—用水平分割窗口的方式打开该文件件的所有文件</li>
+<li>\o—打开一个文件，光标会跳到新打开的文件窗口中</li>
+<li>\v—代开一个文件，光标不会跳</li>
+<li>vim中默认的maplocalleader是 \ ,我喜欢在.vimrc设置let maplocalleader=”;”,执行以上命令式使用 ; 代替 \ 。</li>
+</ul>
+<p>done 。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/github-pages-custom-doman/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/javascript-reading/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

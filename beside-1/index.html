@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>怎样打造一个DOM元素位置引擎 (一) | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript," />
+  
+
+  <meta name="description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。 这个DOM元素位置引擎">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎样打造一个DOM元素位置引擎 (一)">
+<meta property="og:url" content="http://www.forsigner.com/beside-1/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。 这个DOM元素位置引擎">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/fo-popover.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/beside.png">
+<meta property="og:updated_time" content="2016-05-17T09:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="怎样打造一个DOM元素位置引擎 (一)">
+<meta name="twitter:description" content="碎碎念这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 fexo ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。 这个DOM元素位置引擎">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/fo-popover.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#碎碎念"><span class="toc-text">碎碎念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这个DOM元素位置引擎是什么？"><span class="toc-text">这个DOM元素位置引擎是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Beside起源"><span class="toc-text">Beside起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Beside-到底是什么？"><span class="toc-text">Beside 到底是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Beside-的用法"><span class="toc-text">Beside 的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于-Beside-的-UI-component"><span class="toc-text">基于 Beside 的 UI component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器兼容性"><span class="toc-text">浏览器兼容性</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-beside-1" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">怎样打造一个DOM元素位置引擎 (一)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>这是一篇早就应该写的文章，但是由于过年前项目紧张，一直没有时间，这个周末决定把这笔债换了。这个项目开始于两个月前，也是花了比较多时间的一个项目，不像前段时间写的 Hexo 主题 <a href="https://github.com/forsigner/fexo" target="_blank" rel="noopener">fexo</a> ，灵感一现，两个晚上就大体出来了。这也是一个比较有意思的项目，因为它不是一个可以直接用的前端UI组件，它是一个基础UI类库，要更好的使用它，你需要再它基础上去实现一些可用的前端组件。</p>
+<h2 id="这个DOM元素位置引擎是什么？"><a href="#这个DOM元素位置引擎是什么？" class="headerlink" title="这个DOM元素位置引擎是什么？"></a>这个DOM元素位置引擎是什么？</h2><p>说成一个引擎，实在有些装逼，其实它就是控制 DOM 元素位置的一个 JavaScript Library，在前端交互中，怎样给 DOM 元素定位是一个经常遇到的问题，所以我把可以通用的部分抽象出来，这样可以更方便的给元素定位。</p>
+<p>这个类库我给它取名叫做 <strong><a href="https://github.com/forsigner/beside" target="_blank" rel="noopener">beside</a></strong>，意思是【在旁边】，这也是 <strong><a href="https://github.com/forsigner/beside" target="_blank" rel="noopener">beside</a></strong> 的核心功能，让一个元素放置于另一个元素旁边。</p>
+<h2 id="Beside起源"><a href="#Beside起源" class="headerlink" title="Beside起源"></a>Beside起源</h2><p>它起源跟艺术一样，源于生活（装逼）。其实他的起源来源于一个删除按钮，需求来源于我们的交互设计师。开始我们前端做了一个删除成员的功能，没有任何提示，就直接删除了。交互说这当然是不行的，要加个二次确认，前端说可以加个弹窗吗？交互说不行，不要这种大弹窗，在删除按钮旁边弹个小卡片就好了，也就是下面的效果:</p>
+<p><img src="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/fo-popover.png" alt="fo-popover"></p>
+<p>二次确认这个小功能，它就是 Beside 的起源。</p>
+<h2 id="Beside-到底是什么？"><a href="#Beside-到底是什么？" class="headerlink" title="Beside 到底是什么？"></a>Beside 到底是什么？</h2><p>一句话: <strong><a href="https://github.com/forsigner/beside" target="_blank" rel="noopener">beside</a></strong> 是一个让一个 DOM 元素放置在另一 DOM 元素的基础 UI 库。</p>
+<p>Gibhub: <strong><a href="https://github.com/forsigner/beside" target="_blank" rel="noopener">beside</a></strong></p>
+<p>Demo: <a href="http://forsigner.com/beside/" target="_blank" rel="noopener">查看</a></p>
+<p>效果图：</p>
+<p><img src="https://raw.githubusercontent.com/forsigner/blog/master/source/images/beside/beside.png" alt="beside"></p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>使用 Beside 可以更方便的实现一些前端组件, 典型的包括： Tooltip、Popover、 Dropdown Menu、垂直居中的 Modal 等。</p>
+<h2 id="Beside-的用法"><a href="#Beside-的用法" class="headerlink" title="Beside 的用法"></a>Beside 的用法</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/beside/dist/beside.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"me"</span>&gt;</span>ME<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"you"</span>&gt;</span>YOU<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">beside.init(&#123;</span><br><span class="line">  me: <span class="built_in">document</span>.getElementById(<span class="string">'me'</span>),</span><br><span class="line">  you: <span class="built_in">document</span>.getElementById(<span class="string">'you'</span>),</span><br><span class="line">  where: <span class="string">'top center'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="基于-Beside-的-UI-component"><a href="#基于-Beside-的-UI-component" class="headerlink" title="基于 Beside 的 UI component"></a>基于 Beside 的 UI component</h3><ul>
+<li><a href="https://github.com/forsigner/fo-popover" target="_blank" rel="noopener">fo-popover</a> A nice popover for Angular.</li>
+<li><a href="https://github.com/forsigner/fo-tooltip" target="_blank" rel="noopener">fo-tooltop</a> A nice tooltip for Angular.</li>
+</ul>
+<h3 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><ul>
+<li>IE7 &amp;&amp; IE7+</li>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Safari</li>
+<li>Opera</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/browser-md5-file/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/fexo-doc-zh-cn/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
