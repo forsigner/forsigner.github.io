@@ -7,29 +7,26 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>打造前端团队 React CLI 工具 | forsigner的博客</title>
+  <title>Dahlia：一个现代化的 React 框架 | forsigner的博客</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="JavaScript,TypeScript,React,CLI," />
+    <meta name="keywords" content="JavaScript,TypeScript,React," />
   
 
-  <meta name="description" content="关于前端 CLI 工具 对于 Angular，有官方的 Angular CLI。 对于 Vue，有官方的 Vue CLI。 对于 React，有官方的 Create React App。  Angular CLI 和 Vue CLI 是官方推荐的 CLI 工具，可直接在生产环境中使用，但 Create React App 的定位却有点不同，它的目标是让你快速 Set up 一个 React 应用，">
-<meta name="keywords" content="JavaScript,TypeScript,React,CLI">
+  <meta name="description" content="什么是前端框架React 是什么？按照官方的说法，React 是一个用于构建用户界面的 JavaScript 库，所以它不是一个框架。 在前端中，框架是什么？也许很难下定义，但很容易举例，Angular 就是一个框架。 Dahlia 是什么Dahlia 是什么？它是一个框架，是一个基于 React 开发的框架。你可以认为它是一个和 Angular 同级别的东西。 Dahlia 是一个大而全的框架，">
+<meta name="keywords" content="JavaScript,TypeScript,React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="打造前端团队 React CLI 工具">
-<meta property="og:url" content="http://www.forsigner.com/team-cli/index.html">
+<meta property="og:title" content="Dahlia：一个现代化的 React 框架">
+<meta property="og:url" content="http://www.forsigner.com/一个现代化的React 框架/index.html">
 <meta property="og:site_name" content="forsigner的博客">
-<meta property="og:description" content="关于前端 CLI 工具 对于 Angular，有官方的 Angular CLI。 对于 Vue，有官方的 Vue CLI。 对于 React，有官方的 Create React App。  Angular CLI 和 Vue CLI 是官方推荐的 CLI 工具，可直接在生产环境中使用，但 Create React App 的定位却有点不同，它的目标是让你快速 Set up 一个 React 应用，">
+<meta property="og:description" content="什么是前端框架React 是什么？按照官方的说法，React 是一个用于构建用户界面的 JavaScript 库，所以它不是一个框架。 在前端中，框架是什么？也许很难下定义，但很容易举例，Angular 就是一个框架。 Dahlia 是什么Dahlia 是什么？它是一个框架，是一个基于 React 开发的框架。你可以认为它是一个和 Angular 同级别的东西。 Dahlia 是一个大而全的框架，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://forsigner.com/images/dahlia/dahlia-app.png">
-<meta property="og:image" content="http://forsigner.com/images/dahlia/dahlia-app.png">
-<meta property="og:updated_time" content="2019-05-04T09:13:04.685Z">
+<meta property="og:updated_time" content="2019-05-04T17:08:11.813Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="打造前端团队 React CLI 工具">
-<meta name="twitter:description" content="关于前端 CLI 工具 对于 Angular，有官方的 Angular CLI。 对于 Vue，有官方的 Vue CLI。 对于 React，有官方的 Create React App。  Angular CLI 和 Vue CLI 是官方推荐的 CLI 工具，可直接在生产环境中使用，但 Create React App 的定位却有点不同，它的目标是让你快速 Set up 一个 React 应用，">
-<meta name="twitter:image" content="http://forsigner.com/images/dahlia/dahlia-app.png">
+<meta name="twitter:title" content="Dahlia：一个现代化的 React 框架">
+<meta name="twitter:description" content="什么是前端框架React 是什么？按照官方的说法，React 是一个用于构建用户界面的 JavaScript 库，所以它不是一个框架。 在前端中，框架是什么？也许很难下定义，但很容易举例，Angular 就是一个框架。 Dahlia 是什么Dahlia 是什么？它是一个框架，是一个基于 React 开发的框架。你可以认为它是一个和 Angular 同级别的东西。 Dahlia 是一个大而全的框架，">
 
   
 
@@ -199,20 +196,20 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于前端-CLI-工具"><span class="toc-text">关于前端 CLI 工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我们团队的历程"><span class="toc-text">我们团队的历程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我推荐的方案"><span class="toc-text">我推荐的方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于-Create-React-App-创建-CLI"><span class="toc-text">基于 Create React App 创建 CLI</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是前端框架"><span class="toc-text">什么是前端框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dahlia-是什么"><span class="toc-text">Dahlia 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么创建-Dahlia"><span class="toc-text">为什么创建 Dahlia</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dahlia-有什么特点"><span class="toc-text">Dahlia 有什么特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-team-cli" class="article article-type-post" itemprop="blogPost">
+   <article id="post-一个现代化的React 框架" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">打造前端团队 React CLI 工具</h1>
+    <h1 class="post-title">Dahlia：一个现代化的 React 框架</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2019.05.04</span>
+        <span>2019.05.05</span>
       </span>
 
       
@@ -245,41 +242,43 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h2 id="关于前端-CLI-工具"><a href="#关于前端-CLI-工具" class="headerlink" title="关于前端 CLI 工具"></a>关于前端 CLI 工具</h2><ul>
-<li>对于 Angular，有官方的 <a href="https://cli.angular.io/" target="_blank" rel="noopener">Angular CLI</a>。</li>
-<li>对于 Vue，有官方的 <a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">Vue CLI</a>。</li>
-<li>对于 React，有官方的 <a href="https://facebook.github.io/create-react-app/" target="_blank" rel="noopener">Create React App</a>。</li>
+      <h2 id="什么是前端框架"><a href="#什么是前端框架" class="headerlink" title="什么是前端框架"></a>什么是前端框架</h2><p>React 是什么？按照官方的说法，React 是一个用于构建用户界面的 JavaScript 库，所以它不是一个框架。</p>
+<p>在前端中，框架是什么？也许很难下定义，但很容易举例，Angular 就是一个框架。</p>
+<h2 id="Dahlia-是什么"><a href="#Dahlia-是什么" class="headerlink" title="Dahlia 是什么"></a>Dahlia 是什么</h2><p>Dahlia 是什么？它是一个框架，是一个基于 React 开发的框架。你可以认为它是一个和 Angular 同级别的东西。</p>
+<p>Dahlia 是一个大而全的框架，包括了很多东西：</p>
+<ul>
+<li>CLI 工具</li>
+<li>路由集成</li>
+<li>状态管理</li>
+<li>Http Client</li>
+<li>GraphQL Client</li>
+<li>表单</li>
+<li>弹窗</li>
+<li>国际化</li>
+<li>…</li>
 </ul>
-<p>Angular CLI 和 Vue CLI 是官方推荐的 CLI 工具，可直接在生产环境中使用，但 Create React App 的定位却有点不同，它的目标是让你快速 Set up 一个 React 应用，如果你要在生产环境中使用，因为它的可定制性并不好，你可能要 eject，然后手动维护 webpack 配置。</p>
-<h2 id="我们团队的历程"><a href="#我们团队的历程" class="headerlink" title="我们团队的历程"></a>我们团队的历程</h2><p>首先说背景，这几年以来，我所在的团队使用的都是 React 技术栈，我们业务主要属性是要频繁创建新项目的，但业务的生命周期并不一定短，也可能是长期的。</p>
-<p>最开始，应该该是三四年前左右，那是解决方案比较原始，每个人维护自己的 webpack 配置，有新项目就 copy and paste。这样的优点是灵活，本人对自己项目的配置可控性，缺点是配置升级和维护都不容易，项目交接后问题多。</p>
-<p>后来，我们使用项目 Boilerplate 的方式，团队内维护一份 Boilerplate，所有新项目都使用这个 Boilerplate 初始化。这样的的有点 webpack 配置统一化，易于多人合作，缺点是配置升级不易，因为 webpack 配置是暴露在项目中的，配置会被人修改，很容易脏掉。</p>
-<p>再后来，官方出了 <a href="https://facebook.github.io/create-react-app/" target="_blank" rel="noopener">Create React App</a>。发现原来 webpack 配置可以不暴露在项目中，可以隐藏在 node_modules 中，这是一种非常优雅的解决方案。所以我们使用了和 <a href="https://facebook.github.io/create-react-app/" target="_blank" rel="noopener">Create React App</a> 一样的解决方案，创建自己团队专属的前端 CLI 工具，这也是我们当前的解决方案。这样的优点是 webpack 配置被隐藏，项目目录比较干净，webpack 配置升级容易，只需升级 CLI，缺点是维护 CLI 是一个大工程，需要较多的人力，且需要踩非常多的坑。</p>
-<h2 id="我推荐的方案"><a href="#我推荐的方案" class="headerlink" title="我推荐的方案"></a>我推荐的方案</h2><p>回到文章的标题：<strong>打造前端团队 React CLI 工具</strong>，我认为每个前端团队都应该有自己的 CLI 工具，这是一个团队技术和经验沉淀的重要根据地。</p>
-<p>CLI 工具可以承担非常多的工具，比如初始化项目、开发、测试、打包、一键部署、组件开发等，换一句话说，CLI 工具需要参与到研发的整个生命周期中，所以它是团队技术和经验沉淀的重要根据地。</p>
-<p>这里我重点要说的是 CLI 所承担的脚手架功能，Create React App 非常优秀，但我不建议作为团队工具直接使用，我也不建议从零开始去实现一个 Create React App（特别是一个中小前端团队），我的建议是基于 Create React App 创建，为什么呢？因为 Create React App 足够问题，出现问题的概率小，站在巨人肩膀上，你可以省很多精力，把更多的精力投入到业务问题中。</p>
-<h2 id="基于-Create-React-App-创建-CLI"><a href="#基于-Create-React-App-创建-CLI" class="headerlink" title="基于 Create React App 创建 CLI"></a>基于 Create React App 创建 CLI</h2><p>下面是一个我基于 Create React App 创建的 CLI：</p>
-<p>安装:</p>
+<h2 id="为什么创建-Dahlia"><a href="#为什么创建-Dahlia" class="headerlink" title="为什么创建 Dahlia"></a>为什么创建 Dahlia</h2><p>我为什么不用直接使用 Angular 或者 Vue，最重要的原因是：老了，记忆力衰退。记不住 ngFor，记不住 ngModal，记不住 v-on，接不住 v-show… 记不住众多的的框架 Api。</p>
+<p>因为老了，所以 Dahlia 这个框架暂时也只支持 TypeScript，因为如果没有 TypeScript, <code>dangerouslySetInnerHTML</code>这样的 Api 也会令我抓狂，因为 <code>dangerouslySetInnerHTML</code> 这个单词我可能要背好几周才能写出来。</p>
+<p>React 以灵活著称，为什么要搞一个框架？因为懒得折腾，如果我记忆力足够好，我应该会选择 Angular，可惜不够好，所以搞了一个大而全 Dahlia，希望能少折腾、多做事、早下班。</p>
+<h2 id="Dahlia-有什么特点"><a href="#Dahlia-有什么特点" class="headerlink" title="Dahlia 有什么特点"></a>Dahlia 有什么特点</h2><ul>
+<li><strong>TypeScript</strong> 是一等公民，提供良好的开发体验</li>
+<li>基于 <strong>create-react-app</strong>，不用关心 Webpack 配置，享受 React 社区最优秀的 setup、develop、build 工具</li>
+<li><strong>渐进式</strong> 地开发模式，可以快速上手，也可以开发复杂应用</li>
+</ul>
+<p>Dahlia 非常多地方借鉴了 Next.js，如果说和 Next.js 有什么不同，那可能是比 Next.js 更加框架化，使用 Dahlia 你会有更高开发效率和更好的开发体验，Dahlia 让你真正的专注于业务的开发，快速解决为各种需求，而不是在各种捣鼓和选择中迷失自我。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>安装 Dahlia CLI:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn global add dahlia-cli</span><br></pre></td></tr></table></figure>
-<p>初始化项目：</p>
+<p>初始化应用:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dh new myapp</span><br></pre></td></tr></table></figure>
-<p>项目目录:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── package.json</span><br><span class="line">├── pages</span><br><span class="line">│   └── index.tsx</span><br><span class="line">└── tsconfig.json</span><br></pre></td></tr></table></figure>
-<p>启动开发服务器：</p>
+<p>它将在当前文件夹中创建一个名为 myapp 的目录，目录结构如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── package.json</span><br><span class="line">├── pages</span><br><span class="line">│   └── index.tsx</span><br><span class="line">└── tsconfig.json</span><br></pre></td></tr></table></figure>
+<p>启动开发服务器:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> myapp</span><br><span class="line">dh start</span><br></pre></td></tr></table></figure>
-<p><img src="http://forsigner.com/images/dahlia/dahlia-app.png" alt="dh"></p>
-<p>原理是非常简单，其实就是对 下面是一个我基于 Create React App 创建的 CLI：</p>
-<p>安装:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn global add dahlia-cli</span><br></pre></td></tr></table></figure>
-<p>初始化项目：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dh new myapp</span><br></pre></td></tr></table></figure>
-<p>项目目录:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── package.json</span><br><span class="line">├── pages</span><br><span class="line">│   └── index.tsx</span><br><span class="line">└── tsconfig.json</span><br></pre></td></tr></table></figure>
-<p>启动开发服务器：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> myapp</span><br><span class="line">dh start</span><br></pre></td></tr></table></figure>
-<p><img src="http://forsigner.com/images/dahlia/dahlia-app.png" alt="dh"></p>
-<p>原理是非常简单，其实就是对 Create React App 定制化，让它成为适合你团队的工具，但你工具是紧跟 React 社区的，拥有很好的稳定性。</p>
-<p>有兴趣了解细节的可以看 <a href="https://github.com/forsigner/dahlia/blob/master/packages/dahlia-cli/README.md" target="_blank" rel="noopener">dahlia-cli</a>。</p>
+<p>Dahlai 现在还在不断改善完善中，我们团队已在项目使用，欢迎 PR。</p>
+<ul>
+<li>Github 地址：<a href="https://github.com/forsigner/dahlia" target="_blank" rel="noopener">https://github.com/forsigner/dahlia</a></li>
+<li>详细文档：<a href="https://dahlia.js.org" target="_blank" rel="noopener">https://dahlia.js.org</a></li>
+</ul>
 
     
   </div>
@@ -317,10 +316,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/stamen-ii/">
+    <a class="show pull-left" href="/react-rest/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/react-rest/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
