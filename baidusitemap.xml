@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.forsigner.com/react-rest/</loc>
+    <lastmod>2019-05-04T14:25:56.376Z</lastmod>
+  </url>  <url>
     <loc>http://www.forsigner.com/team-cli/</loc>
-    <lastmod>2019-05-04T08:04:18.551Z</lastmod>
+    <lastmod>2019-05-04T09:13:04.685Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/stamen-ii/</loc>
     <lastmod>2018-12-05T03:17:29.430Z</lastmod>
@@ -25,16 +28,13 @@
     <loc>http://www.forsigner.com/MongoDB-Command/</loc>
     <lastmod>2016-08-25T03:49:38.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/texturepacker-sprite/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-  </url>  <url>
     <loc>http://www.forsigner.com/github-pages-custom-doman/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/ionic-command/</loc>
+    <loc>http://www.forsigner.com/ionic-android-package/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/ionic-android-package/</loc>
+    <loc>http://www.forsigner.com/ionic-command/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/javascript-callback/</loc>
@@ -46,10 +46,13 @@
     <loc>http://www.forsigner.com/learning-javascript-closure/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
+    <loc>http://www.forsigner.com/mac-skills/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+  </url>  <url>
     <loc>http://www.forsigner.com/mac-android-debug/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/mac-skills/</loc>
+    <loc>http://www.forsigner.com/sass-sourcemap/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/magic-check/</loc>
@@ -58,28 +61,22 @@
     <loc>http://www.forsigner.com/ordinary-world/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/node-pngdefry/</loc>
+    <loc>http://www.forsigner.com/setting-ionic/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/setting-ionic/</loc>
+    <loc>http://www.forsigner.com/node-pngdefry/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/about-blog/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/sass-sourcemap/</loc>
+    <loc>http://www.forsigner.com/texturepacker-sprite/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/Unix-command/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/beside-1/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-  </url>  <url>
     <loc>http://www.forsigner.com/traval/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-  </url>  <url>
-    <loc>http://www.forsigner.com/angular-nice-bar/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/use-vim-project/</loc>
@@ -88,13 +85,19 @@
     <loc>http://www.forsigner.com/browser-md5-file/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/fexo-doc-en/</loc>
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-  </url>  <url>
-    <loc>http://www.forsigner.com/fexo-doc-zh-tw/</loc>
+    <loc>http://www.forsigner.com/angular-nice-bar/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/css-bfc/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+  </url>  <url>
+    <loc>http://www.forsigner.com/fexo-doc-en/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+  </url>  <url>
+    <loc>http://www.forsigner.com/beside-1/</loc>
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+  </url>  <url>
+    <loc>http://www.forsigner.com/fexo-doc-zh-tw/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/iehaslayout/</loc>
@@ -106,10 +109,10 @@
     <loc>http://www.forsigner.com/css-clearfix/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/inline-block/</loc>
+    <loc>http://www.forsigner.com/javascript-style-guide/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
-    <loc>http://www.forsigner.com/javascript-style-guide/</loc>
+    <loc>http://www.forsigner.com/inline-block/</loc>
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
   </url>  <url>
     <loc>http://www.forsigner.com/dont-make-me-think/</loc>
