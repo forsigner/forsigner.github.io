@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.forsigner.com/%E4%B8%80%E4%B8%AA%E7%8E%B0%E4%BB%A3%E5%8C%96%E7%9A%84React%20%E6%A1%86%E6%9E%B6/</loc>
+    <loc>http://www.forsigner.com/dahlia/</loc>
     
-    <lastmod>2019-05-04T17:08:11.813Z</lastmod>
+    <lastmod>2019-05-05T01:20:26.674Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.forsigner.com/react-rest/</loc>
     
-    <lastmod>2019-05-04T14:25:56.376Z</lastmod>
+    <lastmod>2019-05-05T01:19:04.509Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.forsigner.com/team-cli/</loc>
     
-    <lastmod>2019-05-04T09:13:04.685Z</lastmod>
+    <lastmod>2019-05-05T01:15:35.515Z</lastmod>
     
   </url>
   
@@ -86,7 +86,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/github-pages-custom-doman/</loc>
+    <loc>http://www.forsigner.com/git-command/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/ionic-android-package/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -107,14 +114,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/javascript-reading/</loc>
+    <loc>http://www.forsigner.com/learning-javascript-closure/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/learning-javascript-closure/</loc>
+    <loc>http://www.forsigner.com/javascript-reading/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -149,13 +156,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/sass-sourcemap/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/ordinary-world/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -163,7 +163,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/setting-ionic/</loc>
+    <loc>http://www.forsigner.com/sass-sourcemap/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -177,7 +177,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/git-command/</loc>
+    <loc>http://www.forsigner.com/fexo/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/dont-make-me-think/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -191,13 +198,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/fexo/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/traval/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -205,14 +205,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/ionic-android-package/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/dont-make-me-think/</loc>
+    <loc>http://www.forsigner.com/github-pages-custom-doman/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -233,6 +226,13 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/browser-md5-file/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/fexo-doc-en/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -247,7 +247,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/browser-md5-file/</loc>
+    <loc>http://www.forsigner.com/angular-nice-bar/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -275,7 +275,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/angular-nice-bar/</loc>
+    <loc>http://www.forsigner.com/about-blog/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -310,13 +310,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/about-blog/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/link/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -332,6 +325,13 @@
   
   <url>
     <loc>http://www.forsigner.com/tag/index.html</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/setting-ionic/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
