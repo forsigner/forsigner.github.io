@@ -7,7 +7,7 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>打造前端团队 React CLI 工具 | forsigner的博客</title>
+  <title>打造前端团队的 React CLI 工具 | forsigner的博客</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -18,15 +18,15 @@
   <meta name="description" content="关于前端 CLI 工具 对于 Angular，有官方的 Angular CLI。 对于 Vue，有官方的 Vue CLI。 对于 React，有官方的 Create React App。  Angular CLI 和 Vue CLI 是官方推荐的 CLI 工具，可直接在生产环境中使用，但 Create React App 的定位却有点不同，它的目标是让你快速 Set up 一个 React 应用，">
 <meta name="keywords" content="JavaScript,React,TypeScript,CLI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="打造前端团队 React CLI 工具">
+<meta property="og:title" content="打造前端团队的 React CLI 工具">
 <meta property="og:url" content="http://www.forsigner.com/team-cli/index.html">
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="关于前端 CLI 工具 对于 Angular，有官方的 Angular CLI。 对于 Vue，有官方的 Vue CLI。 对于 React，有官方的 Create React App。  Angular CLI 和 Vue CLI 是官方推荐的 CLI 工具，可直接在生产环境中使用，但 Create React App 的定位却有点不同，它的目标是让你快速 Set up 一个 React 应用，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://forsigner.com/images/dahlia/dahlia-app.png">
-<meta property="og:updated_time" content="2019-05-05T01:15:35.515Z">
+<meta property="og:updated_time" content="2019-05-05T12:01:35.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="打造前端团队 React CLI 工具">
+<meta name="twitter:title" content="打造前端团队的 React CLI 工具">
 <meta name="twitter:description" content="关于前端 CLI 工具 对于 Angular，有官方的 Angular CLI。 对于 Vue，有官方的 Vue CLI。 对于 React，有官方的 Create React App。  Angular CLI 和 Vue CLI 是官方推荐的 CLI 工具，可直接在生产环境中使用，但 Create React App 的定位却有点不同，它的目标是让你快速 Set up 一个 React 应用，">
 <meta name="twitter:image" content="http://forsigner.com/images/dahlia/dahlia-app.png">
 
@@ -206,7 +206,7 @@ ga('send', 'pageview');
 <div class="content content-post CENTER">
    <article id="post-team-cli" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">打造前端团队 React CLI 工具</h1>
+    <h1 class="post-title">打造前端团队的 React CLI 工具</h1>
 
     <div class="article-meta">
       <span>
@@ -256,7 +256,7 @@ ga('send', 'pageview');
 <p>再后来，官方出了 <a href="https://facebook.github.io/create-react-app/" target="_blank" rel="noopener">Create React App</a>。发现原来 webpack 配置可以不暴露在项目中，可以隐藏在 node_modules 中，这是一种非常优雅的解决方案。所以我们使用了和 <a href="https://facebook.github.io/create-react-app/" target="_blank" rel="noopener">Create React App</a> 类似的解决方案，创建自己团队专属的前端 CLI 工具，这也是我们当前的解决方案。这样的优点是 webpack 配置被隐藏，项目目录比较干净，webpack 配置升级容易，只需升级 CLI，缺点是维护 CLI 是一个大工程，需要较多的人力，且需要踩非常多的坑。</p>
 <h2 id="我推荐的方案"><a href="#我推荐的方案" class="headerlink" title="我推荐的方案"></a>我推荐的方案</h2><p>回到文章的标题：<strong>打造前端团队 React CLI 工具</strong>，我认为每个前端团队都应该有自己的 CLI 工具，这是一个团队技术和经验沉淀的重要根据地。</p>
 <p>CLI 工具可以承担非常多的工作，比如初始化项目、开发、测试、打包、部署、组件开发等，换一句话说，CLI 工具可以参与到研发的整个生命周期中，所以它是团队技术和经验沉淀的重要根据地。</p>
-<p>这里重点要讲的是 CLI 所承担的脚手架功能，Create React App 非常优秀，但我不建议作为团队工具直接使用，我也不建议从零开始去实现一个 Create React App（特别是一个中小前端团队），我的建议是基于 Create React App 创建，为什么呢？因为 Create React App 足够问题，出现问题的概率小，站在巨人肩膀上，你可以省很多精力，把更多的精力投入到业务问题中。</p>
+<p>这里重点要讲的是 CLI 所承担的脚手架功能，Create React App 非常优秀，但我不建议作为团队工具直接使用，我也不建议从零开始去实现一个 Create React App（特别是一个中小前端团队），我的建议是基于 Create React App 创建，为什么呢？因为 Create React App 足够稳定，出现问题的概率小，站在巨人肩膀上，你可以省很多精力，把更多的精力投入到业务问题中。</p>
 <h2 id="基于-Create-React-App-创建-CLI"><a href="#基于-Create-React-App-创建-CLI" class="headerlink" title="基于 Create React App 创建 CLI"></a>基于 Create React App 创建 CLI</h2><p>下面是一个我基于 Create React App 创建的 CLI：</p>
 <p>安装:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn global add dahlia-cli</span><br></pre></td></tr></table></figure>
@@ -443,6 +443,7 @@ ga('send', 'pageview');
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 <script>
 const gitalk = new Gitalk({
   clientID: '277317290454635afa73',
@@ -452,7 +453,7 @@ const gitalk = new Gitalk({
   // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
   // 50个字符串则会报错.
   // id: location.pathname.split('/').pop().substring(0, 49),
-  id: location.pathname,
+  id: md5(location.pathname),
   admin: ['forsigner'],
   // facebook-like distraction free mode
   distractionFreeMode: false

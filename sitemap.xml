@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.forsigner.com/dahlia/</loc>
+    <loc>http://www.forsigner.com/team-cli/</loc>
     
-    <lastmod>2019-05-05T01:20:26.674Z</lastmod>
+    <lastmod>2019-05-05T12:01:35.138Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.forsigner.com/react-rest/</loc>
     
-    <lastmod>2019-05-05T01:19:04.509Z</lastmod>
+    <lastmod>2019-05-05T06:36:32.862Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/team-cli/</loc>
+    <loc>http://www.forsigner.com/dahlia/</loc>
     
-    <lastmod>2019-05-05T01:15:35.515Z</lastmod>
+    <lastmod>2019-05-05T01:56:31.625Z</lastmod>
     
   </url>
   
@@ -79,14 +79,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/use-vim-project/</loc>
+    <loc>http://www.forsigner.com/git-command/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/git-command/</loc>
+    <loc>http://www.forsigner.com/github-pages-custom-doman/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/learning-javascript-closure/</loc>
+    <loc>http://www.forsigner.com/javascript-reading/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/javascript-reading/</loc>
+    <loc>http://www.forsigner.com/learning-javascript-closure/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -177,14 +177,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/fexo/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/dont-make-me-think/</loc>
+    <loc>http://www.forsigner.com/about-blog/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -198,6 +191,13 @@
   </url>
   
   <url>
+    <loc>http://www.forsigner.com/angular-nice-bar/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.forsigner.com/traval/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -205,21 +205,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/github-pages-custom-doman/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/css-clearfix/</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.forsigner.com/css-bfc/</loc>
+    <loc>http://www.forsigner.com/use-vim-project/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -227,6 +213,20 @@
   
   <url>
     <loc>http://www.forsigner.com/browser-md5-file/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/beside-1/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/css-bfc/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -247,7 +247,7 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/angular-nice-bar/</loc>
+    <loc>http://www.forsigner.com/tag/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -268,14 +268,14 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/beside-1/</loc>
+    <loc>http://www.forsigner.com/css-clearfix/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/about-blog/</loc>
+    <loc>http://www.forsigner.com/dont-make-me-think/</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
@@ -303,13 +303,6 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/category/index.html</loc>
-    
-    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.forsigner.com/link/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
@@ -317,14 +310,21 @@
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/search/index.html</loc>
+    <loc>http://www.forsigner.com/category/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.forsigner.com/tag/index.html</loc>
+    <loc>http://www.forsigner.com/fexo/</loc>
+    
+    <lastmod>2016-05-17T09:53:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.forsigner.com/search/index.html</loc>
     
     <lastmod>2016-05-17T09:53:44.000Z</lastmod>
     

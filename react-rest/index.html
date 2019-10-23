@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
 <meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
 <meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
-<meta property="og:updated_time" content="2019-05-05T01:19:04.509Z">
+<meta property="og:updated_time" content="2019-05-05T06:36:32.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React 异步数据管理思考">
 <meta name="twitter:description" content="异步数据管理一直是前端的一个重点和难点，可以这么说，80%的 web 应用会有异步数请求据并在 UI 中消费，并且在相当多的 web 应用中，处理异步数据是它的核心业务逻辑。 在 React 的生态圈中，大部分人把异步数据使用状态管理维护，比如使用 Redux，用异步 Action 获取远程数据，然后存在 store 中。 但在这个时间节点，9012 年了，我认为使用状态管理去维护异步数据不是一种">
@@ -469,6 +469,7 @@ ga('send', 'pageview');
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 <script>
 const gitalk = new Gitalk({
   clientID: '277317290454635afa73',
@@ -478,7 +479,7 @@ const gitalk = new Gitalk({
   // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
   // 50个字符串则会报错.
   // id: location.pathname.split('/').pop().substring(0, 49),
-  id: location.pathname,
+  id: md5(location.pathname),
   admin: ['forsigner'],
   // facebook-like distraction free mode
   distractionFreeMode: false
