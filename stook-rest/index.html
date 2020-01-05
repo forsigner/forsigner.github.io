@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Stook-rest：React 异步数据管理思考 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,React,TypeScript," />
+  
+
+  <meta name="description" content="回顾八个月前，我曾经写过一篇文章 React 异步数据管理思考，当时我认为使用 React Hooks 管理异步数据是一个更好的选择。半年来我在项目中一直使用这种解决方案，发现这种方案的有点很多：TypeScript 支持度好、代码量少且可读性好、Loading 状态获取容易等。缺点是：1.异步数据的共享不好处理；2.组件承担了太多的业务逻辑。 八个月后，经过多个项目的实践，我创建了一个异步数据管">
+<meta name="keywords" content="JavaScript,React,TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stook-rest：React 异步数据管理思考">
+<meta property="og:url" content="http://www.forsigner.com/stook-rest/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="回顾八个月前，我曾经写过一篇文章 React 异步数据管理思考，当时我认为使用 React Hooks 管理异步数据是一个更好的选择。半年来我在项目中一直使用这种解决方案，发现这种方案的有点很多：TypeScript 支持度好、代码量少且可读性好、Loading 状态获取容易等。缺点是：1.异步数据的共享不好处理；2.组件承担了太多的业务逻辑。 八个月后，经过多个项目的实践，我创建了一个异步数据管">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:updated_time" content="2020-01-05T15:03:23.445Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Stook-rest：React 异步数据管理思考">
+<meta name="twitter:description" content="回顾八个月前，我曾经写过一篇文章 React 异步数据管理思考，当时我认为使用 React Hooks 管理异步数据是一个更好的选择。半年来我在项目中一直使用这种解决方案，发现这种方案的有点很多：TypeScript 支持度好、代码量少且可读性好、Loading 状态获取容易等。缺点是：1.异步数据的共享不好处理；2.组件承担了太多的业务逻辑。 八个月后，经过多个项目的实践，我创建了一个异步数据管">
+<meta name="twitter:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#回顾"><span class="toc-text">回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于-Stook-rest"><span class="toc-text">关于 Stook-rest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局配置"><span class="toc-text">全局配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置选项"><span class="toc-text">配置选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建实例"><span class="toc-text">创建实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useFetch"><span class="toc-text">useFetch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用法"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL（string）"><span class="toc-text">URL（string）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#options"><span class="toc-text">options</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果-Result"><span class="toc-text">结果 (Result)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖请求"><span class="toc-text">依赖请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据共享"><span class="toc-text">数据共享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化"><span class="toc-text">优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义-hooks"><span class="toc-text">自定义 hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何自定义-hooks"><span class="toc-text">如何自定义 hooks ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为何推荐自定义-hooks"><span class="toc-text">为何推荐自定义 hooks ?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为-hooks-命名"><span class="toc-text">为 hooks 命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件更易管理"><span class="toc-text">文件更易管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更好管理-computed-value"><span class="toc-text">更好管理 computed value</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更优雅地共享数据"><span class="toc-text">更优雅地共享数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refetch"><span class="toc-text">Refetch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重新获取数据的三种方式"><span class="toc-text">重新获取数据的三种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内部-Refetch"><span class="toc-text">内部 Refetch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新依赖-deps"><span class="toc-text">更新依赖 deps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-fetcher"><span class="toc-text">使用 fetcher</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级用法"><span class="toc-text">高级用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-stook-rest" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Stook-rest：React 异步数据管理思考</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.01.04</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><p>八个月前，我曾经写过一篇文章 <a href="https://zhuanlan.zhihu.com/p/64648552" target="_blank" rel="noopener">React 异步数据管理思考</a>，当时我认为使用 React Hooks 管理异步数据是一个更好的选择。半年来我在项目中一直使用这种解决方案，发现这种方案的有点很多：TypeScript 支持度好、代码量少且可读性好、Loading 状态获取容易等。缺点是：1.异步数据的共享不好处理；2.组件承担了太多的业务逻辑。</p>
+<p>八个月后，经过多个项目的实践，我创建了一个异步数据管理的工具：<a href="https://stook-cn.now.sh/docs/rest/intro" target="_blank" rel="noopener">stook-rest</a>。</p>
+<h2 id="关于-Stook-rest"><a href="#关于-Stook-rest" class="headerlink" title="关于 Stook-rest"></a>关于 Stook-rest</h2><p>异步数据管理一直是一个难点，在 React 的生态圈中，很多人把异步数据使用状态管理维护，比如使用 Redux，用异步 Action 获取远程数据。我个人不喜欢使用 Redux 状态管理维护异步数据，我更倾向于在组件内直接获取异步数据，使用 hooks，简化数据的获取和管理。</p>
+<p>Stook-rest 是一个基于 Stook 的 Restful Api 数据获取工具。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>我们使用 <code>stook-rest</code> 的 <code>useFetch</code> 获取数据，可以轻松的拿到数据的状态 <code>{ loading, data, error }</code>，然后渲染处理：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useFetch &#125; <span class="keyword">from</span> <span class="string">"stook-rest"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Todos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch(</span><br><span class="line">    <span class="string">"https://jsonplaceholder.typicode.com/todos"</span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;span&gt;loading...&lt;/span&gt;;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;span&gt;error!&lt;/span&gt;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;data.map(<span class="function"><span class="params">item</span> =&gt;</span> (</span><br><span class="line">        &lt;li key=&#123;item.id&#125;&gt;&#123;item.title&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">      ))&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Todos;</span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/bitter-frog-t2tbm?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit bitter-frog-t2tbm"></a></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h3><p>你可以使用 <code>config</code> 方法进行全局配置，全局配置将在每个请求生效：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; config &#125; <span class="keyword">from</span> <span class="string">"stook-rest"</span>;</span><br><span class="line"></span><br><span class="line">config(&#123;</span><br><span class="line">  baseURL: <span class="string">"https://jsonplaceholder.typicode.com"</span>,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    foo: <span class="string">"bar"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h3><p><strong><code>baseURL</code></strong>: string</p>
+<p>Restful Api 服务器 baseURL， 默认为当前前端页面 host。</p>
+<p><strong><code>headers</code></strong>: object</p>
+<p>每个请求都会带上的请求头，默认为 <code>{ &#39;content-type&#39;: &#39;application/json; charset=utf-8&#39; }</code></p>
+<h3 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h3><p>在某些应用场景，你可以能有多个后端服务，这时你需要多个 Client 实例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> Client(&#123;</span><br><span class="line">  baseURL: <span class="string">"https://jsonplaceholder.typicode.com"</span>,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    foo: <span class="string">"bar"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">client.fetch(<span class="string">"/todos"</span>).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="useFetch"><a href="#useFetch" class="headerlink" title="useFetch"></a>useFetch</h2><blockquote>
+<p>const result = useFetch(url, options)</p>
+</blockquote>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>以简单高效的方式获取和管理异步数据是 stook-rest 的核心功能。下面是一个示例:</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useFetch &#125; <span class="keyword">from</span> <span class="string">'stook-rest'</span></span><br><span class="line"></span><br><span class="line">interface Todo &#123;</span><br><span class="line">  id: number</span><br><span class="line">  title: string</span><br><span class="line">  completed: boolean</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Todos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch&lt;Todo[]&gt;(<span class="string">'/todos'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;span&gt;loading...&lt;/span&gt;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;span&gt;error!&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;data.map(<span class="function"><span class="params">item</span> =&gt;</span> (</span><br><span class="line">        &lt;li key=&#123;item.id&#125;&gt;&#123;item.title&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">      ))&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/bitter-frog-t2tbm?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit bitter-frog-t2tbm"></a></p>
+<h3 id="URL（string）"><a href="#URL（string）" class="headerlink" title="URL（string）"></a>URL（string）</h3><p>HTTP 请求的 URL，eg: “/todos”。</p>
+<h3 id="options"><a href="#options" class="headerlink" title="options"></a>options</h3><p><strong><code>method?: Method</code></strong></p>
+<p>HTTP 请求的类型，默认为 <code>GET</code>, 全部可选值: <code>type Method = &#39;GET&#39; | &#39;POST&#39; | &#39;DELETE&#39; | &#39;PUT&#39; | &#39;PATCH&#39; | &#39;HEAD&#39;</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch&lt;Todo[]&gt;(<span class="string">'/todos'</span>, &#123; <span class="attr">method</span>: <span class="string">'POST'</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p><strong><code>query?: Query</code></strong></p>
+<p>HTTP 请求的 query 对象，通常 <code>GET</code> 类型的请求比较常用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch&lt;Todo[]&gt;(<span class="string">'/todos'</span>, &#123;</span><br><span class="line">  query: &#123; <span class="attr">pageNum</span>: <span class="number">1</span>, <span class="attr">pageSize</span>: <span class="number">20</span> &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面会把 url 转换为: <code>/todos?pageNum=1&amp;pageSize=20</code>。详细的转换规则请参照 <a href="https://github.com/ljharb/qs" target="_blank" rel="noopener">qs</a></p>
+<p><strong><code>body?: Body</code></strong></p>
+<p>HTTP 请求的 body 对象，和原生 <code>fetch</code> 的 <a href="https://github.github.io/fetch/#request-body" target="_blank" rel="noopener">body</a> 类似，不同的是，<code>useFetch</code> 的 body 支持 JS 对象：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch(<span class="string">"/todos"</span>, &#123;</span><br><span class="line">  body: &#123; <span class="attr">title</span>: <span class="string">"todo1"</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong><code>params?: Params</code></strong></p>
+<p>URL 的参数对象，用法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch(<span class="string">"/todos/:id"</span>, &#123;</span><br><span class="line">  params: &#123; <span class="attr">id</span>: <span class="number">10</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>请求发送后， <code>/todos/:id</code> 会转换为 <code>/todos/10</code>。</p>
+<p><strong><code>headers?: HeadersInit;</code></strong></p>
+<p>HTTP 请求头，和原生<code>fetch</code>的 <a href="https://github.github.io/fetch/#Headers" target="_blank" rel="noopener"><code>Headers</code></a> 一致，但有默认值: <code>{ &#39;content-type&#39;: &#39;application/json; charset=utf-8&#39; }</code></p>
+<p><strong><code>deps?: Deps</code></strong></p>
+<p><code>useFetch</code> 是一个自定义的 React hooks，默认情况下，组件多次渲染，<code>useFetch</code> 只会执行一次，不过如果你设置了依赖 (deps)，并且依赖发生更新，<code>useFetch</code>会重新执行，就是会重新获取数据，其机制类似于 <code>useEffect</code> 的依赖，不同的是不设置任何依赖值时，当组件发生多次渲染，<code>useFetch</code> 只会执行一次，<code>useFetch</code> 执行多次。</p>
+<p>依赖值 deps 是个数组,类型为：<code>type Deps = ReadonlyArray&lt;any&gt;</code></p>
+<p><strong><code>key?: string</code></strong></p>
+<p>该请求的唯一标识符，因为 stook-rest 是基于 stook，这个 key 就是 stook 的唯一 key，对于 refetch 非常有用。默认是为 <code>${method} ${url}</code>，比如请求如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; loading, data &#125; = useFetch(<span class="string">"/todos"</span>, &#123; <span class="attr">method</span>: <span class="string">"POST"</span> &#125;);</span><br></pre></td></tr></table></figure>
+<p>那默认的 key 为: <code>POST /todos</code></p>
+<h3 id="结果-Result"><a href="#结果-Result" class="headerlink" title="结果 (Result)"></a>结果 (Result)</h3><p><strong><code>loading: boolean</code></strong></p>
+<p>一个布尔值，表示数据是否加载中。</p>
+<p><strong><code>data: T</code></strong></p>
+<p>服务器返回的数据。</p>
+<p><strong><code>error: RestError</code></strong></p>
+<p>服务器返回错误。</p>
+<p><strong><code>refetch: &lt;T&gt;(options?: Options) =&gt; Promise&lt;T&gt;</code></strong></p>
+<p>重新发起一个请求获取数据，eg:</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Todos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, data, error, refetch &#125; = useFetch&lt;Todo[]&gt;(<span class="string">"/todos"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;span&gt;loading...&lt;/span&gt;;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;span&gt;error!&lt;/span&gt;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;refetch&#125;&gt;Refetch&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">        &#123;data.map(item =&gt; (</span></span><br><span class="line"><span class="regexp">          &lt;li key=&#123;item.id&#125;&gt;&#123;item.title&#125;&lt;/</span>li&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="依赖请求"><a href="#依赖请求" class="headerlink" title="依赖请求"></a>依赖请求</h2><p>很多时候，一个请求会依赖另外一个请求的数据，这时候请求会有前后顺序，stook-rest 可以非常优雅的处理这种依赖请求：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; config, useFetch &#125; <span class="keyword">from</span> <span class="string">"stook-rest"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>: todos &#125; = useFetch(<span class="string">"/todos"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; loading, <span class="attr">data</span>: todo &#125; = useFetch(<span class="string">"/todos/:id"</span>, &#123;</span><br><span class="line">    params: <span class="function"><span class="params">()</span> =&gt;</span> (&#123; <span class="attr">id</span>: todos[<span class="number">9</span>].id &#125;)</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;div&gt;Todo:&lt;/div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todo, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们知道，<code>params</code>、<code>query</code>、<code>body</code> 三中参数值通常是一个对象，其实他们也可以是一个函数，函数参数可以让我们轻易地使用依赖请求。</p>
+<p>依赖请求的方式可以大大地减少你的代码量，并让你可以用类似同步的代码书写数据请求代码。</p>
+<p><a href="https://codesandbox.io/s/sweet-lake-gu2el?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit sweet-lake-gu2el"></a></p>
+<h2 id="数据共享"><a href="#数据共享" class="headerlink" title="数据共享"></a>数据共享</h2><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>stook-rest 另一个强大的特性是请求数据的共享，由于 stook-rest 底层的数据管理是基于 stook 的，所以跨组件共享数据将变得非常简单：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> TodoItem = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, <span class="attr">data</span>: todo &#125; = useFetch(<span class="string">'/todos/1'</span>)</span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todo, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ReuseTodoItem = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, <span class="attr">data</span>: todo &#125; = useFetch(<span class="string">'/todos/1'</span>)</span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;ReuseTodoItem:&lt;/div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todo, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;TodoItem&gt;&lt;/TodoItem&gt;</span><br><span class="line">    &lt;ReuseTodoItem&gt;&lt;/ReuseTodoItem&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/wizardly-ellis-nqmqj?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit wizardly-ellis-nqmqj"></a></p>
+<p>上面我们在两个组件中使用了 <code>useFetch</code>，它们的唯一 key 是一样的 (都是 <code>GET /todos/1</code>)，而且只会发送一次请求，两个组件会使用同一份数据。</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>个人不太建议直接在多个组件使用同一个 <code>useFetch</code>，更进一步使用自定义 hooks，增强业务逻辑的复用性：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> useFetchTodo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, <span class="attr">data</span>: todo, error &#125; = useFetch(<span class="string">'/todos/1'</span>)</span><br><span class="line">  <span class="keyword">return</span> &#123; loading, todo, error &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoItem = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, todo &#125; = useFetchTodo()</span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;TodoItem:&lt;/div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todo, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ReuseTodoItem = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, todo &#125; = useFetchTodo()</span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;ReuseTodoItem:&lt;/div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todo, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;TodoItem&gt;&lt;/TodoItem&gt;</span><br><span class="line">    &lt;ReuseTodoItem&gt;&lt;/ReuseTodoItem&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/blue-glitter-zysrb?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit blue-glitter-zysrb"></a></p>
+<h2 id="自定义-hooks"><a href="#自定义-hooks" class="headerlink" title="自定义 hooks"></a>自定义 hooks</h2><p>在真实的业务开发中，不建议直接在组件中使用 <code>useFetch</code>，更推荐是使用使用自定义 hooks 对请求的业务逻辑进行封装。</p>
+<h3 id="如何自定义-hooks"><a href="#如何自定义-hooks" class="headerlink" title="如何自定义 hooks ?"></a>如何自定义 hooks ?</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> useFetchTodos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, <span class="attr">data</span>: todos = [], error &#125; = useFetch(<span class="string">'/todos'</span>)</span><br><span class="line">  <span class="keyword">return</span> &#123; loading, todos, error &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="为何推荐自定义-hooks"><a href="#为何推荐自定义-hooks" class="headerlink" title="为何推荐自定义 hooks ?"></a>为何推荐自定义 hooks ?</h3><p>自定义 hooks 有下面几点好处：</p>
+<h4 id="为-hooks-命名"><a href="#为-hooks-命名" class="headerlink" title="为 hooks 命名"></a>为 hooks 命名</h4><p>这看上去和直接使用 <code>useFetch</code> 没有太大区别，实际上它增加了代码的可读性。</p>
+<h4 id="文件更易管理"><a href="#文件更易管理" class="headerlink" title="文件更易管理"></a>文件更易管理</h4><p>如果我们我们直接在组件中使用 <code>useFetch</code>，我们需要在组件引入非常多文件。这个请求数据只有一个组件使用还好，如果多个组件需要共享此请求数据，文件管理将会非常乱。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; useFetch &#125; <span class="keyword">from</span> <span class="string">'stook-rest'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Todo &#125; <span class="keyword">from</span> <span class="string">'../../typings'</span></span><br><span class="line"><span class="keyword">import</span> &#123; GET_TODO &#125; <span class="keyword">from</span> <span class="string">'../../URL.constant'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>: todos &#125; = useFetch&lt;Todo[]&gt;(GET_TODO)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;div&gt;Todo:&lt;/div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todo, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果使用使用自定义 hooks，我们只需在组件中引入 hooks:</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; useFetchTodos &#125; <span class="keyword">from</span> <span class="string">'../../useFetchTodos'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, todos &#125; = useFetchTodos()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;div&gt;Todos:&lt;/div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todos, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="更好管理-computed-value"><a href="#更好管理-computed-value" class="headerlink" title="更好管理 computed value"></a>更好管理 computed value</h4><p>为了业务逻辑更好的复用，我们经常会使用 computed value:</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> useFetchTodos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, <span class="attr">data</span>: todos = [], error &#125; = useFetch&lt;Todo[]&gt;(<span class="string">'/todos'</span>)</span><br><span class="line">  <span class="keyword">const</span> count = todos.length</span><br><span class="line">  <span class="keyword">const</span> completedCount = todos.filter(<span class="function"><span class="params">i</span> =&gt;</span> i.completed).length</span><br><span class="line">  <span class="keyword">return</span> &#123; loading, todos, count, completedCount, error &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="更优雅地共享数据"><a href="#更优雅地共享数据" class="headerlink" title="更优雅地共享数据"></a>更优雅地共享数据</h4><p>自定义 hooks 让数据跨组件共享数据更加优雅：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">interface Todo &#123;</span><br><span class="line">  id: number</span><br><span class="line">  title: string</span><br><span class="line">  completed: boolean</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> useFetchTodos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, <span class="attr">data</span>: todos = [], error &#125; = useFetch&lt;Todo[]&gt;(<span class="string">'/todos'</span>)</span><br><span class="line">  <span class="keyword">const</span> count = todos.length</span><br><span class="line">  <span class="keyword">const</span> completedCount = todos.filter(<span class="function"><span class="params">i</span> =&gt;</span> i.completed).length</span><br><span class="line">  <span class="keyword">return</span> &#123; loading, todos, count, completedCount, error &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoList = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, todos, count, completedCount &#125; = useFetchTodos()</span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;TodoList:&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;todos count: &#123;count&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;completed count: &#123;completedCount&#125;&lt;/</span>div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todos, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ReuseTodoList = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, todos, count, completedCount &#125; = useFetchTodos()</span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;loading....&lt;/div&gt;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;ReuseTodoList:&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;todos count: &#123;count&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;completed count: &#123;completedCount&#125;&lt;/</span>div&gt;</span><br><span class="line">      &lt;pre&gt;&#123;<span class="built_in">JSON</span>.stringify(todos, <span class="literal">null</span>, <span class="number">2</span>)&#125;&lt;<span class="regexp">/pre&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; (</span><br><span class="line">  &lt;div style=&#123;&#123; <span class="attr">display</span>: <span class="string">'flex'</span> &#125;&#125;&gt;</span><br><span class="line">    &lt;TodoList&gt;&lt;/TodoList&gt;</span><br><span class="line">    &lt;ReuseTodoList&gt;&lt;/ReuseTodoList&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="Refetch"><a href="#Refetch" class="headerlink" title="Refetch"></a>Refetch</h2><p>很多场景中，你需要更新异步数据，比如在 CRUD 功能中，新增、删除、修改、分页、筛选等功能都需要更新异步数据。<code>stook-rest</code> 提供了三中方式更新数据，三种方式可在不同业务场景中使用，这是<code>stook-rest</code>的重要功能之一，你应该仔细阅读并理解它的使用场景，使用这种方式管理异步数据，整个应用的状态将变得更加简单，代码量会成本的减少，相应的可维护性大大增加。</p>
+<h3 id="重新获取数据的三种方式"><a href="#重新获取数据的三种方式" class="headerlink" title="重新获取数据的三种方式"></a>重新获取数据的三种方式</h3><p>但很多时候，你需要更新异步数据，<code>stook-rest</code>提供三种方式更新数据:</p>
+<ul>
+<li>内部 Refetch</li>
+<li>更新依赖 deps</li>
+<li>使用 fetcher</li>
+</ul>
+<h3 id="内部-Refetch"><a href="#内部-Refetch" class="headerlink" title="内部 Refetch"></a>内部 Refetch</h3><p>这是最简单的重新获取数据的方式，通常，如果触发更新的动作和<code>useFetch</code>在统一组件内，可以使用这种方式。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Todos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, data, error, refetch &#125; = useFetch(<span class="string">'/todos'</span>, &#123;</span><br><span class="line">    query: &#123; <span class="attr">_start</span>: <span class="number">0</span>, <span class="attr">_limit</span>: <span class="number">5</span> &#125;, <span class="comment">// first page</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;span&gt;loading...&lt;/span&gt;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;span&gt;error!&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> getSecondPage = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    refetch(&#123;</span><br><span class="line">      query: &#123; <span class="attr">_start</span>: <span class="number">5</span>, <span class="attr">_limit</span>: <span class="number">5</span> &#125;, <span class="comment">// second page</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;getSecondPage&#125;&gt;Second Page&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">        &#123;data.map(item =&gt; (</span></span><br><span class="line"><span class="regexp">          &lt;li key=&#123;item.id&#125;&gt;&#123;item.title&#125;&lt;/</span>li&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/vigilant-bouman-y0gu7?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit vigilant-bouman-y0gu7"></a></p>
+<h3 id="更新依赖-deps"><a href="#更新依赖-deps" class="headerlink" title="更新依赖 deps"></a>更新依赖 deps</h3><p>通过更新依赖来重新获取数据，这也是常用的方式之一，因为在很多业务场景中，触发动作会在其他组件中，下面演示如何通过更新依赖触发数据更新：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; useFetch &#125; <span class="keyword">from</span> <span class="string">'stook-rest'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch(<span class="string">'/todos'</span>, &#123;</span><br><span class="line">    deps: [count],</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;span&gt;loading...&lt;/span&gt;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;span&gt;error!&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> update = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setCount(count + <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;update&#125;&gt;Update Page&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">        &#123;data.map(item =&gt; (</span></span><br><span class="line"><span class="regexp">          &lt;li key=&#123;item.id&#125;&gt;&#123;item.title&#125;&lt;/</span>li&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/loving-cray-b6xvq?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit loving-cray-b6xvq"></a></p>
+<p>你可以在任意地方，不管组件内还是组件外，你都可以更新依赖，从而实现数据更新。</p>
+<p>注意：这里的依赖是个对象，你必须更新整个对象的引用，如果你只更新对象的属性是无效的。</p>
+<h3 id="使用-fetcher"><a href="#使用-fetcher" class="headerlink" title="使用 fetcher"></a>使用 fetcher</h3><p>有时候，你需要在组件外部重新获取数据，但<code>useFetch</code> 却没有任何可以被依赖的参数，这时你可以使用 fetcher:</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useFetch, fetcher &#125; <span class="keyword">from</span> <span class="string">'stook-rest'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Todos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch(<span class="string">'/todos'</span>, &#123; <span class="attr">key</span>: <span class="string">'GetTodos'</span> &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;span&gt;loading...&lt;/span&gt;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;span&gt;error!&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;data.map(<span class="function"><span class="params">item</span> =&gt;</span> (</span><br><span class="line">        &lt;li key=&#123;item.id&#125;&gt;&#123;item.title&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">      ))&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Refresh = <span class="function"><span class="params">()</span> =&gt;</span> &lt;button onClick=&#123;() =&gt; fetcher.get(<span class="string">'GetTodos'</span>).refetch()&#125;&gt;refresh&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const TodoApp = () =&gt; (</span></span><br><span class="line"><span class="regexp">  &lt;div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;Refresh /</span>&gt;</span><br><span class="line">    &lt;Todos /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/stoic-bardeen-y15mg?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit stoic-bardeen-y15mg"></a></p>
+<p>使用 fetcher 是，你需要为<code>useFetch</code> 提供 name 参数，用法是：<code>fetcher[&#39;name&#39;].refetch()</code>，这里的 <code>refetch</code> 和内部 <code>refetch</code> 是同一个函数，所以它也有 options 参数。</p>
+<h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><p>使用 fetcher 时，为一个 HTTP 请求命名 (name) 不是必须的，每个 HTTP 请求都有一个默认的名字，默认名字为该请求的 url 参数。</p>
+<p>为了项目代码的可维护性，推荐把所以 Api 的 url 集中化，比如：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// apiService.ts</span></span><br><span class="line">enum Api &#123;</span><br><span class="line">  GetTodo = <span class="string">'GET /todos/:id'</span>,</span><br><span class="line">  GetTodos = <span class="string">'GET /todos'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Api</span><br></pre></td></tr></table></figure>
+<p>在组件中:</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useFetch, fetcher &#125; <span class="keyword">from</span> <span class="string">'stook-rest'</span></span><br><span class="line"><span class="keyword">import</span> Api <span class="keyword">from</span> <span class="string">'@service/apiService'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Todos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; loading, data, error &#125; = useFetch(Api.GetTodos)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;span&gt;loading...&lt;/span&gt;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;span&gt;error!&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; fetcher[Api.GetTodos]refetch()&#125;&gt;refresh&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">        &#123;data.map(item =&gt; (</span></span><br><span class="line"><span class="regexp">          &lt;li key=&#123;item.id&#125;&gt;&#123;item.title&#125;&lt;/</span>li&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>个人认为，使用 Hooks 获取和管理异步数据，将逐渐在 React 社区中流行。我们发现，使用 Hooks 管理异步数据，代码非常简洁，有一种大道至简感觉和返璞归真感觉。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/stook/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

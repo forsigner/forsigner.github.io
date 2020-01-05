@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Stook：极简主义的 React 状态管理库 | forsigner的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,React,TypeScript," />
+  
+
+  <meta name="description" content="从 Hooks 说起一年前，2018 年 9 月左右, React hooks 刚发布，那时 hooks 还不是稳定 Api，只能在 16.7.0-alpha.0 版本能用。那时我就预感到，基于 hooks 状态管理解决方案会逐渐崛起，当时我基于 hooks 创建一个我认为理想的状态管理库：stamen。 我还写过一篇文章介绍它：可能是基于 Hooks 和 Typescript 最好的状态管理工具">
+<meta name="keywords" content="JavaScript,React,TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stook：极简主义的 React 状态管理库">
+<meta property="og:url" content="http://www.forsigner.com/stook/index.html">
+<meta property="og:site_name" content="forsigner的博客">
+<meta property="og:description" content="从 Hooks 说起一年前，2018 年 9 月左右, React hooks 刚发布，那时 hooks 还不是稳定 Api，只能在 16.7.0-alpha.0 版本能用。那时我就预感到，基于 hooks 状态管理解决方案会逐渐崛起，当时我基于 hooks 创建一个我认为理想的状态管理库：stamen。 我还写过一篇文章介绍它：可能是基于 Hooks 和 Typescript 最好的状态管理工具">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+<meta property="og:image" content="https://stook-cn.now.sh/img/stook-devtools.png">
+<meta property="og:updated_time" content="2020-01-05T15:01:21.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Stook：极简主义的 React 状态管理库">
+<meta name="twitter:description" content="从 Hooks 说起一年前，2018 年 9 月左右, React hooks 刚发布，那时 hooks 还不是稳定 Api，只能在 16.7.0-alpha.0 版本能用。那时我就预感到，基于 hooks 状态管理解决方案会逐渐崛起，当时我基于 hooks 创建一个我认为理想的状态管理库：stamen。 我还写过一篇文章介绍它：可能是基于 Hooks 和 Typescript 最好的状态管理工具">
+<meta name="twitter:image" content="https://codesandbox.io/static/img/play-codesandbox.svg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#从-Hooks-说起"><span class="toc-text">从 Hooks 说起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回顾-Stamen"><span class="toc-text">回顾 Stamen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于-Stook"><span class="toc-text">关于 Stook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态共享"><span class="toc-text">状态共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义-Hooks"><span class="toc-text">自定义 Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Api"><span class="toc-text">Api</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装依赖"><span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调试"><span class="toc-text">调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Redux-DevTools-extension"><span class="toc-text">安装 Redux DevTools extension</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Setup"><span class="toc-text">Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-stook" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Stook：极简主义的 React 状态管理库</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.01.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>forsigner</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="从-Hooks-说起"><a href="#从-Hooks-说起" class="headerlink" title="从 Hooks 说起"></a>从 Hooks 说起</h2><p>一年前，2018 年 9 月左右, React hooks 刚发布，那时 hooks 还不是稳定 Api，只能在 16.7.0-alpha.0 版本能用。那时我就预感到，基于 hooks 状态管理解决方案会逐渐崛起，当时我基于 hooks 创建一个我认为理想的状态管理库：<a href="https://github.com/forsigner/stamen" target="_blank" rel="noopener">stamen</a>。</p>
+<p>我还写过一篇文章介绍它：<a href="https://zhuanlan.zhihu.com/p/49733571" target="_blank" rel="noopener">可能是基于 Hooks 和 Typescript 最好的状态管理工具</a>。</p>
+<h2 id="回顾-Stamen"><a href="#回顾-Stamen" class="headerlink" title="回顾 Stamen"></a>回顾 Stamen</h2><p>我之前说过，我想要这样的一个状态管理库：</p>
+<ul>
+<li>简单易用，并且适合中大型项目</li>
+<li>完美地支持 Typescript</li>
+</ul>
+<p>所以我创建了 Stamen，Stamen 相比 Redux 更加简洁，对 TypeScript 支持度更好。一年多过去了，也在几个小项目中实践过，发现并没有很好满足我的两个期望。</p>
+<p>Stamen 的 Api 借鉴了 dva 和 rematch，导致了它没有脱离 Redux 的影子，依然有 state、reducers、effects、dispatch、selector 等概念，可以说没有彻底 Hooks 化，特别是 reducers 处理同步和 effects 处理副作用让我觉得特别扭。</p>
+<p>一年后，我创建了更加彻底 Hooks 化的状态管理库：<a href="https://github.com/forsigner/stook" target="_blank" rel="noopener">Stook</a>。</p>
+<h2 id="关于-Stook"><a href="#关于-Stook" class="headerlink" title="关于 Stook"></a>关于 Stook</h2><p>Stook，中文翻译是谷堆，命名灵感来自 store、hooks 两个单词的组合，一个极简主义的 React 状态管理库。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>我们看看 Stook 用法有多么的简单，下面是一个经典的 Counter 组件，展示了 <code>stook</code> 的最基本用法:</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useStore &#125; <span class="keyword">from</span> <span class="string">"stook"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useStore(<span class="string">"Counter"</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/ancient-night-gyres?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit ancient-night-gyres"></a></p>
+<p>Stook 最核心的 Api 就是 <code>useStore</code>，也许你发现了，它和 <code>useState</code> 非常像，实际上，<code>useStore</code> 除了多了一个参数以外，其他用法一模一样。</p>
+<p>Stook 极简之处在于它的用法跟 <code>usState</code> 几乎一致，学习成本几乎可以忽略，更多的学习成本在于 React Hooks 的掌握和理解，经过一年多，Hooks 已经逐渐在 React 社区中得到认可，相信以后 Hooks 将是每个 React 开发者的基本技能。</p>
+<h2 id="状态共享"><a href="#状态共享" class="headerlink" title="状态共享"></a>状态共享</h2><p>对于状态管理，最核心的功能就是状态的跨组件通信。useState 用于管理单一组件内的状态，useStore 则可以跨组件管理整个应用的状态。</p>
+<p>下面展示了如何多个组件如何共享状态：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useStore &#125; <span class="keyword">from</span> <span class="string">"stook"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useStore(<span class="string">"Counter"</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function Display() &#123;</span></span><br><span class="line"><span class="regexp">  const [count] = useStore("Counter");</span></span><br><span class="line"><span class="regexp">  return &lt;p&gt;&#123;count&#125;&lt;/</span>p&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Counter /&gt;</span><br><span class="line">      &lt;Display /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/vibrant-swirles-jw7kw?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit vibrant-swirles-jw7kw"></a></p>
+<p>在这个例子中，我们可以看到，要共享状态，只需使用 useStore 订阅同一个 key 即可，非常简单。可以说，只要你学会了 useState，也就学会了 useStore，只要你学会了 useStore，你就学会了 React 的状态管理。</p>
+<h2 id="自定义-Hooks"><a href="#自定义-Hooks" class="headerlink" title="自定义 Hooks"></a>自定义 Hooks</h2><p>为了能使组件和状态管理逻辑分离，强烈建议使用自定义 hooks 管理状态，比如说你要管理 Counter 的状态，那就是自定义一个叫 <code>useCounter</code> 的 hooks，然后在各组件中使用 <code>useCounter()</code>， 而不是直接使用 <code>useStore(&#39;Counter&#39;)</code>。</p>
+<p>示例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useStore &#125; <span class="keyword">from</span> <span class="string">"stook"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useStore(<span class="string">"Counter"</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> decrease = <span class="function"><span class="params">()</span> =&gt;</span> setCount(count - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> increase = <span class="function"><span class="params">()</span> =&gt;</span> setCount(count + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> &#123; count, increase, decrease &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Display</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; count &#125; = useCounter();</span><br><span class="line">  <span class="keyword">return</span> &lt;div&gt;&#123;count&#125;&lt;/div&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Increase</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; increase &#125; = useCounter();</span><br><span class="line">  <span class="keyword">return</span> &lt;buttun onClick=&#123;increase&#125;&gt;+&lt;/buttun&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Decrease</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; decrease &#125; = useCounter();</span><br><span class="line">  <span class="keyword">return</span> &lt;buttun onClick=&#123;decrease&#125;&gt;-&lt;/buttun&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Decrease /&gt;</span><br><span class="line">      &lt;Display /&gt;</span><br><span class="line">      &lt;Increase /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codesandbox.io/s/nameless-shadow-ozke5?fontsize=14&amp;hidenavigation=1&amp;theme=dark" target="_blank" rel="noopener"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit nameless-shadow-ozke5"></a></p>
+<p>上面三个子组件，都用到了 useCounter，它们实现了状态共享。</p>
+<p>自定义 Hooks 是最佳实践，强烈建议在业务中都使用自定义 Hooks。</p>
+<h2 id="Api"><a href="#Api" class="headerlink" title="Api"></a>Api</h2><p>Stook 的核心非常简洁，核心 Api 就 <code>useStore</code> 一个，全部 Api 也就 3 个：</p>
+<ul>
+<li>useStore - <a href="https://stook-cn.now.sh/docs/stook/use-store" target="_blank" rel="noopener">查看详情</a></li>
+<li>mutate - <a href="https://stook-cn.now.sh/docs/stook/mutate" target="_blank" rel="noopener">查看详情</a></li>
+<li>getState - <a href="https://stook-cn.now.sh/docs/stook/get-state" target="_blank" rel="noopener">查看详情</a></li>
+</ul>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>测试 stook 是一件非常简单的事，因为测试 stook 也就是在测试 react hooks。</p>
+<p>推荐使用 <a href="https://react-hooks-testing-library.com/" target="_blank" rel="noopener">react-hooks-testing-library</a>工具来测试 stook。</p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -D @testing-library/react-hooks react-test-renderer</span><br></pre></td></tr></table></figure>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p><strong><code>useCounter.ts</code></strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useStore(<span class="string">"Counter"</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> decrease = <span class="function"><span class="params">()</span> =&gt;</span> setCount(count - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> increase = <span class="function"><span class="params">()</span> =&gt;</span> setCount(count + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> &#123; count, increase, decrease &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>useCounter.test.ts</code></strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; renderHook, act &#125; <span class="keyword">from</span> <span class="string">"@testing-library/react-hooks"</span>;</span><br><span class="line"><span class="keyword">import</span> useCounter <span class="keyword">from</span> <span class="string">"./useCounter"</span>;</span><br><span class="line"></span><br><span class="line">test(<span class="string">"should increment counter"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; result &#125; = renderHook(<span class="function"><span class="params">()</span> =&gt;</span> useCounter());</span><br><span class="line"></span><br><span class="line">  act(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    result.current.increase();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  expect(result.current.count).toBe(<span class="number">1</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>更多的测试技巧请看：<a href="https://react-hooks-testing-library.com/" target="_blank" rel="noopener">react-hooks-testing-library</a>。</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>为了更好的编程体验，Stook 支持使用 Redux DevTools 调试。</p>
+<h3 id="安装-Redux-DevTools-extension"><a href="#安装-Redux-DevTools-extension" class="headerlink" title="安装 Redux DevTools extension"></a>安装 Redux DevTools extension</h3><p>如果你未安装 Redux DevTools extension，请安装相应浏览器的插件：<a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd" target="_blank" rel="noopener">Redux DevTools</a>。</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>使用 devtools 非常简单，先安装 <code>stook-devtools</code> 包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i stook-devtools</span><br></pre></td></tr></table></figure>
+<p>然后在项目代码中进入，并初始化：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; devtools &#125; <span class="keyword">from</span> <span class="string">"devtools"</span>;</span><br><span class="line"></span><br><span class="line">devtools.init();</span><br></pre></td></tr></table></figure>
+<p>如果你不想在生产环境引入：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; devtools &#125; <span class="keyword">from</span> <span class="string">"devtools"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">"production"</span>) &#123;</span><br><span class="line">  devtools.init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>生效后，可以在浏览器的 Redux DevTools extension 看到整个应用的 state 状态：</p>
+<p><img src="https://stook-cn.now.sh/img/stook-devtools.png" alt="devtools"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Stook 的理念和传统的状态管理方案不同，没有明确的 Action 的概念。事实上，它的理念跟 React 的 <code>useState</code>是类似的，推崇的是：一个 Hooks，一个 state，一个 action。Stook 建议把状态分拆，变成一个个 Hooks，然后就变成 <code>[state, setState]</code>。</p>
+<p>更多关于 Stook 的用法，请看 Github: <a href="https://github.com/forsigner/stook" target="_blank" rel="noopener">Stook</a>。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/dahlia/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/stook-rest/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
