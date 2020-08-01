@@ -23,10 +23,13 @@
 <meta property="og:site_name" content="forsigner的博客">
 <meta property="og:description" content="背景你是不是和我一样，每天总是会忘记一些事情，例如： 去 ATM 取一些现金，回到家才记起来, 给汽车加油，回到家才想起来， 下班顺路买像牛奶回家，回到家才想起来… 我，就是这类人，并且深陷其中。 我尝试过使用一些代办事项 App 提醒，发现并不管用，因为我并不会频繁打开它，即使有通知提醒也不管用，因为通知很容易被其他应用通知覆盖。 我也尝试用闹钟来提醒我，发现也不方便，哪种声音太大，并且很容易忽">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-31T11:06:34.502Z">
+<meta property="og:image" content="http://forsigner.com/images/wechaty/task-web.png">
+<meta property="og:image" content="http://forsigner.com/images/wechaty/bot.jpeg">
+<meta property="og:updated_time" content="2020-08-01T02:53:36.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 Wechaty 的个人提醒小助手">
 <meta name="twitter:description" content="背景你是不是和我一样，每天总是会忘记一些事情，例如： 去 ATM 取一些现金，回到家才记起来, 给汽车加油，回到家才想起来， 下班顺路买像牛奶回家，回到家才想起来… 我，就是这类人，并且深陷其中。 我尝试过使用一些代办事项 App 提醒，发现并不管用，因为我并不会频繁打开它，即使有通知提醒也不管用，因为通知很容易被其他应用通知覆盖。 我也尝试用闹钟来提醒我，发现也不方便，哪种声音太大，并且很容易忽">
+<meta name="twitter:image" content="http://forsigner.com/images/wechaty/task-web.png">
 
   
 
@@ -196,7 +199,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需求"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技术实现"><span class="toc-text">技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心库"><span class="toc-text">核心库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-搭建"><span class="toc-text">Web 搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#助手实现"><span class="toc-text">助手实现</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需求"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技术实现"><span class="toc-text">技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心库"><span class="toc-text">核心库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-搭建"><span class="toc-text">Web 搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#助手实现"><span class="toc-text">助手实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发"><span class="toc-text">开发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#展望"><span class="toc-text">展望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
   </div>
 
 
@@ -264,9 +267,23 @@ ga('send', 'pageview');
 <li>wechaty-puppet-padplus</li>
 <li>node-schedule</li>
 </ul>
-<h3 id="Web-搭建"><a href="#Web-搭建" class="headerlink" title="Web 搭建"></a>Web 搭建</h3><p>网页用 Node.js 搭建，后端用的框架是我自己写的：<a href="https://github.com/tiejs/tie，前端用的是" target="_blank" rel="noopener">https://github.com/tiejs/tie，前端用的是</a> React，效果如下：</p>
+<h3 id="Web-搭建"><a href="#Web-搭建" class="headerlink" title="Web 搭建"></a>Web 搭建</h3><p>网页用 Node.js 搭建，后端用的框架是我自己写的：<a href="https://github.com/tiejs/tie" target="_blank" rel="noopener">tiejs/tie</a>，前端用的是 React，效果如下：</p>
+<p><img src="http://forsigner.com/images/wechaty/task-web.png" alt="web"></p>
 <p>代码包含数据库信息，所以就不放出来了。</p>
-<h3 id="助手实现"><a href="#助手实现" class="headerlink" title="助手实现"></a>助手实现</h3>
+<h3 id="助手实现"><a href="#助手实现" class="headerlink" title="助手实现"></a>助手实现</h3><p>核心模块是 wechaty、wechaty-puppet-padplus、node-schedule，代码是开源的，详细可以看：<a href="https://github.com/forsigner/ziyi-bot" target="_blank" rel="noopener">forsigner/ziyi-bot</a></p>
+<p><img src="http://forsigner.com/images/wechaty/bot.jpeg" alt="bot"></p>
+<h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><p>如何启动助手项目体验？clone 项目 <code>npm run dev</code> 跑起来，扫描二维码即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:forsigner/ziyi-bot.git</span><br><span class="line">$ <span class="built_in">cd</span> ziyi-bot</span><br><span class="line">$ npm i</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
+<h2 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h2><p>暂时此个人助手只实现了最简单的提醒功能，还有很多功能需要完善，未来我会逐渐完善以下功能：</p>
+<ul>
+<li>任务重复提醒</li>
+<li>纪念日自动提醒</li>
+<li>助手聊天对话框添加待办事项</li>
+<li>助手聊天对话框标记任务完成</li>
+<li>开发一个 App 管理待办事项，配合 App 通知、闹钟</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>感谢 wechaty 团队创建了这么优秀且易用的工具，有兴趣的可以到 Github 详细了解：<a href="https://github.com/wechaty/wechaty" target="_blank" rel="noopener">wechaty</a></p>
+
     
   </div>
 
